@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+.student {
+  background-color: black;
+  color: yellow;
+  font-weight: 900;
+}
+.text1 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  color: rgb(51, 39, 63);
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+.border1 {
+  border: 1px solid black;
+  border-radius: 2%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.text-2 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: rgb(51, 39, 63);
+  padding-top: 10px;
+}
+.text2 {
+  font-size: 15px;
+  text-align: justify;
+  padding-right: 10px;
+}
+.text3 {
+  font-size: 25px;
+  text-align: justify;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.border2 {
+  border: 1px solid black;
+  border-radius: 2%;
+  padding-bottom: 50px;
+}
+.imgs {
+  padding-right: 40px;
+  width: 400px;
+  height: 150px;
+}
+.im1 {
+  width: 100%;
+  height: auto;
+}
+.text4 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: rgb(51, 39, 63);
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+.im2 {
+  width: 600px;
+  height: 500px;
+  padding-left: 50px;
+}
+.container {
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+
+  margin-top: 20px;
+  height: auto;
+}
+
+.container ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container ul li {
+  float: left;
+  list-style: none;
+  width: 20%;
+  height: 120px;
+  background: rgb(255, 255, 255);
+  margin: 20px 0px 20px 55px;
+  border: 2px solid blue;
+  box-sizing: border-box;
+}
+.container ul li:hover {
+  opacity: 0.8;
+}
+
+.container ul li .bottom {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: blue;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.company {
+  width: 210px;
+  height: 100px;
+  text-align: justify;
+  justify-content: center;
+}
+@media screen and (max-width: 1250px) {
+  .container ul li {
+    width: 40%;
+    margin-left: 40px;
+  }
+}
+
+.boxsidea {
+  box-sizing: border-box;
+  left: 20px;
+  top: 10;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin: 10px auto;
+  background-color: rgb(250, 247, 247);
+  box-shadow: 5px 5px 5px 5px lightcoral;
+}
+.boxsidea .box {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  top: 10;
+  position: relative;
+  width: calc(320px - 30px);
+  height: calc(250px - 30px);
+  background-color: violet;
+  float: left;
+  margin: 15px;
+  border: 1px gray;
+  box-shadow: 5px 5px 5px 5px gray;
+}
+.boxsidea .box:hover {
+  color: darkorange;
+  background-color: rgb(179, 57, 57);
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./css/griev.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/grievance.js"></script>  
+
+</head>
+<body style="background-image: url(./images/footer/contact1.jpg)">
+  <div class="col-md-12">
+    <img class="im1"src="./images/header/GNIT Name Page.JPG">
+</div>
+    <h2 class="text-center pt-4">To Report Any Grievances, Please Fill The Following Form:</h2>
+    <h1 class="text-center textp">ONLINE GRIEVANCE FORM</h1>
+    <form class="frm1">
+        <div class="container  ">
+            <h3 class="btn-warning text-center">Guru Nanak Institute of Technology</h3>
+            <h4 class="textp">User Type (Required)<strong class="text-danger ">*</strong></h4>
+      
+            <div class="text-center">
+                <div class="  select-box">
+                    <div class="options-container  ">
+                      <div class="option">
+                        <input
+                          type="radio"
+                          class="radio"
+                          id="automobiles"
+                          name="category"
+                        />
+                        <label for="automobiles">Students</label>
+                      </div>
+            
+                      <div class="option">
+                        <input type="radio" class="radio" id="film" name="category" />
+                        <label for="film">Parents</label>
+                      </div>
+            
+                      <div class="option">
+                        <input type="radio" class="radio" id="science" name="category" />
+                        <label for="science">Faculty</label>
+                      </div>
+            
+                      <div class="option">
+                        <input type="radio" class="radio" id="art" name="category" />
+                        <label for="art">Staff(Non-Teaching)</label>
+                      </div>
+            
+                      <div class="option">
+                        <input type="radio" class="radio" id="music" name="category" />
+                        <label for="music">Others</label>
+                      </div>
+                    </div>
+            
+                    <div class="selected" id="grievance_userType">
+                      --Select--
+                    </div>
+            </div>
+            </div>
+            <h4 class="textp">Name of The Complainant (Required)<strong class="text-danger">*</strong></h4>
+            <input class="text1" id="grievance_userName" type="text" placeholder="Enter Your Name" value="">
+            <h4 class="textp">Gender(Required)<strong class="text-danger">*</strong></h4>
+            <div class="gen1 id="grievance_gender">
+                <input type="radio" name="griv_gender" Name="Gender"value="Male" class="gender">Male
+                <br>
+                <input  type="radio" name="griv_gender" Name="Gender"value="Female" class="gender">Female
+                 <br>
+                <input  type="radio" name="griv_gender" Name="Gender"value="Other" class="gender">Other
+            </div>
+            <h4 class="textp">EMAIL ID(REQUIRED)<strong class="text-danger">*</strong></h4>
+            <input class="text1" id="grievance_emailId" type="email"  Name="email" placeholder="Email"value="">
+
+           <h4 class="textp">Categories of Complainant(REQUIRED)<strong class="text-danger">*</strong></h4>
+            <select class="text1"  id="grievance_category_complaint">
+                <option>--Select--</option>
+                <option>Academics</option>
+                <option>Accounts</option>
+                <option>Caste Discrimination</option>
+                <option>Examination & Result</option>
+                <option>Hostel</option>
+                <option>Library</option>
+                <option>Information Technology Facility</option>
+                <option>Maintenance</option>
+                <option>Office</option>
+                <option>SCST</option>
+                <option>Others</option>
+            </select>
+
+            <h4 class="textp">Addressing Depertment(REQUIRED)<strong class="text-danger">*</strong></h4>
+            <select class="text1"   id="grievance_department">
+                <option>--Select--</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>IT</option>
+                <option>EE</option>
+                <option>AEIE</option>
+                <option>FT</option>
+                <option>BHM</option>
+                <option>ASHU</option>
+                <option>BCA</option>
+                <option>Training & Placement</option>
+                <option>Hostel</option>
+                <option>Cyber scurity</option>
+                <option>Data Science</option>
+            </select>
+            <h5 class="textp">Give Your Complainant Briefly(max 250 word)<strong class="text-danger ">*</strong></h5>
+                <textarea class="text1" id="grievance_complaint"  spellcheck="false" placeholder="Type something here..." required></textarea>
+              
+                <h4 class="textp">Contact Number</h4>
+                <input class="text1" id="grievance_mobileNumber" type="text" placeholder="Enter Your Number">
+                <br>
+                <div>
+                    <button type="submit" id="grievance_submit" class=" bg-danger">Submit</button> <button type="cancel" class=" bg-danger">Cancel</button>
+                </div>
+          </div>
+         
+      </div>
+      
+     </form>
+
+
+
+
+
+      <script src="./js/griv.js"></script>
+</body>
+</html>

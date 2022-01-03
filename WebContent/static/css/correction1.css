@@ -1,0 +1,43 @@
+.im1 {
+  width: 100%;
+  height: auto;
+}
+.text1 {
+  background-color: black;
+  color: yellow;
+}
+.name {
+  text-align: justify;
+
+  font-weight: bold;
+}
+.name1 {
+  font-style: italic;
+  font-weight: bold;
+}
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem;
+  display: block;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: #000000;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-align: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover {
+  box-shadow: 0 0 0 2px rgb(53, 46, 46), 0 0 0 3px var(--primary-color);
+  background-color: red;
+}
+.text5 {
+  width: 540px;
+}

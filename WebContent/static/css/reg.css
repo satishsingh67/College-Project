@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Oswald:wght@400;500;700&family=Poppins:wght@200&family=Roboto+Slab:wght@200&display=swap');
+
+body {
+  margin: 0 auto;
+
+  background-image: url('../images/background/fstdnt\ bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  font-family: 'Oswald', sans-serif;
+}
+nav {
+  background-color: rgb(166, 255, 0);
+}
+.nav-link {
+  font-family: 'Oswald', sans-serif;
+
+  font-size: 30px;
+  padding-right: 100px;
+  color: black;
+  font-weight: 900;
+  letter-spacing: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .nav-link {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    display: inline;
+  }
+}
+
+.text1 {
+  color: yellow;
+  font-size: 25px;
+  font-weight: 700;
+  border-bottom: 2px solid red;
+}
+.img {
+  width: 500px;
+  height: 400px;
+  padding-left: 30px;
+}
+@media screen and (max-width: 543px) {
+  .img {
+    width: 180px;
+    height: 180px;
+    padding-left: 25px;
+    padding-right: 5px;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  form {
+    width: 190px;
+    font-size: 14px;
+    padding-left: 10px;
+  }
+}
+form {
+  padding-top: 35px;
+}
+.form-control {
+  width: 200px;
+}
+.name1 {
+  background-color: black;
+  color: yellow;
+}
+.btn-group {
+  gap: 18px;
+}
+.btn {
+  display: block;
+  text-decoration: none;
+  background-color: yellow;
+  color: #0a0a0a;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-align: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid rgb(10, 10, 10);
+}
+.btn:hover {
+  box-shadow: 0 0 0 2px rgb(53, 46, 46), 0 0 0 3px var(--primary-color);
+  background-color: red;
+}

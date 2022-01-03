@@ -1,0 +1,111 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: rgb(255, 255, 255);
+  min-height: 200vh;
+}
+.imgdiv {
+  height: 600px;
+  padding-right: 40px;
+}
+.imgs {
+  border: 1px gray;
+  box-shadow: 0px 5px 5px 5px gray;
+
+  width: 100%;
+}
+.text1 {
+  padding-top: 10px;
+  background-color: rgb(0, 0, 0);
+  color: yellow;
+  padding-right: 20px;
+  text-decoration: none;
+  font-size: 50px;
+  font-weight: 700;
+
+  text-align: center;
+}
+.text1:hover {
+  color: tomato;
+  border-radius: 10%;
+}
+.text2 {
+  background-color: white;
+  padding: 40px;
+  text-align: justify;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+.text2:hover {
+  background-color: rgb(13, 230, 238);
+}
+
+.im2 {
+  width: 600px;
+  height: 500px;
+  padding-left: 50px;
+}
+.heading {
+  color: yellow;
+  font-size: 40px;
+  font-weight: 700;
+}
+.container {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  background: rgb(182, 174, 174);
+  margin-top: 20px;
+  height: auto;
+}
+
+.container ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container ul li {
+  float: left;
+  list-style: none;
+  width: 20%;
+  height: 180px;
+  background: rgb(255, 255, 255);
+  margin: 20px 0px 20px 55px;
+  border: 2px solid blue;
+  box-sizing: border-box;
+}
+.container ul li:hover {
+  background-color: rgb(255, 253, 253);
+  opacity: 0.8;
+}
+
+.container ul li .bottom {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: blue;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.company {
+  width: 220px;
+  height: 170px;
+  text-align: justify;
+  justify-content: center;
+}
+@media screen and (max-width: 1250px) {
+  .container ul li {
+    width: 40%;
+    margin-left: 40px;
+  }
+}
+.row {
+  padding-left: 160px;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+	<style>
+		.background{
+			background-color: black;
+			color: yellow;
+		}
+		.name1{
+			
+			color: rgb(14, 13, 13);
+			
+			
+		}
+	</style>
+<title>Feedback page</title>  
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+ <div class="container mt-4 shadow-lg">
+   <div class="row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6"> 
+        <h2 class=" text-center background ">LIBRARY FEEDBACK FORM</h2>
+        
+        <hr>
+		<form action="http://localhost:8080/College_Final_Year_Project/register"  method="POST">
+		   
+
+		    <div class="form-group mt-3 mb-3" >
+		    	<label class="form-label name1">Name of The Student :</label>
+		    	<input type="text" name="studentName" class="form-control " required="">
+		  	</div>
+			  <div class="form-group mt-3 mb-3" >
+		    	<label class="form-label name1">Id Card Number</label>
+		    	<input type="number" name="idNumber" class="form-control " required="">
+		  	</div>
+			  <div class="form-group mt-3 mb-3" >
+		    	<label class="form-label name1">Contact Number</label>
+		    	<input type="number" name="phoneNumber" class="form-control "value="+91" size="1" required="">
+		  	</div>
+			  <div class="form-group mb-2">
+		    	<label  class="form-label name1">Email Id</label>
+		    	<input type="Email" name="email" class="form-control" required="">
+		  	</div>
+		<div class="form-group mt-3 mb-3" >
+			<label class="form-label name1">Department</label>
+             <select class="form-control" name="department" required="">
+                 <option>--Select--</option>
+                 <option>CSE</option>
+                 <option>ECE</option>
+                 <option>IT</option>
+                 <option>EE</option>
+                 <option>AEIE</option>
+                 <option>FT</option>
+                 <option>BHM</option>
+                 <option>ASHU</option>
+                 <option>BCA</option>
+               
+                 <option>Cyber scurity</option>
+                 <option>Data Science</option>
+             </select>
+		  </div>
+		  
+		  <div class="form-group mt-3 mb-3" >
+			<label class="form-label name1">Semester</label>
+			<select class="form-control " name="semester" required="">
+				<option>--Select--</option>
+				<option>1st Semester</option>
+				<option>2nd Semester</option>
+				<option>3rd Semester</option>
+				<option>4th Semester</option>
+				<option>5th Semester</option>
+				<option>6th Semester</option>
+				<option>7th Semester</option>
+				<option>8th Semester</option>
+				<option>Allumni</option>
+			  
+				<option>Other
+					<input type="text" placeholder="If Other" class="form-control">
+				</option>
+				
+				
+			</select>
+		  </div>
+			  <div class="form-group mt-3 mb-3" >
+		    	<label class="form-label name1">Postal Address</label>
+		    	<input type="text" class="form-control " name="address" required="">
+		  	</div>
+			  <div class="form-group mt-3 mb-3" >
+				<label class="form-label name1">Are you satisfied with the required numbers of titles in your Subject available in the Library? </label>
+				<select class="form-control " name="bookReview" required="">
+					<option>--Select--</option>
+					<option>Highly</option>
+					
+					<option>Satisfied</option>
+					<option>Neutral</option>
+					<option>Dissatisfied</option>
+					<option>Highly Dissatisfied</option>
+					<option>Other:</option>
+				  
+					<option>
+						<input type="text" placeholder="If Other" class="form-control" >
+					</option>
+					
+					
+				</select>
+			  </div>
+			  <div class="form-group mt-3 mb-3" >
+				<label class="form-label name1">Are you satisfied with available journals/magazines? *</label>
+				<select class="form-control " name="journelReview" required="">
+					<option>--Select--</option>
+					<option>Highly</option>
+					
+					<option>Satisfied</option>
+					<option>Neutral</option>
+					<option>Dissatisfied</option>
+					<option>Highly Dissatisfied</option>
+					<option>Other:</option>
+				  
+					<option>
+						<input type="text" placeholder="If Other" class="form-control" >
+					</option>
+					
+					
+				</select>
+			  </div>
+			  <div class="form-group mt-3 mb-3" >
+				<label class="form-label name1">Are you satisfied with the arrangement of books in the Library shelves? *</label>
+				<select class="form-control " name="booksArrangementReview">
+					<option>--Select--</option>
+					<option>Highly</option>
+					
+					<option>Satisfied</option>
+					<option>Neutral</option>
+					<option>Dissatisfied</option>
+					<option>Highly Dissatisfied</option>
+					<option>Other:</option>
+				  
+					<option>
+						<input type="text" placeholder="If Other" class="form-control">
+					</option>
+					
+					
+				</select>
+			  </div>
+			  <div class="form-group mt-3 mb-3" >
+				<label class="form-label name1">Are you satisfied with the available reading space in the Library? *</label>
+				<select class="form-control" name="studySpaceReview" required="">
+					<option>--Select--</option>
+					<option>Highly</option>
+					
+					<option>Satisfied</option>
+					<option>Neutral</option>
+					<option>Dissatisfied</option>
+					<option>Highly Dissatisfied</option>
+					<option>Other:</option>
+				  
+					<option>
+						<input type="text" placeholder="If Other" class="form-control" >
+					</option>
+					
+					
+				</select>
+			  </div>
+			  <div class="form-group mt-3 mb-3" >
+				<label class="form-label name1">Are you satisfied with computer lab/WiFi network to access resources? *</label>
+				<select class="form-control " name="networkReview" required="">
+					<option>--Select--</option>
+					<option>Highly</option>
+					
+					<option>Satisfied</option>
+					<option>Neutral</option>
+					<option>Dissatisfied</option>
+					<option>Highly Dissatisfied</option>
+					<option>Other:</option>
+				  
+					<option>
+						<input type="text" placeholder="If Other" class="form-control" >
+					</option>
+					
+					
+				</select>
+			  </div>
+			  <div class="form-group mt-3 mb-3" >
+				<label class="form-label name1">Are the Library Staff cooperative and helpful? *</label>
+				<select class="form-control " name="stafBehaviorReview" required="">
+					<option>--Select--</option>
+					<option>Yes</option>
+					
+					<option>No</option>
+					
+					<option>Other:<input type="text" placeholder="If Other" name="stafOther" class="form-control" ></option>
+				  
+					
+					
+				</select>
+			  </div>
+		    <div class="form-group mb-2">
+		    	<label  class="form-label name1">Suggestion, if any?</label>
+		    	<textarea rows="4" class="form-control" ></textarea>
+		  	</div><br>
+		  	<button type="submit" class="btn btn-primary">Submit feedback</button><br>
+			  <hr>
+		</form>
+      </div>
+    </div>
+  </div>
+ </body>  
+</html>

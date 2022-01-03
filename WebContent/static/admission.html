@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/admission.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body >
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>GNIT</h2>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i>Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-info"></i></i>General Data</a></li>
+            <li><a href="#"><i class="fas fa-address-card"></i>Course Detail</a></li>
+            <li><a href="#"><i class="fas fa-user-shield"></i>Personal Detail</a></li>
+            <li><a href="#"><i class="fas fa-users"></i>Family Detail</a></li>
+            <li><a href="#"><i class="fas fa-user-graduate"></i></i>Academic Detail</a></li>
+            <li><a href="#"><i class="fas fa-upload"></i>Upload</a></li>
+        </ul> 
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+        <div class="header text-center">ADMISSION 2021 <strong class="border1"></strong>ONLINE APPLICATION FORM</div>  
+        <div class="mainc1">
+          <input type="radio" name="slider" checked id="home">
+          <input type="radio" name="slider" id="blog">
+          
+          <nav>
+            <label for="home" class="home">
+             <h5> New Registration</h5>
+              <p>Personal Information</p>
+            </label>
+            <label for="blog" class="blog">
+              <h5>Continue Partially Filled Form 2021</h5>
+              <p>Log In With Application No and Password</p>
+              
+            </label>
+           
+            <div class="slider"></div>
+          </nav>
+          <section>
+            
+              <div class=" content content-1" style="background-image: url(./images/background/formbg.jpg);background-size:cover;">
+                <form action="#" class="form" id="class1" name="form1" onsubmit="return ajaxpost();">
+                    
+                  <!-- Progress bar -->
+                  <div class="progressbar">
+                    <div class="progress" id="progress"></div>
+                    
+                    <div
+                      class="progress-step progress-step-active"
+                      data-title="Intro"
+                    ></div>
+                    <div class="progress-step" data-title="Contact"></div>
+                    <div class="progress-step" data-title="Address"></div>
+                    <div class="progress-step" data-title="Father Info"></div>
+                    <div class="progress-step" data-title="Mother Info"></div>
+                    <div class="progress-step" data-title="Academic"></div>
+                    <div class="progress-step" data-title="course"></div>
+                    <div class="progress-step" data-title="Upload"></div>
+                  </div><br>
+            
+                  <!-- Steps -->
+                  <div class="form-step form-step-active">
+                    <div class="input-group">
+                      <label for="username" class="nameg">Username <strong class="text-danger">*</strong></label>
+                      <input type="text" name="username" id="username" />
+                      <p class="nameg">(As in Candidate's Class X Marksheet)</p>
+                    </div>
+                    <div class="input-group">
+                      <label for="phonenumber "class="nameg">Phone Number <strong class="text-danger">*</strong></label>
+                      <input type="text" name="country code" value="+91" size="1" id="phonenumber" />
+                    </div>
+                    <div class="input-group">
+                      <label for="email "class="nameg">Email <strong class="text-danger">*</strong></label>
+                      <input type="email" name="email" value="" size="1" id="email1" />
+                    </div>
+                    <div class="input-group">
+                      <label for="Pin" class="nameg">Enter 6 Degits Security Pin<strong class="text-danger">*</strong></label>
+                      <input type="password" name="password" id="password" />
+                    </div>
+                    <div class="input-group">
+                      <label for="Birth_Date" class="nameg">Confirm 6 Degits Security Pin <strong class="text-danger">*</strong></label>
+                      <input type="password" name="password" id="password" />
+                    </div>
+                    <div class="btns-group">
+                      <a href="#dateofbirth" class="btn btn-next width-50 ml-auto">Next</a>
+                      <a href="#dateofbirth" class="btn btn-clear width-50 ml-auto">Clear</a>
+                    </div>
+                  </div>
+                  <div class="form-step">
+                    <div class="input-group">
+                      <label for="Birth" class="nameg">Date of Birth <strong class="text-danger">*</strong></label>
+                      <input type="date" name="date" id="dateofbirth" />
+                    </div>
+                    <div class="input-group">
+                      <label for="gender " class="nameg">Gender <strong class="text-danger">*</strong></label>
+                      <select class="text1" name="gender"  id="ddselect">
+                        <option>--Select--</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                        
+                       
+                    </select>
+                    </div>
+                    <div class="input-group">
+                      <label for="Blood "class="nameg">Blood Group</label>
+                      <input type="text" name="bloodgroup" id="blood group" />
+                    </div>
+                    <div class="btns-group">
+                      <a href="#" class="btn btn-prev">Previous</a>
+                      <a href="#" class="btn btn-next">Next</a>
+                    </div>
+                  </div>
+                  <div class="form-step">
+                    <div class="input-group">
+                      <label for="mstatus "class="nameg">Marital Status <strong class="text-danger">*</strong></label>
+                      <select class="text1" name="status"  id="ddselect">
+                        <option>--Select--</option>
+                        <option>Single</option>
+                        <option>Married</option>
+                      </select>
+                    </div>
+                    <div class="input-group">
+                      <label for="Address "class="nameg">Present Address <strong class="text-danger">*</strong></label>
+                      <input type="textt" name="address" id="praddress" />
+                    </div>
+                    <div class="input-group">
+                      <label for="Address "class="nameg">Permanent Address <strong class="text-danger">*</strong></label>
+                      <input type="text" name="address" id="paraddress" />
+                    </div>
+                    <div class="input-group">
+                      <label for="nationality "class="nameg">Nationality <strong class="text-danger">*</strong></label>
+                      <input type="" name="nationality" id="nationality" />
+                    </div>
+                    <div class="btns-group">
+                      <a href="#" class="btn btn-prev">Previous</a>
+                      <a href="#" class="btn btn-next">Next</a>
+                    </div>
+                  </div>
+                  <div class="form-step">
+                    <div class="input-group">
+                      <label for="FatherName "class="nameg">Father's Name <strong class="text-danger">*</strong></label>
+                      <input type="text" name="FatherName" id="FatherName" />
+                    </div>
+                    <div class="input-group">
+                      <label for="fatherphoneno "class="nameg">Father's Phone Number <strong class="text-danger">*</strong></label>
+                      <input type="text" name="country code" value="+91" size="1" id="phonenumber" />
+                    </div>
+                    <div class="input-group">
+                      <label for="postalcode"class="nameg">Postal Code <strong class="text-danger">*</strong></label>
+                      <input type="number" name="postalcode" id="postalcode" />
+                    </div>
+                    <div class="input-group">
+                      <label for="Address"class="nameg">Address <strong class="text-danger">*</strong></label>
+                      <input type="text" name="address" id="address" />
+                    </div>
+                    <div class="btns-group">
+                      <a href="#" class="btn btn-prev">Previous</a>
+                      <a href="#" class="btn btn-next">Next</a>
+                     
+                    </div>
+                  </div>
+    
+    
+                    
+                  <div class="form-step">
+                      <div class="input-group">
+                        <label for="FatherName "class="nameg">Mother's Name <strong class="text-danger">*</strong></label>
+                        <input type="text" name="MotherName" id="MotherName" />
+                      </div>
+                      <div class="input-group">
+                        <label for="motherphoneno "class="nameg">Mother's Phone Number <strong class="text-danger">*</strong></label>
+                        <input type="text" name="country code" value="+91" size="1" id="phonenumber" />
+                      </div>
+                      <div class="input-group">
+                        <label for="postalcode "class="nameg">Postal Code <strong class="text-danger">*</strong></label>
+                        <input type="number" name="postalcode" id="postalcode" />
+                      </div>
+                      <div class="input-group">
+                        <label for="Address "class="nameg">Address <strong class="text-danger">*</strong></label>
+                        <input type="text" name="address" id="address" />
+                      </div>
+                      <div class="btns-group">
+                        <a href="#" class="btn btn-prev">Previous</a>
+                        <a href="#" class="btn btn-next">Next</a>
+                      </div>
+                    </div>
+    
+                  
+                    <div class="form-step">
+                        <h4 class="text-center "class="nameg">Academic </h4>
+                      <div class="input-group">
+                        <label for="Year "class="nameg">Class 10 Passing Year <strong class="text-danger">*</strong></label>
+                        <input type="text" name="year" id="year" />
+                      </div>
+                      <div class="input-group">
+                        <label for="board "class="nameg"> Board Name <strong class="text-danger">*</strong></label>
+                        <input type="text" name="board name" value="" size="1" id="boardname" />
+                      </div>
+                      <div class="input-group">
+                        <label for="schoolname "class="nameg">School Name <strong class="text-danger">*</strong></label>
+                        <input type="text" name="schoolname" id="schoolname" />
+                      </div>
+                      <div class="input-group">
+                        <label for="percentage "class="nameg">Percentage / CGPA Obtained <strong class="text-danger">*</strong></label>
+                        <input type="text" name="percentage" id="percentage" />
+                      </div>
+                      <hr>
+                      <div class="input-group">
+                          <label for="Year "class="nameg">Class 12 Passing Year <strong class="text-danger">*</strong></label>
+                          <input type="text" name="year" id="year" />
+                        </div>
+                        <div class="input-group">
+                          <label for="board"class="nameg"> Board Name <strong class="text-danger">*</strong></label>
+                          <input type="text" name="board name" value="" size="1" id="boardname" />
+                        </div>
+                        <div class="input-group">
+                          <label for="schoolname "class="nameg">School Name <strong class="text-danger">*</strong></label>
+                          <input type="text" name="schoolname" id="schoolname" />
+                        </div>
+                        <div class="input-group">
+                          <label for="percentage "class="nameg">Percentage / CGPA Obtained <strong class="text-danger">*</strong></label>
+                          <input type="text" name="percentage" id="percentage" />
+                        </div>
+                        <hr>
+                        <div class="input-group">
+                          <label for="jointName "class="nameg">Joint Exam Name</label>
+                          <input type="text" name="Name" id="jointname" />
+                        </div>
+    
+                        <div class="input-group">
+                          <label for="jointRank "class="nameg">Joint Rank</label>
+                          <input type="number" name="jointrank" id="jointrNK" />
+                        </div>
+    
+                      <div class="btns-group">
+                        <a href="#" class="btn btn-prev">Previous</a>
+                        <a href="#" class="btn btn-next">Next</a>
+                      </div>
+                    </div>
+    
+    
+    
+                    <div class="form-step">
+                      <div class="input-group">
+                       <label for="courses "class="nameg">Course You Want to Apply<strong class="text-danger">*</strong></label>
+                        <select class="text1"  id="ddselect">
+                            <option>--Select--</option>
+                            <option>B.Tech</option>
+                            <option>M.Tech</option>
+                            <option>Diploma</option>
+                            <option>BHM</option>
+                           
+                        </select>
+                                </div>
+                      <div class="input-group">
+                        
+                        <label for="depcheckbox "class="nameg"> Give Your 1st Preference to Stream<strong class="text-danger">*</strong></label>
+                        <select class="text1"  id="ddselect">
+                          <option>--Select--</option>
+                          <option>ECE</option>
+                          <option>CSE</option>
+                          <option>IT</option>
+                          <option>EE</option>
+                          <option>AEIE</option>
+                          <option>FT</option>
+                          <option>BHM</option>
+                          <option>ASHU</option>
+                          <option>BCA</option>
+                        
+                          <option>Cyber scurity</option>
+                          <option>Data Science</option>
+                         
+                      </select>
+                    </div>
+                        <div class="input-group">
+                        
+                          <label for="depcheckbox "class="nameg"> Give Your 2nd Preference to Stream<strong class="text-danger">*</strong></label>
+                          <select class="text1"  id="ddselect">
+                            <option>--Select--</option>
+                            <option>ECE</option>
+                            <option>CSE</option>
+                            <option>IT</option>
+                            <option>EE</option>
+                            <option>AEIE</option>
+                            <option>FT</option>
+                            <option>BHM</option>
+                            <option>ASHU</option>
+                            <option>BCA</option>
+                          
+                            <option>Cyber scurity</option>
+                            <option>Data Science</option>
+                           
+                        </select>
+                      </div>
+                       
+                     
+                      <div class="input-group">
+                        
+                        <label for="depcheckbox "class="nameg"> Give Your 3rd Preference to Stream<strong class="text-danger">*</strong></label>
+                        <select class="text1"  id="ddselect">
+                          <option>--Select--</option>
+                          <option>ECE</option>
+                          <option>CSE</option>
+                          <option>IT</option>
+                          <option>EE</option>
+                          <option>AEIE</option>
+                          <option>FT</option>
+                          <option>BHM</option>
+                          <option>ASHU</option>
+                          <option>BCA</option>
+                        
+                          <option>Cyber scurity</option>
+                          <option>Data Science</option>
+                         
+                      </select>
+                    </div>
+                      <div class="input-group">
+                        <label for="ygap "class="nameg">Any Year Gap in Education <strong class="text-danger">*</strong></label>
+                        <select class="text1" name="yrgap"  id="ddselect">
+                          <option>--Select--</option>
+                          <option>YES</option>
+                          <option>NO</option>
+                         </select>
+                          
+                      </div>
+                      <div class="input-group">
+                        <label for="Number "class="nameg"> Number of Years in Year Gap<strong class="text-danger">*</strong></label>
+                        <input type="number" name="reason" id="reason" />
+                      </div>
+                      <div class="input-group">
+                        <label for="reason "class="nameg">If Yes Then Write The Reason <strong class="text-danger">*</strong></label>
+                        <input type="text" name="reason" id="reason" />
+                      </div>
+                      <strong class="text-danger">**</strong><span>Stream will be awarded to the applicant based on the marit and availability of seats </span>
+                      <div class="btns-group">
+                        <a href="#" class="btn btn-prev">Previous</a>
+                        <a href="#" class="btn btn-next">Next</a>
+                      </div>
+                    </div>
+    
+                    <div class="form-step">
+                      <div class="input-group">
+                        <label for="File"class="nameg">Upload Photo(PassportSize) <strong class="text-danger">*</strong></label>
+                        <input class="text2"type="file" name="photoupload" id="photoupload" />
+                      </div>
+                      <div class="input-group">
+                        <label for="identity "class="nameg">Adhar Card/Pan Card/Ration Card <strong class="text-danger">*</strong></label>
+                        <input class="text2" type="file" name="identity"  size="1" id="identity" />
+                      </div>
+                      <div class="input-group">
+                        <label for="identity"class="nameg">Class 10 Marks Sheet <strong class="text-danger">*</strong></label>
+                        <input class="text2" type="file" name="identity"  size="1" id="identity1" />
+                      </div>
+                      <div class="input-group">
+                        <label for="identity"class="nameg">Class 12 Marks Sheet <strong class="text-danger">*</strong></label>
+                        <input class="text2" type="file" name="identity"  size="1" id="identity2" />
+                      </div>
+                      <div class="input-group">
+                        <label for="identity"class="nameg">joint Exam Admit Card </label>
+                        <input class="text2"type="file" name="identity"  size="1" id="identity3" />
+                      </div>
+                      <div class="input-group">
+                        <label for="identity"class="nameg">Joint Exam Rank Card </label>
+                        <input class="text2"type="file" name="identity"  size="1" id="identity4" />
+                      </div>
+                      <div class="input-group">
+                        <label for="identity "class="nameg">Birth Certificate </label>
+                        <input class="text2"type="file" name="identity"  size="1" id="identity5" />
+                      </div>
+                      
+                      <div class="btns-group">
+                        <a href="#" class="btn btn-prev">Previous</a>
+                        <input type="submit" value="Submit" class="btn" />
+    
+                      </div>
+                      
+                    </div>
+    
+                </form>
+              </div>
+             
+            
+              <div class="content content-2"style="background-image: url(./images/background/formbg.jpg);background-size:cover;">
+                  <form>
+                    <div>
+                      <p class="paar">
+                        Note: if you already have a Application no and Password and would like to continue 
+                        filling your form.please use the same Application No and Password.
+                      </p>
+                     </div>
+                   <div class="input-group2">
+                    
+                     <label for="applicationNumber"class="nameg">Application Number <strong class="text-danger">*</strong></label>
+                     <input type="number" name="applicationNumber" id="applicationname" />
+                     
+                   </div>
+                   <div class="input-group2">
+                     <label for="Password"class="nameg">Enter  6 Degits Form Security Pin<strong class="text-danger">*</strong></label>
+                     <input type="password" name="Password" value="" size="1" id="formpassword" />
+                   </div>
+                  
+                   
+                  <div class="text-center button2">
+                    <button type="submit" value="submit" class="buttonsu" >Submit</button>
+                  </div>
+                 
+                  
+                  </form>
+                    
+                </div>
+               
+              </section>
+                
+             
+        
+<script src="./js/admission.js"></script>
+</body>
+</html>
