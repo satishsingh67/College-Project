@@ -4,131 +4,358 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
     <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-   <style>
-       *{
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-      }
-     
-      .text1{
-          background-color: black;
-          color: yellow;
-          font-weight: 800;
-          padding:20px;
+/* coding with nick */
 
-      }
-      .im1 {
-       width: 100%;
-         height: auto;
-}
-.img {
-  width: 500px;
-  height: 400px;
-  padding-left: 30px;
-}
-@media screen and (max-width: 543px) {
-  .img {
-    width: 180px;
-    height: 180px;
-    padding-left: 25px;
-    padding-right: 5px;
-   
-  }
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-@media screen and (max-width: 543px) {
-  form {
-    width: 190px;
-    font-size: 14px;
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background-color: black;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+a:hover{
+    color: #3ac6e1 !important;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
+}
+.img{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.img img{
+    width: 500px;
+}
+
+.login-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.title-container{
+    text-align: left;
+    padding-bottom: 40px;
+}
+.title-container h1{
+    color: #3ac6e1;
+    font-size: 30px;
+    font-weight: 600;
+}
+.title-container h2{
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: none;
+    margin: 2px 0;
+}
+.title-container p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #c0c0c0;
+}
+.login-inner-content{
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 20px;
     padding-left: 10px;
-  }
+    border-radius: 10px;
+    box-shadow: 0px 0px 26px -6px rgba(0,0,0,0.10);
 }
-form {
-  padding-top: 35px;
+.login-content .input-div{
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 5px;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
 }
-.form-control {
-  width: 200px;
+.login-content .input-div.one{
+    margin-top: 0;
 }
-.name1 {
-  background-color: black;
-  color: yellow;
+
+.i{
+    color: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.btn-group {
-  gap: 18px;
+.i i{
+    transition: .3s;
 }
-.btn {
-  display: block;
-  text-decoration: none;
-  background-color: yellow;
-  color: #0a0a0a;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-align: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: 0.3s;
-  border: 1px solid rgb(10, 10, 10);
+.input-div > div{
+    position: relative;
+    height: 45px;
 }
-.btn:hover {
-  box-shadow: 0 0 0 2px rgb(53, 46, 46), 0 0 0 3px var(--primary-color);
-  background-color: red;
+.input-div > div{
+    position: relative;
+    height: 45px;
+}
+.input-div > div > h5{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 15px;
+    transition: .3s;
+    font-weight: 500;
+}
+.input-div:before, .input-div:after{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #3ac6e1;
+    transition: .4s;
+}
+.input-div:before{
+    right: 50%;
+}
+.input-div:after{
+    left: 50%;
+}
+.input-div.focus:before, .input-div.focus:after{
+    width: 50%;
+}
+
+.input-div.focus > div > h5{
+    top: 3px;
+    font-size: 10px;
+    font-weight: 500;
+}
+.input-div > div > input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0.7rem;
+    font-size: 15px;
+    color: #555;
+    font-family: 'poppins', sans-serif;
+}
+.input-div.pass{
+    margin-bottom: 4px;
+}
+
+.login-inner-content a{
+    display: block;
+    text-align: right;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    transition: .3s;
+}
+.btn{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #5bdffa, #36cbe9, #5bdffa );
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'poppins',sans-serif;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: .5s;
+}
+.btn:hover{
+    background-position: right;
+}
+
+h5{
+    font-size: 12px;
+    font-weight: 600;
 }
 
 
-   </style>   
+/* Mobile Responsive */
+
+@media screen and (max-width: 1050px){
+    .container{
+        grid-gap: 5rem;
+    }
+}
+@media screen and (max-width: 1000px){
+   .title-container h2{
+       font-size: 25px !important;
+   }
+   form{
+       width: 290px;
+   }
+   .login-content h2{
+       font-size: 2.4rem;
+       margin: 8px 0;
+   }
+   .img img{
+       width: 400px;
+   }
+}
+@media screen and (max-width: 900px){
+    .container{
+        grid-template-columns: 1fr;
+    }
+    .img{
+        display: none;
+
+    }
+    .login-content{
+        justify-content: center;
+    }
+}
+
+    </style>
 </head>
-<body style="background-image: url(./images/footer/contact1.jpg)">
-    <div>
-        <h4 class="text-center text1"><strong class="bg-dark">TEACHERS</strong><strong class="bg-dark"> LOGIN</strong></h4>
-    </div>
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6 pt-5">
-             <img class="img" src="./images/BACKEND-1.jpeg">
-            </div>
-            <div class="col-md-6">
-                <form>
-                   <label class="form-label name1"> Faculty Name :</label><br>
-                   <input type="text"name="teacher_name" class="form-control " size="1" required=""><br>
-                   <label class="form-label name1"> Faculty Depertment :</label><br>
-                   <select class="form-control "required="">
-                    <option>--Select--</option>
-                    <option>CSE</option>
-                    <option>ECE</option>
-                    <option>IT</option>
-                    <option>EE</option>
-                    <option>AEIE</option>
-                    <option>FT</option>
-                    <option>BHM</option>
-                    <option>ASHU</option>
-                    <option>BCA</option>
-                  
-                    <option>Cyber scurity</option>
-                    <option>Data Science</option>
-                </select><br>
-                <label class="form-label name1">Mail Id</label><br>
-                   <input type="email"name="teacher_email" class="form-control " size="1" required=""><br>
-                   <label class="form-label name1">Password</label><br>
-                   <input type="password"name="teacher_Password" class="form-control " size="1" required=""><br>
-                   <div class="btn-group" role="group" aria-label="Basic mixed styles example"><br>
-                       <button type="submit" value="submit" class="btn" >Submit</button><br>
-                       <button type="clear" value="Clear" class="btn" >Clear</button>
-                     </div>
-                </form>
-                
-           </div>
+<body>
+    <div class="container">
+
+        <div class="img">
+            <img src="images/teachers/65229-classroom.gif" alt="BG">
         </div>
-   </div>
+
+        <div class="login-content">
+
+            <form action="#">
+
+                <div class="title-container">
+                    <h1> Teachers Login</h1>
+                   
+                    <p>Enter your personal details</p>
+                </div>
+
+
+                <div class="login-inner-content">
+
+
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="far fa-user-circle"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Faculty Name :</h5>
+                            <input type="text" class="input">
+                        </div>
+                    </div>
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-eye" ></i>
+                        </div>
+                        
+                           
+                            <select class="div "required="">
+								<option>-Select Faculty Depertment -</option>
+								<option>CSE</option>
+								<option>ECE</option>
+								<option>IT</option>
+								<option>EE</option>
+								<option>AEIE</option>
+								<option>FT</option>
+								<option>BHM</option>
+								<option>ASHU</option>
+								<option>BCA</option>
+							  
+								<option>Cyber scurity</option>
+								<option>Data Science</option>
+							</select>
+                       
+                    </div>
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="far fa-user-circle"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Email Id :</h5>
+                            <input type="email" class="input">
+                        </div>
+                    </div>
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-eye" onclick="show()"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Password</h5>
+                            <input id="pswrd" type="password" class="input">
+                        </div>
+                    </div>
+
+                   
+
+                </div>
+
+                <input type="submit" class="btn" value="Login">
+
+                <input type="submit" class="btn" value="Clear">
+
+            </form>
+        </div>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll(".input");
+
+function addcl(){
+    let parent = this.parentNode.parentNode;
+    parent.classList.add("focus");
+}
+
+function remcl(){
+    let parent = this.parentNode.parentNode;
+    if(this.value == ""){
+        parent.classList.remove("focus");
+    }
+   
+}
+
+inputs.forEach(input => {
+    input.addEventListener("focus", addcl);
+    input.addEventListener("blur", remcl)
+});
+
+
+// See Password
+
+function show() {
+    var pswrd = document.getElementById('pswrd');
+    var icon = document.querySelector('.fas');
+    if (pswrd.type === "password") {
+        pswrd.type = "text";
+        icon.style.color = "#4dd8f3";
+    } else{
+        pswrd.type = "password";
+        icon.style.color = "#d9dde4";
+    }
+
+
+}
+
+
+    </script>
 </body>
 </html>

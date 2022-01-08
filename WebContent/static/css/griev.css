@@ -28,7 +28,7 @@ h2 {
 }
 
 .select-box .options-container {
-  color: #f5f6fa;
+  color: #000000;
   max-height: 0;
   width: 100%;
   opacity: 0;
@@ -40,11 +40,12 @@ h2 {
 }
 
 .selected {
-  background: #4a7721;
+  background: #cacec6;
   border-radius: 8px;
   margin-bottom: 8px;
-  color: #f5f6fa;
+  color: #000000;
   position: relative;
+  font-weight: bold;
 
   order: 0;
 }
@@ -111,9 +112,9 @@ h2 {
   flex-direction: column;
 }
 .gen1 {
-  font-size: 25px;
+  font-size: 20px;
   text-align: justify;
-  color: white;
+  color: rgb(8, 8, 8);
 }
 .wrapper {
   width: 470px;

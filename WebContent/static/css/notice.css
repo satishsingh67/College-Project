@@ -51,9 +51,12 @@ body {
 }
 
 .event .event-right h3.event-title {
+  justify-content: center;
   font-size: 24px;
   margin: 24px 0 10px 0;
-  color: #218bbb;
+  background-color: black;
+  color: #e4f310;
+  font-weight: bold;
   text-transform: uppercase;
 }
 

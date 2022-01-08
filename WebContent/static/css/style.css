@@ -1,4 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+:root {
+  --pink: #ff046f;
+  --violet: #c63bfa;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  text-transform: capitalize;
+  text-decoration: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: var(--pink);
+  color: #fff;
+}
+
+:root {
+  --pink: #ff046f;
+  --violet: #c63bfa;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  text-transform: capitalize;
+  text-decoration: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: var(--pink);
+  color: #fff;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,7 +50,10 @@ body {
   background: #000;
   min-height: 200vh;
 }
-
+.brand_pic {
+  width: 100%;
+  height: 70vh;
+}
 .center {
   box-sizing: border-box;
   display: flex;
@@ -29,62 +72,15 @@ body {
   width: 200px;
   border-radius: 50px;
 }
-.circle {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-}
-.outer button,
-.outer span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.outer button {
-  background: rgb(216, 62, 62);
-  color: #f2f2f2;
-  outline: none;
-  border: none;
-  font-size: 20px;
-  z-index: 9;
-  letter-spacing: 1px;
-  font-size: 20px;
-  text-decoration: none;
-  cursor: pointer;
-}
-.button button {
-  height: 50px;
-  width: 200px;
-  border-radius: 50px;
-}
 
-.outer span {
-  height: 100%;
+.last_section {
   width: 100%;
-  background: inherit;
+  height: 70vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-.button span {
-  border-radius: 50px;
-}
-
-.outer:hover span:nth-child(1) {
-  filter: blur(7px);
-}
-.outer:hover span:nth-child(2) {
-  filter: blur(14px);
-}
-.outer:hover {
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  animation: rotate 1.5s linear infinite;
-}
-@keyframes rotate {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
+.last_image {
+  height: 70vh;
 }
 @media (max-width: 640px) {
   .center {
@@ -95,43 +91,53 @@ body {
     margin: 50px 0;
   }
 }
-.boxside {
-  text-align: justify;
-  justify-content: center;
+.about span {
+  font-size: 2.5rem;
+  color: #512a10;
+}
 
-  top: 0;
-  position: relative;
-  width: 1800px;
-  height: auto;
-  padding-left: 40px;
+.about .title {
+  padding-top: 1rem;
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: #222;
+}
 
-  padding-bottom: 20px;
+.about p {
+  padding: 1rem 0;
+  font-size: 15px;
+  line-height: 2;
+  color: rgb(3, 3, 3);
+  margin-bottom: 0;
 }
-.boxside .box {
-  justify-content: center;
-  box-sizing: border-box;
+
+.about .icons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  gap: 1.5rem;
+}
+
+.about .icons-container .icons {
+  padding: 2rem;
+  background: #eee;
   text-align: center;
-  top: 0;
-  position: relative;
-  width: calc(300px - 30px);
-  height: calc(200px - 30px);
-  background-color: rgb(221, 190, 214);
-  float: left;
-  margin: 20px;
-  border: 1px gray;
-  padding-left: 40px;
-  padding-bottom: 20px;
-  box-shadow: 5px 5px 5px 5px rgb(17, 16, 16);
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 14rem;
+  flex: 1 1 14rem;
 }
-.boxside .box:hover {
-  color: darkorange;
-  background-color: darkslategray;
+
+.about .icons-container .icons img {
+  height: 100px;
+  width: 100px;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #512a10;
 }
-.iconpg {
-  width: 70px;
-  text-align: center;
-  justify-content: center;
-}
+
 @media (max-width: 640px) {
   .boxside {
     width: 100%;
@@ -226,11 +232,7 @@ body {
   line-height: 0.8cm;
   letter-spacing: 3px;
 }
-.video1 {
-  padding-top: 0px;
-  padding-bottom: 40px;
-  text-align: center;
-}
+
 .location {
   padding-right: 10px;
 }
@@ -407,7 +409,7 @@ text2 {
 
 .footer-dark ul a:hover {
   opacity: 0.9;
-  color: tomato;
+  color: rgba(255, 11, 11, 0.993);
 }
 
 @media (max-width: 767px) {
@@ -473,4 +475,81 @@ text2 {
   opacity: 0.3;
   font-size: 13px;
   margin-bottom: 0;
+}
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100%;
+  left: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Mega Menu header, if needed */
+.dropdown-content .header {
+  background: red;
+  padding: 16px;
+  color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  background-color: #ccc;
+  height: 250px;
+}
+
+/* Style links inside the columns */
+.column a {
+  float: none;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a background color on hover */
+.column a:hover {
+  background-color: #ddd;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
 }

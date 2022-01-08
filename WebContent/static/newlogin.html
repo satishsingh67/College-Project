@@ -24,20 +24,20 @@
              <h2 class=" text-center btn-warning pb-2">Register As New Student</h2>
        </div>
 
-       <form action="http://localhost:8080/College_Final_Year_Project/register" enctype="multipart/form-data" method="POST" class="form" id="class1" name="form1">
+       <form action="./registration.php"  method="POST" class="form" id="class1" name="form1">
           
      <!-- Steps -->
      <div class="form-step form-step-active">
         <div class="input-group">
           <label for="Student_name">Name: <strong class="text-danger">*</strong></label>
-          <input type="text" name="studentName" id="username" />
+          <input type="text" name="Student_name" id="username" />
           (As in  Student's I.D Card)
         </div>
 
 
         <div class="input-group">
-            <label for="courses">Department :<strong class="text-danger">*</strong></label>
-             <select class="text1" name="department"  id="ddselect">
+            <label for="courses">Depertment :<strong class="text-danger">*</strong></label>
+             <select class="text1" name="Depertment"  id="ddselect">
                  <option>--Select--</option>
                  <option>CSE</option>
                  <option>ECE</option>
@@ -56,30 +56,30 @@
 
                      <div class="input-group">
                         <label for="Stream">Stream <strong class="text-danger">*</strong></label>
-                        <input type="text" name="stream" id="stream" />
+                        <input type="text" name="Stream" id="stream" />
                         (Exm:ECE-2)
                     </div>
 
         <div class="input-group">
             <label for="Idnumber">I.D Number: <strong class="text-danger">*</strong></label>
-            <input type="text" name="idNumber" value="" size="1" id="Idno" />
+            <input type="text" name="Idnumber" value="" size="1" id="Idno" />
           </div>
         <div class="input-group">
           <label for="Phonenumber">Phone Number: <strong class="text-danger">*</strong></label>
-          <input type="text" name="phoneNumber" value="+91" size="1" id="phonenumber" />
+          <input type="text" name="countrycode" value="+91" size="1" id="phonenumber" />
         </div>
         <div class="input-group">
           <label for="email">Email: <strong class="text-danger">*</strong></label>
-          <input type="email" name="email" value="" size="1" id="email1" />
+          <input type="email" name="Email" value="" size="1" id="email1" />
         </div>
 
         <div class="input-group">
             <label for="Recovery_phonenumber"> Recovery Phone Number: <strong class="text-danger">*</strong></label>
-            <input type="text" name="phoneNumber1" value="+91" size="1" id="phonenumber" />
+            <input type="text" name="country_code" value="+91" size="1" id="phonenumber" />
           </div>
           <div class="input-group">
             <label for="Gender">Gender <strong class="text-danger">*</strong></label>
-            <select class="text1" name="gender"  id="ddselect">
+            <select class="text1" name="Depertment"  id="ddselect">
               <option>--Select--</option>
               <option>Male</option>
               <option>Female</option>
@@ -90,13 +90,13 @@
           </div>
           <div class="input-group">
             <label for="Birth_Date">Date of Birth <strong class="text-danger">*</strong></label>
-            <input type="date" name="DOB" id="dateofbirth" />
+            <input type="date" name="birthdate" id="dateofbirth" />
           </div>
 
           <div class="input-group">
             <label for="Survey">Security Question :<strong class="text-danger">*</strong></label>
             
-            <select class="text1" name="securityQuestion"  id="Survey_Qs">
+            <select class="text1" name="Survey_Qs"  id="Survey_Qs">
                 <option>--Select--</option>
                 <option>Your Favourite Color</option>
                 <option>Your  Favourite Food</option>
@@ -109,24 +109,24 @@
             
             </select>
             <label for="Survey">Answer of the Security Question :<strong class="text-danger">*</strong></label>
-            <input type="text" name="securityQuestionAnswer">
+            <input type="text" name="Survey_ans">
           </div>
           <div class="input-group">
             <label for="Pin">Enter 6 Digits Security Pin<strong class="text-danger">*</strong></label>
-            <input type="password" name="securityPin" id="password" />
+            <input type="password" name="password" id="password" />
           </div>
           <div class="input-group">
             <label for="Birth_Date">Confirm 6 Digits Security Pin <strong class="text-danger">*</strong></label>
-            <input type="password" name="confirmSecurityPin" id="password" />
+            <input type="password" name="password" id="password" />
           </div>
 
           <div class="input-group">
             <label for="File">Upload Photo(PassportSize) <strong class="text-danger">*</strong></label>
-            <input class="text2"type="file" name="studentPhoto" size="20kb" id="photoupload" />
+            <input class="text2"type="file" name="Student_Photo" size="20kb" id="photoupload" />
           </div>
           <div class="input-group">
             <label for="money_receipt">Upload Your Admission Money Receipt <strong class="text-danger">*</strong></label>
-            <input class="text2" type="file" name="moneyReceipt"  size="1" id="identity" />
+            <input class="text2" type="file" name="Money_Receipt"  size="1" id="identity" />
           </div>
 
           <div class="btns-group">
