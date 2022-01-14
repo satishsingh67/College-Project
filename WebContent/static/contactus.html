@@ -10,6 +10,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/sweetalert.min.js"></script>
+    <script src="./js/contactUs.js"></script>
+   
 </head>
 <body style="background-image: url(./images/footer/contact1.jpg)">
     <div class="container">
@@ -45,29 +49,27 @@
         <div class="form">
             <div class="right">
               <div class="contact-form">
-                  <input type="text" required>
+                  <input type="text" id="Contact_FullName" required>
                   <span>Full Name</span>
               </div>
   
               <div class="contact-form">
-                  <input type="E-mail" required>
+                  <input type="E-mail" id="Contact_Email" required>
                   <span>E-mail Id</span>
               </div>
               <div class="contact-form">
-                <textarea name="text">
-                  
-                </textarea>
+                <input type="text" id="Contact_Mobile_Number">
                 <span> Mobile Number</span>
             </div>
               <div class="contact-form">
-                  <textarea name="text">
+                  <textarea name="text" id="Contact_Message">
                     
                   </textarea>
                   <span> Type your Message....</span>
               </div>
   
               <div class="contact-form">
-                  <input type="submit" name="submit">
+                  <input type="submit" id="contact_submit" name="submit">
               </div>
               </div>
             </div>

@@ -3,7 +3,9 @@ package com.College.Action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.College.DataBaseConnection.DataBaseConnection;
+import com.College.DataValidation.DataValidation;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ContactUs
@@ -34,13 +38,22 @@ public class ContactUs extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Connection con=new DataBaseConnection().getDatabaseConnection();
+		String status=null;
 		try {
 		String fullName=request.getParameter("FullName");
 		String emailId=request.getParameter("EmailId");
 		String mobileNumber=request.getParameter("MobileNumber");
 		String message=request.getParameter("Message");
-		Connection con=new DataBaseConnection().getDatabaseConnection();
-		System.out.println(message);
+		String dataValidationCheck=new DataValidation().contactUsDataValidation(fullName,emailId,mobileNumber,message);
+		if(dataValidationCheck.trim().equalsIgnoreCase("True")) {
 	    String query="Insert Into contactUs (fullName,email_id,mobileNumber,message,createTime) values(?,?,?,?,?)";
 	    PreparedStatement pstmt=con.prepareStatement(query);
 	    pstmt.setString(1, fullName.trim());
@@ -48,22 +61,22 @@ public class ContactUs extends HttpServlet {
 	    pstmt.setString(3, mobileNumber.trim());
 	    pstmt.setString(4, message.trim());
    	    pstmt.setObject(5, new Date());
-		pstmt.executeUpdate();
-		System.out.println("Data Added"+fullName+emailId+mobileNumber+message);
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("Data Added");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int dbStatus=pstmt.executeUpdate();
+		if(dbStatus>0) {
+			status="Contact Request Submiited Successfully";
+		}
+		else {
+			status="Something went wrong.Please fill Form Again";
+		}}
+		else {
+			status="Please Enter a Valid "+dataValidationCheck;
+		}
+		 con.close();
 	}catch(Exception e) {
 		e.printStackTrace();
+		status="Something went wrong.Please fill Form Again";
 	}
+		  response.getWriter().append(status);
+		 
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
