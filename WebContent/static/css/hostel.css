@@ -130,8 +130,10 @@ img {
   float: right;
 }
 .brand {
-  width: 100px;
+  width: 200px;
   float: left;
+}
+.line1 {
 }
 /* side nav */
 .sidenav {
@@ -210,7 +212,7 @@ img {
 .brand_text {
   font-weight: 900;
   text-shadow: 2px 2px 2px black;
-  color: rgb(253, 253, 253);
+  color: rgb(240, 25, 25);
   letter-spacing: 8px;
   border-radius: 5%;
 }
