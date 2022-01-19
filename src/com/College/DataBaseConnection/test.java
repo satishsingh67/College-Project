@@ -19,10 +19,9 @@ public static void main(String[] args) {
 	Part p=null;
 	Part p1=null;
 	
-	String result=new DataValidation().newRegistrationDataValidation(" String name"," --Select--ss"," sss" ," ss"," sss" ," @dd"," ss","--Select--d ","sss",
-			"--Select--s"," sss"," ss"," ss" ,null,p1 ) ;
+	//String result=new DataValidation().changeSecurityQuestionAnswer(" ss", " @", " ss", " s"," --Selects--", " ss", " sss");
 	
-	System.out.println(result);
+	//System.out.println(result);
 	   
 	   
 }

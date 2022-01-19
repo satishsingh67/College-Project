@@ -26,6 +26,12 @@
     <servlet-name>LibraryFeddback</servlet-name>
     <servlet-class>com.College.Action.LibraryFeddback</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>ChangeLoginDetails</servlet-name>
+    <servlet-class>com.College.Action.ChangeLoginDetails</servlet-class>
+  </servlet>
+  
+  
   <servlet-mapping>
     <servlet-name>ContactUs</servlet-name>
     <url-pattern>/contactUS</url-pattern>
@@ -41,5 +47,9 @@
   <servlet-mapping>
     <servlet-name>LibraryFeddback</servlet-name>
     <url-pattern>/libraryFeddback</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ChangeLoginDetails</servlet-name>
+    <url-pattern>/changeLoginDetails</url-pattern>
   </servlet-mapping>
 </web-app>

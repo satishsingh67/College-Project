@@ -88,7 +88,7 @@ public class NewRegistration extends HttpServlet {
 					moneyReceiptInputStream = moneyReceipt.getInputStream();
 					String query = "Insert Into registration (studentName,department,stream,idNumber,phoneNumber,email,recoveryPhoneNumber,"
 							+ "gender,dateOfBirth,securityQuestion,securityQuestionAnswer,securityPin,ConfirmSecurityPin,studentPhoto,"
-							+ "moneyReceipt,createDate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							+ "moneyReceipt,createDate,updateDate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 					PreparedStatement pstmt = con.prepareStatement(query);
 					pstmt.setString(1, name.trim());
 					pstmt.setString(2, department);
@@ -106,6 +106,7 @@ public class NewRegistration extends HttpServlet {
 					pstmt.setBlob(14, photoInputStream);
 					pstmt.setBlob(15, moneyReceiptInputStream);
 					pstmt.setObject(16, new Date());
+					pstmt.setObject(17, new Date());
 					int dbResult = pstmt.executeUpdate();
 					if (dbResult > 0) {
 						status = "Registration Form Submitted Successfully";
