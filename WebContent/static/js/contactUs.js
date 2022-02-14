@@ -5,6 +5,9 @@ $(document).ready(function(){
 	  var emailID=$('#Contact_Email').val();
 	  var mobileNumber=$('#Contact_Mobile_Number').val();
 	  var message=$('#Contact_Message').val();
+	  $(".loader1").show();
+	  $(".contact1-form").hide();
+	  
 	  $.ajax({
 		url: "http://localhost:8080/College_Final_Year_Project/contactUS",
 		method:"POST", 
@@ -14,13 +17,19 @@ $(document).ready(function(){
 		console.log(data);
 		if(data.trim()=='Contact Request Submiited Successfully'){
 			swal("Done", data, "success");
+			$(".loader1").hide();
+			  $(".contact1-form").show();
 		}
 		else{
 			swal("Error",data,"error");
+			$(".loader1").hide();
+			  $(".contact1-form").show();
 		}
 	  },
 	  error:function(jqXHR,textStatus,errorThrown){
 		  swal("Error",data,"error");
+		  $(".loader1").hide();
+		  $(".contact-form").show();
 	  }
 	});
 	//Clearing form

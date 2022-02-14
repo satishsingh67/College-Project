@@ -13,6 +13,98 @@
   <script src="./lib/jquery.min.js"></script>
   <script src="./lib/sweetalert.min.js"></script>
   <script src="./js/changeSecurityQuestionAnswer.js"></script>
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fffff0;
+      ;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 35%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      margin-left: 97%;
+      margin-top: -3%;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+    .center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -8%;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .circle {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin: 0 4px;
+    }
+
+    .circle-1 {
+      border: 4px solid #FC1460;
+    }
+
+    .circle-2 {
+      border: 4px solid #5A87FF;
+    }
+
+    .circle-3 {
+      border: 4px solid #18FD91;
+    }
+
+    .circle-4 {
+      border: 4px solid #FBF38C;
+    }
+  </style>
+
+
+
+
 </head>
 
 <body style="background-image: url(./images/background/correction\ bg1.jpg);background-size:cover;">
@@ -33,7 +125,7 @@
 
             <div class="form-group mt-3 mb-3">
               <label class="form-label name1">Enter Phone Number</label>
-              <input type="text" name="existingPhoneNumber" class="form-control "  size="1" required="">
+              <input type="text" name="existingPhoneNumber" class="form-control " size="1" required="">
             </div>
             <div class="form-group mt-3 mb-3">
               <label class="form-label name1">Enter Your Mail Id :</label>
@@ -85,6 +177,82 @@
     </div>
     </div>
   </main>
+
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" style="display: none;">&times;</span>
+      <div class="loader1" style="display:none;">
+        <div class='center'>
+          <div class='loader'>
+            <div class='circle circle-1'></div>
+            <div class='circle circle-2'></div>
+            <div class='circle circle-3'></div>
+            <div class='circle circle-4'></div>
+          </div>
+        </div>
+
+        <h5
+          style="margin: auto;margin-left:30%;margin-top:18%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">
+          Please wait....</h5>
+      </div>
+    </div>
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.0/anime.min.js'></script>
+
+  <script>
+    var circle1 = anime({
+      targets: ['.circle-1'],
+      translateY: -24,
+      translateX: 52,
+      direction: 'alternate',
+      loop: true,
+      elasticity: 400,
+      easing: 'easeInOutElastic',
+      duration: 1200,
+      delay: 10,
+    });
+
+    var circle2 = anime({
+      targets: ['.circle-2'],
+      translateY: 24,
+      direction: 'alternate',
+      loop: true,
+      elasticity: 400,
+      easing: 'easeInOutElastic',
+      duration: 1200,
+      delay: 10,
+    });
+
+    var circle3 = anime({
+      targets: ['.circle-3'],
+      translateY: -24,
+      direction: 'alternate',
+      loop: true,
+      elasticity: 400,
+      easing: 'easeInOutElastic',
+      duration: 1200,
+      delay: 10,
+    });
+
+    var circle4 = anime({
+      targets: ['.circle-4'],
+      translateY: 24,
+      translateX: -52,
+      direction: 'alternate',
+      loop: true,
+      elasticity: 400,
+      easing: 'easeInOutElastic',
+      duration: 1200,
+      delay: 10,
+    });
+
+
+  </script>
+
 </body>
 
 </html>

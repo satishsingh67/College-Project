@@ -1,3 +1,16 @@
+<%@page import="com.college.model.Student" %>
+<%@page errorPage="errorPage.jsp" %>
+<%
+Student student=(Student)session.getAttribute("student");
+if(student==null){
+	response.sendRedirect("studentLogin.jsp");
+	return;
+}
+%>
+    
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +33,7 @@
 <body>
   <link rel="shortcut icon" type="image" href="./images/GNIT_Kolkata_logo.png">
 </head>
-<body style="background-image: url(./images/background/lms-bg.jpg);background-size:cover;">
+<body style="background-image: url(./images/background/lms-bg.jpg);background-size:cover; width:auto;height:100%;overflow: hidden; ">
  
   <!-- header start -->
  <header class="header">
@@ -61,7 +74,7 @@
                                <div class="list-item">
                                      
                                      <ul>
-                                          <li><a href="./training.html"target="_blank">View Result</a></li>
+                                          <li><a href="http://jisexams.in/JISEXAMS/StudentServices/frmViewStudentGradeCardResult.aspx"target="_blank">View Result</a></li>
                                        
                                      </ul>
                                      
@@ -91,12 +104,16 @@
                                <li>
                                 <a href="https://www.jisgroup.net/erp/Forms/frmStudentLoginGnit.aspx"target="_blank">Fees Payment</a>
                             </li>
-                            <li>
-                              <a href="./index.html"">Logout</a>
+                             <li>
+                              <a href="">Subject Choice</a>
                           </li>
-                         
-                            
-                                        
+                             </li>
+                            <li>
+                              <a href="">Feedback</a>
+                          </li>
+                            <li>
+                              <a href="/College_Final_Year_Project/logout">Logout</a>
+                          </li>  
                                         </div>
                                        </li>
                                        
@@ -129,7 +146,7 @@
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-4">
-        <img class="logo" src="./images/pnj/loginp.jpg">
+   <img class="logo" src="data:image/jpg;base64,<%= student.getBase64Image()%>" style="margin-top:10%;margin-left:20%;width:50%; height:70%"> 
       </div>
       <div class="col-md-3">
         <div class="student">
@@ -150,25 +167,22 @@
       </div>
       <div class="col-md-5">
         <div class="student">
-          <input type="text" class="box" name="student_name"><br>
+          <label type="label" class="box" name="student_name"><b><%= student.getStudentName() %></b></label><br> 
           <hr>
-          <input type="text" class="box" name="student_id"><br>
+          <label type="text" class="box" name="student_id" ><b><%= student.getIdNumber() %></b></label><br>
           <hr>
-         <input type="text"class="box" name="student_depertment"><br>
+          <label type="text"class="box" name="student_depertment" ><b><%= student.getDepartment() %></b></label><br>
          <hr>
-         <input type="text"class="box" name="student_Year"><br>
+         <label type="text"class="box" name="student_Year" ><b><%= student.getYear()+"th Year" %></b></label><br>
          <hr>
-          <input type="text"class="box" name="student_gender">
+         <label type="text"class="box" name="student_gender" ><b><%= student.getGender() %></b></label>
           <hr>
-         <input type="text" class="box" name="student_dateofbirth">
+          <label type="text" class="box"  name="student_dateofbirth" ><b><%= student.getDOB() %></b></label>
         </div>
       </div>
     </div>
   </div>
 </main>
-
-
-
 </body>
 </html>
-
+	

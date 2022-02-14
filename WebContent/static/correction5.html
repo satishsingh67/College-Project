@@ -13,7 +13,94 @@
   <script src="./lib/jquery.min.js"></script>
   <script src="./lib/sweetalert.min.js"></script>
   <script src="./js/changeAllLoginDetails.js"></script>
+  <style>
+    .loader {
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #3498db;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
 
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 35%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      margin-left: 97%;
+      margin-top: -3%;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body style="background-image: url(./images/background/correction\ bg1.jpg);background-size:cover;">
@@ -34,15 +121,15 @@
 
             <div class="form-group mt-3 mb-3">
               <label class="form-label name1">Enter Recovery Phone Number</label>
-              <input type="text" name="recoveryPhoneNumber" class="form-control "  size="1" required="">
+              <input type="text" name="recoveryPhoneNumber" class="form-control " size="1" required="">
             </div>
             <div class="form-group mt-3 mb-3">
               <label class="form-label name1">Enter Existing Phone Number</label>
-              <input type="text" name="existingPhoneNumber" class="form-control "  size="1" required="">
+              <input type="text" name="existingPhoneNumber" class="form-control " size="1" required="">
             </div>
             <div class="form-group mt-3 mb-3">
               <label class="form-label name1">Enter New Phone Number</label>
-              <input type="text" name="newPhoneNumber" class="form-control "  size="1" required="">
+              <input type="text" name="newPhoneNumber" class="form-control " size="1" required="">
             </div>
             <div class="form-group mt-3 mb-3">
               <label class="form-label name1">Enter Your Existing Mail Id :</label>
@@ -119,6 +206,26 @@
     </div>
     </div>
   </main>
+
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" style="display: none;">&times;</span>
+      <div class="loader1" style="display:none;">
+        <div class="loader" style="margin: auto;margin-left:40%;margin-top:7%;">
+        </div>
+
+        <h5
+          style="margin: auto;margin-left:30%;margin-top:0%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">
+          Please wait....</h5>
+      </div>
+    </div>
+
+  </div>
+
+
+
 </body>
 
 </html>

@@ -1,12 +1,12 @@
-package com.College.DataBaseConnection;
+package com.college.dataBaseConnection;
 
 import java.util.Date;
 
 import javax.servlet.http.Part;
 
-import com.College.DataValidation.DataValidation;
+import com.college.dataValidation.DataValidation;
 
-public class test {
+public class test1 {
 public static void main(String[] args) {
 	/*  java.util.Date today = new java.util.Date();
 	

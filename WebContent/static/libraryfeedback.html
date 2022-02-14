@@ -1,213 +1,317 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
+<!DOCTYPE html>
+<html>
+
+<head>
 	<style>
-		.background{
-			background-color: black;
-			color: yellow;
+		.background {
+			/* background-color: black; */
+			color: rgb(24, 177, 238);
 		}
-		.name1{
-			
+
+		.name1 {
+
 			color: rgb(14, 13, 13);
-			
-			
+
+
+		}
+
+
+		.row {
+			border: 5px solid rgb(159, 229, 248);
+			padding: 5px;
+			background-color: rgb(159, 229, 248);
+		}
+
+		/* The Modal (background) */
+		.modal1 {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			padding-top: 100px;
+			/* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgb(0, 0, 0);
+			/* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+		}
+
+		/* Modal Content */
+		.modal-content1 {
+			background-color: #fefefe;
+			margin: auto;
+			margin-top: 10%;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 35%;
+			height: 35%;
+		}
+
+		/* The Close Button */
+		.close {
+			color: #aaaaaa;
+			float: right;
+			margin-left: 97%;
+			margin-top: -3%;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+
+
+		.loader {
+			border: 3px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 3px solid #3498db;
+			width: 60px;
+			height: 60px;
+			-webkit-animation: spin 1s linear infinite;
+			animation: spin 1s linear infinite;
+		}
+
+
+		@-webkit-keyframes spin {
+			0% {
+				-webkit-transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
 		}
 	</style>
-<title>Feedback page</title>  
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+	<title>Feedback page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+		integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+	<script src="./lib/jquery.min.js"></script>
+	<script src="./lib/sweetalert.min.js"></script>
+	<script src="./js/libraryFeedback.js"></script>
+</head>
 
-<body >
- <div class="container mt-4 shadow-lg">
-   <div class="row">
-    <div class="col-md-3"></div>
-      <div class="col-md-6"> 
-        <h2 class=" text-center background ">LIBRARY FEEDBACK FORM</h2>
-        
-        <hr>
-		<form>
-		   
+<body style="background-color:#9cd6fa;">
+	<div class="container mt-4 shadow-lg">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h2 class=" text-center background ">LIBRARY FEEDBACK FORM</h2>
 
-		    <div class="form-group mt-3 mb-3" >
-		    	<label class="form-label name1">Name of The Student :</label>
-		    	<input type="text" class="form-control " required="">
-		  	</div>
-			  <div class="form-group mt-3 mb-3" >
-		    	<label class="form-label name1">Id Card Number</label>
-		    	<input type="number" class="form-control " required="">
-		  	</div>
-			  <div class="form-group mt-3 mb-3" >
-		    	<label class="form-label name1">Contact Number</label>
-		    	<input type="number"name="country_code" class="form-control "value="+91" size="1" required="">
-		  	</div>
-			  <div class="form-group mb-2">
-		    	<label  class="form-label name1">Email Id</label>
-		    	<input type="Email" class="form-control" required="">
-		  	</div>
-		<div class="form-group mt-3 mb-3" >
-			<label class="form-label name1">Depertment</label>
-             <select class="form-control "required="">
-                 <option>--Select--</option>
-                 <option>CSE</option>
-                 <option>ECE</option>
-                 <option>IT</option>
-                 <option>EE</option>
-                 <option>AEIE</option>
-                 <option>FT</option>
-                 <option>BHM</option>
-                 <option>ASHU</option>
-                 <option>BCA</option>
-               
-                 <option>Cyber scurity</option>
-                 <option>Data Science</option>
-             </select>
-		  </div>
-		  
-		  <div class="form-group mt-3 mb-3" >
-			<label class="form-label name1">Semester</label>
-			<select class="form-control "required="">
-				<option>--Select--</option>
-				<option>1st Semester</option>
-				<option>2nd Semester</option>
-				<option>3rd Semester</option>
-				<option>4th Semester</option>
-				<option>5th Semester</option>
-				<option>6th Semester</option>
-				<option>7th Semester</option>
-				<option>8th Semester</option>
-				<option>Allumni</option>
-			  
-				<option>Other
-					<input type="text" class="form-control" required="">
-				</option>
-				
-				
-			</select>
-		  </div>
-			  <div class="form-group mt-3 mb-3" >
-		    	<label class="form-label name1">Postal Address</label>
-		    	<input type="text" class="form-control " required="">
-		  	</div>
-			  <div class="form-group mt-3 mb-3" >
-				<label class="form-label name1">Are you satisfied with the required numbers of titles in your Subject available in the Library? </label>
-				<select class="form-control "required="">
-					<option>--Select--</option>
-					<option>Highly</option>
-					
-					<option>Satisfied</option>
-					<option>Neutral</option>
-					<option>Dissatisfied</option>
-					<option>Highly Dissatisfied</option>
-					<option>Other:</option>
-				  
-					<option>
-						<input type="text" placeholder="If Other" class="form-control" required="">
-					</option>
-					
-					
-				</select>
-			  </div>
-			  <div class="form-group mt-3 mb-3" >
-				<label class="form-label name1">Are you satisfied with available journals/magazines? *</label>
-				<select class="form-control "required="">
-					<option>--Select--</option>
-					<option>Highly</option>
-					
-					<option>Satisfied</option>
-					<option>Neutral</option>
-					<option>Dissatisfied</option>
-					<option>Highly Dissatisfied</option>
-					<option>Other:</option>
-				  
-					<option>
-						<input type="text" placeholder="If Other" class="form-control" required="">
-					</option>
-					
-					
-				</select>
-			  </div>
-			  <div class="form-group mt-3 mb-3" >
-				<label class="form-label name1">Are you satisfied with the arrangement of books in the Library shelves? *</label>
-				<select class="form-control "required="">
-					<option>--Select--</option>
-					<option>Highly</option>
-					
-					<option>Satisfied</option>
-					<option>Neutral</option>
-					<option>Dissatisfied</option>
-					<option>Highly Dissatisfied</option>
-					<option>Other:</option>
-				  
-					<option>
-						<input type="text" placeholder="If Other" class="form-control" required="">
-					</option>
-					
-					
-				</select>
-			  </div>
-			  <div class="form-group mt-3 mb-3" >
-				<label class="form-label name1">Are you satisfied with the available reading space in the Library? *</label>
-				<select class="form-control "required="">
-					<option>--Select--</option>
-					<option>Highly</option>
-					
-					<option>Satisfied</option>
-					<option>Neutral</option>
-					<option>Dissatisfied</option>
-					<option>Highly Dissatisfied</option>
-					<option>Other:</option>
-				  
-					<option>
-						<input type="text" placeholder="If Other" class="form-control" required="">
-					</option>
-					
-					
-				</select>
-			  </div>
-			  <div class="form-group mt-3 mb-3" >
-				<label class="form-label name1">Are you satisfied with computer lab/Wi‐Fi network to access e‐resources? *</label>
-				<select class="form-control "required="">
-					<option>--Select--</option>
-					<option>Highly</option>
-					
-					<option>Satisfied</option>
-					<option>Neutral</option>
-					<option>Dissatisfied</option>
-					<option>Highly Dissatisfied</option>
-					<option>Other:</option>
-				  
-					<option>
-						<input type="text" placeholder="If Other" class="form-control" required="">
-					</option>
-					
-					
-				</select>
-			  </div>
-			  <div class="form-group mt-3 mb-3" >
-				<label class="form-label name1">Are the Library Staff co‐operative and helpful? *</label>
-				<select class="form-control "required="">
-					<option>--Select--</option>
-					<option>Yes</option>
-					
-					<option>No</option>
-					
-					<option>Other:</option>
-				  
-					<option>
-						<input type="text" placeholder="If Other" class="form-control" required="">
-					</option>
-					
-					
-				</select>
-			  </div>
-		    <div class="form-group mb-2">
-		    	<label  class="form-label name1">Suggestion, if any?</label>
-		    	<textarea rows="4" class="form-control" required=""></textarea>
-		  	</div><br>
-		  	<button type="submit" class="btn btn-primary">Submit feedback</button><br>
-			  <hr>
-		</form>
-      </div>
-    </div>
-  </div>
- </body>  
+				<hr>
+				<form method="POST" id="libraryFeddbackForm" enctype="multipart/form-data">
+
+
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Name of The Student :</label>
+						<input type="text" name="StudentName" class="form-control " required="">
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Id Card Number</label>
+						<input type="text" name="idNumber" class="form-control " required="">
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Contact Number</label>
+						<input type="text" name="mobileNumber" class="form-control " size="1" required="">
+					</div>
+					<div class="form-group mb-2">
+						<label class="form-label name1">Email Id</label>
+						<input type="Email" name="email" class="form-control" required="">
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Depertment</label>
+						<select class="form-control" name="department" required="">
+							<option>--Select--</option>
+							<option>CSE</option>
+							<option>ECE</option>
+							<option>IT</option>
+							<option>EE</option>
+							<option>AEIE</option>
+							<option>FT</option>
+							<option>BHM</option>
+							<option>ASHU</option>
+							<option>BCA</option>
+							<option>Cyber scurity</option>
+							<option>Data Science</option>
+						</select>
+					</div>
+
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Semester</label>
+						<select class="form-control" name="semester" required="">
+							<option>--Select--</option>
+							<option>1st Semester</option>
+							<option>2nd Semester</option>
+							<option>3rd Semester</option>
+							<option>4th Semester</option>
+							<option>5th Semester</option>
+							<option>6th Semester</option>
+							<option>7th Semester</option>
+							<option>8th Semester</option>
+							<option>Allumni</option>
+							<option>Other</option>
+
+							<input type="text" name="semesterOther" placeholder="If Other" class="form-control">
+
+						</select>
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Postal Address</label>
+						<input type="text" name="postalAddress" class="form-control " required="">
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Are you satisfied with the required numbers of titles in your
+							Subject available in the Library? </label>
+						<select class="form-control" name="titleReview" required="">
+							<option>--Select--</option>
+							<option>Highly</option>
+							<option>Satisfied</option>
+							<option>Neutral</option>
+							<option>Dissatisfied</option>
+							<option>Highly Dissatisfied</option>
+							<option>Other</option>
+							<input type="text" name="titleReviewOther" placeholder="If Other" class="form-control"
+								required="">
+
+
+
+						</select>
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Are you satisfied with available journals/magazines? *</label>
+						<select class="form-control" name="journalsReview" required="">
+							<option>--Select--</option>
+							<option>Highly</option>
+							<option>Satisfied</option>
+							<option>Neutral</option>
+							<option>Dissatisfied</option>
+							<option>Highly Dissatisfied</option>
+							<option>Other</option>
+							<input type="text" name="journalsReviewOther" placeholder="If Other" class="form-control"
+								required="">
+						</select>
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Are you satisfied with the arrangement of books in the Library
+							shelves? *</label>
+						<select class="form-control" name="arrangementReview" required="">
+							<option>--Select--</option>
+							<option>Highly</option>
+							<option>Satisfied</option>
+							<option>Neutral</option>
+							<option>Dissatisfied</option>
+							<option>Highly Dissatisfied</option>
+							<option>Other</option>
+							<input type="text" name="arrangementReviewOther" placeholder="If Other" class="form-control"
+								required="">
+
+
+						</select>
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Are you satisfied with the available reading space in the
+							Library? *</label>
+						<select class="form-control" name="readingSpaceReview" required="">
+							<option>--Select--</option>
+							<option>Highly</option>
+							<option>Satisfied</option>
+							<option>Neutral</option>
+							<option>Dissatisfied</option>
+							<option>Highly Dissatisfied</option>
+							<option>Other</option>
+							<input type="text" name="readingSpaceReviewOther" placeholder="If Other"
+								class="form-control" required="">
+
+
+
+						</select>
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Are you satisfied with computer lab/WiFi network to access
+							the resources? *</label>
+						<select class="form-control" name="wifiReview" required="">
+							<option>--Select--</option>
+							<option>Highly</option>
+							<option>Satisfied</option>
+							<option>Neutral</option>
+							<option>Dissatisfied</option>
+							<option>Highly Dissatisfied</option>
+							<option>Other</option>
+							<input type="text" name="wifiReviewOther" placeholder="If Other" class="form-control"
+								required="">
+						</select>
+					</div>
+					<div class="form-group mt-3 mb-3">
+						<label class="form-label name1">Are the Library Staff cooperative and helpful? *</label>
+						<select class="form-control" name="staffReview" required="">
+							<option>--Select--</option>
+							<option>Yes</option>
+
+							<option>No</option>
+
+							<option>Other</option>
+							<input type="text" name="staffReviewOther" placeholder="If Other" class="form-control"
+								required="">
+
+
+						</select>
+					</div>
+					<div class="form-group mb-2">
+						<label class="form-label name1">Suggestion, if any?</label>
+						<textarea rows="4" name="suggestion" class="form-control" required=""></textarea>
+					</div><br>
+					<button type="submit" id="feedbackSubmitButton" class="btn btn-primary">Submit feedback</button><br>
+					<hr>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="myModal" class="modal1">
+
+		<!-- Modal content -->
+		<div class="modal-content1">
+			<span class="close" style="display: none;">&times;</span>
+			<div class="loader1" style="display:none;">
+				<div class="loader" style="margin: auto;margin-left:40%;margin-top:7%;">
+				</div>
+
+				<h5
+					style="margin: auto;margin-left:30%;margin-top:0%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">
+					Please wait....</h5>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+</body>
+
 </html>

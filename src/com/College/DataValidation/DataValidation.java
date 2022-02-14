@@ -1,4 +1,4 @@
-package com.College.DataValidation;
+package com.college.dataValidation;
 
 import javax.servlet.http.Part;
 
@@ -82,7 +82,38 @@ public class DataValidation {
 		   return result;
 	   }
 		
-		
+	//Data validation for library feedback
+	   public String libraryFeedbackDataValidation(String studentName,String idNumber,String mobileNumber,String email,String department,String semester
+			   ,String semesterOther,String postalAddress,String titleReview,String titleReviewOther,String journalsReview,String journalsReviewOther
+			   ,String arrangementReview,String arrangementReviewOther,String readingSpaceReview,String readingSpaceReviewOther,String wifiReview
+			   ,String wifiReviewOther,String staffReview,String staffReviewOther) {
+		  
+		   String result=null;
+		   
+		   result=((studentName.trim().isEmpty())?"Student Name":(idNumber.trim().isEmpty())?"Id Number":(mobileNumber.trim().isEmpty() || mobileNumber.trim().length()>11)?"Mobile Number":(email.trim().isEmpty() || !(email.trim().contains("@")))?"Email":(department.trim().equalsIgnoreCase("--Select--"))?"Department":
+			   (semester.trim().equalsIgnoreCase("--Select--"))?"semester":(semester.trim().equalsIgnoreCase("other") && semesterOther.trim().isEmpty())?"semester":(postalAddress.trim().isEmpty())?"Postal Address":(titleReview.trim().equalsIgnoreCase("--Select--"))?"Title Review":(titleReview.trim().equalsIgnoreCase("other") && titleReviewOther.trim().isEmpty())?"Title Review":
+				   (journalsReview.trim().equalsIgnoreCase("--Select--"))?"Journals Review":(journalsReview.trim().equalsIgnoreCase("other") && journalsReviewOther.trim().isEmpty())?"Journals Review":(arrangementReview.trim().equalsIgnoreCase("--Select--"))?"Arrangement Review":(arrangementReview.trim().equalsIgnoreCase("other") && arrangementReviewOther.trim().isEmpty())?"Arrangement Review":
+					   (readingSpaceReview.trim().equalsIgnoreCase("--Select--"))?"Reading Space Review":(readingSpaceReview.trim().equalsIgnoreCase("other") && readingSpaceReviewOther.trim().isEmpty())?"Reading Space Review":(wifiReview.trim().equalsIgnoreCase("--Select--"))?"WiFi Review":(wifiReview.trim().equalsIgnoreCase("other") && wifiReviewOther.trim().isEmpty())?"WiFi Review":
+						   (staffReview.trim().equalsIgnoreCase("--Select--"))?"Staff Review":(staffReview.trim().equalsIgnoreCase("other") && staffReviewOther.trim().isEmpty())?"Staff Review":"True");
+		   
+		   
+		   
+		   return result;
+		   
+	   }
+	   
+	//Student login data validation
+	   
+	   public String studentLogin(String idNumber,String studentName,String securityQuestion,String securityQuestionAnswer,String securityPin) {
+		   
+		   String result=null;
+		   
+		   result=((idNumber.trim().isEmpty())?"Id Number":(studentName.trim().isEmpty())?"Student Name":(securityQuestion.trim().equalsIgnoreCase("--select--"))?"Security Question":(securityQuestionAnswer.trim().isEmpty())?"Security Answer":(securityPin.trim().isEmpty() || securityPin.trim().length()>6)?"Security Pin":"True");
+		   
+		   return result;
+	   }
+	   
+	   
 		
 }
  

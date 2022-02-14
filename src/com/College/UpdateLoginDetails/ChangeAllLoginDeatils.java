@@ -1,11 +1,11 @@
-package com.College.UpdateLoginDetails;
+package com.college.updateLoginDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 
-import com.College.DataBaseConnection.DataBaseConnection;
+import com.college.dataBaseConnection.DataBaseConnection;
 
 public class ChangeAllLoginDeatils {
  

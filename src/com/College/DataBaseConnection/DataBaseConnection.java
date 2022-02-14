@@ -1,4 +1,4 @@
-package com.College.DataBaseConnection;
+package com.college.dataBaseConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

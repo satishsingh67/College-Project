@@ -1,4 +1,4 @@
-package com.College.Action;
+package com.college.action;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.College.DataValidation.DataValidation;
-import com.College.UpdateLoginDetails.ChangeAllLoginDeatils;
-import com.College.UpdateLoginDetails.ChangeEmail;
-import com.College.UpdateLoginDetails.ChangeMobileNumber;
-import com.College.UpdateLoginDetails.ChangeSecurityPin;
-import com.College.UpdateLoginDetails.ChangeSecurityQuestionAnswer;
+import com.college.updateLoginDetails.ChangeAllLoginDeatils;
+import com.college.updateLoginDetails.ChangeEmail;
+import com.college.updateLoginDetails.ChangeMobileNumber;
+import com.college.updateLoginDetails.ChangeSecurityPin;
+import com.college.updateLoginDetails.ChangeSecurityQuestionAnswer;
+import com.college.dataValidation.DataValidation;
 
 /**
  * Servlet implementation class ChangeLoginDetails

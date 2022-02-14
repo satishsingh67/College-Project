@@ -3,6 +3,12 @@ $(document).ready(function () {
   $("#regSubmit").click(function (event) {
       //stop submit the form, we will post it manually.
       event.preventDefault();
+    
+$('#myModal').show();
+//Calling Loader
+$(".loader1").show();
+//Scrolling window to  top 
+$(window).scrollTop(0);
       // Get form
       var form = $('#registForm')[0];
      // Create an FormData object 
@@ -17,6 +23,8 @@ $(document).ready(function () {
           processData: false,
           contentType: false,
           success: function(data,textStatus,jqXHR){
+            $(".loader1").hide();
+		      	$('#myModal').hide();
             console.log(data);
             if(data.trim()=='Registration Form Submitted Successfully'){
               swal("Done", data, "success");
@@ -28,6 +36,8 @@ $(document).ready(function () {
             $("#regSubmit").prop("disabled", false);
             },
           error:function(jqXHR,textStatus,errorThrown){
+            $(".loader1").hide();
+		      	$('#myModal').hide();
             swal("Error",data,"error");
             $("#regSubmit").prop("disabled", false);
           }

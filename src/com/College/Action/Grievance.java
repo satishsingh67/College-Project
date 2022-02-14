@@ -1,4 +1,4 @@
-package com.College.Action;
+package com.college.action;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.College.DataBaseConnection.DataBaseConnection;
-import com.College.DataValidation.DataValidation;
+import com.college.dataBaseConnection.DataBaseConnection;
+import com.college.dataValidation.DataValidation;
 
 /**
  * Servlet implementation class Grievance
@@ -61,7 +61,8 @@ public class Grievance extends HttpServlet {
 			// Data Validation
 			String dataValidationResult = new DataValidation().grievanceDataValidation(userType, complaintName, gender,
 					emailId, complaintCategory, department, complaintDetails, mobileNumber);
-
+            
+			Thread.sleep(3000);
 			if (dataValidationResult.equalsIgnoreCase("True")) {
 				
 				String query = "Insert Into greviance (userType,nameOfComplainant,gender,email,categoriesOfComplainant,addressingDepertment,"

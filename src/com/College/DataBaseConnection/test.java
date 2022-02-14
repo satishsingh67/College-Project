@@ -1,10 +1,10 @@
-package com.College.DataBaseConnection;
+package com.college.dataBaseConnection;
 
 import java.util.Date;
 
 import javax.servlet.http.Part;
 
-import com.College.DataValidation.DataValidation;
+import com.college.dataValidation.DataValidation;
 
 public class test {
 public static void main(String[] args) {
@@ -19,10 +19,10 @@ public static void main(String[] args) {
 	Part p=null;
 	Part p1=null;
 	
-	//String result=new DataValidation().changeSecurityQuestionAnswer(" ss", " @", " ss", " s"," --Selects--", " ss", " sss");
-	
+	//String result=new DataValidation().libraryFeedbackDataValidation(" gg", " hh", "ss "," @ ", "dd"," Other", "hh ", "postalAddress"," titleReview", "titleReviewOther"," journalsReview"," journalsReviewOther"," arrangementReview", "arrangementReviewOther", "readingSpaceReview", "readingSpaceReviewOther", "wifiReview"," wifiReviewOther", "staffReview"," staffReviewOther");
+			
 	//System.out.println(result);
-	   
+	 System.out.println(getValueForOthersField("hh"," "));  
 	   
 }
 
@@ -31,4 +31,12 @@ String dataValidation(String fullName,String email,String mobileNumber,String me
 	 return result;
 }
 	
+public static String getValueForOthersField(String data1,String data2) {
+	String result=null;
+	
+	result=((data1.trim().equalsIgnoreCase("Other"))?data2:data1);
+	
+	return result;
+}
+
 }

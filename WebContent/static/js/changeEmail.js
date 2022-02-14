@@ -2,6 +2,13 @@ $(document).ready(function () {
   console.log("Page loaded");
   $('#emailCorrectionSubmitButton').click(function (event) {
     event.preventDefault();
+
+    $('#myModal').show();
+    //Calling Loader
+    $(".loader1").show();
+    //Scrolling window to  top 
+    $(window).scrollTop(0);
+
     var form = $('#changeEmail')[0];
     // Create an FormData object 
     var data = new FormData(form);
@@ -16,6 +23,9 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       success: function (data, textStatus, jqXHR) {
+
+        $(".loader1").hide();
+        $('#myModal').hide();
         if (data.trim() == 'Email Updated Successfully') {
           swal("Done", data, "success");
           $('#changeEmail')[0].reset();
@@ -26,6 +36,9 @@ $(document).ready(function () {
         $("#emailCorrectionSubmitButton").prop("disabled", false);
       },
       error: function (jqXHR, textStatus, errorThrown) {
+
+        $(".loader1").hide();
+        $('#myModal').hide();
         swal("Error", data, "error");
         $("#emailCorrectionSubmitButton").prop("disabled", false);
       }

@@ -1,4 +1,4 @@
-package com.College.Action;
+package com.college.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.College.DataBaseConnection.DataBaseConnection;
-import com.College.DataValidation.DataValidation;
+import com.college.dataBaseConnection.DataBaseConnection;
+import com.college.dataValidation.DataValidation;
 import com.google.gson.Gson;
 
 /**

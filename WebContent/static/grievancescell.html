@@ -17,6 +17,115 @@
 <script src="./lib/jquery.min.js"></script>
 <script src="./lib/sweetalert.min.js"></script>
 <script src="./js/grievance.js"></script>
+
+<style>
+ /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  margin-top: 10%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 35%;
+  height:35%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  margin-left: 97%;
+  margin-top: -3%;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.loader {
+  position: absolute;
+  
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 50px;
+  height: 10px;
+  background: #3498DB;
+  border-radius: 5px;
+  -webkit-animation: load 1.8s ease-in-out infinite;
+          animation: load 1.8s ease-in-out infinite;
+}
+.loader:before, .loader:after {
+  position: absolute;
+  display: block;
+  content: "";
+  -webkit-animation: load 1.8s ease-in-out infinite;
+          animation: load 1.8s ease-in-out infinite;
+  height: 10px;
+  border-radius: 5px;
+}
+.loader:before {
+  top: -20px;
+  left: 10px;
+  width: 40px;
+  background: #EF4836;
+}
+.loader:after {
+  bottom: -20px;
+  width: 35px;
+  background: #F5AB35;
+}
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+  }
+  50% {
+    -webkit-transform: translateX(-30px);
+            transform: translateX(-30px);
+  }
+  100% {
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+  }
+}
+
+@keyframes load {
+  0% {
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+  }
+  50% {
+    -webkit-transform: translateX(-30px);
+            transform: translateX(-30px);
+  }
+  100% {
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+  }
+}
+  </style>
+
+
 </head>
 <body style="background-image: url(./images/background/correction\ bg1.jpg)">
   <div class="col-md-12">
@@ -24,7 +133,7 @@
 </div>
     <h2 class="text-center pt-4">To Report Any Grievances, Please Fill The Following Form:</h2>
     <h1 class="text-center textp">ONLINE GRIEVANCE FORM</h1>
-    <form class="frm1">
+    <form class="frm1" id="grivFrom">
         <div class="container  ">
             <h3 class="btn-warning text-center">Guru Nanak Institute of Technology</h3>
             <h4 class="textp">User Type (Required)<strong class="text-danger ">*</strong></h4>
@@ -113,12 +222,12 @@
                 <option>Hostel</option>
                 <option>Cyber scurity</option>
                 <option>Data Science</option>
-            </select>
-            <h5 class="textp">Give Your Complainant Briefly(max 250 word)<strong class="text-danger ">*</strong></h5>
-                <textarea class="text1" id="grievance_complaint" spellcheck="false" placeholder="Type something here..." required></textarea>
-              
+            </select>  
                 <h4 class="textp">Contact Number</h4>
                 <input class="text1" type="text" id="grievance_mobileNumber" placeholder="Enter Your Number">
+                <h5 class="textp">Give Your Complainant Briefly(max 250 word)<strong class="text-danger ">*</strong></h5>
+                <textarea class="text1" id="grievance_complaint" spellcheck="false" placeholder="Type something here..." required></textarea>
+                
                 <br>
                 <div>
                     <button type="submit" id="grievance_submit" class=" bg-danger">Submit</button> <button type="cancel" class=" bg-danger">Cancel</button>
@@ -128,10 +237,20 @@
       </div>
       
      </form>
+     <div id="myModal" class="modal">
 
-
-
-
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" style="display: none;">&times;</span>
+        <div class="loader1" style="display:none;">
+          <div class="loader" style="margin: auto;margin-left:40%;margin-top:10%;"> 
+          </div>
+    
+    <h5 style="margin: auto;margin-left:30%;margin-top:20%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">Please wait....</h5>       
+      </div>
+      </div>
+    
+    </div>
 
       <script src="./js/griv.js"></script>
 </body>
