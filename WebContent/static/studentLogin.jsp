@@ -83,7 +83,7 @@
 }
 </style>
 
-</head>
+</head>style="background-color: #63b2f7;"
 <body style="background-color: #63b2f7;">
         <!-- Page Content goes here -->
         <div class="conatiner">
