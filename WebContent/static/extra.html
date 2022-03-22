@@ -839,6 +839,56 @@ footer span a:hover{
     box-shadow: 4px 4px 4px slategray;
     background-color: rgb(207, 106, 106);
 }
+.model-container{
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    width: 360px;
+    height:70vh;
+    background-color: deepskyblue;
+    box-shadow: 4px 4px 4px gray;
+    border: 2px solid red;
+    display: flex;
+    border-radius: 20px;
+    pointer-events: none;
+
+}
+.close-btn{
+    float: right;
+    top: 30px;
+    background-color: rgb(23, 245, 190);
+    color: rgb(22, 20, 20);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    box-shadow: 4px 4px 4px gray;
+
+
+}
+.text1{
+ font-weight: 700;
+  font-size: 20px;
+  color: rgb(31, 34, 31);
+}
+.problem{
+    height: 50px;
+    margin-bottom: 5px;
+}
+.problem1{
+    height: 50px;
+    width: 100px;
+    background-color: tomato;
+    margin-bottom: 5px;
+}
+.modal{
+   
+    border-radius: 35px;
+}
+.model-container.show{
+    pointer-events: auto;
+    opacity: 1;
+}
     </style>
 </head>
 <body>
@@ -904,7 +954,7 @@ footer span a:hover{
             </thead>
             <tbody>
                   <tr>
-                        <td data-label="Name"class="start-btn"  ><a href="#"onclick="togglePopup()" >Sornali Hazra</a></td>
+                        <td data-label="Name"class="start-btn"  ><button style="width: 200px;height: 50px; background-color:darkseagreen;" id="open">Sornali Hazra</button></td>
                         <td data-label="Uni Roll">500218021097</td>
                         <td data-label="Email">sornalihazra92@gmail.com</td>
                         <td data-label="Contact No">01965553942</td>
@@ -916,8 +966,26 @@ footer span a:hover{
                   
             </tbody>
           </table>
-          
+          <div class="model-container" id="model_container">
+              <div class="modal" id="model">
+                
+                <p ><span class="text1">&nbsp;Name:</span><span>Sornali Hazra</span></p>
+                <p><span class="text1">&nbsp;University Roll :</span><span>500218021097</span></p>
+                <p> <span class="text1">&nbsp;Registration no :</span><span>Sornali Hazra</span></p>
+                <p><span class="text1">&nbsp;Email Id :</span><span>sornalihazra92@gmail.com</span></p>
+                <p><span class="text1">&nbsp;Contact No :</span><span>01965553942</span></p>
+                <p><span class="text1">&nbsp;Address :</span><span>-------</span></p>
+                <p><span class="text1">&nbsp;Blood Group :</span><span>A+</span></p>
+                <p><span class="text1">&nbsp;Gurdian Name :</span><span>Sornali Hazra</span></p>
+                <p><span class="text1">&nbsp;Gurdian Contact No:</span><span>Sornali Hazra</span></p>
+                <p><span class="text1">&nbsp;Gurdian Email Id:</span><span>Sornali Hazra</span></p>
+                <button class="problem">Attendance Check</button> <button class="problem">Marks Check</button> <button class="problem">Subject Allotment</button>
+                <button class="problem1">Upload Roll & Registration No</button> <button class="problem1">Change Credential</button><br><br>
+                <button class="close-btn" id="close-1">Close</button>
+              </div>
+          </div>
     </section>
+   
     <!-- services section start -->
     <section class="services" id="services">
         <div class="max-width">
