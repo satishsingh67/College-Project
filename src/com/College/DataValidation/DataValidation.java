@@ -21,10 +21,10 @@ public class DataValidation {
 	}
 	
 	//New Registration Data Validation
-	public String newRegistrationDataValidation(String name,String department,String stream ,String idNumber,String phoneNumber ,String email,String recoveryPhoneNumber,String gender,String DOB,
+	public String newRegistrationDataValidation(String name,String department,String yearSemester,String stream ,String idNumber,String phoneNumber ,String email,String recoveryPhoneNumber,String gender,String DOB,
 			String securityQuestion,String securityQuestionAnswer,String securityPin,String confirmSecurityPin ,Part studentPhoto,Part moneyReceipt ) {
 		String result=null;
-		result=((name.trim().isEmpty())?"Name":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select--"))?"Department":(stream.trim().isEmpty())?"Stream":(idNumber.trim().isEmpty())?"Id Number":(phoneNumber.trim().isEmpty())?"Phone Number":
+		result=((name.trim().isEmpty())?"Name":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select--"))?"Department":(yearSemester.trim().isEmpty())?"Year-Semester":(yearSemester.trim().equalsIgnoreCase("--Select--"))?"Year-Semester":(stream.trim().isEmpty())?"Stream":(idNumber.trim().isEmpty())?"Id Number":(phoneNumber.trim().isEmpty())?"Phone Number":
 			(phoneNumber.trim().length()>11)?"Phone Number":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Email":(recoveryPhoneNumber.trim().isEmpty())?"Recovery Phone Number":(recoveryPhoneNumber.trim().length()>11)?"Recovery Phone Number":
 				(DOB.trim().isEmpty())?"Date Of Birth":(securityQuestion.trim().equalsIgnoreCase("--Select--"))?"Security Question":(securityQuestionAnswer.trim().isEmpty())?"Security Question's Answer":(securityPin.trim().isEmpty())?"Security Pin":(confirmSecurityPin.trim().isEmpty())?"Confirm Security Pin":(studentPhoto.getSize()==0)?"Photo":
 					(moneyReceipt.getSize()==0)?"Money Receipt":"True");
@@ -104,11 +104,11 @@ public class DataValidation {
 	   
 	//Student login data validation
 	   
-	   public String studentLogin(String idNumber,String studentName,String securityQuestion,String securityQuestionAnswer,String securityPin) {
+	   public String studentLogin(String studentName,String idNumber,String securityQuestion,String securityQuestionAnswer,String securityPin) {
 		   
 		   String result=null;
 		   
-		   result=((idNumber.trim().isEmpty())?"Id Number":(studentName.trim().isEmpty())?"Student Name":(securityQuestion.trim().equalsIgnoreCase("--select--"))?"Security Question":(securityQuestionAnswer.trim().isEmpty())?"Security Answer":(securityPin.trim().isEmpty() || securityPin.trim().length()>6)?"Security Pin":"True");
+		   result=((studentName.trim().isEmpty())?"Student Name":(idNumber.trim().isEmpty())?"Id Number":(securityQuestion.trim().equalsIgnoreCase("--select--"))?"Security Question":(securityQuestionAnswer.trim().isEmpty())?"Security Answer":(securityPin.trim().isEmpty() || securityPin.trim().length()>6)?"Security Pin":"True");
 		   
 		   return result;
 	   }

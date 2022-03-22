@@ -1,278 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Student Page</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Page</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- font awesome cdn link  -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/teacherpage.css">
+<!-- custom css file link  -->
+<link rel="stylesheet" href="css/teacherpage.css">
 
 </head>
 <body>
-   
-<!-- header section starts  -->
 
-<header class="header">
+	<!-- header section starts  -->
+
+	<header class="header">
 
 
-   <nav class="navbar">
+		<nav class="navbar">
 
-      <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
-         <p class="text1">Guru Nanak Institute of Technology</p>
-      <div class="links">
-         <a href="./studentpage.html">home</a>
-         <a href="#about">Information</a>
-         <a href="#services">Classes</a>
-         
-         
-         <a href="#contact">contact</a>
-         
-      </div>
-      <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
-      <div id="menu-btn" class="fa fa-bars"></div>
+			<img src="./images/GNIT_Kolkata_logo.png" class="logo">
+			<h2 class="text1">Guru Nanak Institute of Technology</h2>
+			<div class="links">
+				<a href="./studentpage.html">home</a> <a href="#about">Information</a>
+				<a href="#services">Classes</a> <a href="#contact">contact</a>
 
-   </nav>
+			</div>
+			<img src="./images/teachers/1200px-JIS_University.svg.png"
+				class="logo">
+			<div id="menu-btn" class="fa fa-bars"></div>
 
-</header>
+		</nav>
 
-<!-- header section ends -->
+	</header>
 
-<!-- home section starts  -->
+	<!-- header section ends -->
 
-<section class="home" id="home">
+	<!-- home section starts  -->
 
-   <div class="image">
-      <img src="images/clg-1/review1.png" alt="">
-   </div>
+	<section class="home" id="home">
 
-   <div class="content">
-      <h3>Name Of The Student</h3>
-      <P>Branch</P>
-      <p>Class Roll No.</p>
-      
-   </div>
+		<div class="image">
+			<img src="images/clg-1/review1.png" alt="">
+		</div>
 
-</section>
+		<div class="content">
+			<h3><%= student.getName() %></h3>
+			<P>Branch</P>
+			<p>Class Roll No.</p>
 
-<!-- home section ends -->
+		</div>
 
-<!-- fun fact section starts  -->
+	</section>
 
-<section class="fun-fact">
+	<!-- home section ends -->
 
-   <div class="box">
-      <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-     <div class="info">
-      <h3>10</h3>
-      <p>Total Classes</p>
-     </div>
-   </div>
+	<!-- fun fact section starts  -->
 
-   <div class="box">
-      <img src="images/teachers/undraw_multitasking_hqg3.svg" alt="">
-      <div class="info">
-         <h3>5</h3>
-         <p>LAB</p>
-      </div>
-   </div>
+	<section class="fun-fact">
 
-   <div class="box">
-      <img src="images/teachers/undraw_multitasking_hqg3.svg" alt="">
-      <div class="info">
-         <h3>30</h3>
-         <p>Notes</p>
-      </div>
-   </div>
+		<div class="box">
+			<img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
+			<div class="info">
+				<h3>10</h3>
+				<p>Total Classes</p>
+			</div>
+		</div>
 
-   
+		<div class="box">
+			<img src="images/teachers/undraw_multitasking_hqg3.svg" alt="">
+			<div class="info">
+				<h3>5</h3>
+				<p>LAB</p>
+			</div>
+		</div>
 
-</section>
+		<div class="box">
+			<img src="images/teachers/undraw_multitasking_hqg3.svg" alt="">
+			<div class="info">
+				<h3>30</h3>
+				<p>Notes</p>
+			</div>
+		</div>
 
-<!-- fun fact section ends -->
 
-<!-- about section starts  -->
 
-<section class="about" id="about">
+	</section>
 
-   <div class="content">
-      <h3>Information For Controlling The site</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim laboriosam quidem eaque, ex qui fugit velit veniam veritatis a nostrum amet perspiciatis pariatur ducimus ipsam officiis quae cumque maiores voluptates!</p>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus iste ab eos ea rerum obcaecati illo ex recusandae expedita aspernatur?</p>
-      <a href="#services" class="btn">read more</a>
-   </div>
+	<!-- fun fact section ends -->
 
-   <div class="image">
-      <img src="images/teachers/undraw_version_control_re_mg66.svg" alt="">
-   </div>
+	<!-- about section starts  -->
 
-</section>
+	<section class="about" id="about">
 
-<!-- about section ends -->
+		<div class="content">
+			<h3>Information For Controlling The site</h3>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim
+				laboriosam quidem eaque, ex qui fugit velit veniam veritatis a
+				nostrum amet perspiciatis pariatur ducimus ipsam officiis quae
+				cumque maiores voluptates!</p>
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+				Repellendus iste ab eos ea rerum obcaecati illo ex recusandae
+				expedita aspernatur?</p>
+			<a href="#services" class="btn">read more</a>
+		</div>
 
-<div class="container">
+		<div class="image">
+			<img src="images/teachers/undraw_version_control_re_mg66.svg" alt="">
+		</div>
 
-    <h1 class="heading">MY CLASSES & LAB</h1>
- 
-    <div class="box-container">
- 
-       <div class="box">
-          <div class="image">
-             <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-          </div>
-          <div class="content">
-             <h3>Basic Electrical Engineering</h3>
-             <p>
-                 1st Year ECE-1
-             </p>
-             <a href="#" class="btn">Enter The Class</a>
-             <div class="icons">
-                <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-                <span> <i class="fas fa-user"></i> by Mentor </span>
-             </div>
-          </div>
-       </div>
- 
-       <div class="box">
-        <div class="image">
-            <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-         </div>
-         <div class="content">
-            <h3>Basic Electrical Engineering</h3>
-           
-            <p>
-                1st Year ECE-2
-            </p>
-            <a href="#" class="btn">Enter The Class</a>
-            <div class="icons">
-               <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-               <span> <i class="fas fa-user"></i> by mentor </span>
-            </div>
-         </div>
-       </div>
- 
-       <div class="box">
-        <div class="image">
-            <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-         </div>
-         <div class="content">
-            <h3>MATHS I</h3>
-            <p>
-                1st Year ECE-1
-            </p>
-            <a href="#" class="btn">Enter The Class</a>
-            <div class="icons">
-               <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-               <span> <i class="fas fa-user"></i> by mentor </span>
-            </div>
-         </div>
-       </div>
- 
-       <div class="box">
-        <div class="image">
-            <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-         </div>
-         <div class="content">
-            <h3>Basic Electrical Engineering LAB</h3>
-            <p>
-                1st Year EE-1
-            </p>
-            <a href="#" class="btn">Enter The Class</a>
-            <div class="icons">
-               <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-               <span> <i class="fas fa-user"></i> by mentor </span>
-            </div>
-         </div>
-       </div>
- 
-       <div class="box">
-          <div class="image">
-             <img src="images/img-5.jpg" alt="">
-          </div>
-          <div class="content">
-             <h3>blog title goes here</h3>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-             <a href="#" class="btn">read more</a>
-             <div class="icons">
-                <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-                <span> <i class="fas fa-user"></i> by mentor </span>
-             </div>
-          </div>
-       </div>
- 
-       <div class="box">
-          <div class="image">
-             <img src="images/img-6.jpg" alt="">
-          </div>
-          <div class="content">
-             <h3>blog title goes here</h3>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-             <a href="#" class="btn">read more</a>
-             <div class="icons">
-                <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-                <span> <i class="fas fa-user"></i> by mentor </span>
-             </div>
-          </div>
-       </div>
- 
-       <div class="box">
-          <div class="image">
-             <img src="images/img-7.jpg" alt="">
-          </div>
-          <div class="content">
-             <h3>blog title goes here</h3>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-             <a href="#" class="btn">read more</a>
-             <div class="icons">
-                <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-                <span> <i class="fas fa-user"></i> by mentor </span>
-             </div>
-          </div>
-       </div>
- 
-       <div class="box">
-          <div class="image">
-             <img src="images/img-8.jpg" alt="">
-          </div>
-          <div class="content">
-             <h3>blog title goes here</h3>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-             <a href="#" class="btn">read more</a>
-             <div class="icons">
-                <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-                <span> <i class="fas fa-user"></i> by mentor </span>
-             </div>
-          </div>
-       </div>
- 
-       <div class="box">
-          <div class="image">
-             <img src="images/img-9.jpg" alt="">
-          </div>
-          <div class="content">
-             <h3>blog title goes here</h3>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-             <a href="#" class="btn">read more</a>
-             <div class="icons">
-                <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-                <span> <i class="fas fa-user"></i> by mentor </span>
-             </div>
-          </div>
-       </div>
- 
-    </div>
- 
-    <div id="load-more"> load more </div>
- 
- </div>
- 
- <script>
+	</section>
+
+	<!-- about section ends -->
+
+	<div class="container">
+
+		<h1 class="heading">MY CLASSES & LAB</h1>
+
+		<div class="box-container" style="border:1px solid tomato">
+
+			<div class="box">
+				<div class="image">
+					<img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
+				</div>
+				<div class="content">
+					<h3>Basic Electrical Engineering</h3>
+					<p>1st Year ECE-1</p>
+					<a href="#" class="btn">Enter The Class</a>
+					<div class="icons">
+						<span> <i class="fas fa-calendar"></i> 21st may, 2022
+						</span> <span> <i class="fas fa-user"></i> by Mentor
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="load-more">load more</div>
+
+	</div>
+
+	<script>
  
  let loadMoreBtn = document.querySelector('#load-more');
  let currentItem = 3;
@@ -291,8 +166,8 @@
  
  </script>
 
-<!-- services section ends -->
-<script>
+	<!-- services section ends -->
+	<script>
 
     let loadMoreBtn = document.querySelector('#load-more');
     let currentItem = 3;
@@ -314,37 +189,39 @@
 
 
 
-<!-- contact section starts  -->
+	<!-- contact section starts  -->
 
-<section class="contact" id="contact">
+	<section class="contact" id="contact">
 
-   <h1 class="heading"> <span>contact</span> With Mentor </h1>
+		<h1 class="heading">
+			<span>contact</span> With Mentor
+		</h1>
 
-   <div class="row">
+		<div class="row">
 
-    <img  class="map"src="./images/teachers/90514-teacher-discussion.gif">
-      <form action="">
-         <h3>get in touch</h3>
-         <div class="inputBox">
-            <input type="text" placeholder="name">
-            <input type="email" placeholder="email">
-         </div>
-         <div class="inputBox">
-            <input type="number" placeholder="phone">
-            <input type="text" placeholder="subject">
-         </div>
-         <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
-         <input type="submit" value="send message" class="btn">
-      </form>
+			<img class="map" src="./images/teachers/90514-teacher-discussion.gif">
+			<form action="">
+				<h3>get in touch</h3>
+				<div class="inputBox">
+					<input type="text" placeholder="name"> <input type="email"
+						placeholder="email">
+				</div>
+				<div class="inputBox">
+					<input type="number" placeholder="phone"> <input
+						type="text" placeholder="subject">
+				</div>
+				<textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
+				<input type="submit" value="send message" class="btn">
+			</form>
 
-   </div>
+		</div>
 
-</section>
+	</section>
 
-<!-- contact section ends -->
+	<!-- contact section ends -->
 
 
-<script>
+	<script>
     let menu = document.querySelector('#menu-btn');
 let navbarLinks = document.querySelector('.header .navbar .links');
 
@@ -365,16 +242,17 @@ window.onscroll = () =>{
 }
 </script>
 
-</section>
+	</section>
 
-<!-- footer section ends -->
+	<!-- footer section ends -->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
 
-<!-- custom js file link  -->
+	<!-- custom js file link  -->
 
-<script>
+	<script>
    lightGallery(document.querySelector('.gallery .gallery-container'));
 </script>
 

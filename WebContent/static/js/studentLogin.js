@@ -26,23 +26,19 @@ $(document).ready(function () {
         success: function (data, textStatus, jqXHR) {
         	  $(".loader1").hide();
               $('#myModal').hide();
-          if (data.trim().includes("Please Enter/Choose a valid")) {
-        	  swal("Error", data, "error");
-        	  $("#loginSubmit").prop("disabled", false);
-          }else if(data.trim().includes("Invalid")){
-        	  swal("Error", data, "error");
+          if (data.trim().includes(".jsp")) {
         	  $('#studentLogin')[0].reset();
+        	    window.location.href = data;
+        	 }    
+          else {
+        	  swal("Error", data, "error");
         	  $("#loginSubmit").prop("disabled", false);
-          }
-          
-          else{
-          window.location.href = data;
           }
         },
         error: function (jqXHR, textStatus, errorThrown) {
           $(".loader1").hide();
           $('#myModal').hide();
-    
+          $('#studentLogin')[0].reset();
           swal("Error", data, "error");
           $("#loginSubmit").prop("disabled", false);
         }

@@ -1,7 +1,10 @@
 package com.college.model;
 
 public class Student {
-
+     
+	private Integer pkRegistrationId;
+	private Integer fkdepartment;
+	private Integer fkCurrentYearAndSem;
 	private String idNumber;
 	private String studentName;
 	private String department;
@@ -9,7 +12,28 @@ public class Student {
 	private String gender;
 	private byte[] studentImage;
 	private Integer year;
+	private Integer semester;
 	private String base64Image;
+	private Integer section;
+	
+	public Integer getPkRegistrationId() {
+		return pkRegistrationId;
+	}
+	public void setPkRegistrationId(Integer pkRegistrationId) {
+		this.pkRegistrationId = pkRegistrationId;
+	}
+	public Integer getFkdepartment() {
+		return fkdepartment;
+	}
+	public void setFkdepartment(Integer fkdepartment) {
+		this.fkdepartment = fkdepartment;
+	}
+	public Integer getFkCurrentYearAndSem() {
+		return fkCurrentYearAndSem;
+	}
+	public void setFkCurrentYearAndSem(Integer fkCurrentYearAndSem) {
+		this.fkCurrentYearAndSem = fkCurrentYearAndSem;
+	}
 	public String getIdNumber() {
 		return idNumber;
 	}
@@ -57,6 +81,18 @@ public class Student {
 	}
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+	public Integer getSection() {
+		return section;
+	}
+	public void setSection(Integer section) {
+		this.section = section;
+	}
+	public Integer getSemester() {
+		return semester;
+	}
+	public void setSemester(Integer semester) {
+		this.semester = semester;
 	}
 
 	

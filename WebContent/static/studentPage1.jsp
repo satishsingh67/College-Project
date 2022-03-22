@@ -65,7 +65,7 @@ if(student==null){
              
               
                         <li>
-                           <a href="./online class.html"target="_blank">Enter Class Room</a>
+                           <a href="./studentClassroom.jsp"target="_self">Enter Class Room</a>
                        </li>
                       
             <li class="menu-item-has-children">
@@ -173,7 +173,7 @@ if(student==null){
           <hr>
           <label type="text"class="box" name="student_depertment" ><b><%= student.getDepartment() %></b></label><br>
          <hr>
-         <label type="text"class="box" name="student_Year" ><b><%= student.getYear()+"th Year" %></b></label><br>
+         <label type="text"class="box" name="student_Year" ><b><%= (student.getYear()==1)?( student.getYear()+"st Year"):(student.getYear()==2)?( student.getYear()+"nd Year"):(student.getYear()==3)?( student.getYear()+"rd Year"):student.getYear()+"th Year" %></b></label><br>
          <hr>
          <label type="text"class="box" name="student_gender" ><b><%= student.getGender() %></b></label>
           <hr>

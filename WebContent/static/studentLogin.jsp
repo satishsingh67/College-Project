@@ -83,15 +83,15 @@
 }
 </style>
 
-</head>style="background-color: #63b2f7;"
-<body style="background-color: #63b2f7;">
+</head>
+<body style="background-color:    #43cea2;">
         <!-- Page Content goes here -->
         <div class="conatiner">
 <div class="row">
 <div class="col m4 offset-m4">
 <div class="card">
 <div class="card-content" style="margin-top:20%;border: 1px solid white; background-color: yellow;">
-    <h5 class="center-align" style="font-weight: bold;color: skyblue;" >Student Login</h5>
+    <h5 class="center-align" style="font-weight: bold;color: black;" >Student Login</h5>
     <div class="form">
 <form method="POST"  id="studentLogin" enctype="multipart/form-data">
 <%

@@ -54,10 +54,14 @@ public class StudentLogin extends HttpServlet {
 		 
 		 String dataValiadtionResult=null;
 		 
-		 dataValiadtionResult=new DataValidation().studentLogin(idNumber, studentName, securityQuestion, securityQuestionAnswer, securityPin);
+		 dataValiadtionResult=new DataValidation().studentLogin(studentName,idNumber, securityQuestion, securityQuestionAnswer, securityPin);
 		
 		 if(dataValiadtionResult.trim().equalsIgnoreCase("True")) {
 			
+			 String checkEntryAndApprovedStatus=new StudentLoginValidation().checkEnteryAndApproveStatus(idNumber, studentName, securityQuestion, securityQuestionAnswer, securityPin);
+			 
+			 if(checkEntryAndApprovedStatus.equalsIgnoreCase("True")) {
+			 
 			Student student=new StudentLoginValidation().validateDetails(idNumber, studentName, securityQuestion, securityQuestionAnswer, securityPin);
 			 if(student !=null) {	 
 				 status="studentPage1.jsp";
@@ -70,7 +74,10 @@ public class StudentLogin extends HttpServlet {
 				 status="Invalid details";
 				 response.getWriter().append(status);
 			 }
-			 
+			 }else {
+				 status=checkEntryAndApprovedStatus;
+				 response.getWriter().append(status);
+			 }
 			 
 			 
 		 }else {

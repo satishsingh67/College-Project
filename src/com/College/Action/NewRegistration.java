@@ -60,7 +60,8 @@ public class NewRegistration extends HttpServlet {
 			InputStream moneyReceiptInputStream = null;
 			String name = request.getParameter("studentName");
 			String department = request.getParameter("department");
-			String stream = request.getParameter("stream");
+			String yearSemester=request.getParameter("yearSemester");
+			String section = request.getParameter("section");
 			String idNumber = request.getParameter("idNumber");
 			String phoneNumber = request.getParameter("phoneNumber");
 			String email = request.getParameter("email");
@@ -75,7 +76,7 @@ public class NewRegistration extends HttpServlet {
 			Part moneyReceipt = request.getPart("moneyReceipt");
 
 			// Data Validation
-			String dataValidationResult = new DataValidation().newRegistrationDataValidation(name, department, stream,
+			String dataValidationResult = new DataValidation().newRegistrationDataValidation(name, department,yearSemester, section,
 					idNumber, phoneNumber, email, recoveryPhoneNumber, gender, DOB, securityQuestion,
 					securityQuestionAnswer, securityPin, confirmSecurityPin, studentPhoto, moneyReceipt);
 
@@ -86,27 +87,28 @@ public class NewRegistration extends HttpServlet {
 					// obtains input stream of the upload file
 					photoInputStream = studentPhoto.getInputStream();
 					moneyReceiptInputStream = moneyReceipt.getInputStream();
-					String query = "Insert Into registration (studentName,department,stream,idNumber,phoneNumber,email,recoveryPhoneNumber,"
+					String query = "Insert Into registration (studentName,fkdepartment,fkCurrentYearAndSem,fkSection,idNumber,phoneNumber,email,recoveryPhoneNumber,"
 							+ "gender,dateOfBirth,securityQuestion,securityQuestionAnswer,securityPin,ConfirmSecurityPin,studentPhoto,"
-							+ "moneyReceipt,createDate,updateDate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							+ "moneyReceipt,createDate,updateDate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 					PreparedStatement pstmt = con.prepareStatement(query);
 					pstmt.setString(1, name.trim());
-					pstmt.setString(2, department);
-					pstmt.setString(3, stream.trim());
-					pstmt.setString(4, idNumber.trim());
-					pstmt.setObject(5, phoneNumber.trim());
-					pstmt.setObject(6, email.trim());
-					pstmt.setString(7, recoveryPhoneNumber.trim());
-					pstmt.setString(8, gender);
-					pstmt.setObject(9, date);
-					pstmt.setString(10, securityQuestion.trim());
-					pstmt.setString(11, securityQuestionAnswer.trim());
-					pstmt.setString(12, securityPin.trim());
-					pstmt.setString(13, confirmSecurityPin.trim());
-					pstmt.setBlob(14, photoInputStream);
-					pstmt.setBlob(15, moneyReceiptInputStream);
-					pstmt.setObject(16, new Date());
+					pstmt.setInt(2,Integer.parseInt(department));
+				    pstmt.setInt(3, Integer.parseInt(yearSemester));
+					pstmt.setInt(4, Integer.parseInt(section));
+					pstmt.setString(5, idNumber.trim());
+					pstmt.setObject(6, phoneNumber.trim());
+					pstmt.setObject(7, email.trim());
+					pstmt.setString(8, recoveryPhoneNumber.trim());
+					pstmt.setString(9, gender);
+					pstmt.setObject(10, date);
+					pstmt.setString(11, securityQuestion.trim());
+					pstmt.setString(12, securityQuestionAnswer.trim());
+					pstmt.setString(13, securityPin.trim());
+					pstmt.setString(14, confirmSecurityPin.trim());
+					pstmt.setBlob(15, photoInputStream);
+					pstmt.setBlob(16, moneyReceiptInputStream);
 					pstmt.setObject(17, new Date());
+					pstmt.setObject(18, new Date());
 					int dbResult = pstmt.executeUpdate();
 					if (dbResult > 0) {
 						status = "Registration Form Submitted Successfully";

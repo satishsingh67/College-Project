@@ -13,78 +13,125 @@ import com.college.dataBaseConnection.DataBaseConnection;
 import com.college.model.Student;
 
 public class StudentLoginValidation {
- public Student validateDetails(String idNumber,String studentName,String securityQuestion,String securityQuestionAnswer,String securityPin) {
-	 Student student=null;
-	 Connection con = new DataBaseConnection().getDatabaseConnection();
+	public Student validateDetails(String idNumber, String studentName, String securityQuestion,
+			String securityQuestionAnswer, String securityPin) {
+		Student student = null;
+		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
-			
-			String query = "Select * from registration where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=?";
+
+			String query = "SELECT * FROM registration INNER JOIN department ON registration.fkdepartment=department.pkDepartmentId \r\n"
+					+ " INNER JOIN section ON registration.fkSection=section.pkSectionId"
+					+ " INNER JOIN year_semester ON registration.fkCurrentYearAndSem=year_semester.pkYearSemesterId"
+					+ " where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=? and verificationStatus=?";
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1,idNumber);
+			pstmt.setString(1, idNumber);
 			pstmt.setString(2, studentName.trim());
 			pstmt.setString(3, securityQuestion.trim());
 			pstmt.setString(4, securityQuestionAnswer.trim());
 			pstmt.setString(5, securityPin.trim());
-		    ResultSet rs=pstmt.executeQuery();
-			
-            
-			while(rs.next()) {
-	
-		
-			student=new Student();
-			student.setStudentName(rs.getString("studentName"));
-			String id=rs.getString("idNumber");
-			student.setIdNumber(id);
-			student.setDepartment(rs.getString("department"));
-			student.setDOB(rs.getString("dateOfBirth"));
-			student.setGender(rs.getString("gender"));
-			Blob blob = rs.getBlob("studentPhoto");
-            
-			//Calculating current Student's year
-			String val[]=id.split("/");
-			int yearOfAddmision=Integer.parseInt(val[1]);
-			int currentYear=new Date().getYear()+1900;
-			int year=currentYear-yearOfAddmision;
-			student.setYear(year);
+			pstmt.setInt(6, 1);
+			ResultSet rs = pstmt.executeQuery();
 
-			//Preparing Image to send user
-            InputStream inputStream = blob.getBinaryStream();
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            byte[] buffer = new byte[4096];
-            int bytesRead = -1;
-             
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);                  
-            }
-             
-            byte[] imageBytes = outputStream.toByteArray();
-            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-             
-             
-            inputStream.close();
-            outputStream.close();
-			
-			student.setBase64Image(base64Image);
-			
-			
-			
+			while (rs.next()) {
+
+				student = new Student();
+
+				student.setPkRegistrationId(rs.getInt("pkRegistrationId"));
+				student.setFkCurrentYearAndSem(rs.getInt("fkCurrentYearAndSem"));
+				student.setFkdepartment(rs.getInt("fkdepartment"));
+				student.setStudentName(rs.getString("studentName"));
+				student.setIdNumber(rs.getString("idNumber"));
+				student.setDepartment(rs.getString("longName"));
+				student.setDOB(rs.getString("dateOfBirth"));
+				student.setGender(rs.getString("gender"));
+				student.setYear(rs.getInt("Year"));
+				student.setSemester(rs.getInt("Semester"));
+				student.setSection(rs.getInt("section"));
+				Blob blob = rs.getBlob("studentPhoto");
+
+				// Preparing Image to send user
+				InputStream inputStream = blob.getBinaryStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[4096];
+				int bytesRead = -1;
+
+				while ((bytesRead = inputStream.read(buffer)) != -1) {
+					outputStream.write(buffer, 0, bytesRead);
+				}
+
+				byte[] imageBytes = outputStream.toByteArray();
+				String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+				inputStream.close();
+				outputStream.close();
+
+				student.setBase64Image(base64Image);
+
 			}
-			
-		
-		}catch(Exception e) {
+			con.close();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-	 return student;
- }
-	
-	public static void main(String[] args) {
-		
-		System.out.println(new StudentLoginValidation().validateDetails("GNIT/2018/0348", "Satish Singh", "Your Favourite Color", "pink", "123128"));
-		
+		return student;
 	}
-	
-	
-	
-	
+
+	public String checkEnteryAndApproveStatus(String idNumber, String studentName, String securityQuestion,
+			String securityQuestionAnswer, String securityPin) {
+		String result = null;
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		try {
+			String checkEntryQuery = "SELECT * FROM registration where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=?";
+			PreparedStatement pstmt = con.prepareStatement(checkEntryQuery);
+			pstmt.setString(1, idNumber);
+			pstmt.setString(2, studentName.trim());
+			pstmt.setString(3, securityQuestion.trim());
+			pstmt.setString(4, securityQuestionAnswer.trim());
+			pstmt.setString(5, securityPin.trim());
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String checkApproveStatusquery = "SELECT * FROM registration where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=? and verificationStatus=?";
+				PreparedStatement pstmt1 = con.prepareStatement(checkApproveStatusquery);
+				pstmt1.setString(1, idNumber);
+				pstmt1.setString(2, studentName.trim());
+				pstmt1.setString(3, securityQuestion.trim());
+				pstmt1.setString(4, securityQuestionAnswer.trim());
+				pstmt1.setString(5, securityPin.trim());
+				pstmt1.setInt(6, 1);
+				ResultSet rs1 = pstmt1.executeQuery();
+				if (rs1.next()) {
+					result = "True";
+				} else {
+					result = "Your Application is not approved from admin.\n Please contact your Mentor";
+				}
+			} else {
+				result = "No record found for provided credientials";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "False";
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+
+		// System.out.println(new
+		// StudentLoginValidation().validateDetails("GNIT/2018/0348", "Satish Singh",
+		// "Your Favourite Color", "pink", "123128"));
+		System.out.println(new StudentLoginValidation().checkEnteryAndApproveStatus("GNIT/2018/0348", "Satish Singh",
+				"Your Home Town", "Siwan", "123456"));
+
+	}
+
 }
