@@ -15,7 +15,160 @@
   <link rel="stylesheet" href="css/subject.css">
   <link rel="stylesheet" href="css/responsive-style.css">
   <link rel="stylesheet" href="css/responsiveslides.css">
+  <script src="./lib/jquery.min.js"></script>
+  <script src="./lib/sweetalert.min.js"></script>
 <style>
+
+
+.modal-qs{
+  display: none;
+          /* Hidden by default */
+          position:fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 500px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+       /*   background-color: rgb(0, 0, 0);*/
+          /* Fallback color */
+        /*  background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+          background-color: aquamarine;
+          box-shadow: 5px 5px 5px gray;
+}
+
+/* Modal Content/Box */
+.modal-contentqs {
+   
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+
+
+  /* The Modal (background) */
+  .modal {
+          display: none;
+          /* Hidden by default */
+          position:fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 100px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+       /*   background-color: rgb(0, 0, 0);*/
+          /* Fallback color */
+        /*  background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+        }
+    
+        /* Modal Content */
+        .modal-content {
+        
+          
+          margin: auto;
+       
+          padding: 20px;
+          border: 1px solid #888;
+          width: 50%;
+          height: 50%;
+        }
+    
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          margin-left: 97%;
+          margin-top: -3%;
+          font-size: 28px;
+          font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .modal1 {
+          display: none;
+          /* Hidden by default */
+          position:fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 100px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+       /*   background-color: rgb(0, 0, 0);*/
+          /* Fallback color */
+        /*  background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+        }
+    
+        /* Modal Content */
+        .modal-content1 {
+        
+          
+          margin: auto;
+       
+          padding: 20px;
+          border: 1px solid #888;
+          width: 50%;
+          height: 50%;
+        }
+    
+        /* The Close Button */
+        .close1{
+          color: #aaaaaa;
+          float: right;
+          margin-left: 97%;
+          margin-top: -3%;
+          font-size: 28px;
+          font-weight: bold;
+        }
+    
+        .close1:hover,
+        .close1:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .view-btn{
+          width: 90px;
+          background-color: lightblue;
+        }
+    
   #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -88,10 +241,15 @@
             <p>1st Year</p>
             <p>ECE-2</p>
             <div class="mt-4">
-              <button class="main-btn">Take  Class <i class="fas fa-users-class"></i></button>
-              <button class="main-btn">Upload Class Link <i class="fas fa-users-class"></i></button>
+              <button class="main-btn">Take  Class <i class="fas fa-users-class"></i></button><br>
             
-            </div>
+            </div><br>
+            <form action="">
+                
+              <input type="text" placeholder="Past Link">
+              
+           </form>
+           <button class="main-btn">Upload Class Link <i class="fas fa-users-class"></i></button>
           </div>
 
           <div class="col-lg-5 col-md-6">
@@ -123,6 +281,7 @@
                 
                     <input type="file" placeholder="Choose File">
                     <input type="submit" value="Post" class="main-btn mt-4">
+                    <input type="submit" value="View" class="main-btn mt-4"style="background-color: rgb(37, 219, 37);">
                  </form>
             </div>
           </div>
@@ -133,6 +292,8 @@
                 
                     <input type="file" placeholder="Choose File">
                     <input type="submit" value="Post" class="main-btn mt-4">
+                    <input type="submit" value="View" class="main-btn mt-4"style="background-color: rgb(37, 219, 37);">
+                  
                  </form>
            </div>
          </div>
@@ -143,6 +304,8 @@
                 
                     <input type="file" placeholder="Choose File">
                     <input type="submit" value="Post" class="main-btn mt-4">
+                    <input type="submit" value="View" class="main-btn mt-4" style="background-color: rgb(37, 219, 37);">
+                 
                  </form>
            </div>
          </div>
@@ -160,7 +323,7 @@
         
         <div id="assignment"class="container food-type" style="background-color:darkseagreen;">
             <div class="row align-items-center">
-              <div class="col-lg-5 col-md-12 text-sec mb-lg-0 mb-5">
+              <div class="col-lg-6 col-md-12 text-sec mb-lg-0 mb-5">
                <h2>Assignment Submission</h2>
                <p style="font-size: 25px;font-weight: bold; color: rgb(245, 229, 10);border-bottom: 2px solid red;text-align: center;">Post New Assignment</p>
                <form action="">
@@ -169,46 +332,17 @@
                   
                    <input type="file" placeholder="Choose File">
                    <input type="submit" value="Post" class="main-btn mt-4">
+                   <input type="submit" value="View" class="main-btn mt-4"style="background-color:green;">
                 </form>
                <ul class="list-unstyled py-3">
                  
-                 <li><a href="#"  style="font-size: 25px;font-weight: bold; color: rgb(245, 229, 10);border-bottom: 2px solid red;text-align: center;"><span>Checked Submitted Assignments</span></a></li>
-               </ul> 
-               <table id="customers" style="scrollbar-3dlight-color: bisque;">
-                <tr>
-                  <th>Student Name</th>
-                  <th>Roll</th>
-                  <th> Date</th>
-                  
-                </tr>
-                <tr>
-                  <td>DIp 1</td>
-                  <td>65</td>
-                  <td>25-02-22</td>
-                  
-                </tr>
-                <tr>
-                  <td>DIp 1</td>
-                  <td>65</td>
-                  <td>25-02-22</td>
-                  
-                </tr>
-                <tr>
-                  <td>DIp 1</td>
-                  <td>65</td>
-                  <td>25-02-22</td>
-                  
-                </tr>
-                <tr>
-                  <td>DIp 1</td>
-                  <td>65</td>
-                  <td>25-02-22</td>
-                  
-                </tr>
-              </table>
-    
+                 <li><a href="./submittedassignment.html"  style="font-size: 25px;font-weight: bold; color: rgb(245, 229, 10);border-bottom: 2px solid red;text-align: center;" ><span>Checked Submitted Assignments</span></a></li>
+                 
+            
+            
+            
               </div>
-              <div class="col-lg-7 col-md-12">
+              <div class="col-lg-6 col-md-12">
                 <div class="card border-0">
                   <img src="images/Good-Grade.svg" class="img-fluid">
                 </div>
@@ -223,6 +357,8 @@
        <hr>
       
    </section>
+   
+
 
   <!-- section-3 about-->
   <section id="doubt" style="background-color: darkgrey;">
@@ -345,9 +481,52 @@
                 
                     <input type="file" placeholder="Choose File">
                     <input type="submit" value="Post" class="main-btn mt-4">
+                    <input type="submit" value="View" class="main-btn mt-4" id="view" style="background-color: lightgreen;">
                  </form>
             </div>
           </div>
+         
+
+<!-- The Modal -->
+<div id="view-qs" class="modal-qs">
+
+  <!-- Modal content -->
+  <div class="modal-contentqs">
+    <span class="close">&times;</span>
+    <embed width="100%" height="400px" src="./QuestionPapers/BOS Meeting.pdf" type="application/pdf">
+  </div>
+
+
+</div>
+
+<script>
+  // Get the modal
+var modal = document.getElementById("view-qs");
+
+// Get the button that opens the modal
+var btn = document.getElementById("view");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
           <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
            <div class="card">
             <h3 style="text-align: center;">Invigilation Link</h3>
@@ -380,6 +559,7 @@
                 
                     <input type="file" placeholder="Choose File">
                     <input type="submit" value="Post" class="main-btn mt-4">
+                    <input type="submit" value="View" class="main-btn mt-4" style="background-color: lightgreen;">
                  </form>
             </div>
           </div>
@@ -416,6 +596,7 @@
                 
                     <input type="file" placeholder="Choose File">
                     <input type="submit" value="Post" class="main-btn mt-4">
+                    <input type="submit" value="View" class="main-btn mt-4" style="background-color: lightgreen;">
                  </form>
             </div>
           </div>
