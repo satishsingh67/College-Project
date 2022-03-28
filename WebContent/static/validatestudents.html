@@ -1,5 +1,4 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,21 +14,19 @@
     }
     
     #customers td, #customers th {
-      border: 2px solid rgb(56, 52, 52);
+      border: 1px solid #ddd;
       padding: 8px;
-     
     }
     
-    #customers tr:nth-child(odd){background-color: #76fc65;}
-    #customers tr:nth-child(even){background-color: #76fc65;}
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
     
-    #customers tr:hover {background-color: rgb(236, 84, 84);}
+    #customers tr:hover {background-color: #ddd;}
     
     #customers th {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: #484ac2;
+      background-color: #04AA6D;
       color: white;
     }
     .view-btn{
@@ -53,7 +50,6 @@
           height: 100%;
           /* Full height */
           overflow: auto;
-         
           /* Enable scroll if needed */
        /*   background-color: rgb(0, 0, 0);*/
           /* Fallback color */
@@ -70,8 +66,7 @@
           padding: 20px;
           border: 1px solid #888;
           width: 50%;
-          height: 60%;
-          background-color: rgb(29, 111, 235);
+          height: 50%;
         }
     
         /* The Close Button */
@@ -96,43 +91,26 @@
         }
     </style>
     
-    <title>Assignments </title>
+    <title>validate Students </title>
 </head>
 <body>
     <table id="customers">
         <thead>
-          <th>Students Name</th>
-          <th>Roll</th>
-          <th>Date</th>
-          
-          <th>Status</th>
-          <th>Check</th>
+          <th>Application Number</th>
+          <th>Student Name</th>
+         
           
         </thead>
        
         <tr>
+    <td>5002180</td>
     <td>Sornali Hazra</td>
-    <td>97</td>
-    <td>24-03-22</td>
-    <td>Done</td>
+    <td></td>
     <td><button class="view-btn" id="bt">View</button></td>
+    <td><button class="view-btn" >Accept</button></td>
+    <td><button class="view-btn" >Reject</button></td>
         </tr>
     
-        <tr>
-          <td>HHH</td>
-          <td>HHH</td>
-          <td>---</td>
-          <td>pending</td>
-          <td><button class="view-btn">View</button></td>
-                      </tr>    
-        
-                      <tr>
-                        <td>HHH</td>
-                        <td>HHH</td>
-                        <td>HHH</td>
-                        <td>HHH</td>
-                        <td><button class="view-btn">View</button></td>
-                                    </tr>    
        
       </table>
     
