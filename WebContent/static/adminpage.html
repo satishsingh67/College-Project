@@ -15,6 +15,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    color: black;
 }
 
 body {
@@ -72,7 +73,7 @@ td {
 
 .side-menu {
     position: fixed;
-    background: #287c6a;
+    background: #d8e618;
     width: 20vw;
     min-height: 100vh;
     display: flex;
@@ -88,12 +89,12 @@ td {
 }
 
 .side-menu li {
-    font-size: 21px;
+    font-size: 16px;
     padding: 20px 50px;
-    color: white;
+    color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
-   
+   font-weight: 700;
 }
 
 .side-menu li:hover {
@@ -106,7 +107,7 @@ td {
     right: 0;
     width: 80vw;
     height: 100vh;
-    background: #1eac8d;
+    background: #ee300f;
 }
 
 .container .header {
@@ -115,7 +116,7 @@ td {
     right: 0;
     width: 80vw;
     height: 10vh;
-    background: white;
+    background: brown;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,7 +187,7 @@ td {
     position: relative;
     margin-top: 10vh;
     min-height: 90vh;
-    background: #dadacf;
+    background: #f7f7e8;
 }
 
 .container .content .cards {
@@ -195,13 +196,13 @@ td {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: rgb(56, 109, 80);
+    background-color: rgb(33, 33, 102);
 }
 
 .container .content .cards .card {
     width: 220px;
     height: 150px;
-    background: rgb(239, 243, 242);
+    background:rgb(250, 252, 251);
     margin: 8px 8px;
     display: flex;
     align-items: center;
@@ -218,6 +219,7 @@ td {
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
+    background-color: cadetblue;
 }
 
 .container .content .content-2 .recent-payments {
@@ -316,7 +318,7 @@ td {
        
           padding: 40px;
           border: 1px solid #888;
-          width: 40%;
+          width: 60%;
           height: 50%;
           background-color: cadetblue;
           box-shadow: 5 px 5px 5px solid red;
@@ -348,16 +350,18 @@ td {
 <body>
     <div class="side-menu">
         <div class="brand-name" style="background-color: rgb(255, 255, 255);">
-            <h1 style="color: rgb(28, 41, 80);">GNIT</h1>
+            <img src="./images/GNIT_Kolkata_logo.png"</a>
         </div>
         <ul>
-            <li> <i class="fas fa-th-large"></i>&nbsp; <span>Dashboard</span> </li>
-            <li> <i class="fas fa-user-graduate"></i>&nbsp;<span>Students</span> </li>
-            <li> <i class="fas fa-chalkboard-teacher"></i>&nbsp;<span>Teachers</span> </li>
-            <li><img src="./fontimg/school.png" alt="">&nbsp;<span>Schools</span> </li>
-            <li><img src="payment.png" alt="">&nbsp;<span>Income</span> </li>
-            <li><i class="fas fa-question"></i>&nbsp; <span>Help</span></li>
-            <li>  <i class="fas fa-cog"></i>&nbsp;<span>Settings</span> </li>
+            <li> <i class="fas fa-th-large"></i>&nbsp; <a href="#"><span>Dashboard</span></a> </li>
+            <li> <i class="fas fa-user-graduate"></i>&nbsp;<a href="./validatestudents.html"><span>Students</span></a> </li>
+            <li> <i class="fas fa-chalkboard-teacher"></i>&nbsp;<a href="./adminteachers.html"><span>Teachers</span></a> </li>
+            <li><i class="fas fa-chalkboard-teacher"></i>&nbsp;<a href="#"><span>Mentors</span> </a></li>
+            <li><i class="fas fa-chalkboard-teacher"></i>&nbsp;<a href="./newadmin.html"><span>New Admin</span></a> </li>
+            <li><i class="fas fa-question"></i>&nbsp; <a href="#"><span>Queries</span></a></li>
+            <li><i class="fas fa-info"></i>&nbsp;<a href="#"><span>Update Information</span> </a></li>
+            <li>  <i class="fas fa-cog"></i>&nbsp;<a href="./adminchangepass.html"><span>Change Password</span></a> </li>
+            <li>  <i class="fas fa-cog"></i>&nbsp;<a href="./deleteaccadmin.html"><span>Delete Account</span></a> </li>
         </ul>
     </div>
     <div class="container">
@@ -368,7 +372,7 @@ td {
                     <button type="submit"><img src="./fontimg/search.png" alt=""></button>
                 </div>
                 <div class="user">
-                    <a href="#" class="btn">Add New</a>
+                    <a href="#" class="btn" style="background-color:rgb(30, 30, 68);">LogOut</a>
                     <img src="./fontimg/notifications.png" alt="">
                     <div class="img-case">
                         <img src="./fontimg/user.png" alt="">
@@ -380,26 +384,17 @@ td {
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <h1><a href="./validatestudents.html" style="color:teal;">Students</a></h1>
-                        <h3>Section</h3>
+                        <h1><a href="./validatestudents.html" style="color:rgb(13, 14, 14);">Students</a></h1>
+                        <h3 style="color: black;">Section</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="./fontimg/students.png" style="color: teal;" alt="">
+                        <img src="./fontimg/students.png" style="color: rgb(10, 10, 10);" alt="">
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <h1><a href="" style="color:teal;">Teachers</a></h1>
-                        <h3>Section</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="./fontimg/teachers.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1><a href="" style="color:teal;">Mentors</a></h1>
-                        <h3>Section</h3>
+                        <h1><a href="./adminteachers.html" style="color:rgb(16, 17, 17);">Teachers</a></h1>
+                        <h3 style="color: black;">Section</h3>
                     </div>
                     <div class="icon-case">
                         <img src="./fontimg/teachers.png" alt="">
@@ -407,8 +402,17 @@ td {
                 </div>
                 <div class="card">
                     <div class="box">
-                        <h1><a href="" style="color:teal;">Grivience</a></h1>
-                        <h3>Section</h3>
+                        <h1><a href="./adminamentor.html" style="color:rgb(14, 15, 15);">Mentors</a></h1>
+                        <h3 style="color: black;">Section</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="./fontimg/teachers.png" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1><a href="./admingrivience.html" style="color:rgb(13, 14, 14);">Grievance</a></h1>
+                        <h3 style="color: black;">Section</h3>
                     </div>
                     <div class="icon-case">
                         <img src="./fontimg/school.png" alt="" style="background-color: rgb(216, 85, 107);">
@@ -418,7 +422,7 @@ td {
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Update Information</h2>
+                        <h2 id="update">Update Information</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
                     <table>
@@ -441,7 +445,7 @@ td {
                             <td><input type="file"></td>
                            <td>
                                <select>
-                                <option>Select photo type</option>
+                                <option>Select file type</option>
                                    <option>Cultural Fest</option>
                                    <option>Tech Fest</option>
                                    <option>College</option>
@@ -453,7 +457,13 @@ td {
                             <td><a href="#" class="btn">Post</a></td>
                         </tr>
                         <tr>
-                            <td>Post Exam Shedule</td>
+                            <td>Post Exam Schedule</td>
+                            <td><input type="file"></td>
+                           <td>--</td>
+                            <td><a href="#" class="btn">Post</a></td>
+                        </tr>
+                        <tr>
+                            <td>Post  PopUp</td>
                             <td><input type="file"></td>
                            <td>--</td>
                             <td><a href="#" class="btn">Post</a></td>
@@ -506,9 +516,31 @@ td {
           <span class="close" id="s" >&times;</span>
          
           <div id="tableDiv">
+            <table id="customers" style="">
+                <thead style="background-color: yellow;">
+                  <th> Name</th>
+                  <th>Query</th>
+                  <th>Phone No.</th>
+                  
+                  <th>Replay</th>
+                  <th>Post</th>
+                  <th>Ignore</th>
+                  
+                </thead>
+               
+                <tr style="background-color: honeydew;">
+            <td>Sornali Hazra</td>
+            <td><p>hgjhjjjjhgjhfhgsajdh hjadjgu</p></td>
+            <td>01965553942</td>
+            <td><input type="text" placeholder="Text Here" style="width: auto;height: 60px;"></td>
+            <td><button class="view-btn" id="bt" style="width: 60px;height: 40px;background-color: green;">Send</button></td>
+            <td><button class="view-btn" id="bt"  style="width: 60px;height: 40px;background-color: rgb(55, 199, 235);">Cancel</button></td>
+                </tr>
             
-            <p>jbwdifuif jhdbuhbu jhabdi</p>
-
+                
+               
+              </table>
+            
           </div>
 
 

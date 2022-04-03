@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- bootstrap cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+
+    <title>adminlogin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+:root{
+   --blue:#00b8b8;
+   --black:#333;
+   --white:#fff;
+   --light-color:#666;
+   --light-bg:#eee;
+   --border:.2rem solid rgba(0,0,0,.1);
+   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none !important;
+   text-transform: capitalize;
+}
+
+*::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: var(--blue);
+}
+
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+   scroll-behavior: smooth;
+ 
+}
+
+section{
+   padding:7rem 2rem;
+}
+
+.heading{
+   text-align: center;
+   font-size: 4rem;
+   color:var(--black);
+   text-transform: uppercase;
+   font-weight: bolder;
+   margin-bottom: 3rem;
+}
+
+.link-btn{
+   display: inline-block;
+   padding:1rem 3rem;
+   border-radius: .5rem;
+   background-color: var(--blue);
+   cursor: pointer;
+   font-size: 1.7rem;
+   color:var(--white);
+}
+
+.link-btn:hover{
+   background-color: var(--black);
+   color:var(--white);
+}
+.login{
+   margin: 100px;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px solid gray;
+    height: 600px;
+    box-shadow: 5px 5px 5px gray;
+    border-radius: 40px;
+    border-bottom-right-radius:20px ;
+   
+   
+}
+ form{
+   border-radius: .5rem;
+   background-color:none;
+   padding:2rem;
+   margin:0 auto;
+   max-width: 50rem;
+}
+
+form .message{
+   margin-bottom: 2rem;
+   border-radius: .5rem;
+   background-color: var(--blue);
+   padding:1.2rem 1rem;
+   font-size: 1.7rem;
+   color:var(--white);
+   text-align: center;
+}
+
+ form .box{
+   width: 100%;
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+   border-radius: .5rem;
+   background-color: var(--white);
+   padding:1.2rem 1.4rem;
+   font-size: 1.7rem;
+   color:var(--black);
+   text-transform: none;
+}
+
+form span{
+   font-size: 1.7rem;
+   color:var(--black);
+}
+
+    </style>
+</head>
+<body style="background-image: url(./images/background/properback.png);background-repeat: no-repeat;background-size: cover;">
+    <section  class="login" id="contact" style=" background-color: rgb(158, 158, 240);" >
+
+        <h1 class="heading" style= "font-size: 40px; font-weight: 900;font-family: 'Times New Roman', Times, serif;
+        padding-top: 1rem;
+        color: rgb(252, 250, 255); text-shadow: 0.4rem 0.4rem 0 rgba(12, 12, 12, 0.2);">Admin Login</h1>
+     <div class="col-md-12" style="box-shadow:  5px 5px 5px solid grey;">
+         <div class="row">
+             <div class="col-md-6">
+               <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+               <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_1z0fledt.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+               
+               </div>
+             <div class="col-md-6">
+                <form  style="background-color: rgb(224, 170, 224);box-shadow: 5px 5px 5px solid rgb(129, 47, 47);border-radius: 10px;"><br><br>
+           <div class="col-md-12">
+              <div class="row">
+                 <div class="col-md-6">
+                  <span>your name :</span>
+                  <input type="text" name="name" placeholder="enter your name" class="box" required>
+                  <span>your email :</span>
+                  <input type="email" name="email" placeholder="enter your email" class="box" required>
+                  
+                 </div>
+                 <div class="col-md-6">
+                  <span>your number :</span>
+                  <input type="number" name="number" placeholder="enter your number" class="box" required>
+                  <span>your Password:</span>
+                  <input type="password" name="number" placeholder="enter your Password" class="box" required>
+                  
+               </div>
+              </div>
+           </div>
+                  
+                    <input type="submit" style="background-color: black;margin: 20px;" value="Submit" name="submit" class="link-btn"> <input type="submit" style="background-color: black;margin: 20px;" value="Clear" name="Submit" class="link-btn" style="border-bottom-right-radius: 20px;">
+                 </form>  
+            </div>
+         </div>
+     </div>
+
+
+
+       
+     
+     </section>
+     
+</body>
+</html>

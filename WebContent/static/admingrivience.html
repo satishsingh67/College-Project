@@ -33,8 +33,9 @@
           width: 90px;
           background-color: lightblue;
         }
-    /* The Modal (background) */
-    .modal {
+    
+
+        .modal {
           display: none;
           /* Hidden by default */
           position:fixed;
@@ -60,14 +61,14 @@
         /* Modal Content */
         .modal-content {
         
-          
+          text-align: left;
           margin: auto;
        
           padding: 20px;
           border: 1px solid #888;
           width: 50%;
-          height: 50%;
-          background-color: cadetblue;
+          height: 70%;
+          background-color: rgb(215, 255, 36);
           box-shadow: 5 px 5px 5px solid red;
         }
     
@@ -97,33 +98,38 @@
 </head>
 <body>
     <table id="customers">
-        <thead>
-          <th>Name</th>
-          <th>Mobile No</th>
-          <th>massage</th>
+        <thead>\
+            <th>Complaint No.</th>
           
+          <th>Complaint  Name</th>
+          <th>View</th>
          
-          <th>Replay</th>
-          <th>Send</th>
+          <th>Send To Authorities</th>
+          <th>Ignore</th>
           <th>Status</th>
           
         </thead>
        
         <tr>
-    <td>Sornali Hazra</td>
-    <td>01965553942</td>
-    <td><button class="view-btn" id="bt">View</button></td>
-   
-    <td><input type="text" style="height: 50px;"></td>
-    <td><button class="view-btn" >Send</button></td>
-    <td>Replied</td>
+    <td>1</td>
+    <td>Sornali</td>
+    <td><button id="bt">View</button></td>
+    <td><button>Send</button></td>
+    <td><button>Cancel</button></td>
+      
+   <td><p>Submited</p></td>
+    
         </tr>
     
         
        
       </table>
     
-      <div id="myModal" class="modal">
+      
+    
+      </div>
+
+ <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
@@ -131,8 +137,14 @@
          
           <div id="tableDiv">
             
-            <p>jbwdifuif jhdbuhbu jhabdi</p>
-
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold; font-size: 20px;">User Type :</span><span style="font-size: 18px;"> &nbsp; &nbsp;Students</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;">Complaint Name :</span><span style="font-size: 18px;">&nbsp; &nbsp;sornali</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;">Gender :</span><span style="font-size: 18px;">&nbsp; &nbsp;Femal</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;">Email Id :</span><span  style="font-size: 18px;">&nbsp; &nbsp;@kjhihii</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;">Complain Categories:</span><span  style="font-size: 18px;">&nbsp; &nbsp;Examination & Result</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;"> Addressing Department:</span><span  style="font-size: 18px;">&nbsp; &nbsp;ECE</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;">Contact Number:</span><span  style="font-size: 18px;">&nbsp; &nbsp;01965553942</span><br><br>
+           <span style="background-color: rgb(0, 255, 21); font-weight: bold;font-size: 20px;">Complain:</span><span  style="font-size: 18px;">&nbsp; &nbsp;kjhkjsIUigsUGi</span>
           </div>
 
 
@@ -159,7 +171,6 @@ $("#s").click(function (event) {
 
 
 </script>
-
 </body>
 </html>
 

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/committes.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+   
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+ <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+:root{
+   --blue:#00b8b8;
+   --black:#333;
+   --white:#fff;
+   --light-color:#666;
+   --light-bg:#eee;
+   --border:.2rem solid rgba(0,0,0,.1);
+   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none !important;
+   text-transform: capitalize;
+}
+
+*::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: var(--blue);
+}
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+   scroll-behavior: smooth;
+  
+}
+section.login{
+   margin: 100px;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px solid gray;
+    height: 600px;
+    box-shadow: 5px 5px 5px gray;
+    border-radius: 40px;
+   
+   
+}
+form{
+   
+   border-radius: .5rem;
+   background-color:rgb(247, 248, 248);
+   padding:2rem;
+   margin:0 auto;
+   max-width: 50rem;
+   padding-top: 20px;
+   padding-bottom: 100px;
+}
+
+form .message{
+   margin-bottom: 2rem;
+   border-radius: .5rem;
+   background-color: var(--blue);
+   padding:1.2rem 1rem;
+   font-size: 1.7rem;
+   color:var(--white);
+   text-align: center;
+
+}
+
+form .box{
+   width: 100%;
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+   border-radius: .5rem;
+   background-color: var(--white);
+   padding:1.2rem 1.4rem;
+   font-size: 1.7rem;
+   color:var(--black);
+   text-transform: none;
+}
+
+form span{
+   font-size: 1.7rem;
+   color:var(--black);
+}
+.link-btn{
+   display: inline-block;
+   padding:1rem 3rem;
+   border-radius: .5rem;
+   background-color: var(--blue);
+   cursor: pointer;
+   font-size: 1.7rem;
+   color:var(--white);
+   margin: 10px;
+}
+
+.link-btn:hover{
+   background-color: var(--black);
+   color:var(--white);
+}
+#customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 2px solid rgb(56, 52, 52);
+      padding: 8px;
+     
+    }
+    
+    #customers tr:nth-child(odd){background-color: #76fc65;}
+    #customers tr:nth-child(even){background-color: #76fc65;}
+    
+    #customers tr:hover {background-color: rgb(236, 84, 84);}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #484ac2;
+      color: white;
+    }
+    .view-btn{
+          width: 90px;
+          background-color: lightblue;
+        }
+    /* The Modal (background) */
+    .modal {
+          display: none;
+          /* Hidden by default */
+          position:fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 100px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+         
+          /* Enable scroll if needed */
+       /*   background-color: rgb(0, 0, 0);*/
+          /* Fallback color */
+        /*  background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+        }
+    
+        /* Modal Content */
+        .modal-content {
+        
+          
+          margin: auto;
+       
+          padding: 20px;
+          border: 1px solid #888;
+          width: 50%;
+          height: 60%;
+          background-color: rgb(29, 111, 235);
+        }
+    
+        /* The Close Button */
+        .close {
+           
+          color: #ffffff;
+          float: right;
+          margin-left: 97%;
+          margin-top: -3%;
+          font-size: 28px;
+          font-weight: bold;
+          background-color: black;
+          border-radius:5px ;
+          
+        }
+    
+        .close:hover,
+        .close:focus {
+          color: rgb(215, 230, 17);
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+ </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><img class="brand1" src="./images/teachers/1200px-JIS_University.svg.png"></i> </a>
+    <a href="#" class="logo"><img src="./image/GNIT_Kolkata_logo.png"></i> </a>
+        <div class="brand">
+            <h2 class="text1 text-center">GURUNANAK INSTITUTE OF TECHNOLOGY</h2> 
+        </div><br>
+    </header>
+             <hr > 
+             <main>
+                
+                <section style="background-image: url(./images/background/back7.jpg) ;background-repeat: no-repeat; background-size: cover;">
+                    <h1 class="heading">Assign New <span>Mentor </span> </h1>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bjyiojos.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player></div>
+                            <div class="col-md-7">
+                                <form  >
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Mentor Name:</span>
+                                            <input type="text" name="name" placeholder="Enter Mentor Name" class="box" required>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Mentor Email:</span>
+                                            <input type="email" name="email" placeholder="Enter Mentor Email" class="box" required>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Course:</span>
+                                            <select class="box">
+                                                <option>Select Course</option>
+                                                <option>B.Tech</option>
+                                                <option>M.Tech</option>
+                                                <option>BCA</option>
+                                                <option>MCA</option>
+                                                <option>B.H.M</option>
+                                                <option>Diploma</option>
+                                                <option>ASHU</option>
+                                            
+        
+                                            </select><br>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Post:</span>
+                                            
+                                            <input type="text" name="number" placeholder="enter Teacher Post" class="box" required>
+                                            
+                                             
+                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Department:</span>
+                                            <select class="box">
+                                               
+                                                <option>Select Department</option>
+                                                <option>ECE</option>
+                                                <option>CSE</option>
+                                                <option>AEIE</option>
+                                                <option>IT</option>
+                                                <option>FT</option>
+                                                <option>ASHU</option>
+        
+                                            </select>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Select Sections</span>
+                                           
+                                            <label class="container">I
+                                                <input type="checkbox" checked="checked">
+                                                <span class="checkmark"></span>
+                                              </label>
+                                              
+                                              <label class="container">II
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                              </label>
+                                              
+                                             
+                                            
+                                           
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Year:</span>
+                                            
+                                            <select class="box">
+                                               
+                                                <option>Select Year</option>
+                                                <option>1st</option>
+                                                <option>2nd</option>
+                                                <option>3rd</option>
+                                                <option>4th</option>
+                                                
+        
+                                            </select>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Upload Photo:</span>
+                                            <input type="file" placeholder="choose Photo" name="photo" class="box" required>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Create" name="submit" id="btn" class="link-btn" style="margin-right: 5px; background-color: black;"><input type="submit" value="Cancel" name="submit" id="btn" class="link-btn" style="background-color: black;">
+                                </div>
+                    
+                                   
+                                 </form>   
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                
+                <section>
+                    <h1 class="heading"> Reply To <span>Mentors </span> </h1>
+                    <table id="customers">
+                        <thead>
+                          <th>Mentor Name</th>
+                          <th>Mentor Department</th>
+                          <th>Email Id</th>
+                          <th>Phone No.</th>
+                          
+                          <th> View Messege</th>
+                          <th>Replay</th>
+                          <th>Send</th>
+                          
+                        </thead>
+                       
+                        <tr>
+                    <td>Sornali Hazra</td>
+                    <td>ECE</td>
+                    <td>sornali92@...</td>
+                    <td>0196555..</td>
+                    <td><p style="width: auto;height: 70px;">sgaguiagfghfhfmcmbzkjck</p></td>
+                    <td><input type="text" placeholder="Text Here" style="width: auto;height: 70px;"></td>
+                    <td><button style="width: 50px;height: 30px; background-color: rgb(100, 38, 38);color: white;font-weight: bold;" id="bt">Send</button></td>
+                        </tr>
+                    
+                       
+                      </table>
+                    
+                      <div id="myModal" class="modal">
+                
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                          <span class="close" id="s" >&times;</span>
+                         
+                          <div id="tableDiv">
+                            
+                            <embed width="100%" height="400px" src="./QuestionPapers/BOS Meeting.pdf" type="application/pdf">
+                              
+                
+                          </div>
+                
+                
+                        </div>
+                    
+                      </div>
+                <script>
+                $("#bt").click(function (event) {
+                  $('#myModal').show();
+                        //Calling Loader
+                        $(".loader1").show();
+                
+                
+                });
+                $("#s").click(function (event) {
+                  $('#myModal').hide();
+                        //Calling Loader
+                        $(".loader1").hide();
+                
+                
+                });
+                
+                
+                
+                
+                </script>
+                
+                </section>
+               <section style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
+                <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_nux6g0kx.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>        </div>
+                        <div class="col-md-6">
+                          <form  >
+                     
+                              
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :</span>
+                              <input type="number" name="number" placeholder="enter Id" class="box" required>
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter your Password:</span>
+                              <input type="password" name="password" placeholder="enter your Password" class="box" required>
+                              
+                              <input type="submit" value="Delete" name="submit" id="btn" class="link-btn" style="margin-right: 5px;background-color: black;"><input type="submit" value="Cancel" name="submit" id="btn" class="link-btn"  style="background-color: black;">
+                           </form>   
+                      </div>
+                    </div>
+                </div>
+               </section>
+             </main>
