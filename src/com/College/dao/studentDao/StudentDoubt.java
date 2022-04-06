@@ -55,7 +55,7 @@ public class StudentDoubt {
 	}
 
 	public String viewDoubt(String action,String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId) {
+			String fkSubjectId,String teacherId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -69,6 +69,14 @@ public class StudentDoubt {
 			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			}
+			
+			if(action !=null && action.trim().equalsIgnoreCase("adminDoubt")) {
+				query = "Select `question`,`answer`,`createDate`,`updateDate` from admin_doubt where `fkTeacherId`=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, Integer.parseInt(teacherId));
+				}
+			
+			
 			else {
 			 query = "Select `question`,`answer`,`createDate`,`updateDate` from view_doubts where `fkStudentId`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=?";
 			    pstmt = con.prepareStatement(query);
@@ -158,6 +166,6 @@ public class StudentDoubt {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(new StudentDoubt().viewDoubt(null,"1", "1", "4", "1", "10"));
+		System.out.println(new StudentDoubt().viewDoubt(null,"1", "1", "4", "1", "10",null));
 	}
 }

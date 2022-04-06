@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <script src="./lib/jquery.min.js"></script>
+  <script src="./lib/sweetalert.min.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -231,7 +234,70 @@ h5{
         justify-content: center;
     }
 }
+.loader {
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid #3498db;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 1s linear infinite; 
+        animation: spin 1s linear infinite;
+      }
+      
+   
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
 
+
+/* The Modal (background) */
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content1 {
+  background-color: #fefefe;
+  margin: auto;
+  margin-top: 10%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 32%;
+  height:32%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  margin-left: 97%;
+  margin-top: -3%;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -243,7 +309,7 @@ h5{
 
         <div class="login-content">
 
-            <form action="#">
+            <form id="teacherLoginForm">
 
                 <div class="title-container">
                     <h1> Teachers Login</h1>
@@ -261,30 +327,28 @@ h5{
                         </div>
                         <div class="div">
                             <h5>Faculty Name :</h5>
-                            <input type="text" class="input">
+                            <input name="teacherName" type="text" style="color:white;" class="input">
                         </div>
                     </div>
                     <div class="input-div pass">
                         <div class="i">
                             <i class="fas fa-eye" ></i>
                         </div>
-                        
-                           
-                            <select class="div "required="">
+                            <select name="departmentId" class="div "required="">
 								<option>-Select Faculty Depertment -</option>
-								<option>CSE</option>
-								<option>ECE</option>
-								<option>IT</option>
-								<option>EE</option>
-								<option>AEIE</option>
-								<option>FT</option>
-								<option>BHM</option>
-								<option>ASHU</option>
-								<option>BCA</option>
-							  
-								<option>Cyber scurity</option>
-								<option>Data Science</option>
-							</select>
+                                  <option value="1">CSE</option>
+                                  <option value="2">ECE</option>
+                                  <option value="3">IT</option>
+                                  <option value="4">EE</option>
+                                  <option value="5">AEIE</option>
+                                  <option value="6">FT</option>
+                                  <option value="7">BHM</option>
+                                   <option value="8">ASHU</option>
+                                    <option value="9">BCA</option>
+               
+                                     <option>Cyber scurity</option>
+                                    <option>Data Science</option>
+							   </select>
                        
                     </div>
                     <div class="input-div one">
@@ -293,7 +357,7 @@ h5{
                         </div>
                         <div class="div">
                             <h5>Email Id :</h5>
-                            <input type="email" class="input">
+                            <input name="emailId" style="color:white;" type="email" class="input">
                         </div>
                     </div>
                     <div class="input-div pass">
@@ -302,7 +366,7 @@ h5{
                         </div>
                         <div class="div">
                             <h5>Password</h5>
-                            <input id="pswrd" type="password" class="input">
+                            <input name="pass" style="color:white;" id="pswrd" type="password" class="input">
                         </div>
                     </div>
 
@@ -310,13 +374,30 @@ h5{
 
                 </div>
 
-                <input type="submit" class="btn" value="Login">
+                <input type="submit" id="teacherLogin"  class="btn" value="Login">
 
-                <input type="submit" class="btn" value="Clear">
+                <input type="submit" id="clearForm" class="btn" value="Clear">
 
             </form>
         </div>
     </div>
+     <div id="myModal" class="modal1">
+
+        <!-- Modal content -->
+        <div class="modal-content1">
+          <span class="close" style="display: none;" >&times;</span>
+          <div class="loader1" style="display:none;">
+            <div class="loader" style="margin: auto;margin-left:40%;margin-top:7%;"> 
+            </div>
+      
+      <h5 id="loaderText" style="margin: auto;margin-left:30%;margin-top:0%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;font-size:20px;">Please wait....</h5>       
+        </div>
+        </div>
+      
+      </div>
+    
+    
+    
     <script>
         const inputs = document.querySelectorAll(".input");
 
@@ -354,8 +435,63 @@ function show() {
 
 
 }
-
-
     </script>
+  <script>
+  $(document).ready(function () {
+	    console.log("Page loaded");
+	    $('#teacherLogin').click(function (event) {
+	      event.preventDefault();
+
+	      $('#myModal').show();
+	      //Calling Loader
+	      $(".loader1").show();
+	      //Scrolling window to  top 
+	      $(window).scrollTop(0);
+	      
+
+	      var form = $('#teacherLoginForm')[0];
+	      // Create an FormData object 
+	      var data = new FormData(form);
+
+	      // disabled the submit button
+	      $("#teacherLogin").prop("disabled", true);
+	      $.ajax({
+	        type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: "/College_Final_Year_Project/teacherLogin",
+	        data: data,
+	        processData: false,
+	        contentType: false,
+	        success: function (data, textStatus, jqXHR) {
+	        	  $(".loader1").hide();
+	              $('#myModal').hide();
+	          if (data.trim().includes(".jsp")) {
+	        	  $('#teacherLoginForm')[0].reset();
+	        	    window.location.href = data;
+	        	 }    
+	          else {
+	        	  swal("Error", data, "error");
+	        	  $("#teacherLogin").prop("disabled", false);
+	          }
+	        },
+	        error: function (jqXHR, textStatus, errorThrown) {
+	          $(".loader1").hide();
+	          $('#myModal').hide();
+	          $('#teacherLoginForm')[0].reset();
+	          swal("Error", data, "error");
+	          $("#teacherLogin").prop("disabled", false);
+	        }
+	      });
+	    }); 
+	  });
+  
+  $('#clearForm').click(function (event) {
+      event.preventDefault();
+      $('#teacherLoginForm')[0].reset();
+  });
+  
+  
+  </script>  
+    
 </body>
 </html>

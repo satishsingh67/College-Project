@@ -62,7 +62,46 @@
 		<servlet-name>LabHandler</servlet-name>
 		<servlet-class>com.college.action.LabHandler</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>TeacherLogin</servlet-name>
+		<servlet-class>com.college.action.TeacherLogin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TeacherLinkManagement</servlet-name>
+		<servlet-class>com.college.action.TeacherLinkManagement</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ViewNotesAndUploadTeacher</servlet-name>
+		<servlet-class>com.college.action.ViewNotesAndUploadTeacher</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ViewAndUploadAssignmentTeacher</servlet-name>
+		<servlet-class>com.college.action.ViewAndUploadAssignmentTeacher</servlet-class>
+	</servlet>
 
+	<servlet>
+		<servlet-name>PostQuestionPaperAndTakeActionTeacher</servlet-name>
+		<servlet-class>com.college.action.PostQuestionPaperAndTakeActionTeacher</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ViewAndUploadLabotherDataTeacher</servlet-name>
+		<servlet-class>com.college.action.ViewAndUploadLabotherDataTeacher</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ViewDoubtsAndUploadTeacher</servlet-name>
+		<servlet-class>com.college.action.ViewDoubtsAndUploadTeacher</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>FetchStudentAnswerScriptAndOtherFiles</servlet-name>
+		<servlet-class>com.college.action.FetchStudentAnswerScriptAndOtherFiles</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AboutUsFeedback</servlet-name>
+		<servlet-class>com.college.action.AboutUsFeedback</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ContactUs</servlet-name>
@@ -117,5 +156,41 @@
 		<servlet-name>LabHandler</servlet-name>
 		<url-pattern>/lab</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TeacherLogin</servlet-name>
+		<url-pattern>/teacherLogin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TeacherLinkManagement</servlet-name>
+		<url-pattern>/teacherLink</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewNotesAndUploadTeacher</servlet-name>
+		<url-pattern>/uploadNotesAndView</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewAndUploadAssignmentTeacher</servlet-name>
+		<url-pattern>/uploadAssignmentAndView</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PostQuestionPaperAndTakeActionTeacher</servlet-name>
+		<url-pattern>/postQuestionPaper</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewAndUploadLabotherDataTeacher</servlet-name>
+		<url-pattern>/labOtherData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewDoubtsAndUploadTeacher</servlet-name>
+		<url-pattern>/solveDoubt</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FetchStudentAnswerScriptAndOtherFiles</servlet-name>
+		<url-pattern>/fetchDetails</url-pattern>
+	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>AboutUsFeedback</servlet-name>
+		<url-pattern>/aboutUs</url-pattern>
+	</servlet-mapping>
 </web-app>

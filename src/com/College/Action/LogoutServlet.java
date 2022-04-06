@@ -30,11 +30,21 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String action=request.getParameter("action");
 	HttpSession session=request.getSession();
-	session.removeAttribute("student");
 	Message message=new Message("Logout Successfuly.","success","alt-success");
+	if(action!=null && action.trim().equalsIgnoreCase("student")) {
+		session.removeAttribute("student");
+		session.setAttribute("message",message);
+		response.sendRedirect("./static/studentLogin.jsp");
+	}
+	if(action!=null && action.trim().equalsIgnoreCase("teacher")){
+	session.removeAttribute("teacher");
 	session.setAttribute("message",message);
-	response.sendRedirect("./static/studentLogin.jsp");
+	response.sendRedirect("./static/teacherLogin.jsp");
+
+	}
+	
 	}
 
 	/**

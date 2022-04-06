@@ -193,6 +193,7 @@ public class MapStudentSubjectDao {
 				StudentAssignment studentAssignment = new StudentAssignment();
 				studentAssignment.setPkStudentAssignmentStatusId(rs.getInt("pkStudentAssignmentStatusId"));
 				studentAssignment.setAssignmentName(rs.getString("assignmentName"));
+				studentAssignment.setPkAssignmentId(rs.getInt("assign.pkAssignmentId"));
 				if (rs.getBoolean("status")) {
 					studentAssignment.setStatus("Submitted");
 				} else {

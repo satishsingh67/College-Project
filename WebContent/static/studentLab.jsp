@@ -199,7 +199,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
               <a class="nav-link" href="#exam">Exams</a>
             </li>
               <li class="nav-item">
-              <a class="nav-link" href="/College_Final_Year_Project/logout">Logout</a>
+              <a class="nav-link" href="/College_Final_Year_Project/logout?action=student">Logout</a>
             </li>
             <li><img class="images" src="images/teachers/1200px-JIS_University.svg.png"></li>
           </ul>
@@ -215,7 +215,16 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
         <div class="row">
           <div class="col-lg-5 col-md-6">
             <h2 style="font-family: 'Times New Roman', Times, serif;"><%=subjectName +" ["+subjectcode+"]"%></h2>
-            
+                <p style="font-family: 'Times New Roman', Times, serif;color:black;font-size:20px;">
+                <%=
+                (student.getYear()==1)?( student.getYear()+"st Year"):(student.getYear()==2)?( student.getYear()+"nd Year"):(student.getYear()==3)?( student.getYear()+"rd Year"):student.getYear()+"th Year"
+                %>
+                <%= "-" %>
+            <%=  (student.getSemester()==1)?( student.getSemester()+"st Semester"):(student.getSemester()==2)?( student.getSemester()+"nd Semester"):(student.getSemester()==3)?( student.getSemester()+"rd Semester"):student.getSemester()+"th Semester"%>
+            	</p>
+            	<p style="font-family: 'Times New Roman', Times, serif;color:black;font-size:20px;">
+            	  <%= student.getDepartment()+"-"+student.getSection()%>
+            	</p>
              <%
             if(dailyClassLink != null){
             %>
@@ -260,7 +269,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
              <%
              }else{
              %>
-           <a href="<%=labAppLink%>" target="_blank" class="link-btn" disabled>Join  <i class="fas fa-users-class"></i></a>   
+           <a href="<%=labAppLink%>" target="_blank" class="link-btn" >Join  <i class="fas fa-users-class"></i></a>   
              <%
              }
              %>

@@ -67,7 +67,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 			<div class="links">
 				<a href="./studentpage.html">home</a> <a href="#about">Information</a>
 				<a href="#services">Classes</a> <a href="#contact">contact</a>
-                <a href="/College_Final_Year_Project/logout">Logout</a>
+                <a href="/College_Final_Year_Project/logout?action=student">Logout</a>
 			</div>
 			<img src="./images/teachers/1200px-JIS_University.svg.png"
 				class="logo">

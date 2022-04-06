@@ -1,0 +1,235 @@
+
+#doubtTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#doubtTable td, #doubtTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#doubtTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#doubtTable tr:hover {background-color: #ddd;}
+
+#doubtTable th {
+  padding-top: 5px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+th{
+ position: sticky;
+     top: 0px;
+     height:10px;
+}
+td{
+height:1px;
+}
+
+ .loader {
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #3498db;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 35%;
+    }
+   
+.modalDoubt {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+ /* Modal Content */
+    .modal-contentDoubt {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 65%;
+      height: 65%;
+    }
+    
+       
+.modalViewNotes {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+ /* Modal Content */
+    .modal-contentViewNotes {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 65%;
+      height: 65%;
+    }
+.modalViewAssignment {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+ /* Modal Content */
+    .modal-contentViewAssignment {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 65%;
+      height: 65%;
+    }
+.modalViewQuestionPaper {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+     
+    }
+ /* Modal Content */
+    .modal-contentViewQuestionPaper {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 45%;
+      height: 55%;
+    }
+    

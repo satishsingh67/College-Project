@@ -7,6 +7,17 @@ public class ViewVariables {
    private Integer pkId;
    private String name;
    private Date createDate;
+   private Date dueDate;
+   private Integer SlNo;
+   private String questionPaperName;
+   private String studentName;
+   private String rollNo;
+   private String departmentName;
+   private Integer semster;
+   private Integer section;
+   private String submittedFileName;
+   private String status;
+   private Date updateDate;
 public Integer getPkId() {
 	return pkId;
 }
@@ -24,6 +35,73 @@ public Date getCreateDate() {
 }
 public void setCreateDate(Date createDate) {
 	this.createDate = createDate;
+}
+public Date getDueDate() {
+	return dueDate;
+}
+public void setDueDate(Date dueDate) {
+	this.dueDate = dueDate;
+}
+public Integer getSlNo() {
+	return SlNo;
+}
+public void setSlNo(Integer slNo) {
+	SlNo = slNo;
+}
+public String getQuestionPaperName() {
+	return questionPaperName;
+}
+public void setQuestionPaperName(String questionPaperName) {
+	this.questionPaperName = questionPaperName;
+}
+public String getStudentName() {
+	return studentName;
+}
+public void setStudentName(String studentName) {
+	this.studentName = studentName;
+}
+public String getRollNo() {
+	return rollNo;
+}
+public void setRollNo(String rollNo) {
+	this.rollNo = rollNo;
+}
+public String getDepartmentName() {
+	return departmentName;
+}
+public void setDepartmentName(String departmentName) {
+	this.departmentName = departmentName;
+}
+
+public Integer getSemster() {
+	return semster;
+}
+public void setSemster(Integer semster) {
+	this.semster = semster;
+}
+public Integer getSection() {
+	return section;
+}
+public void setSection(Integer section) {
+	this.section = section;
+}
+public String getSubmittedFileName() {
+	return submittedFileName;
+}
+public void setSubmittedFileName(String submittedFileName) {
+	this.submittedFileName = submittedFileName;
+}
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
+}
+public Date getUpdateDate() {
+	return updateDate;
+}
+public void setUpdateDate(Date updateDate) {
+	this.updateDate = updateDate;
 }
 	
 	

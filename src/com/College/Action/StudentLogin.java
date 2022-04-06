@@ -65,7 +65,6 @@ public class StudentLogin extends HttpServlet {
 			Student student=new StudentLoginValidation().validateDetails(idNumber, studentName, securityQuestion, securityQuestionAnswer, securityPin);
 			 if(student !=null) {	 
 				 status="studentPage1.jsp";
-				// status="NewFile1.jsp";
 				 HttpSession session=request.getSession();
 				 session.setAttribute("student",student);
 				 response.getWriter().append(status);

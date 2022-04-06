@@ -100,7 +100,28 @@
    color:var(--white);
    line-height: 2;
 }
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 5px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
   </style>
 </head>
 
@@ -152,15 +173,12 @@
             <h1>Basic Electrical Engineering Lab</h1>
             
             <div class="mt-4">
-              <button class="main-btn">Join Class <i class="fas fa-users-class"></i></button>
-              
+              <a href="" class="btn btn-primary btn-md">Join Class <i class="fas fa-users-class"></i></a>
+            
             </div>
-            <form action="">
-                
-              <input type="text" placeholder="Past Link">
-              
-           </form>
-           <button class="main-btn">Upload Class Link <i class="fas fa-users-class"></i></button>
+            <br>
+             <input type="text" style="height:37px;" placeholder="Enter class link">
+             <button  class="btn btn-primary">Upload Class Link <i class="fas fa-users-class"></i></button>
           </div>
 
           <div class="col-lg-5 col-md-6">
@@ -186,12 +204,10 @@
             
              <h3>Application Link</h3>
              <p>Join The virtual Lab With This Application Link</p>
-             <form action="">
-                
-              <input type="text" placeholder="Past Link">
-              
-           </form>
-             <button class="link-btn">Upload Link  <i class="fas fa-users-class"></i></button>
+            <input type="text" style="height:40px;" placeholder="Enter Application link">
+              <button class="btn btn-primary btn-lg">Upload Link  <i class="fas fa-users-class"></i></button>
+           <button class="btn btn-primary btn-lg">Join Link <i class="fas fa-users-class"></i></button>
+          
           </div>
  
        </div>
@@ -241,76 +257,28 @@
           <div class="col-lg-7 col-md-12 mb-lg-0 mb-5">
             <h2>Students Question</h2>
             <div class="card border-0">
-                <div class="col-md-12" style="padding: 0 8px;">
-                    <div class="latestScrollingSection">
-                        <div class="latestScrollingBlock">
-                                                 
-                        <figure class="col-md-12">
-                            <div class="padding_box">
-                                <a href="#" title="" class="announce_box">
-                                    <figcaption>Report on The Indian Art Carnival
-                                        </figcaption>
-                                        
-                                                                                        
-                                        <img width="33" height="16" src="https://gnit.ac.in/wp-content/uploads/2021/09/new.gif"  alt="new announcement">
-                                                                                        
-                                </a>
-                            </div>
-                        </figure>
-                                                        
-                        <figure class="col-md-12">
-                            <div class="padding_box">
-                                <a href="# " title="" class="announce_box">
-                                    <figcaption>ICSE-2021 MARK SHEET AND PASS CERTIFICATE
-                                        </figcaption>
-                                        
-                                                                                        
-                                        <img width="33" height="16" src="https://gnit.ac.in/wp-content/uploads/2021/09/new.gif"  alt="new announcement">
-                                                                                        
-                                </a>
-                            </div>
-                        </figure>
-                                                        
-                        <figure class="col-md-12">
-                            <div class="padding_box">
-                                <a href="# " title="" class="announce_box">
-                                    <figcaption>Mark Sheet , Pass Certificate, Migration Certificate and School Leaving
-                                        </figcaption>
-                                        
-                                                                                        
-                                        <img width="33" height="16" src="https://gnit.ac.in/wp-content/uploads/2021/09/new.gif" >
-                                                                                        
-                                </a>
-                            </div>
-                        </figure>
-                                                        
-                        <figure class="col-md-12">
-                            <div class="padding_box">
-                                <a href="#" title="" class="announce_box">
-                                    <figcaption>KG Admn notice 2022-23
-                                        </figcaption>
-                                        
-                                                                                        
-                                        <img width="33" height="16" src="https://gnit.ac.in/wp-content/uploads/2021/09/new.gif"  alt="new announcement">
-                                                                                        
-                                </a>
-                            </div>
-                        </figure>
-                                                        
-                        <figure class="col-md-12">
-                            <div class="padding_box">
-                                <a href="# " title="" class="announce_box">
-                                    <figcaption>ICSE &amp; ISC CHART &amp; TOPPERS
-                                        </figcaption>
-                                        
-                                                                                        
-                                        <img width="33" height="16" src="https://gnit.ac.in/wp-content/uploads/2021/09/new.gif" class="attachment-large size-large" alt="new announcement">
-                                                                                        
-                                </a>
-                            </div>
-                        </figure>
-                                                    </div>
-                </div>
+                <div class="col-md-12">
+                <!--Table-->
+            <div style=" height:390px;" overflow-y: auto;">
+            <table id="customers">
+            <tr>
+              <thead >
+            <tr>
+              <th style="display:none;"></th>
+              <th style="text-align:center;">Student Name</th>
+              <th style="text-align:center;">Roll No</th>
+              <th style="text-align:center;">Create Date</th>
+              <th style="text-align:center;">Update Date</th>
+              <th style="text-align:center;">Question</th>
+              <th style="text-align:center;">Answer</th>
+              
+            </tr>
+            </thead>
+            <tbody id='Table'>
+            
+          </tbody>
+           </table>
+           </div>
                     </div>
             
             </div>
@@ -345,12 +313,12 @@
                 <h2>Lab Copy Submission</h2>
                 <p>Check All The Lab Copy And Outputs</p>
                 <ul class="list-unstyled py-3">
-                  <li><a href="./weeklylab1.html"><span>Check Weekly Lab Experiment</span></a>
+                  <li><a href="./weeklylab1.html" target="_blank"><span>Check Weekly Lab Experiment</span></a>
                    </li>
-                  <li><a href="./expoutp.html"><span>Check Experment Output</span></a>
+                  <li><a href="./expoutp.html" target="_blank"><span>Check Experment Output</span></a>
                    </li>
                   <li>
-                   <a href="./final labcopy.html"><span>Check Final LabCopy</a>
+                   <a href="./final labcopy.html" target="_blank"><span>Check Final LabCopy</a>
                     </li>
                 </ul> 
                 
@@ -390,25 +358,28 @@
             <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
               <div class="card">
                   <h3>Share Question Paper</h3>
-                  <form action="">
-                  
-                      <input type="file" placeholder="Choose File">
-                      <input type="submit" value="Post" class="main-btn mt-4">
-                      <input type="submit" value="View" class="main-btn mt-4">
-                   </form>
+                  <div>
+           <input type="file" style="width:100px;" placeholder="Choose File">
+          <button style="margin-left:20px;margin-right:20px;" class="btn btn-primary">Post</button>            
+            <button class="btn btn-primary">View</button>   
+                  </div>
+  
               </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
              <div class="card">
               <h3 style="text-align: center;">Invigilation Link</h3>
-              <button class="mt-4 main-btn">Join The Exam</button>
+              <div style="text-align:center;">
+            <a class="btn btn-primary">Join</a>      
+              </div>
              </div>
            </div>
            <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
              <div class="card">
               <h3 style="text-align: center;">Check Answer Paper</h3>
-                 
-              <button class="mt-4 main-btn">Check </button>
+              <div style="text-align:center;">
+            <button class="btn btn-primary">Check</button>      
+              </div>
              </div>
            </div>
    </section>

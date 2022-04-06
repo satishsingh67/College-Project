@@ -49,7 +49,7 @@ public class ExamPaperDownload extends HttpServlet {
 				
 				response.setContentType("APPLICATION/OCTET-STREAM");
 				response.setHeader("Content-Disposition",
-						"attachment; filename=\"" + fileName + "." + fileExtension + "\"");
+						"inline; filename=\"" + fileName + "." + fileExtension + "\"");
 
 				int in;
 				while ((in = inputStream.read()) != -1) {

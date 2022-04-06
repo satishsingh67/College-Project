@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.college.dao.studentDao.StudentDoubt;
+import com.college.teacher.dao.TeacherDoubt;
 
 /**
  * Servlet implementation class DoubtHandler
@@ -40,11 +41,12 @@ public class DoubtHandler extends HttpServlet {
 		String fkSubjectId = request.getParameter("subjectId");
 		String action = request.getParameter("action");
 		String action1=request.getParameter("action1");
+		String teacherId=request.getParameter("teacherId");
 	    String result=null;
 	    PrintWriter out=response.getWriter();
 		if(action.trim().toLowerCase().equalsIgnoreCase("viewdoubt")) {
 			
-			result=new StudentDoubt().viewDoubt(action1,studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId);
+			result=new StudentDoubt().viewDoubt(action1,studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,teacherId);
 			
 		}
 		else {
@@ -67,6 +69,7 @@ public class DoubtHandler extends HttpServlet {
 		String fkSubjectId = request.getParameter("subjectId");
 		String message=request.getParameter("doubtMessage");
 		String action = request.getParameter("action");
+		String teacherId=request.getParameter("teacherId");
 		
 		String result=null;
 		PrintWriter out=response.getWriter();
@@ -79,7 +82,7 @@ public class DoubtHandler extends HttpServlet {
 				String doubtSubmitStatus=new StudentDoubt().askDoubt(studentId.trim(), fkDepartmentId.trim(), fkSemesterId.trim(), fkSectionId.trim(), fkSubjectId.trim(), message.trim());
 				
 				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
-					result="Your Doubt Submiited Succesfully";
+					result="Your Doubt Submitted Succesfully";
 					
 				}else {
 					result=doubtSubmitStatus.trim();
@@ -97,7 +100,25 @@ public class DoubtHandler extends HttpServlet {
 				String doubtSubmitStatus=new StudentDoubt().askDoubtMentor(studentId.trim(), fkDepartmentId.trim(), fkSemesterId.trim(), fkSectionId.trim(), message.trim());
 				
 				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
-					result="Your Doubt Submiited Succesfully";
+					result="Your Doubt Submitted Succesfully";
+					
+				}else {
+					result=doubtSubmitStatus.trim();
+				}
+				out.append(result);
+			}
+			
+		}
+		if(action.trim().equalsIgnoreCase("askDoubtAdmin")) {
+			if(message.trim().isEmpty()) {
+				result="Please Enter Your Question.";
+				out.append(result);
+			}
+			else {
+				String doubtSubmitStatus=new TeacherDoubt().askDoubtAdmin(teacherId, message);
+				
+				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
+					result="Your Doubt Submitted Succesfully";
 					
 				}else {
 					result=doubtSubmitStatus.trim();

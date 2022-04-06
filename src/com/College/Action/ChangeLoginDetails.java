@@ -15,6 +15,7 @@ import com.college.updateLoginDetails.ChangeMobileNumber;
 import com.college.updateLoginDetails.ChangeSecurityPin;
 import com.college.updateLoginDetails.ChangeSecurityQuestionAnswer;
 import com.college.dataValidation.DataValidation;
+import com.college.teacher.dao.ChangePassword;
 
 /**
  * Servlet implementation class ChangeLoginDetails
@@ -62,7 +63,17 @@ public class ChangeLoginDetails extends HttpServlet {
 		String existingSecurityQuestionAnswer=request.getParameter("existingSecurityQuestionAnswer");
 		String newSecurityQuestion=request.getParameter("newSecurityQuestion");
 		String newSecurityQuestionAnswer=request.getParameter("newSecurityQuestionAnswer");
-		
+		String currentPassword=request.getParameter("currentPassword");
+		String newPassword=request.getParameter("newPassword");
+		String reNewPassword=request.getParameter("reNewPassword");
+		String teacherId=request.getParameter("teacherId");
+		String recoveryEmail=request.getParameter("recoveryEmail");
+		String DOB=request.getParameter("DOB");
+        Part teacherPhoto=request.getPart("teacherPhoto");
+        String recoveryPhoneNubmerOld=request.getParameter("recoveryPhoneNubmerOld");
+		String recoveryemailOld=request.getParameter("recoveryemailOld");
+		String dobOld=request.getParameter("dobOld");
+        
 	    if(action.trim().equalsIgnoreCase("changeMobileNumber")) {
 	    	status=changeMobileNumber(existingEmail,existingPhoneNumber,newPhoneNumber,idNumber,existingSecurityPin,existingSecurityQuestion,existingSecurityQuestionAnswer);
 	    }else if(action.trim().equalsIgnoreCase("changeEmail")) {
@@ -73,6 +84,24 @@ public class ChangeLoginDetails extends HttpServlet {
 	    	status=changeSecurityQuestionAnswer(existingPhoneNumber,existingEmail,existingSecurityPin,idNumber,existingSecurityQuestion,existingSecurityQuestionAnswer,newSecurityQuestionAnswer);
 	    }else if(action.trim().equalsIgnoreCase("changeAllLoginDetails")) {
 	    	status=changeAllLoginDetails(recoveryPhoneNumber,existingPhoneNumber,newPhoneNumber,existingEmail,newEmail,existingSecurityPin,newSecurityPin,idNumber,existingSecurityQuestion,existingSecurityQuestionAnswer,newSecurityQuestion,newSecurityQuestionAnswer);
+	    }
+		else if(action.trim().equalsIgnoreCase("teacherPassword")) {
+	    	
+			String dataValidationResult=new DataValidation().changeTeacherPassword(existingEmail, currentPassword, newPassword, reNewPassword);
+
+			if(dataValidationResult.trim().equalsIgnoreCase("True")) {
+			status=new ChangePassword().changeTeacherPassword(teacherId,existingEmail, currentPassword, newPassword, reNewPassword);
+			}else {
+			
+				status=	dataValidationResult;
+			}
+			
+	    }
+       else if(action.trim().equalsIgnoreCase("teacherDetails")) {
+	    	
+		    	 status=new ChangePassword().updateDetails(teacherId, recoveryEmail, recoveryPhoneNumber, DOB, teacherPhoto);
+		
+			
 	    }
 	    else {
 	    	status="Something went wrong.Please try again";

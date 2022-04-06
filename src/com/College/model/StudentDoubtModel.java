@@ -9,6 +9,8 @@ public class StudentDoubtModel {
 	private String answer;
 	private Date createDate;
 	private Date updateDate;
+	private String studentName;
+	private String rollNo;
 	public Integer getDoubtId() {
 		return doubtId;
 	}
@@ -38,6 +40,18 @@ public class StudentDoubtModel {
 	}
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public String getRollNo() {
+		return rollNo;
+	}
+	public void setRollNo(String rollNo) {
+		this.rollNo = rollNo;
 	}
 	
 	

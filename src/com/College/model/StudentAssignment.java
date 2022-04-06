@@ -9,6 +9,7 @@ private String status;
 private Date createDate;
 private Date dueDate;
 private Integer dueDatePassed;
+private Integer pkAssignmentId;
 public Integer getPkStudentAssignmentStatusId() {
 	return pkStudentAssignmentStatusId;
 }
@@ -44,6 +45,12 @@ public Integer getDueDatePassed() {
 }
 public void setDueDatePassed(Integer dueDatePassed) {
 	this.dueDatePassed = dueDatePassed;
+}
+public Integer getPkAssignmentId() {
+	return pkAssignmentId;
+}
+public void setPkAssignmentId(Integer pkAssignmentId) {
+	this.pkAssignmentId = pkAssignmentId;
 }
 
 }

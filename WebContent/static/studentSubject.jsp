@@ -227,7 +227,7 @@ if((boolean)semPaperStatus.get("status")){
               <a class="nav-link" href="#exam">Exams</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/College_Final_Year_Project/logout">Logout</a>
+              <a class="nav-link" href="/College_Final_Year_Project/logout?action=student">Logout</a>
             </li>
             
             <li><img class="images" src="images/teachers/1200px-JIS_University.svg.png"></li>
@@ -244,7 +244,16 @@ if((boolean)semPaperStatus.get("status")){
         <div class="row">
           <div class="col-lg-5 col-md-6">
             <h3 style="font-family: 'Times New Roman', Times, serif;"><%= subjectName+" ["+subjectcode+"]" %></h3>
-            
+                <p style="font-family: 'Times New Roman', Times, serif;color:black;font-size:20px;">
+                <%=
+                (student.getYear()==1)?( student.getYear()+"st Year"):(student.getYear()==2)?( student.getYear()+"nd Year"):(student.getYear()==3)?( student.getYear()+"rd Year"):student.getYear()+"th Year"
+                %>
+                <%= "-" %>
+            <%=  (student.getSemester()==1)?( student.getSemester()+"st Semester"):(student.getSemester()==2)?( student.getSemester()+"nd Semester"):(student.getSemester()==3)?( student.getSemester()+"rd Semester"):student.getSemester()+"th Semester"%>
+            	</p>
+            	<p style="font-family: 'Times New Roman', Times, serif;color:black;font-size:20px;">
+            	  <%= student.getDepartment()+"-"+student.getSection()%>
+            	</p>
             <div class="mt-4">
             <%
             if(dailyClassLink != null){
@@ -308,10 +317,10 @@ if((boolean)semPaperStatus.get("status")){
   <div class="about-section wrapper"style=" background-image: url(./images/light.jpg);background-repeat: no-repeat;background-size: cover;">
     <div class="container">
      
-     <div id="assignment"class="container food-type" style="background-color:darkseagreen;width:100%;">
+     <div id="assignment"class="container food-type" style="background-color:darkseagreen;width:110%;">
          <div class="row align-items-center">
-           <div class="col-lg-9 col-md-12 text-sec mb-lg-0 mb-5">
-            <h2>Assignment Submission</h2>
+           <div class="col-lg-9 col-md-12 text-sec mb-lg-0 mb-5" style="width:100%;">
+            <h2 style="text-align:center;">Assignment Submission</h2>
             <p style="font-size: 25px;font-weight: bold; color: rgb(245, 229, 10);border-bottom: 2px solid red;text-align: center;">Assignment Details</p>
             
             <ul class="list-unstyled py-3">
@@ -327,6 +336,7 @@ if((boolean)semPaperStatus.get("status")){
             <tr>
               <th style="display:none;"></th>
               <th style="text-align:center;">Assignment Name</th>
+              <th style="text-align:center;">View Assignment</th>
               <th style="text-align:center;">Created Date</th>
               <th style="text-align:center;">Due Date</th>
               <th style="text-align:center;">Status</th>
@@ -349,11 +359,7 @@ if((boolean)semPaperStatus.get("status")){
            </div>
             
            </div>
-           <div class="col-lg-3 col-md-12">
-             <div class="card border-0">
-               <img src="images/Good-Grade.svg" class="img-fluid">
-             </div>
-           </div>
+          
          </div>
        </div>
      </div>
@@ -816,7 +822,7 @@ if((boolean)semPaperStatus.get("status")){
 	      }
 	    });
 	  if(total==0){
-		  $("#Table").html('<tr class="no-records"><td colspan="6" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>')
+		  $("#Table").html('<tr class="no-records"><td colspan="7" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>')
 		  $("#prev").prop("disabled", true); 
 		  $("#next").prop("disabled", true); 
 		  $('#labelOutOf').html(0);
@@ -951,7 +957,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 	  
 	 function fetchAssignment(start,limit){
 		  var url1="StudentSubjectAssignmentPagination.jsp?requestType=getRecords"+"&"+"studentId="+studentId+"&"+"departmentId="+departmentId+"&"+"sectionId="+sectionId+"&"+"semesterId="+semesterId+"&"+"subjectId="+subjectId+"&"+"start="+start+"&"+"limit="+limit;
-		  
+
 		  $.ajax({
 		      type: "GET",
 		      url: url1,
@@ -963,18 +969,19 @@ let sub=((rem!=0)?rem:dataPerPage);
                   $('#Table').append(
                           '<tr><td style="display:none;">' + item.pkStudentAssignmentStatusId +
                           '</td><td style="text-align:center;">' + item.assignmentName +
+                          '</td><td style="text-align:center;"><a href="/College_Final_Year_Project/uploadAssignmentAndView?action=downloadAssignment&id='+item.pkAssignmentId+'" target="_self" class="btn btn-primary btn-sm">View</a>'+
                           '</td><td style="text-align:center;">' + item.createDate +
                           '</td><td style="text-align:center;">' + item.dueDate +
                           '</td><td style="text-align:center;">' + item.status + 
                           '</td><td >'+ 
-                          '<div">'+(item.dueDatePassed==1?'<input type="file" placeholder="Choose File" disabled="true" style="width:40%">'+
-                          '<input type="submit" value="Submit" onclick=myFunction()  disabled="true"  class="btn btn-primary btn-sm" style="margin-left:30%;opacity: 1;background-color: #00a2ed; border-color: #00a2ed;">':'<input type="file" placeholder="Choose File" id='+item.pkStudentAssignmentStatusId+' style="width:40%">'+
-                          '<input type="submit" value="Submit" onclick=myFunction()  class="btn btn-primary btn-sm" style="margin-left:30%;">')
+                          '<div">'+(item.dueDatePassed==1?'<input type="file" placeholder="Choose File" disabled="true" style="margin-top:15px;">'+
+                          '<input type="submit" value="Submit" onclick=myFunction()  disabled="true"  class="btn btn-primary btn-sm" style="margin-top:-60px;border:1px solid skyblue;margin-left:80%;opacity: 1;background-color: #00a2ed; border-color: #00a2ed;">':'<input type="file" placeholder="Choose File" id='+item.pkStudentAssignmentStatusId+' style="margin-top:15px;">'+
+                          '<input type="submit" value="Submit" onclick=myFunction()  class="btn btn-primary btn-sm" style="margin-left:80%;margin-top:-60px;">')
                         +
                       '</div>'+ (item.status=="Submitted"?'</td><td style="text-align:center;">'+
-                      '<a href="/College_Final_Year_Project/viewAndDownload?pkAssignmentStatusId='+item.pkStudentAssignmentStatusId+'" target="_self" class="btn btn-primary btn-sm">View</a>'+
+                      '<a href="/College_Final_Year_Project/viewAndDownload?pkAssignmentStatusId='+item.pkStudentAssignmentStatusId+'" target="_self" class="btn btn-primary btn-sm" style="margin-top:-15px;">View</a>'+
                       '</td></tr>':'</td><td style="text-align:center;">'+
-                      '<input type="button" value="view" disabled="true" style="opacity: 1;background-color: #00a2ed; border-color: #00a2ed;" class="btn btn-primary btn-sm">'+
+                      '<input type="button" value="view" disabled="true" style="margin-top:-15px;opacity: 1;background-color: #00a2ed; border-color: #00a2ed;" class="btn btn-primary btn-sm">'+
                       '</td></tr>')
              );
 

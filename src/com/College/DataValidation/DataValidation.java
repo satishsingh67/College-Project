@@ -113,7 +113,27 @@ public class DataValidation {
 		   return result;
 	   }
 	   
-	   
+    public String teacherLogin(String teacherName,String departmentId,String emailId,String password) {
+		   
+		   String result=null;
+		   
+		   result=((teacherName.trim().isEmpty())?"Faculty Name":(departmentId.trim().isEmpty())?"Department":(departmentId.trim().equalsIgnoreCase("-Select Faculty Depertment -"))?"Department":(emailId.trim().isEmpty() || !(emailId.trim().contains("@")))?"Email Id":(password.trim().isEmpty())?"Password":"True");
+		   
+		   return result;
+	   }
+
+	public String changeTeacherPassword(String existingEmail, String currentPassword, String newPassword,
+			String reNewPassword) {
+		String result=null;
+		result=((existingEmail.trim().isEmpty())?"Please Enter Your Email":(!(existingEmail.trim().contains("@")))?"Please Enter Your Valid Email":(currentPassword.trim().isEmpty())?"Please Enter Your Current Password":(newPassword.trim().isEmpty())?"Please Enter Your New Password":(reNewPassword.trim().isEmpty())?"Please Re-Enter Your New Password":!(reNewPassword.trim().equalsIgnoreCase(newPassword.trim()))?"New and Confirm Password Sholud be same":"True");
+		return result;
+	}  
 		
+	public String aboutUsDataValidation(String fullName,String message) {
+		 String result=(fullName.trim().isEmpty()?"Name":message.trim().isEmpty()?"Message":"True");
+		 return result;
+	 }
+	
+	
 }
  
