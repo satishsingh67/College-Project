@@ -103,6 +103,11 @@
 		<servlet-class>com.college.action.AboutUsFeedback</servlet-class>
 	</servlet>
 
+<servlet>
+		<servlet-name>FetchDoubtAdmin</servlet-name>
+		<servlet-class>com.college.action.FetchDoubtAdmin</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>ContactUs</servlet-name>
 		<url-pattern>/contactUS</url-pattern>
@@ -193,4 +198,11 @@
 		<servlet-name>AboutUsFeedback</servlet-name>
 		<url-pattern>/aboutUs</url-pattern>
 	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>FetchDoubtAdmin</servlet-name>
+		<url-pattern>/fetch</url-pattern>
+	</servlet-mapping>
+
 </web-app>

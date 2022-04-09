@@ -771,6 +771,55 @@ footer span a:hover{
           text-decoration: none;
           cursor: pointer;
         }
+        .fun-fact {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr)) [auto-fit];
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  
+  gap: 2rem;
+  background: #f5f5f5;
+  gap: 3.5rem;
+}
+
+.fun-fact .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fun-fact .box img {
+  height: 20rem;
+}
+
+.fun-fact .box h3 {
+  font-size: 4rem;
+  text-transform: capitalize;
+  color: #334;
+}
+
+.fun-fact .box button {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #777;
+  padding-top: 0.5rem;
+}
+@media (max-width: 768px) {
+    .fun-fact {
+    padding: 5rem 2rem;
+  }
+  .fun-fact .box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    text-align: center;
+  }
+}
     </style>
 </head>
 <body>
@@ -803,22 +852,52 @@ footer span a:hover{
                 <div class="text-3"> <span class="typing"></span></div><br><br>
                 <div class="container">
 
-                    <button class="click">Upload Information</button>
-              
-                    <div class="list">
-              
-                        <button class="links" id="user-btn" >Upload Syllabus</button>
-              
-                        <button class="links">Upload Routine</button>
-              
-                        <button class="links">Upload Feedback Link</button>
-              
-                       
-              
-                    </div>
             </div>
         </div>
     </section>
+    <!-- fun fact section starts  -->
+
+<section class="fun-fact" id="info">
+
+    <div class="box">
+   
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_komemhfl.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
+      <div class="info">
+       <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Upload Routine</p><br>
+       <input type="file"><br><br>
+       <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;">Post</button>
+      </div>
+    </div>
+ 
+    <div class="box">
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_msxrs1lq.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
+ 
+       <div class="info">
+         <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Upload Syllabus</p><br>
+       <input type="file"><br><br>
+       <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;">Post</button>
+   
+       </div>
+    </div>
+ 
+    <div class="box">
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_7tbuvbtj.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
+       <div class="info">
+         <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Upload Feedback Link</p><br>
+         <input style=" background-color:cornflowerblue;height:30px;" type="text" value="Past Here"><br><br>
+         <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;">Post</button>
+     
+       </div>
+    </div>
+ 
+    
+ 
+ </section>
+ 
+ <!-- fun fact section ends -->
     <!-- about section start -->
     <section class="about" style="background-color: cadetblue;" id="about">
         <h1 class="text-center" style=" font-size:30px;font-family: 'Times New Roman', Times, serif;font-weight: 900; text-align: center; ">GUIDE STUDENTS</h1><br><br>

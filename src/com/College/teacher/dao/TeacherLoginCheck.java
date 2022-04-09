@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.college.dataBaseConnection.DataBaseConnection;
 import com.college.model.Student;
@@ -17,8 +19,11 @@ import com.college.model.TeacherDetails;
 import com.google.gson.Gson;
 
 public class TeacherLoginCheck {
-	public TeacherDetails validateDetails(String teacherName,String departmentId,String emailId,String password) {
-		TeacherDetails teacherDetails = null;
+	public Map<String,Object> validateDetails(String teacherName,String departmentId,String emailId,String password) {
+	
+		Map<String,Object> teacherLoginValidation=new HashMap<String,Object>();
+
+		
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
 
@@ -33,9 +38,26 @@ public class TeacherLoginCheck {
 	
 			ResultSet rs = pstmt.executeQuery();
 
+			teacherLoginValidation.put("status",false);	
+			teacherLoginValidation.put("error","Invalid Details");
+			
 			while (rs.next()) { 
 				 
-              teacherDetails =new TeacherDetails();
+				 if(!rs.getString("teacherName").trim().contentEquals(teacherName.trim())) {
+					 teacherLoginValidation.put("error","Wrong Name");
+	
+				}
+				else if(!rs.getString("emailId").trim().contentEquals(emailId.trim())) {
+					teacherLoginValidation.put("error","Wrong Email Id");
+
+				}
+				else if(!rs.getString("password").trim().contentEquals(password.trim())) {
+					teacherLoginValidation.put("error","Invalid Password");	
+				}
+				
+				else {
+					teacherLoginValidation.put("status",true);	
+				TeacherDetails teacherDetails =new TeacherDetails();
 
               teacherDetails.setPkTeacherId(rs.getInt("pkTeacherId"));
               teacherDetails.setTecherName(rs.getString("teacherName"));
@@ -61,7 +83,10 @@ public class TeacherLoginCheck {
 				inputStream.close();
 				outputStream.close();
 				teacherDetails.setBase64Image(base64Image);
+				
+				teacherLoginValidation.put("teacher",teacherDetails);
 
+				}
 			}
 			con.close();
 
@@ -69,7 +94,7 @@ public class TeacherLoginCheck {
 			e.printStackTrace();
 		}
 
-		return teacherDetails;
+		return teacherLoginValidation;
 	}
 	
 	public String fetchTeacherDetails(String teacherId) {

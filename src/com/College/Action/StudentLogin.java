@@ -1,6 +1,8 @@
 package com.college.action;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -62,15 +64,15 @@ public class StudentLogin extends HttpServlet {
 			 
 			 if(checkEntryAndApprovedStatus.equalsIgnoreCase("True")) {
 			 
-			Student student=new StudentLoginValidation().validateDetails(idNumber, studentName, securityQuestion, securityQuestionAnswer, securityPin);
-			 if(student !=null) {	 
+				 Map<String,Object> studentLoginValidation=new StudentLoginValidation().validateDetails(idNumber, studentName, securityQuestion, securityQuestionAnswer, securityPin);
+			 if((boolean) studentLoginValidation.get("status")) {	 
 				 status="studentPage1.jsp";
 				 HttpSession session=request.getSession();
-				 session.setAttribute("student",student);
+				 session.setAttribute("student",(Student)studentLoginValidation.get("student"));
 				 response.getWriter().append(status);
 			 }
 			 else {
-				 status="Invalid details";
+				 status=(String)studentLoginValidation.get("error");
 				 response.getWriter().append(status);
 			 }
 			 }else {

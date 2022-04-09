@@ -200,6 +200,63 @@ form span{
           text-decoration: none;
           cursor: pointer;
         }
+        .header .navbar {
+  padding: 2rem 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 0.2rem solid #334;
+  position: relative;
+  z-index: 1000;
+}
+
+.header .navbar.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: none;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.header .navbar .logo {
+  width: 90px;
+  height: 50px;
+}
+
+.header .navbar .logo i {
+  color: #2597f4;
+}
+
+.header .navbar .links a {
+  margin-left: 5rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: #334;
+  letter-spacing: 3px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.header .navbar .links a:hover {
+  text-decoration: underline;
+  color: #2597f4;
+}
+
+.header #menu-btn {
+  font-size: 3rem;
+  cursor: pointer;
+  color: #334;
+  display: none;
+}
+
  </style>
 </head>
 <body>
@@ -208,12 +265,33 @@ form span{
     <a href="#" class="logo"><img src="./image/GNIT_Kolkata_logo.png"></i> </a>
         <div class="brand">
             <h2 class="text1 text-center">GURUNANAK INSTITUTE OF TECHNOLOGY</h2> 
-        </div><br>
+        </div>
+        <header class="header">
+
+          
+         
+            <nav class="navbar">
+         
+             
+         
+               <div class="links">
+                  <a href="#home">home</a>
+                  <a href="#reg">New Teacher Registration</a>
+           
+                  <a href="#contact">Reply To Teacher</a>
+                  <a href="#delete">Delete Account</a>
+               </div>
+              
+               <div id="menu-btn" class="fa fa-bars"></div>
+         
+            </nav>
+         
+         </header>
     </header>
              <hr > 
              <main>
                 
-                <section style="background-image: url(./images/background/back7.jpg) ;background-repeat: no-repeat; background-size: cover;">
+                <section id="reg" style="background-image: url(./images/background/back7.jpg) ;background-repeat: no-repeat; background-size: cover;">
                     <h1 class="heading">New Teacher <span>Registration </span> </h1>
                     <div class="col-md-12">
                         <div class="row">
@@ -230,16 +308,21 @@ form span{
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Email:</span>
                                             <input type="email" name="email" placeholder="Enter Teacher Name" class="box" required>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Department:</span>
-                                            <select class="box">
-                                                <option>Select Department</option>
-                                                <option>ECE</option>
-                                                <option>CSE</option>
-                                                <option>AEIE</option>
-                                                <option>IT</option>
-                                                <option>FT</option>
-                                                <option>ASHU</option>
-        
-                                            </select>
+                                            <select class="box" name="department"  id="ddselect">
+                                              <option>--Select--</option>
+                                              <option value="1">CSE</option>
+                                              <option value="2">ECE</option>
+                                              <option value="3">IT</option>
+                                              <option value="4">EE</option>
+                                              <option value="5">AEIE</option>
+                                              <option value="6">FT</option>
+                                              <option value="7">BHM</option>
+                                              <option value="8">ASHU</option>
+                                              <option value="9">BCA</option>
+                                            
+                                              <option>Cyber scurity</option>
+                                              <option>Data Science</option>
+                                          </select>
                                         </div>
                                         <div class="col-md-6">
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Post:</span>
@@ -248,8 +331,8 @@ form span{
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Mobile no.:</span>
                                             
                                             <input type="number" name="number" value="+91" placeholder="enter Teacher Mobile No" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Upload Photo:</span>
-                                            <input type="file" placeholder="choose Photo" name="photo" class="box" required>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Teacher Id:</span>
+                                            <input type="text" value="Enter Teacher Id" name="photo" class="box" required>
                                         </div>
                                     </div>
                                     <input type="submit" value="Create" name="submit" id="btn" class="link-btn" style="margin-right: 5px; background-color: black;"><input type="submit" value="Cancel" name="submit" id="btn" class="link-btn" style="background-color: black;">
@@ -262,80 +345,8 @@ form span{
                     </div>
                 </section>
                 
-                <section style="background-color: cadetblue;">
-                    <h1 class="heading"> Class <span>Allotment </span> </h1>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bjyiojos.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player></div>
-                            <div class="col-md-7">
-                                <form  >
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Name:</span>
-                                            <input type="text" name="number" placeholder="Enter Teacher Name" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Id:</span>
-                                            <input type="number" name="number" placeholder="enter Teacher Id" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Course:</span>
-                                            <select class="box">
-                                                <option>Select Course</option>
-                                                <option>B.Tech</option>
-                                                <option>M.Tech</option>
-                                                <option>Diploma</option>
-                                               
-        
-                                            </select>
-                                            
-                                           
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Department:</span>
-                                            <select class="box">
-                                                <option>Select Department</option>
-                                                <option>ECE</option>
-                                                <option>CSE</option>
-                                                <option>AEIE</option>
-                                                <option>IT</option>
-                                                <option>FT</option>
-                                                <option>ASHU</option>
-        
-                                            </select><br>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Year:</span>
-                                            <select class="box">
-                                                <option>Select Year</option>
-                                                <option>1st</option>
-                                                <option>2nd</option>
-                                                <option>3rd</option>
-                                                <option>4th</option>
-                                               
-        
-                                            </select><br>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Section:</span>
-                                            <select class="box">
-                                                <option>Select Section</option>
-                                                <option>ECE-1</option>
-                                                <option>ECE-2</option>
-                                                <option>CSE-1</option>
-                                               
-                                                <option>IT</option>
-                                                <option>FT</option>
-                                               
-        
-                                            </select><br>
-                                        </div>
-                                    </div>
-                                    <input type="submit" value="Assign" name="submit" id="btn" class="link-btn" style="margin-right: 5px; background-color: black;"><input type="submit" value="Cancel" name="submit" id="btn" class="link-btn" style="background-color: black;">
-                                </div>
-                    
-                                   
-                                 </form>   
-                            </div>
-                        </div>
-                    </div>
-                  </section>
-                <section>
+              
+                <section id="contact">
                     <h1 class="heading"> Reply To <span>Teachers </span> </h1>
                     <table id="customers">
                         <thead>
@@ -400,7 +411,7 @@ form span{
                 </script>
                 
                 </section>
-               <section style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
+               <section id="delete" style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
                 <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
                 <div class="col-md-12">
                     <div class="row">
@@ -410,11 +421,11 @@ form span{
                         <div class="col-md-6">
                           <form  >
                      
-                              
-                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :</span>
+                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter Teacher Name:</span>
+                            <input type="text" name="name" placeholder="enter teacher name" class="box" required>
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter Teacher  Id :</span>
                               <input type="number" name="number" placeholder="enter Id" class="box" required>
-                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter your Password:</span>
-                              <input type="password" name="password" placeholder="enter your Password" class="box" required>
+                             
                               
                               <input type="submit" value="Delete" name="submit" id="btn" class="link-btn" style="margin-right: 5px;background-color: black;"><input type="submit" value="Cancel" name="submit" id="btn" class="link-btn"  style="background-color: black;">
                            </form>   

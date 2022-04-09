@@ -8,21 +8,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.college.dataBaseConnection.DataBaseConnection;
 import com.college.model.Student;
 
 public class StudentLoginValidation {
-	public Student validateDetails(String idNumber, String studentName, String securityQuestion,
+	public Map<String,Object> validateDetails(String idNumber, String studentName, String securityQuestion,
 			String securityQuestionAnswer, String securityPin) {
-		Student student = null;
+		 Map<String,Object> studentLoginValidation=new HashMap<String,Object>();
+
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
 
 			String query = "SELECT * FROM registration INNER JOIN department ON registration.fkdepartment=department.pkDepartmentId \r\n"
 					+ " INNER JOIN section ON registration.fkSection=section.pkSectionId"
 					+ " INNER JOIN year_semester ON registration.fkCurrentYearAndSem=year_semester.pkYearSemesterId"
-					+ " where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=? and verificationStatus=?";
+					+ " where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=? and verificationStatus=? limit 1";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, idNumber);
 			pstmt.setString(2, studentName.trim());
@@ -31,10 +34,30 @@ public class StudentLoginValidation {
 			pstmt.setString(5, securityPin.trim());
 			pstmt.setInt(6, 1);
 			ResultSet rs = pstmt.executeQuery();
+            
+			 studentLoginValidation.put("status",false);	
+			 studentLoginValidation.put("error","Invalid Details");
+			 while (rs.next()) {
 
-			while (rs.next()) {
+				if(!rs.getString("idNumber").trim().contentEquals(idNumber.trim())){
+					studentLoginValidation.put("error","Invalid Id Number");
+				}
+				else if(!rs.getString("studentName").trim().contentEquals(studentName.trim())) {
+					studentLoginValidation.put("error","Wrong Name");
+	
+				}
+				else if(!rs.getString("securityQuestionAnswer").trim().contentEquals(securityQuestionAnswer.trim())) {
+					studentLoginValidation.put("error","Invalid Security Question's Answer");
 
-				student = new Student();
+				}
+				else if(!rs.getString("securityPin").trim().contentEquals(securityPin.trim())) {
+					studentLoginValidation.put("error","Invalid Security Pin");	
+				}
+				
+				else {
+					studentLoginValidation.put("status",true);	
+
+					Student student = new Student();
 
 				student.setPkRegistrationId(rs.getInt("pkRegistrationId"));
 				student.setFkCurrentYearAndSem(rs.getInt("fkCurrentYearAndSem"));
@@ -66,15 +89,16 @@ public class StudentLoginValidation {
 				outputStream.close();
 
 				student.setBase64Image(base64Image);
-
+				studentLoginValidation.put("student",student);
 			}
+			 }	
 			con.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return student;
+		return studentLoginValidation;
 	}
 
 	public String checkEnteryAndApproveStatus(String idNumber, String studentName, String securityQuestion,
@@ -129,9 +153,14 @@ public class StudentLoginValidation {
 		// System.out.println(new
 		// StudentLoginValidation().validateDetails("GNIT/2018/0348", "Satish Singh",
 		// "Your Favourite Color", "pink", "123128"));
-		System.out.println(new StudentLoginValidation().checkEnteryAndApproveStatus("GNIT/2018/0348", "Satish Singh",
-				"Your Home Town", "Siwan", "123456"));
+	//	System.out.println(new StudentLoginValidation().checkEnteryAndApproveStatus("GNIT/2018/0348", "Satish Singh",
+	//			"Your Home Town", "Siwan", "123456"));
 
+		String a="slls ";
+		
+		System.out.println(a.trim().contentEquals("slls "));
+		
+		
 	}
 
 }

@@ -70,7 +70,7 @@ public class StudentDoubt {
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			}
 			
-			if(action !=null && action.trim().equalsIgnoreCase("adminDoubt")) {
+			else if(action !=null && action.trim().equalsIgnoreCase("adminDoubt")) {
 				query = "Select `question`,`answer`,`createDate`,`updateDate` from admin_doubt where `fkTeacherId`=?";
 				pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(teacherId));

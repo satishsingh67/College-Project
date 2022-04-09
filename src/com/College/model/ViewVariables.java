@@ -18,6 +18,10 @@ public class ViewVariables {
    private String submittedFileName;
    private String status;
    private Date updateDate;
+   private String question;
+   private String answer;
+   private String emailId;
+   private String mobileNumber;
 public Integer getPkId() {
 	return pkId;
 }
@@ -102,6 +106,30 @@ public Date getUpdateDate() {
 }
 public void setUpdateDate(Date updateDate) {
 	this.updateDate = updateDate;
+}
+public String getQuestion() {
+	return question;
+}
+public void setQuestion(String question) {
+	this.question = question;
+}
+public String getAnswer() {
+	return answer;
+}
+public void setAnswer(String answer) {
+	this.answer = answer;
+}
+public String getEmailId() {
+	return emailId;
+}
+public void setEmailId(String emailId) {
+	this.emailId = emailId;
+}
+public String getMobileNumber() {
+	return mobileNumber;
+}
+public void setMobileNumber(String mobileNumber) {
+	this.mobileNumber = mobileNumber;
 }
 	
 	

@@ -813,8 +813,11 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             			 $('#joinClassLink').removeClass("btn btn-primary btn-md disabled");
             			 $('#joinClassLink').addClass("btn btn-primary btn-md");
             			 $("#joinClassLink").attr("href", meetingLink);
+             			$('#'+LinkFieldId).attr("target", "_blank");
             		  }else{
             			  $("#joinClassLink").attr("href", meetingLink);
+              			$('#'+LinkFieldId).attr("target", "_blank");
+
             		  }
             	   swal("Done", data, "success");
             	  }else{
@@ -874,8 +877,11 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             			 $('#'+LinkFieldId).removeClass("btn btn-primary btn-md disabled");
             			$('#'+LinkFieldId).addClass("btn btn-primary btn-md");
             			$('#'+LinkFieldId).attr("href", meetingLink);
+            			$('#'+LinkFieldId).attr("target", "_blank");
             		  }else{
             			  $('#'+LinkFieldId).attr("href", meetingLink);
+              			$('#'+LinkFieldId).attr("target", "_blank");
+
             		  }
             	   swal("Done", data, "success");
             	  }else{

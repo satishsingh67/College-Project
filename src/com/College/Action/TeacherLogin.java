@@ -2,6 +2,7 @@ package com.college.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -70,16 +71,16 @@ public class TeacherLogin extends HttpServlet {
 			
 			 if(dataValiadtionResult.trim().equalsIgnoreCase("True")) { 
 				
-				 TeacherDetails teacherDetailsObj =new TeacherLoginCheck().validateDetails(teacherName, departmentId, emailId, password);
+				 Map<String,Object> teacherLoginValidation =new TeacherLoginCheck().validateDetails(teacherName, departmentId, emailId, password);
 				 
-				 if(teacherDetailsObj !=null) {	 
+				 if((boolean) teacherLoginValidation.get("status")) {	 
 					 status="teacherPage.jsp";
 					 HttpSession session=request.getSession();
-					 session.setAttribute("teacher",teacherDetailsObj);
+					 session.setAttribute("teacher",(TeacherDetails)teacherLoginValidation.get("teacher"));
 					 response.getWriter().append(status);
 				 }
 				 else {
-					 status="Invalid details";
+					 status=(String) teacherLoginValidation.get("error");
 					 response.getWriter().append(status);
 				 }
 				

@@ -900,8 +900,11 @@ height:1px;
             			 $('#joinClassLink').removeClass("btn btn-primary btn-md disabled");
             			 $('#joinClassLink').addClass("btn btn-primary btn-md");
             			 $("#joinClassLink").attr("href", meetingLink);
+            			 $("#joinClassLink").attr("target", "_blank");
             		  }else{
             			  $("#joinClassLink").attr("href", meetingLink);
+             			 $("#joinClassLink").attr("target", "_blank");
+
             		  }
             	   swal("Done", data, "success");
             	  }else{
