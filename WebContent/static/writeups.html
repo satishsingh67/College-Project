@@ -100,7 +100,93 @@
    color:var(--white);
    line-height: 2;
 }
+.container .heading {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #334;
+}
 
+.container .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.container .box-container .box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.container .box-container .box:nth-child(1),
+.container .box-container .box:nth-child(2),
+.container .box-container .box:nth-child(3) {
+  display: inline-block;
+}
+
+.container .box-container .box .image {
+  margin-bottom: 20px;
+  overflow: hidden;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.container .box-container .box .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container .box-container .box:hover .image img {
+  transform: scale(1.1);
+}
+
+.container .box-container .box .content h3 {
+  font-size: 20px;
+  color: #334;
+}
+
+.container .box-container .box .content p {
+  font-size: 15px;
+  color: #777;
+  line-height: 2;
+  padding: 15px 0;
+}
+
+.container .box-container .box .content .btn {
+  display: inline-block;
+  padding: 10px 30px;
+  border: 1px solid #334;
+  color: #334;
+  font-size: 16px;
+}
+
+.container .box-container .box .content .btn:hover {
+  background-color: crimson;
+  border-color: crimson;
+  color: #fff;
+}
+
+.container .box-container .box .content .icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #334;
+}
+
+.container .box-container .box .content .icons span {
+  font-size: 14px;
+  color: #777;
+}
+
+.container .box-container .box .content .icons span i {
+  color: crimson;
+  padding-right: 5px;
+}
   </style>
 </head>
 
@@ -169,53 +255,159 @@
     
   
       
-  <!-- section-4 explore food-->
-   <section id="write">
-     <div class="explore-food wrapper " style=" background-color: lightcyan;">
-       <div class="container">
-         <div class="row">
-           <div class="col-sm-12">
-             <div class="text-content text-center">
-                <h2>Articles</h2>
-            
-            
+ <div class="container">
+
+  <h1 class="heading">ARTICLES</h1>
+
+  <div class="box-container">
+
+     <div class="box">
+        <div class="image">
+           <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
+        </div>
+        <div class="content">
+           <h3>Basic Electrical Engineering</h3>
+           <p>
+               1st Year ECE-1
+           </p>
+           <a href="./teachersubj1.html" class="btn">Enter The Class</a>
+           <div class="icons">
+              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+              <span> <i class="fas fa-user"></i> by admin </span>
            </div>
-         </div>
-         <div class="row pt-5">
-           <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-             <div class="card">
-               
-                
-               
-                
-              </div>
-             </div>
-           </div>
-           <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-            <div class="card">
-                <embed src="./fpdf/4.2.1-with-front-page.pdf" height="350px" width="400px" type="application/pdf">
-              <div class="pt-3">
-                <span>Poem</span><h4>By</h4>
-                <h6 style="float: right;">ECE-2(4th year)</h6>
-                <h5>Sornali Hazra</h5>
-               
-               
-              </div>
-            </div>
+        </div>
+     </div>
+
+     <div class="box">
+      <div class="image">
+          <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
+       </div>
+       <div class="content">
+          <h3>Basic Electrical Engineering</h3>
+          <p>
+              1st Year ECE-2
+          </p>
+          <a href="#" class="btn">Enter The Class</a>
+          <div class="icons">
+             <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+             <span> <i class="fas fa-user"></i> by admin </span>
           </div>
-          <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-            <div class="card">
-            
-              <div class="pt-3">
-               
-              </div>
-              
-            </div>
-          </div>
-         </div>
        </div>
      </div>
-   </section>
+
+     <div class="box">
+      <div class="image">
+          <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
+       </div>
+       <div class="content">
+          <h3>MATHS I</h3>
+          <p>
+              1st Year ECE-1
+          </p>
+          <a href="#" class="btn">Enter The Class</a>
+          <div class="icons">
+             <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+             <span> <i class="fas fa-user"></i> by admin </span>
+          </div>
+       </div>
+     </div>
+
+     <div class="box">
+      <div class="image">
+          <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
+       </div>
+       <div class="content">
+          <h3>Basic Electrical Engineering LAB</h3>
+          <p>
+              1st Year EE-1
+          </p>
+          <a href="#" class="btn">Enter The Class</a>
+          <div class="icons">
+             <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+             <span> <i class="fas fa-user"></i> by admin </span>
+          </div>
+       </div>
+
+
+       
+     </div>
+
+     <div class="box">
+        <div class="image">
+           <img src="images/img-5.jpg" alt="">
+        </div>
+        <div class="content">
+           <h3>blog title goes here</h3>
+           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+           <a href="#" class="btn">read more</a>
+           <div class="icons">
+              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+              <span> <i class="fas fa-user"></i> by admin </span>
+           </div>
+        </div>
+     </div>
+
+     <div class="box">
+        <div class="image">
+           <img src="images/img-6.jpg" alt="">
+        </div>
+        <div class="content">
+           <h3>blog title goes here</h3>
+           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+           <a href="#" class="btn">read more</a>
+           <div class="icons">
+              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+              <span> <i class="fas fa-user"></i> by admin </span>
+           </div>
+        </div>
+     </div>
+
+     <div class="box">
+        <div class="image">
+           <img src="images/img-7.jpg" alt="">
+        </div>
+        <div class="content">
+           <h3>blog title goes here</h3>
+           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+           <a href="#" class="btn">read more</a>
+           <div class="icons">
+              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+              <span> <i class="fas fa-user"></i> by admin </span>
+           </div>
+        </div>
+     </div>
+
+     <div class="box">
+        <div class="image">
+           <img src="images/img-8.jpg" alt="">
+        </div>
+        <div class="content">
+           <h3>blog title goes here</h3>
+           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+           <a href="#" class="btn">read more</a>
+           <div class="icons">
+              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+              <span> <i class="fas fa-user"></i> by admin </span>
+           </div>
+        </div>
+     </div>
+
+     <div class="box">
+        <div class="image">
+           <img src="images/img-9.jpg" alt="">
+        </div>
+        <div class="content">
+           <h3>blog title goes here</h3>
+           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+           <a href="#" class="btn">read more</a>
+           <div class="icons">
+              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
+              <span> <i class="fas fa-user"></i> by admin </span>
+           </div>
+        </div>
+     </div>
+
+  </div>
 
    <!-- section-4 explore food-->
    <section id="write">
