@@ -195,7 +195,7 @@ $('#updateDetails').click(function (event){
 // Create an FormData object 
 var data = new FormData(form);
 data.append("action", "teacherDetails");
-data.append("teacherId","1");    
+data.append("teacherId",teacherId);    
 data.append("recoveryPhoneNubmerOld", recoveryPhoneNubmerOld);
 data.append("recoveryemailOld",recoveryemailOld); 
 data.append("dobOld", dobOld);

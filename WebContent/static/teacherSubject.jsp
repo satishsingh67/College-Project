@@ -857,7 +857,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
   function examLink(buttonId,filedId,LinkFieldId,examType){
 	  
 	
-	  	event.preventDefault();
+	  
 	  	$(".loader1").show();
 	      $('#myModal').show();
 	  	var meetingLink=$('#'+filedId).val();

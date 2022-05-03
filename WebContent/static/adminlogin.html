@@ -9,7 +9,8 @@
 
    <!-- bootstrap cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
-
+  <script src="./lib/jquery.min.js"></script>
+   <script src="./lib/sweetalert.min.js"></script>
     <title>adminlogin</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
@@ -126,6 +127,85 @@ form span{
    color:var(--black);
 }
 
+.loader {
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #3498db;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 35%;
+    }
     </style>
 </head>
 <body style="background-image: url(./images/background/properback.png);background-repeat: no-repeat;background-size: cover;">
@@ -142,7 +222,7 @@ form span{
                
                </div>
              <div class="col-md-6">
-                <form  style="background-color: rgb(224, 170, 224);box-shadow: 5px 5px 5px solid rgb(129, 47, 47);border-radius: 10px;"><br><br>
+                <form id="loginForm" style="background-color: rgb(224, 170, 224);box-shadow: 5px 5px 5px solid rgb(129, 47, 47);border-radius: 10px;"><br><br>
            <div class="col-md-12">
               <div class="row">
                  <div class="col-md-6">
@@ -154,31 +234,91 @@ form span{
                  </div>
                  <div class="col-md-6">
                   <span>your mobile number :</span>
-                  <input type="text" name="number" placeholder="enter your mobile number" class="box" required>
+                  <input type="text" name="mobileNumber" placeholder="enter your mobile number" class="box" required>
                   <span>your Password:</span>
-                  <input type="password" name="number" placeholder="enter your Password" class="box" required>
+                  <input type="password" name="password" placeholder="enter your Password" class="box" required>
                   
                </div>
               </div>
            </div>
                   
-                    <input type="submit" style="background-color: black;margin: 20px;" value="Submit" name="submit" class="link-btn"> 
-                    <input type="submit" style="background-color: black;margin: 20px;" value="Clear" name="Submit" class="link-btn" style="border-bottom-right-radius: 20px;">
+                    <input type="submit" id="loginSubmit" style="background-color: black;margin: 20px;" value="Submit" name="submit" class="link-btn"> 
+                    <input type="submit" id="loginClear" style="background-color: black;margin: 20px;" value="Clear" name="Submit" class="link-btn" style="border-bottom-right-radius: 20px;">
                  </form>  
             </div>
          </div>
      </div>
-
-
-
-       
-     
      </section>
+   
+            <!-- Loader Modal Start -->
+   <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="loader1" style="display:none;">
+        <div class="loader" style="margin: auto;margin-left:40%;margin-top:7%;">
+        </div>
+
+        <h4
+          style="font-size:20px;margin: auto;margin-left:30%;margin-top:0%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">
+          Please wait....</h4>
+      </div>
+    </div>
+
+  </div>
+ <!-- Loader Modal end -->
+   
+   
      
      <script >
      
-     
-     
+     $("#loginSubmit").click(function (event) {
+    	 event.preventDefault();
+    	$('#myModal').show();
+    	//Calling Loader
+    	$(".loader1").show();
+
+    	id=$('#accId').val();
+    	email=$('#emailId').val();
+    	
+        var form = $('#loginForm')[0];
+        // Create an FormData object 
+        var data = new FormData(form);
+        data.append("action", "adminAccountDeleteOtp");
+        // disabled the submit button
+        $("#loginSubmit").prop("disabled", true);
+        $.ajax({
+          type: "POST",
+          enctype: 'multipart/form-data',
+          url: "/College_Final_Year_Project/adminLogin",
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function (data, textStatus, jqXHR) {
+        	  $(".loader1").hide();
+          	$('#myModal').hide();
+          	if (data.trim().includes(".jsp")) {
+	        	  $('#loginForm')[0].reset();
+	        	    window.location.href = data;
+	        	 } else{
+            	 swal("Error", data, "error");
+            }
+           
+            $("#loginSubmit").prop("disabled", false);
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+        	  $(".loader1").hide();
+          	$('#myModal').hide();
+        	  swal("Error", data, "error");
+            $("#loginSubmit").prop("disabled", false);
+          }
+        });
+    	
+    });
+     $("#loginClear").click(function (event) {
+    	 event.preventDefault();
+    	  $('#loginForm')[0].reset();
+     });
      
      </script>
      

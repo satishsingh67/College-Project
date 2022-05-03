@@ -335,7 +335,7 @@ if(msg !=null){
                             <i class="far fa-user-circle"></i>
                         </div>
                         <div class="div">
-                            <h5>Faculty Name :</h5>
+                            <h5>Faculty Name :<strong class="text-danger"style="color:red;">*</strong></h5>
                             <input name="teacherName" type="text" style="color:white;" class="input">
                         </div>
                     </div>
@@ -343,6 +343,7 @@ if(msg !=null){
                         <div class="i">
                             <i class="fas fa-eye" ></i>
                         </div>
+                        
                             <select name="departmentId" class="div "required="">
 								<option>-Select Faculty Depertment -</option>
                                   <option value="1">CSE</option>
@@ -365,7 +366,7 @@ if(msg !=null){
                             <i class="far fa-user-circle"></i>
                         </div>
                         <div class="div">
-                            <h5>Email Id :</h5>
+                            <h5>Email Id :<strong class="text-danger" style="color:red;">*</strong></h5>
                             <input name="emailId" style="color:white;" type="email" class="input">
                         </div>
                     </div>
@@ -374,7 +375,7 @@ if(msg !=null){
                             <i class="fas fa-eye" onclick="show()"></i>
                         </div>
                         <div class="div">
-                            <h5>Password</h5>
+                            <h5>Password:<strong class="text-danger" style="color:red;">*</strong></h5>
                             <input name="pass" style="color:white;" id="pswrd" type="password" class="input">
                         </div>
                     </div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.college.dao.studentDao.StudentDoubt;
+import com.college.mentor.dao.MentorDoubt;
 import com.college.teacher.dao.TeacherDoubt;
 
 /**
@@ -42,11 +43,13 @@ public class DoubtHandler extends HttpServlet {
 		String action = request.getParameter("action");
 		String action1=request.getParameter("action1");
 		String teacherId=request.getParameter("teacherId");
+		String mentorId=request.getParameter("mentorId");
+
 	    String result=null;
 	    PrintWriter out=response.getWriter();
 		if(action.trim().toLowerCase().equalsIgnoreCase("viewdoubt")) {
 			
-			result=new StudentDoubt().viewDoubt(action1,studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,teacherId);
+			result=new StudentDoubt().viewDoubt(action1,studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,teacherId,mentorId);
 			
 		}
 		else {
@@ -70,7 +73,8 @@ public class DoubtHandler extends HttpServlet {
 		String message=request.getParameter("doubtMessage");
 		String action = request.getParameter("action");
 		String teacherId=request.getParameter("teacherId");
-		
+		String mentorId=request.getParameter("mentorId");
+
 		String result=null;
 		PrintWriter out=response.getWriter();
 		if(action.trim().equalsIgnoreCase("askdoubt")) {
@@ -116,6 +120,24 @@ public class DoubtHandler extends HttpServlet {
 			}
 			else {
 				String doubtSubmitStatus=new TeacherDoubt().askDoubtAdmin(teacherId, message);
+				
+				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
+					result="Your Doubt Submitted Succesfully";
+					
+				}else {
+					result=doubtSubmitStatus.trim();
+				}
+				out.append(result);
+			}
+			
+		}
+		if(action.trim().equalsIgnoreCase("askDoubtMentorAdmin")) {
+			if(message.trim().isEmpty()) {
+				result="Please Enter Your Question.";
+				out.append(result);
+			}
+			else {
+				String doubtSubmitStatus=new MentorDoubt().askDoubtMentor(mentorId, message);
 				
 				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
 					result="Your Doubt Submitted Succesfully";

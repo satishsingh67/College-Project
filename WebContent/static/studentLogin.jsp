@@ -105,11 +105,11 @@ session.removeAttribute("message");
 }
 %>
 <br>
-    <label for="first_name" style="color:black; font-weight: bold;  font-size: 15px;">Enter Your Name</label>
+    <label for="first_name" style="color:black; font-weight: bold;  font-size: 15px;">Enter Your Name<strong class="text-danger"style="color:red;">*</strong></label>
     <input placeholder="Enter Your Name" id="first_name" name="studentName" type="text" class="validate">
-    <label for="student_id" style="color:black; font-weight: bold; font-size: 15px;">Enter Your ID</label>
+    <label for="student_id" style="color:black; font-weight: bold; font-size: 15px;">Enter Your ID<strong class="text-danger"style="color:red;">*</strong></label>
     <input placeholder="Enter Your ID" id="student_id" name="idNumber" type="text" class="validate">
-    <label for="student_id" style="color:black;font-weight: bold;  font-size: 15px;">Choose Security Question</label>
+    <label for="student_id" style="color:black;font-weight: bold;  font-size: 15px;">Choose Security Question<strong class="text-danger"style="color:red;">*</strong></label>
   <select class="browser-default" name="securityQuestion" style="margin-bottom: 2%;" id="Survey_Qs">
     <option>--Select--</option>
     <option>Your Favourite Color</option>
@@ -121,9 +121,9 @@ session.removeAttribute("message");
     <option>Your Date Of Birth</option>
     <option>Your Year Of Birth</option>
 </select>
-<label for="securityQuestionAnswer" style="color:black;font-weight: bold;font-size: 15px;">Enter Security Question's Answer</label>
+<label for="securityQuestionAnswer" style="color:black;font-weight: bold;font-size: 15px;">Enter Security Question's Answer<strong class="text-danger"style="color:red;">*</strong></label>
 <input placeholder="Enter Security Question's Answer" name="securityQuestionAnswer" id="securityQuestionAnswer" type="text" class="validate">
-<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter Security Pin</label>
+<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter Security Pin<strong class="text-danger" style="color:red;">*</strong></label>
 <input placeholder="Enter Security Pin" name="securityPin" id="first_name" type="password" class="validate">
 <div class="btn-group center-align"  role="group">
     <button type="submit" id="loginSubmit" value="submit"  class="btn #2196f3 blue">Submit</button>

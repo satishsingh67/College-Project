@@ -44,7 +44,24 @@ public class LogoutServlet extends HttpServlet {
 	response.sendRedirect("./static/teacherLogin.jsp");
 
 	}
-	
+	if(action!=null && action.trim().equalsIgnoreCase("admin")){
+	session.removeAttribute("admin");
+	session.setAttribute("message",message);
+	response.sendRedirect("./static/adminLogin.jsp");
+
+	}
+	if(action!=null && action.trim().equalsIgnoreCase("mentor")){
+		session.removeAttribute("mentor");
+		session.setAttribute("message",message);
+		response.sendRedirect("./static/mentorLogin.jsp");
+
+		}
+	if(action!=null && action.trim().equalsIgnoreCase("canvas")){
+		session.removeAttribute("canvas");
+		session.setAttribute("message",message);
+		response.sendRedirect("./static/canvasLogin.jsp");
+
+		}
 	}
 
 	/**

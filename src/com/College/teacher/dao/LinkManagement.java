@@ -214,4 +214,83 @@ public class LinkManagement {
 		return result;
 	}
 	
+	public String uploadSemExamMeetingLink(String fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId, String examLink ) {
+		String result=null;
+		Connection con=new DataBaseConnection().getDatabaseConnection();
+		try {
+			String query="Insert INTO `exam_link` (`fkExamType`,`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `examMeetingLink`, `createDate`, `updatedate`)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?)";
+			
+			PreparedStatement pstmt=con.prepareStatement(query);
+			pstmt.setInt(1,Integer.parseInt(fkExamType));
+			pstmt.setObject(2,null);
+			pstmt.setInt(3, Integer.parseInt(fkDepartmentId));
+			pstmt.setInt(4, Integer.parseInt(fkSemesterId));
+			pstmt.setInt(5, Integer.parseInt(fkSectionId));
+			pstmt.setObject(6, null);
+			pstmt.setString(7,examLink);
+			pstmt.setObject(8,new Date());
+            pstmt.setObject(9,new Date());
+			
+			int dbStatus=pstmt.executeUpdate();
+			
+			if(dbStatus>0){
+			result="Exam Link is Updated Successfully";
+			}
+			else{
+			result="Unable to upload Exam Link";
+
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(con!=null) {
+					con.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public String getSemExamMeetingLink(Integer fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId) {
+		String result=null;
+		Connection con=new DataBaseConnection().getDatabaseConnection();
+		try {
+			String query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? ORDER BY `updatedate` DESC LIMIT 1";
+			
+			PreparedStatement pstmt=con.prepareStatement(query);
+			pstmt.setInt(1,fkExamType);
+			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
+			pstmt.setInt(4, Integer.parseInt(fkSectionId));
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getString("examMeetingLink");
+	
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(con!=null) {
+					con.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 }

@@ -21,10 +21,10 @@ public class DataValidation {
 	}
 	
 	//New Registration Data Validation
-	public String newRegistrationDataValidation(String name,String department,String yearSemester,String stream ,String idNumber,String phoneNumber ,String email,String recoveryPhoneNumber,String gender,String DOB,
+	public String newRegistrationDataValidation(String name,String course,String department,String yearSemester,String stream ,String idNumber,String phoneNumber ,String email,String recoveryPhoneNumber,String gender,String DOB,
 			String securityQuestion,String securityQuestionAnswer,String securityPin,String confirmSecurityPin ,Part studentPhoto,Part moneyReceipt ) {
 		String result=null;
-		result=((name.trim().isEmpty())?"Name":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select--"))?"Department":(yearSemester.trim().isEmpty())?"Year-Semester":(yearSemester.trim().equalsIgnoreCase("--Select--"))?"Year-Semester":(stream.trim().isEmpty())?"Stream":(idNumber.trim().isEmpty())?"Id Number":(phoneNumber.trim().isEmpty())?"Phone Number":
+		result=((name.trim().isEmpty())?"Name":(course.trim().isEmpty())?"Course":(course.trim().equalsIgnoreCase("--Select--"))?"Course":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select--"))?"Department":(yearSemester.trim().isEmpty())?"Year-Semester":(yearSemester.trim().equalsIgnoreCase("--Select--"))?"Year-Semester":(stream.trim().isEmpty())?"Stream":(idNumber.trim().isEmpty())?"Id Number":(phoneNumber.trim().isEmpty())?"Phone Number":
 			(phoneNumber.trim().length()>11)?"Phone Number":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Email":(recoveryPhoneNumber.trim().isEmpty())?"Recovery Phone Number":(recoveryPhoneNumber.trim().length()>11)?"Recovery Phone Number":
 				(DOB.trim().isEmpty())?"Date Of Birth":(securityQuestion.trim().equalsIgnoreCase("--Select--"))?"Security Question":(securityQuestionAnswer.trim().isEmpty())?"Security Question's Answer":(securityPin.trim().isEmpty())?"Security Pin":(confirmSecurityPin.trim().isEmpty())?"Confirm Security Pin":(studentPhoto.getSize()==0)?"Photo":
 					(moneyReceipt.getSize()==0)?"Money Receipt":"True");
@@ -134,6 +134,86 @@ public class DataValidation {
 		 return result;
 	 }
 	
+	//Teacher Account data validation
 	
+	public String teacherAccountDataValidation(String name,String post,String email,String phoneNumber,String department,String gender,String joiningDate,String password) {
+		String result=null;
+		result=((name.trim().isEmpty())?"Teacher Name":(post.trim().isEmpty())?"Teacher Post":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("Select Department"))?"Department":(gender.trim().isEmpty())?"Gender":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(joiningDate.trim().isEmpty())?"Joining Date":(password.trim().isEmpty())?"Password":"True");
+		return result;
+	}
+	
+	public String teacherAccountDeleteDataValidation(String id,String email) {
+		String result=null;
+		result=((id.trim().isEmpty())?"Id":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":"True");
+		return result;
+	}
+
+	public String createAdminAccount(String name, String email, String phoneNumber, String gender, String password,
+			String confirmPassword) {
+		String result=null;
+		result=((name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(gender.trim().isEmpty())?"Gender":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(password.trim().isEmpty())?"Password":(confirmPassword.trim().isEmpty())?"Confirm Password":"True");
+		return result;
+	}
+
+	public String changeAdminPassword(String name, String email, String phoneNumber, String oldPassword,
+			String password, String confirmPassword) {
+		String result=null;
+		result=((name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(oldPassword.trim().isEmpty())?"Old Password":(password.trim().isEmpty())?"New Password":(confirmPassword.trim().isEmpty())?"Confirm Password":"True");
+		return result;
+	}
+
+	public String adminLogin(String name, String phoneNumber, String email, String password) {
+		String result=null;
+		result=((name.trim().isEmpty())?"Name":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Valid Email":(password.trim().isEmpty())?"Password":"True");
+		return result;
+	}
+
+	public String mentorAccountDataValidation(String name, String email, String department,String year, String gender,
+			String course, String password) {
+		String result=null;
+		result=((name.trim().isEmpty())?"Mentor Name":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":course.trim().equalsIgnoreCase("Select Course")?"Course":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("Select Department"))?"Department":year.trim().equalsIgnoreCase("--Select--")?"Year":(gender.trim().isEmpty())?"Gender":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(password.trim().isEmpty())?"Password":"True");
+		
+		return result;
+	}
+
+	public String mentorLogin(String name, String email, String password) {
+		String result=null;
+		result=((name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Valid Email":(password.trim().isEmpty())?"Password":"True");
+		return result;
+	}
+
+	public String subjectAllotStudentValidation(String courseTypeId, String departmentId, String semseter,
+			String section, String studentsName, String subjects) {
+
+		String result=null;
+        
+		result=(studentsName.trim().equalsIgnoreCase("null")?"Students Name":subjects.trim().equalsIgnoreCase("null")?"Subjects":(courseTypeId.trim().equalsIgnoreCase("--Select--"))?"Course Type":(departmentId.trim().equalsIgnoreCase("--Select--"))?"Department":(semseter.trim().equalsIgnoreCase("--Select--"))?"Semester":
+			(section.trim().equalsIgnoreCase("--Select--"))?"Section":"True");
+		
+		return result;
+	}
+
+	public String canvasAccountDataValidation(String name, String email, String department, String password) {
+		// TODO Auto-generated method stub
+		String result=null;
+		result=((name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select Department--"))?"Department":(password.trim().isEmpty())?"Password":"True");
+		
+		return result;
+	}
+
+	public String canvasFormDataValidationWithoutWriteUp(String personType, String name, String department, String id,
+			String postType, String fileType, Part file) {
+		String result=null;
+		result=(personType.trim().equalsIgnoreCase("--Select--")?"Relation With The Institute":(name.trim().isEmpty())?"Name":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select--"))?"Department":(id.trim().isEmpty())?"Id":(postType.trim().equalsIgnoreCase("--Select--"))?"Post Type":(fileType.trim().equalsIgnoreCase("--Select--"))?"File Type":file.getSize()==0?"File":"True");
+		
+		return result;
+	}
+	public String canvasFormDataValidationWithWriteUp(String personType, String name, String department, String id,
+			String postType,String title, String fileType, Part file) {
+		String result=null;
+		result=(personType.trim().equalsIgnoreCase("--Select--")?"Relation With The Institute":(name.trim().isEmpty())?"Name":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select--"))?"Department":(id.trim().isEmpty())?"Id":(postType.trim().equalsIgnoreCase("--Select--"))?"Post Type":title.trim().isEmpty()?"Write Up Title":(fileType.trim().equalsIgnoreCase("--Select--"))?"File Type":file.getSize()==0?"File":"True");
+		
+		return result;
+	}
 }
  

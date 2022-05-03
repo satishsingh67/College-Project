@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./css/committes.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+    <script src="./lib/jquery.min.js"></script>
+   <script src="./lib/sweetalert.min.js"></script> 
    
 
     <!-- font awesome cdn link  -->
@@ -114,92 +116,12 @@ form span{
    background-color: var(--black);
    color:var(--white);
 }
-#customers {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    #customers td, #customers th {
-      border: 2px solid rgb(56, 52, 52);
-      padding: 8px;
-     
-    }
-    
-    #customers tr:nth-child(odd){background-color: #76fc65;}
-    #customers tr:nth-child(even){background-color: #76fc65;}
-    
-    #customers tr:hover {background-color: rgb(236, 84, 84);}
-    
-    #customers th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #484ac2;
-      color: white;
-    }
+
     .view-btn{
           width: 90px;
           background-color: lightblue;
         }
-    /* The Modal (background) */
-    .modal {
-          display: none;
-          /* Hidden by default */
-          position:fixed;
-          /* Stay in place */
-          z-index: 1;
-          /* Sit on top */
-          padding-top: 100px;
-          /* Location of the box */
-          left: 0;
-          top: 0;
-          width: 100%;
-          /* Full width */
-          height: 100%;
-          /* Full height */
-          overflow: auto;
-         
-          /* Enable scroll if needed */
-       /*   background-color: rgb(0, 0, 0);*/
-          /* Fallback color */
-        /*  background-color: rgba(0, 0, 0, 0.4);
-          /* Black w/ opacity */
-        }
-    
-        /* Modal Content */
-        .modal-content {
-        
-          
-          margin: auto;
-       
-          padding: 20px;
-          border: 1px solid #888;
-          width: 50%;
-          height: 60%;
-          background-color: rgb(29, 111, 235);
-        }
-    
-        /* The Close Button */
-        .close {
-           
-          color: #ffffff;
-          float: right;
-          margin-left: 97%;
-          margin-top: -3%;
-          font-size: 28px;
-          font-weight: bold;
-          background-color: black;
-          border-radius:5px ;
-          
-        }
-    
-        .close:hover,
-        .close:focus {
-          color: rgb(215, 230, 17);
-          text-decoration: none;
-          cursor: pointer;
-        }
+  
         .container {
   display: block;
   position: relative;
@@ -321,6 +243,72 @@ form span{
   display: none;
 }
 
+
+.loader {
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #3498db;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 35%;
+    }
+
+
+
  </style>
 </head>
 <body>
@@ -343,13 +331,13 @@ form span{
                                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_9wpyhdzo.json"  background="transparent"  speed="2"  style="width: 500px; height: 600px;"  loop  autoplay></lottie-player>  </div>
                                 <div class="col-md-6">
-                                <form  >
+                                <form id="canvasAccountForm"  style="border:2px solid skyblue;height:520px;" >
                                
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Name:</span>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Name:<strong class="text-danger">*</strong></span>
                                             <input type="text" name="name" placeholder="Enter  Name" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Email ID:</span>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Email Id:<strong class="text-danger">*</strong></span>
                                             <input type="email" name="email" placeholder="Enter Email Id " class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Department:</span>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Department:<strong class="text-danger">*</strong></span>
                                             <select class="box" name="department"  id="ddselect">
                                                 <option>--Select--</option>
                                                 <option value="1">CSE</option>
@@ -365,33 +353,96 @@ form span{
                                                 <option>Cyber scurity</option>
                                                 <option>Data Science</option>
                                             </select><br>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Allow Id As Event Co-ordinator</span>
-                                           
-                                            <label class="container">Yes
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                              </label><label class="container">No
-                                                <input type="checkbox">
-                                                <span class="checkmark"></span>
-                                              </label>
-                                              
-                                              
-                                              
+                                          <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Password:<strong class="text-danger">*</strong></span>
+                                            <input type="password" name="password" placeholder="Enter Password" class="box" required>
                                              
-                                            <input type="submit" value="Submit" name="Submit" id="btn" class="link-btn" style="margin-right: 5px;background-color: black;"><input type="submit" value="Reset" name="submit" id="btn" class="link-btn"  style="background-color: black;">
-                                            
-                                       
-                                        
-                                   
+                                            <input type="submit" value="Submit" name="Submit" id="acconutCreationButton" class="link-btn" style="margin-right: 5px;background-color: black;">
+                                            <input type="submit" value="Clear" name="submit" id="acconutCreationClear" class="link-btn"  style="background-color: black;">
+
                                  </form>   
                             </div>
                         </div>
                     </div>
                 </section>
-                
-                
-               
-                
-                
-             
              </main>
+   
+   
+           <!-- Loader Modal Start -->
+   <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="loader1" style="display:none;">
+        <div class="loader" style="margin: auto;margin-left:40%;margin-top:7%;">
+        </div>
+
+        <h4
+          style="font-size:22px;margin: auto;margin-left:30%;margin-top:0%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">
+          Please wait....</h4>
+      </div>
+    </div>
+
+  </div>
+ <!-- Loader Modal end -->
+   
+       
+       <script>
+       
+       
+       
+       
+              $('#acconutCreationButton').click(function (event){
+  		    event.preventDefault();
+  		    
+  		$('#myModal').show();
+  		//Calling Loader
+  		$(".loader1").show();
+
+  		    var form = $('#canvasAccountForm')[0];
+  		    // Create an FormData object 
+  		    var data = new FormData(form);
+  		    data.append("action", "canvasAccount");
+  		    // disabled the submit button
+  		    $("#acconutCreationButton").prop("disabled", true);
+  		    $.ajax({
+  		      type: "POST",
+  		      enctype: 'multipart/form-data',
+  		      url: "/College_Final_Year_Project/mentorNew",
+  		      data: data,
+  		      processData: false,
+  		      contentType: false,
+  		      success: function (data, textStatus, jqXHR) {
+  		        $(".loader1").hide();
+  		        $('#myModal').hide();
+  		        if (data.trim().includes("Successfully")) {
+  		          swal("Done", data, "success");
+  		        $('#canvasAccountForm')[0].reset();
+  		        }
+  		        else {
+  		          swal("Error", data, "error");
+  		        }
+		         
+  		        $("#acconutCreationButton").prop("disabled", false);
+  		      },
+  		      error: function (jqXHR, textStatus, errorThrown) {
+  		        $(".loader1").hide();
+  		        $('#myModal').hide();
+  		        swal("Error", data, "error");
+  		        $("#acconutCreationButton").prop("disabled", false);
+  		      }
+  		    });
+    });
+    
+    
+    $('#acconutCreationClear').click(function (event){
+	    event.preventDefault();
+        $('#canvasAccountForm')[0].reset();
+
+    });
+       </script>
+          
+       
+       
+        
+    </body>
+</html>

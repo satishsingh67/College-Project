@@ -75,6 +75,13 @@ public class TeacherLinkManagement extends HttpServlet {
 				result = "Please Enter Exam Link";
 			}
 		}
+		else if(action.trim().equalsIgnoreCase("semExamLink")) {
+			if (!meetLink.isEmpty()) {
+				result = linkManagementObj.uploadSemExamMeetingLink(examType, departmentId, semseter, section, meetLink);
+			} else {
+				result = "Please Enter Exam Link";
+			}
+		}
 		
 		
 		else {

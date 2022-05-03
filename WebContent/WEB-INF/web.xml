@@ -103,9 +103,54 @@
 		<servlet-class>com.college.action.AboutUsFeedback</servlet-class>
 	</servlet>
 
-<servlet>
+	<servlet>
 		<servlet-name>FetchDoubtAdmin</servlet-name>
 		<servlet-class>com.college.action.FetchDoubtAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AccountCreationAdmin</servlet-name>
+		<servlet-class>com.college.action.AccountCreationAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminLogin</servlet-name>
+		<servlet-class>com.college.action.AdminLogin</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UploadInformationAdmin</servlet-name>
+		<servlet-class>com.college.action.UploadInformationAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MentorRegistration</servlet-name>
+		<servlet-class>com.college.action.MentorRegistration</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MentorLogin</servlet-name>
+		<servlet-class>com.college.action.MentorLogin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MentorUploadFiles</servlet-name>
+		<servlet-class>com.college.action.MentorUploadFiles</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MentorUploadLink</servlet-name>
+		<servlet-class>com.college.action.MentorUploadLink</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ViewStudentDetailsMentor</servlet-name>
+		<servlet-class>com.college.action.ViewStudentDetailsMentor</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SubjectAllotmentMentor</servlet-name>
+		<servlet-class>com.college.action.SubjectAllotmentMentor</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CanvasManagement</servlet-name>
+		<servlet-class>com.college.action.CanvasManagement</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FetchDropDowns</servlet-name>
+		<servlet-class>com.college.action.FetchDropDowns</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -198,11 +243,63 @@
 		<servlet-name>AboutUsFeedback</servlet-name>
 		<url-pattern>/aboutUs</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet-mapping>
 		<servlet-name>FetchDoubtAdmin</servlet-name>
 		<url-pattern>/fetch</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>AccountCreationAdmin</servlet-name>
+		<url-pattern>/create</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminLogin</servlet-name>
+		<url-pattern>/adminLogin</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UploadInformationAdmin</servlet-name>
+		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MentorRegistration</servlet-name>
+		<url-pattern>/mentorNew</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>MentorLogin</servlet-name>
+		<url-pattern>/mentorLogin</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>MentorUploadFiles</servlet-name>
+		<url-pattern>/mentorUploadFiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>MentorUploadLink</servlet-name>
+		<url-pattern>/mentorUploadLink</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ViewStudentDetailsMentor</servlet-name>
+		<url-pattern>/guideStudent</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SubjectAllotmentMentor</servlet-name>
+		<url-pattern>/subjectAllotement</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CanvasManagement</servlet-name>
+		<url-pattern>/canvas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FetchDropDowns</servlet-name>
+		<url-pattern>/dropdown</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>

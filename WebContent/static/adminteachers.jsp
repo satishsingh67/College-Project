@@ -1,3 +1,15 @@
+<%@page errorPage="errorPage.jsp" %>
+<%@page import="com.college.model.Admin" %>
+
+<%
+Admin admin=(Admin)session.getAttribute("admin");
+if(admin==null){
+	response.sendRedirect("adminLogin.jsp");
+	return;
+}
+%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -142,7 +154,12 @@ form span{
   font-size:17px;
 }
 
-   
+  
+   th {
+	position: sticky;
+	top: 0px;
+	height: 10px;
+} 
         .header .navbar {
   padding: 2rem 10%;
   display: -webkit-box;
@@ -199,7 +216,7 @@ form span{
   color: #334;
   display: none;
 }
-.loader {
+.loader2 {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid blue;
@@ -210,6 +227,17 @@ form span{
   animation: spin 1s linear infinite;
 }
 
+
+.loader {
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #3498db;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -219,6 +247,100 @@ form span{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 10%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 35%;
+    }
+.modalViewQuestionPaper {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+     
+    }
+ /* Modal Content */
+    .modal-contentViewQuestionPaper {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 5%;
+      padding: 20px;
+      border: 1px solid skyblue;
+      width: 50%;
+      height: 85%;
+    }
+    
  </style>
 </head>
 <body>
@@ -261,16 +383,16 @@ form span{
                                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                                 <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_bjyiojos.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player></div>
                             <div class="col-md-7">
-                                <form style="border: 1px solid red;height:530px;" >
+                                <form id="teacherAccountForm" style="border: 1px solid red;height:530px;" >
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Name:</span>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Name:<strong class="text-danger">*</strong></span>
                                             <input type="text" name="name" placeholder="Enter Teacher Name" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Email:</span>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Email:<strong class="text-danger">*</strong></span>
                                             <input type="email" name="email" placeholder="Enter Teacher Email" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Department:</span>
-                                            <select class="box">
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Department:<strong class="text-danger">*</strong></span>
+                                            <select name="department" class="box">
                                                 <option>Select Department</option>
 											<option value="1">CSE</option>
 											<option value="2">ECE</option>
@@ -288,14 +410,14 @@ form span{
 										</select>
                                         </div>
                                         <div class="col-md-6">
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Post:</span>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Post:<strong class="text-danger">*</strong></span>
                                             
-                                            <input type="text" name="number" placeholder="enter Teacher Post" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Mobile no.:</span>
+                                            <input type="text" name="post" placeholder="enter Teacher Post" class="box" required>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Mobile no.:<strong class="text-danger">*</strong></span>
                                             
-                                            <input type="text" name="number"  placeholder="enter Teacher Mobile No" class="box" required>
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Gender</span>
-                                                <select class="box">
+                                            <input type="text" name="mobileNumber"  placeholder="enter Teacher Mobile No" class="box" required>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Gender<strong class="text-danger">*</strong></span>
+                                                <select name="gender" class="box">
                                               <option>--Select--</option>
 											<option>Male</option>
 											<option>Female</option>
@@ -307,20 +429,20 @@ form span{
 									   </div>
 									   
 									     <div class="col-md-6">
-									     <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Joining Date</span>
+									     <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Joining Date<strong class="text-danger">*</strong></span>
                                             
-                                            <input type="date" name="number"  class="box" required>                                      
+                                            <input type="date"  name="joiningDate"  class="box" required>                                      
 									     
 									     </div>
 									     <div class="col-md-6">
-									     <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Password</span>
+									     <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Password<strong class="text-danger">*</strong></span>
                                             
-                                            <input type="password" name="number"  class="box" required>                                      
+                                            <input type="password" name="password"  class="box" required>                                      
 									     
 									     </div>
                                     </div>
-                                    <input type="submit" value="Create" name="submit" id="btn" class="link-btn" style="margin-right: 5px; background-color: black;">
-                                    <input type="submit" value="Cancel" name="submit" id="btn" class="link-btn" style="background-color: black;">
+                                    <input type="submit" value="Create" name="submit" id="teacherAccountButton" class="link-btn" style="margin-right: 5px; background-color: black;">
+                                    <input type="submit" value="Clear" name="submit" id="clearButton" class="link-btn" style="background-color: black;">
                                 </div>
                     
                                    
@@ -357,19 +479,20 @@ form span{
                 <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div  class="col-md-6">
                             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                             <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_nux6g0kx.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>        </div>
                         <div class="col-md-6">
-                          <form  >
+                          <form id="deleteAccountForm"  style="border:1px solid red;height:300px;">
                      
                               
-                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :</span>
-                              <input type="text"  placeholder="enter Id" class="box" required>
-                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter Email</span>
-                              <input type="text" name="password" placeholder="enter your email" class="box" required>
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :<strong class="text-danger">*</strong></span>
+                              <input type="text" name="id"  placeholder="enter Id" class="box" required>
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter Email:<strong class="text-danger">*</strong></span>
+                              <input type="text" name="email" placeholder="enter your email" class="box" required>
                               
-                              <input type="submit" value="Delete" name="submit" id="btn" class="link-btn" style="margin-right: 5px;background-color: black;"><input type="submit" value="Cancel" name="submit" id="btn" class="link-btn"  style="background-color: black;">
+                              <input type="submit" value="Delete" name="submit" id="delteAccount" class="link-btn" style="margin-right: 5px;background-color: black;">
+                              <input type="submit" value="Clear" name="submit" id="delteAccountClear" class="link-btn"  style="background-color: black;">
                            </form>   
                       </div>
                     </div>
@@ -377,70 +500,336 @@ form span{
                </section>
              </main>
              
-                          <div class="loader" style="margin-top:-55%;margin-left:43%; display:none;" id="myLoader"></div>
+                          <div class="loader2" style="margin-top:-55%;margin-left:43%; display:none;" id="myLoader"></div>
              
+            
+             <!-- Loader Modal Start -->
+   <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="loader1" style="display:none;">
+        <div class="loader" style="margin: auto;margin-left:40%;margin-top:7%;">
+        </div>
+
+        <h4
+          style="font-size:22px;margin: auto;margin-left:30%;margin-top:0%;color: rgb(30, 169, 224);  letter-spacing: 5px; padding: 10px;">
+          Please wait....</h4>
+      </div>
+    </div>
+
+  </div>
+ <!-- Loader Modal end -->
+            
+      <!-- The  Question Paper Modal -->
+<div class="modalViewQuestionPaper"  id="myModalQuestionPaper">
+    <div class="modal-contentViewQuestionPaper">
+
+      <!-- Modal Header -->
+     
+        <h4 class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">View Doubt and Reply</h4>
+     
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        
+        <label><b style="font-size:15px; text-transform: none;" id="teacherName" ></b></label>
+        <br>
+       <label><b style="font-size:15px; text-transform: none;" id="teacherEmailId">Email id:</b></label>
+       <br>
+       <label><b style="font-size:15px; text-transform: none;" id="teacherMobileNumber">Contact Number:</b></label>
+        <br>
+ 
+        <div style="width:100px;margin-top:50px;">
+        
+               <label ><b style="font-size:15px; text-transform: none;" >Question:</b></label>       
+        
+        
+        </div> 
+ 
+       <textarea name="doubtQuestion" readonly placeholder="Question" id="teacherQuestion" style="margin-left:120px;margin-top:-70px;width:70%;font-size:15px;border:2px solid skyblue; text-transform: none;"  cols="50" rows="5"></textarea>
+       <br>
+       <br>
+       
+       
+        <div style="width:100px;margin-top:50px;">
+        
+               <label ><b style="font-size:15px; text-transform: none;" >Answer:<strong class="text-danger">*</strong></b></label>       
+        
+        
+        </div> 
+ 
+       <textarea name="doubtAnswer"  placeholder="Answer" id="teacherQuestionAnswer" style="margin-left:120px;margin-top:-70px;width:70%;font-size:15px;border:2px solid skyblue; text-transform: none;"  cols="50" rows="5"></textarea>   
+         <div>
+     
+      <input type="submit" id="doubtSubmit"  value="Submit" class="link-btn" >
+     
+     </div>
+         
+  </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer" >
+        <button type="button" id="closeQuestionPaperModel" class="link-btn" style="background-color:red;">Close</button>
+      </div>
+
+    </div>
+</div>
+<!-- View Question Paper Modal end -->      
+            
              
           <script>
+          
+          var id;
           
           $(document).ready(function () {
         	  console.log("Jquery loded");
         	 $('#myLoader').show();
         	  fetchDoubt();
-        	  
-        	  
+        	  	
         });
 
-        function fetchDoubt(){
-        	
-        	 $.ajax({
-   		      type: "GET",
-   		      url:"/College_Final_Year_Project/fetch?action=teacherDoubt",
-   		      success: function (data, textStatus, jqXHR) {
-   		    	  var JsonData= jQuery.parseJSON(data);
-   		    	  $('#Table').empty();
-   		    	 if(JsonData.length==0){
-   			     $("#Table").html('<tr class="no-records"><td colspan="8" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
-   		    	 }
-   		    	 else{
-   		          $(JsonData).each(function (index, item) {  
-   		        	  
-   		        
-   		        	 $('#Table').append(
-   		        			  '<tr style="height:20px">'+
-   		        			 '<td style="text-align: center;font-size: 15px;">'+item.name+'</td>'+
-   		        			 '<td style="text-align: center;font-size: 15px; text-transform: none; ">'+item.emailId+'</td>'+
-   		        			 '<td style="text-align: center;font-size: 15px;">'+item.mobileNumber+'</td>'+
-   		        			 '<td style="text-align: center;font-size: 15px;">'+item.departmentName+'</td>'+
-   		        		       '<td style="text-align: center;font-size: 15px;">'+item.createDate+'</td>'+
-   		        		         '<td style="text-align: center;font-size: 15px;">'+(item.updateDate == null ?" ":item.updateDate)+'</td>'+
-   		        		        '<td style="text-align: center;"><textarea rows="2" cols="20" style="font-size: 15px;">'+item.question+'</textarea></td>'+
-   		        		        '<td style="text-align: center;"><textarea rows="2" cols="20" style="font-size: 15px;">'+(item.answer == null ?" ":item.answer)+'</textarea></td>'+
-   		        		     '<td style="text-align: center;"><input type="submit" value="Submit" onclick=myFunction()  class="link-btn"></td>'+
-   		        		      '</tr>'
-   		        	  );
-   		        	  
-   		        	  
-   			      });
-   		    	 }
-   		  	 $('#myLoader').hide();
-   		      },
-   		      error: function (jqXHR, textStatus, errorThrown) {
-   	           alert("Sorry Something went wrong while loading doubt history.");
-   		      }
-   		    });  
-        	
-        	
-        }  
+        
           
           
           function myFunction(){
         	  
-        	  alert("Hii");
-        	  
-        	  
+        		
+     	         $('#Table td').on('click', function () {
+     	        	 
+     	        	 $('#myModalQuestionPaper').show();
+
+     	        	
+     	             var row = $(this).closest('tr');
+     	           
+     	              id = $(row).find('td').eq(0).html();
+     	            var name = $(row).find('td').eq(1).html();
+     	           var  emailId= $(row).find('td').eq(2).html();
+     	          var mobileNumber = $(row).find('td').eq(3).html();
+     	         var question=$('#question'+id).val();
+     	             var answer=$('#answer'+id).val();
+
+     	             $('#teacherName').text("Teacher Name: "+name);
+     	            $('#teacherEmailId').text("Email Id : "+emailId);
+     	           $('#teacherMobileNumber').text("Contact Number: "+mobileNumber);
+     	          $('#teacherQuestion').val(question);
+     	          if((answer.length)>1){
+         	          $('#teacherQuestionAnswer').val(answer);
+  
+     	          }
+     	          else{
+         	          $('#teacherQuestionAnswer').val("");
+
+     	          }
+     	             
+     	            
+     	        }); 
+        	
           }
           
+          $('#closeQuestionPaperModel').click(function (event){
+  			event.preventDefault();
+  			 $('#myModalQuestionPaper').hide();
+  		});
           
+               
+          
+          $('#doubtSubmit').click(function (event){
+    			event.preventDefault();
+    			
+    			var answer= $('#teacherQuestionAnswer').val();
+    			send(id,answer);
+    		});
+          
+          
+          
+          function send(id,answer){
+        	  $("#doubtSubmit").prop("disabled",true);
+        	  $('#myModalQuestionPaper').hide();
+        	    $('#myModal').show();
+        	  $(".loader1").show();
+        	console.log(answer.trim().length);
+ 	          if(answer.trim().length==0){
+ 	        	  $(".loader1").hide();
+ 	               $('#myModal').hide();
+ 	        	  alert("Please Answer the question");
+ 	      $("#doubtSubmit").prop("disabled",false);
+ 	     $('#myModalQuestionPaper').show();
+ 	          }
+ 	        else{
+ 	        	  var form_data = new FormData(); // Creating object of FormData class
+ 	        	  form_data.append("id", id); // Appending parameter named file with properties of file_field to form_data
+ 	        	  form_data.append("answer", answer); // Adding extra parameters to form_data
+ 	        	  form_data.append("action", "teacherDoubtAnswer");
+ 	        	  $.ajax({
+ 	        		  type: "POST",
+ 	                  enctype: 'multipart/form-data',
+ 	                  url: "/College_Final_Year_Project/fetch",
+ 	                  data: form_data,
+ 	                  processData: false,
+ 	                  contentType: false,
+ 	                  success: function(data,textStatus,jqXHR){
+ 	                	  $(".loader1").hide();
+ 	                      $('#myModal').hide();
+ 	                	  if(data.trim().includes('Successfully')){
+ 	                	   swal("Done", data, "success");
+ 	                	  
+ 	                	  }else{
+ 	                		  swal("Error",data,"error");
+ 	                	  }
+ 	                	 $("#doubtSubmit").prop("disabled",false);
+ 	            	     $('#myModalQuestionPaper').show();
+ 	            	    fetchDoubt();
+ 	                    },
+ 	                  error:function(jqXHR,textStatus,errorThrown){
+ 	                	  $(".loader1").hide();
+ 	                      $('#myModal').hide();
+ 	                      swal("Error",data,"error");
+ 	                     $("#doubtSubmit").prop("disabled",false);
+ 	            	     $('#myModalQuestionPaper').show();
+
+ 	                  }
+ 	        	  }); 
+ 	          }
+          }
+          
+          function fetchDoubt(){
+          	
+         	 $.ajax({
+    		      type: "GET",
+    		      url:"/College_Final_Year_Project/fetch?action=teacherDoubt",
+    		      success: function (data, textStatus, jqXHR) {
+    		    	  var JsonData= jQuery.parseJSON(data);
+    		    	  $('#Table').empty();
+    		    	 if(JsonData.length==0){
+    			     $("#Table").html('<tr class="no-records"><td colspan="8" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+    		    	 }
+    		    	 else{
+    		          $(JsonData).each(function (index, item) {  
+    		        	  
+    		        
+    		        	 $('#Table').append(
+    		        			  '<tr style="height:20px">'+
+    		        			'<td style="text-align: center;display:none;">'+item.pkId+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+item.name+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px; text-transform: none; ">'+item.emailId+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+item.mobileNumber+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+item.departmentName+'</td>'+
+    		        		       '<td style="text-align: center;font-size: 15px;">'+item.createDate+'</td>'+
+    		        		         '<td style="text-align: center;font-size: 15px;">'+(item.updateDate == null ?" ":item.updateDate)+'</td>'+
+    		        		        '<td style="text-align: center;"><textarea rows="2" cols="20" style="font-size: 15px;" readonly id=question'+item.pkId+'>'+item.question+'</textarea></td>'+
+    		        		        '<td style="text-align: center;"><textarea rows="2" cols="20" style="font-size: 15px;text-transform: none; " readonly  id=answer'+item.pkId+'>'+(item.answer == null ?" ":item.answer)+'</textarea></td>'+
+    		        		     '<td style="text-align: center;"><input type="submit" value="Reply" onclick=myFunction()  class="link-btn" id=button'+item.pkId+' ></td>'+
+    		        		      '</tr>'
+    		        	  );
+    		        	  
+    		        	  
+    			      });
+    		    	 }
+    		  	 $('#myLoader').hide();
+    		      },
+    		      error: function (jqXHR, textStatus, errorThrown) {
+    	           alert("Sorry Something went wrong while loading doubt history.");
+    		      }
+    		    });  
+                }  
+          
+          
+          $('#delteAccount').click(function (event){
+  			event.preventDefault();
+  				
+  			$('#myModal').show();
+    		//Calling Loader
+    		$(".loader1").show();
+
+    		    var form = $('#deleteAccountForm')[0];
+    		    // Create an FormData object 
+    		    var data = new FormData(form);
+    		    data.append("action", "teacherAccountDelete");
+    		    // disabled the submit button
+    		    $("#delteAccount").prop("disabled", true);
+    		    $.ajax({
+    		      type: "POST",
+    		      enctype: 'multipart/form-data',
+    		      url: "/College_Final_Year_Project/create",
+    		      data: data,
+    		      processData: false,
+    		      contentType: false,
+    		      success: function (data, textStatus, jqXHR) {
+    		        $(".loader1").hide();
+    		        $('#myModal').hide();
+    		        if (data.trim().includes("Successfully")) {
+    		          swal("Done", data, "success");
+    		          $('#deleteAccountForm')[0].reset();
+    		        }
+    		        else {
+    		          swal("Error", data, "error");
+    		        }
+  		        
+    		        $("#delteAccount").prop("disabled", false);
+    		      },
+    		      error: function (jqXHR, textStatus, errorThrown) {
+    		        $(".loader1").hide();
+    		        $('#myModal').hide();
+    		        swal("Error", data, "error");
+    		        $("#delteAccount").prop("disabled", false);
+    		      }
+    		    });
+  		});
+          
+           
+          $('#teacherAccountButton').click(function (event){
+        		    event.preventDefault();
+        		    
+        		$('#myModal').show();
+        		//Calling Loader
+        		$(".loader1").show();
+
+        		    var form = $('#teacherAccountForm')[0];
+        		    // Create an FormData object 
+        		    var data = new FormData(form);
+        		    data.append("action", "teacherAccount");
+        		    // disabled the submit button
+        		    $("#teacherAccountButton").prop("disabled", true);
+        		    $.ajax({
+        		      type: "POST",
+        		      enctype: 'multipart/form-data',
+        		      url: "/College_Final_Year_Project/create",
+        		      data: data,
+        		      processData: false,
+        		      contentType: false,
+        		      success: function (data, textStatus, jqXHR) {
+        		        $(".loader1").hide();
+        		        $('#myModal').hide();
+        		        if (data.trim().includes("Successfully")) {
+        		          swal("Done", data, "success");
+        		        }
+        		        else {
+        		          swal("Error", data, "error");
+        		        }
+      		          $('#teacherAccountForm')[0].reset();
+        		        $("#teacherAccountButton").prop("disabled", false);
+        		      },
+        		      error: function (jqXHR, textStatus, errorThrown) {
+        		        $(".loader1").hide();
+        		        $('#myModal').hide();
+        		        swal("Error", data, "error");
+        		        $("#teacherAccountButton").prop("disabled", false);
+        		      }
+        		    });
+          });
+          
+          
+          $('#clearButton').click(function (event){
+  		    event.preventDefault();
+	          $('#teacherAccountForm')[0].reset();
+
+          });
+          $('#delteAccountClear').click(function (event){
+    		    event.preventDefault();
+  	          $('#deleteAccountForm')[0].reset();
+
+            });
           </script>
           
              
@@ -448,3 +837,4 @@ form span{
              
     </body>
     </html>
+    

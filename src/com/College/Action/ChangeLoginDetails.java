@@ -14,6 +14,7 @@ import com.college.updateLoginDetails.ChangeEmail;
 import com.college.updateLoginDetails.ChangeMobileNumber;
 import com.college.updateLoginDetails.ChangeSecurityPin;
 import com.college.updateLoginDetails.ChangeSecurityQuestionAnswer;
+import com.college.admin.dao.AdminLoginValidation;
 import com.college.dataValidation.DataValidation;
 import com.college.teacher.dao.ChangePassword;
 
@@ -73,7 +74,12 @@ public class ChangeLoginDetails extends HttpServlet {
         String recoveryPhoneNubmerOld=request.getParameter("recoveryPhoneNubmerOld");
 		String recoveryemailOld=request.getParameter("recoveryemailOld");
 		String dobOld=request.getParameter("dobOld");
-        
+		String adminId=request.getParameter("adminId");
+		String mentorId=request.getParameter("mentorId");
+        String phoneNubmerOld=request.getParameter("phoneNubmerOld");
+
+		
+		
 	    if(action.trim().equalsIgnoreCase("changeMobileNumber")) {
 	    	status=changeMobileNumber(existingEmail,existingPhoneNumber,newPhoneNumber,idNumber,existingSecurityPin,existingSecurityQuestion,existingSecurityQuestionAnswer);
 	    }else if(action.trim().equalsIgnoreCase("changeEmail")) {
@@ -97,12 +103,42 @@ public class ChangeLoginDetails extends HttpServlet {
 			}
 			
 	    }
-       else if(action.trim().equalsIgnoreCase("teacherDetails")) {
+        else if(action.trim().equalsIgnoreCase("mentorPassword")) {
 	    	
-		    	 status=new ChangePassword().updateDetails(teacherId, recoveryEmail, recoveryPhoneNumber, DOB, teacherPhoto);
-		
+			String dataValidationResult=new DataValidation().changeTeacherPassword(existingEmail, currentPassword, newPassword, reNewPassword);
+
+			if(dataValidationResult.trim().equalsIgnoreCase("True")) {
+			status=new ChangePassword().changeMentorPassword(mentorId,existingEmail, currentPassword, newPassword, reNewPassword);
+			}else {
+			
+				status=	dataValidationResult;
+			}
 			
 	    }
+       else if(action.trim().equalsIgnoreCase("teacherDetails")) {
+    	   if(recoveryEmail.trim().equalsIgnoreCase(recoveryemailOld) && recoveryPhoneNumber.trim().equalsIgnoreCase(recoveryPhoneNubmerOld) && DOB.trim().equalsIgnoreCase(dobOld) && teacherPhoto.getSize()==0) {
+    		   status="Please change any details to update profile";
+    	   }else {
+		    	 status=new ChangePassword().updateDetails(teacherId, recoveryEmail, recoveryPhoneNumber, DOB, teacherPhoto);
+    	   }
+			
+	    }
+       else if(action.trim().equalsIgnoreCase("adminDetails")) {
+    	   if(recoveryEmail.trim().equalsIgnoreCase(recoveryemailOld) && recoveryPhoneNumber.trim().equalsIgnoreCase(recoveryPhoneNubmerOld) && DOB.trim().equalsIgnoreCase(dobOld) && teacherPhoto.getSize()==0) {
+    		   status="Please change any details to update profile";
+    	   }else {
+		    	 status=new AdminLoginValidation().updateDetails(adminId, recoveryEmail, recoveryPhoneNumber, DOB, teacherPhoto);
+    	   }
+			
+	    } else if(action.trim().equalsIgnoreCase("mentorDetails")) {
+	    	   if(existingPhoneNumber.trim().equalsIgnoreCase(phoneNubmerOld) && recoveryEmail.trim().equalsIgnoreCase(recoveryemailOld) && recoveryPhoneNumber.trim().equalsIgnoreCase(recoveryPhoneNubmerOld) && DOB.trim().equalsIgnoreCase(dobOld) && teacherPhoto.getSize()==0) {
+	    		   status="Please change any details to update profile";
+	    	   }
+	    	   else {
+			    	 status=new ChangePassword().updateDetailsMentor(mentorId,existingPhoneNumber, recoveryEmail, recoveryPhoneNumber, DOB, teacherPhoto);
+	    	   }
+				
+		    }
 	    else {
 	    	status="Something went wrong.Please try again";
 	    }

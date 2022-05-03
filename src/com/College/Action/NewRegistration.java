@@ -74,9 +74,9 @@ public class NewRegistration extends HttpServlet {
 			String confirmSecurityPin = request.getParameter("confirmSecurityPin");
 			Part studentPhoto = request.getPart("studentPhoto");
 			Part moneyReceipt = request.getPart("moneyReceipt");
-
+			String course = request.getParameter("course");
 			// Data Validation
-			String dataValidationResult = new DataValidation().newRegistrationDataValidation(name, department,yearSemester, section,
+			String dataValidationResult = new DataValidation().newRegistrationDataValidation(name,course, department,yearSemester, section,
 					idNumber, phoneNumber, email, recoveryPhoneNumber, gender, DOB, securityQuestion,
 					securityQuestionAnswer, securityPin, confirmSecurityPin, studentPhoto, moneyReceipt);
 
@@ -86,10 +86,11 @@ public class NewRegistration extends HttpServlet {
 					Date date = new SimpleDateFormat("yyyy-mm-dd").parse(DOB);
 					// obtains input stream of the upload file
 					photoInputStream = studentPhoto.getInputStream();
+					String fileName[]=moneyReceipt.getSubmittedFileName().split("\\.");
 					moneyReceiptInputStream = moneyReceipt.getInputStream();
 					String query = "Insert Into registration (studentName,fkdepartment,fkCurrentYearAndSem,fkSection,idNumber,phoneNumber,email,recoveryPhoneNumber,"
 							+ "gender,dateOfBirth,securityQuestion,securityQuestionAnswer,securityPin,ConfirmSecurityPin,studentPhoto,"
-							+ "moneyReceipt,createDate,updateDate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							+ "moneyReceipt,createDate,updateDate,moneyReceiptFileName,moneyReceiptFileExtension,fkCourseType) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 					PreparedStatement pstmt = con.prepareStatement(query);
 					pstmt.setString(1, name.trim());
 					pstmt.setInt(2,Integer.parseInt(department));
@@ -109,6 +110,11 @@ public class NewRegistration extends HttpServlet {
 					pstmt.setBlob(16, moneyReceiptInputStream);
 					pstmt.setObject(17, new Date());
 					pstmt.setObject(18, new Date());
+				    pstmt.setString(19, fileName[0]);
+				    pstmt.setString(20, fileName[1]);
+				    pstmt.setInt(21, Integer.parseInt(course));
+					
+					
 					int dbResult = pstmt.executeUpdate();
 					if (dbResult > 0) {
 						status = "Registration Form Submitted Successfully";

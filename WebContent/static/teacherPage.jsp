@@ -5,6 +5,7 @@
 <%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
 <%@page import="com.college.teacher.dao.MapTeacherSubjectDao" %>
+<%@page import="com.college.teacher.dao.TeacherLoginCheck" %>
 <%
 TeacherDetails teacher=(TeacherDetails)session.getAttribute("teacher");
 if(teacher==null){
@@ -19,6 +20,7 @@ Map<String,Object> subjectList=new MapTeacherSubjectDao().getAllSubjects(fkTeach
 List<MapTeacherSubject> subjects=(List<MapTeacherSubject>)subjectList.get("subjects");
 Integer notesCount=new MapTeacherSubjectDao().getTotalNotes(fkTeacherPkId, null, null, null, null, "total");
 
+String image=new TeacherLoginCheck().fetchTeacherPhoto(fkTeacherPkId);
 
 %>
 
@@ -85,7 +87,19 @@ Integer notesCount=new MapTeacherSubjectDao().getTotalNotes(fkTeacherPkId, null,
 <section class="home" id="home">
 
   <div class="image">
-   <img class="logo" src="data:image/jpg;base64,<%= teacher.getBase64Image()%>" style="margin-top:10%;margin-left:20%;width:50%; height:60%"> 
+ <%
+ if(image!=null){
+ %>
+   <img class="logo" src="data:image/jpg;base64,<%=image %>" style="margin-top:10%;margin-left:20%;width:50%; height:60%"> 
+	<%
+	
+	}else{
+	%>
+	   <img class="logo" src="images/clg-1/review1.png" style="margin-top:10%;margin-left:20%;width:50%; height:60%"> 
+	<%
+	}
+	%>
+	
 		</div>
 
    <div class="content">
@@ -311,6 +325,8 @@ $(document).ready(function () {
 	  console.log("Jquery loded");
 	// $('#myModal').show();
 	 //$('.loader1').show();
+	 
+	 
 	  $('#close').click(function (event) {
 		  $('#myModalDoubt').hide();
 		 $('#viewDoubt').prop("disabled", false);

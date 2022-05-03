@@ -144,4 +144,53 @@ public class TeacherLoginCheck {
 		return result;
 	}
 	
+	public String fetchTeacherPhoto(Integer teacherId) {
+		String result = null;
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		try {
+
+			String query = "SELECT photo FROM `teacher_registration` where pkTeacherId=? limit 1";
+			PreparedStatement pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1,teacherId);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+			Blob blob=rs.getBlob(1);
+
+			if(blob!=null) {
+			InputStream inputStream = blob.getBinaryStream();
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			byte[] buffer = new byte[4096];
+			int bytesRead = -1;
+
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outputStream.write(buffer, 0, bytesRead);
+			}
+
+			byte[] imageBytes = outputStream.toByteArray();
+			result  = Base64.getEncoder().encodeToString(imageBytes);
+
+			inputStream.close();
+			outputStream.close();
+			
+			}else {
+				result=null;
+          
+			}
+			}else {
+				result=null;
+          
+			}
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.college.teacher.dao;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,13 +24,12 @@ public class ViewDoubtsAndUpdate {
 			if (action != null && action.trim().equalsIgnoreCase("mentorDoubt")) {
 				query = "SELECT doubt.pkviewDoubtsMentorId,doubt.question,doubt.answer,doubt.createDate,doubt.updateDate,stud.studentName,stud.universityRollNo FROM view_doubts_mentor AS doubt"
 						+ " INNER JOIN registration AS stud ON doubt.fkStudentId=stud.pkRegistrationId "
-						+ "WHERE doubt.fkTeacherId=? AND doubt.fkDepartmentId=? AND doubt.fkSemesterId=? AND doubt.fkSectionId=?";
+						+ "WHERE  doubt.fkDepartmentId=? AND doubt.fkSemesterId=? AND doubt.fkSectionId=?";
 
 				pstmt = con.prepareStatement(query);
-				pstmt.setInt(1, Integer.parseInt(teacherId));
-				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
-				pstmt.setInt(3, Integer.parseInt(fkSemesterId));
-				pstmt.setInt(4, Integer.parseInt(fkSectionId));
+				pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
+				pstmt.setInt(2, Integer.parseInt(fkSemesterId));
+				pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			} else {
 				query = "SELECT doubt.pkviewDoubtsId,doubt.question,doubt.answer,doubt.createDate,doubt.updateDate,stud.studentName,stud.universityRollNo FROM view_doubts AS doubt"
 						+ " INNER JOIN registration AS stud ON doubt.fkStudentId=stud.pkRegistrationId "
@@ -45,9 +45,12 @@ public class ViewDoubtsAndUpdate {
 			ResultSet rs = pstmt.executeQuery();
 
 			List<StudentDoubtModel> studentDoubtList = new ArrayList<StudentDoubtModel>();
+		int count=0;
 			while (rs.next()) {
+				count++;
 				StudentDoubtModel studentDoubtModelObj = new StudentDoubtModel();
 
+				studentDoubtModelObj.setSlNo(count);
 				studentDoubtModelObj.setDoubtId(rs.getInt(1));
 				studentDoubtModelObj.setQuestion(rs.getString(2));
 				studentDoubtModelObj.setAnswer(rs.getString(3));
@@ -124,4 +127,9 @@ public class ViewDoubtsAndUpdate {
 			}
 			return result;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(new 	ViewDoubtsAndUpdate().viewDoubt("mentorDoubt", "", "1", "1", "1", ""));
+	}
+	
 }

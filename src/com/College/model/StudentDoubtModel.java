@@ -11,6 +11,7 @@ public class StudentDoubtModel {
 	private Date updateDate;
 	private String studentName;
 	private String rollNo;
+	private Integer SlNo;
 	public Integer getDoubtId() {
 		return doubtId;
 	}
@@ -52,6 +53,12 @@ public class StudentDoubtModel {
 	}
 	public void setRollNo(String rollNo) {
 		this.rollNo = rollNo;
+	}
+	public Integer getSlNo() {
+		return SlNo;
+	}
+	public void setSlNo(Integer slNo) {
+		SlNo = slNo;
 	}
 	
 	

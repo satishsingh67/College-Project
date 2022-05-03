@@ -55,7 +55,7 @@ public class StudentDoubt {
 	}
 
 	public String viewDoubt(String action,String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId,String teacherId) {
+			String fkSubjectId,String teacherId,String mentorId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -75,7 +75,11 @@ public class StudentDoubt {
 				pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(teacherId));
 				}
-			
+			else if(action !=null && action.trim().equalsIgnoreCase("adminMentorDoubt")) {
+				query = "Select `question`,`answer`,`createDate`,`updateDate` from mentor_admin_doubt where `fkMentorId`=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, Integer.parseInt(mentorId));
+				}
 			
 			else {
 			 query = "Select `question`,`answer`,`createDate`,`updateDate` from view_doubts where `fkStudentId`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=?";
@@ -126,17 +130,17 @@ public class StudentDoubt {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
-			String query = "Insert into view_doubts_mentor (`fkTeacherId`, `fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`,`question`, `createDate`) "
-					+ "     values(?,?,?,?,?,?,?)";
+			String query = "Insert into view_doubts_mentor (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`,`question`, `createDate`) "
+					+ "     values(?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, 0);
-			pstmt.setInt(2, Integer.parseInt(studentId));
-			pstmt.setInt(3, Integer.parseInt(fkDepartmentId));
-			pstmt.setInt(4, Integer.parseInt(fkSemesterId));
-			pstmt.setInt(5, Integer.parseInt(fkSectionId));
-			pstmt.setString(6, message);
-			pstmt.setObject(7, new Date());
+			
+			pstmt.setInt(1, Integer.parseInt(studentId));
+			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
+			pstmt.setInt(4, Integer.parseInt(fkSectionId));
+			pstmt.setString(5, message);
+			pstmt.setObject(6, new Date());
 
 			int dbStatus = pstmt.executeUpdate();
 			if (dbStatus > 0) {
@@ -166,6 +170,6 @@ public class StudentDoubt {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(new StudentDoubt().viewDoubt(null,"1", "1", "4", "1", "10",null));
+		//System.out.println(new StudentDoubt().viewDoubt(null,"1", "1", "4", "1", "10",null));
 	}
 }

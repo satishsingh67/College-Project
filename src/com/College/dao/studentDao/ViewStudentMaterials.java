@@ -165,7 +165,9 @@ public class ViewStudentMaterials {
 				if (action.equalsIgnoreCase("questionBankDownload")) {
 					query = "Select questionBankName,FileExtension,questionBankData from question_bank where pkQuestionBankId=?";
 				}
-
+				if (action.equalsIgnoreCase("studentRecieptDownload")) {
+					query = "Select moneyReceiptFileName,moneyReceiptFileExtension,moneyReceipt from registration where pkRegistrationId=?";
+				}
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(id));
 				ResultSet rs = pstmt.executeQuery();
