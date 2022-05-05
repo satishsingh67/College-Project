@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>placement</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/newcss/placement.css">
+    <link rel="stylesheet" href="css/lightslider.css">
+
+<style>
+    a{
+    text-decoration: none;
+}
+
+.box{
+    width: 400px;
+    /* height: auto; */
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    /* position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%); */
+    margin: 25px ;
+}
+
+.slide-img{
+    height: 400px;
+    position: relative;
+}
+
+.slide-img img{
+    width: 100%;
+    height: 100%;
+   
+    box-sizing: border-box;
+}
+
+.detail-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.type{
+    display: flex;
+    flex-direction: column;
+}
+
+.type a{
+    color: #222222;
+    margin: 5px 0px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-right: 8px;
+
+}
+
+
+.type span{
+    color: rgba(26, 26, 26, 0.5);
+}
+
+.price{
+    color: #333333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.overlay{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(56, 119, 145, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-btn{
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, .2);
+}
+
+.buy-btn:hover{
+    color: white;
+    background-color: palevioletred;
+    transition: all ease 0.3s;
+}
+
+.overlay{
+    visibility: hidden;
+}
+.slide-img:hover .overlay{
+    visibility: visible;
+    animation: fade 0.5s;
+}
+
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+</style>
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+<nav class="navbar">
+    <ul>
+        <li style="--i:1;"><a href="./newhome.html">home</a></li>
+        <li style="--i:2;"><a href="#over">OverView</a></li>
+        <li style="--i:3;"><a href="#req">Requirements</a></li>
+        <li style="--i:4;"><a href="#get">GetInTouch</a></li>
+        
+    </ul>
+</nav>
+
+<div class="menu"><i class="fas fa-bars"></i></div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+<div class="video-container">
+    <video src="images/video/Pexels Videos 4335.mp4" muted loop autoplay></video>
+</div>
+
+<div class="content">
+
+   
+    <h3>PLACEMENT OVERVIEW</h3>
+
+    <div class="form-container">
+
+      
+    </div>
+
+</div>
+
+</section>
+
+<!-- home section ends -->
+<section class="gallery" id="over">
+
+    <h1 class="heading">OVERVIEW</h1>
+    <h3 class="title">Read Now</h3>
+    
+    <div class="box-container">
+        <p style="font-size: 20px;text-align: justify; margin: 30px;">
+            Training & Placement Cell is provided with all the facilities to enable deserving students of Guru Nanak Institute of Technology to get competitive placements. The Training & Placement Cell plays a crucial role in locating job opportunities for Under Graduates and Post Graduates passing out from the college by keeping in touch with reputed firms and industrial establishments. The Placement Cell operates round the year to facilitate contacts between companies and graduates. The number of students placed through the campus interviews is continuously rising. On invitation, many reputed industries visit the institute to conduct interviews.
+    
+            This department prepares the students for the process of recruitment and simultaneously creates awareness among companies about the recruitment opportunities at Guru Nanak Institute of Technology.
+            
+            At present, the competition for employment is increasing every day and placement has become a challenging task. Training students and equipping them with life skills has become an important responsibility of the institution. Along with technical expertise, the development of a holistic personality is also necessary. To meet these requirements, a fully-fledged training cell is operating in our college to enhance the capabilities of engineering graduates at par with the industry standards.
+           </p>
+    </div>
+    
+    </section>
+    
+    <!-- gallery section ends -->
+    
+<!-- feature section starts  -->
+
+<section  id="req">
+
+<h1 class="heading">Our Recruiters</h1>
+<h3 class="title">Explore our recruitment</h3>
+
+
+
+    <ul id="autoWidth" class="cs-hidden">
+        <li class="item-a">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/2560px-Accenture.svg.png" alt="" />
+              
+            </div>
+            <div class="detail-box">
+              <div class="type">
+               
+               <a>Accenture</a>
+              </div>
+             
+            </div>
+          </div>
+        </li>
+        <li class="item-b">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/atreya-associates_logo.png" alt="" />
+              
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">atreya</a>
+               
+              
+          </div>
+        </li>
+        <li class="item-c">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/birlasoft-logo.png" alt="" />
+              
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">birlasoft</a>
+                
+              </div>
+             
+            </div>
+          </div>
+        </li>
+        <li class="item-d">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/BlueConch_Logo.jpg" alt="" />
+              
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">BlueConch</a>
+             
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item-e">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/byjus-logo-vector.png" alt="" />
+              
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">/byjus</a>
+                
+              </div>
+              
+            </div>
+          </div>
+        </li>
+        <li class="item-f">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/capgemini-.jpg" alt="" />
+              <div class="overlay">
+                
+              </div>
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">capgemini</a>
+                
+              </div>
+             
+            </div>
+          </div>
+        </li>
+        <li class="item-g">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/CBNITS India Pvt LTD.jpeg" alt="" />
+             
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">CBNITS India Pvt LTD</a>
+               
+              </div>
+              
+            </div>
+          </div>
+        </li>
+        <li class="item-h">
+          <div class="box">
+            <div class="slide-img">
+              <img src="./images/company/Chegg_logo.png" alt="" />
+              
+            </div>
+            <div class="detail-box">
+              <div class="type">
+                <a href="#">Chegg</a>
+               
+              </div>
+             
+            </div>
+          </div>
+        </li>
+        <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/cognizant_Logo.jpg" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">cognizant</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/Deloitte-Logo.png" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">Deloitte</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/dhoot-transmission.jpg" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">dhoot-transmission</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/HCL-Logo.png" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">HCL</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/hexaware.png" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">hexaware</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/Huawei Technologies.png "alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">Huawei Technologies</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/josh technology group.png" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">josh technology group</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/mindtree-logo.png" alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">mindtree</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="item-h">
+            <div class="box">
+              <div class="slide-img">
+                <img src="./images/company/verzeo.png "alt="" />
+                
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">verzeo</a>
+                 
+                </div>
+               
+              </div>
+            </div>
+          </li>
+      </ul>
+
+
+</section>
+
+
+<!-- feature section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="get">
+
+<h1 class="heading">CONTACT US</h1>
+<h3 class="title">Get In Touch @ +913325233900</h3>
+
+<div class="row">
+
+    <div class="image">
+        <img src="image/gnitjis_square-1024x907.jpg" alt="">
+    </div>
+
+    <div class="content">
+        <h3>Contact Info</h3>
+        <p>Guru Nanak Institute of Technology</p>
+        
+        <p>
+            
+157/F Nilgunj Road, Panihati<br>
+Kolkata : 700114, West Bengal
+        </p><br>
+        <p>
+            Telephone
+            p: (+91) 3325233900,
+            p: (+91) 9073683911
+        </p><br>
+        <p>
+            Mail Us
+E: admission.gnit@jisgroup.org
+        </p><br>
+        <p>
+            Opening Hours
+Mon-Fri: 11:00-17:00
+Sat: 10:00-13:30<br>
+
+Sun: Closed
+        </p>
+    </div>
+
+</div>
+
+<div class="box-container">
+
+    <div class="box">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_2cfu0r2f.json"  background="transparent"  speed="1"  style="width: 300px; height: 100px;"  loop  autoplay></lottie-player>
+        <h3>Overview</h3>
+    </div>
+
+    <div class="box">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_cjkryupy.json"  background="transparent"  speed="1"  style="width: 300px; height: 100px;"  loop  autoplay></lottie-player>
+        <h3>requirements</h3>
+    </div>
+
+    <div class="box">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_EGFLZ7.json"  background="transparent"  speed="1"  style="width: 300px; height: 100px;"  loop  autoplay></lottie-player>
+        <h3>Get In Touch</h3>
+    </div>
+
+</div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- gallery section starts  -->
+
+
+
+
+
+
+
+
+
+
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/jqueryq.js"></script>
+<script src="js/lightslider.js"></script>
+
+</body>
+</html>
