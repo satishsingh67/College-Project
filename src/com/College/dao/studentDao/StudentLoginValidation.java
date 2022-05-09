@@ -21,11 +21,15 @@ public class StudentLoginValidation {
 
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
-
-			String query = "SELECT * FROM registration INNER JOIN department ON registration.fkdepartment=department.pkDepartmentId \r\n"
-					+ " INNER JOIN section ON registration.fkSection=section.pkSectionId"
-					+ " INNER JOIN year_semester ON registration.fkCurrentYearAndSem=year_semester.pkYearSemesterId"
-					+ " where idNumber=? and studentName=? and securityQuestion=? and securityQuestionAnswer=? and securityPin=? and verificationStatus=? limit 1";
+			
+			String query = "SELECT reg.pkRegistrationId,reg.fkCurrentYearAndSem,reg.fkdepartment,reg.studentName,reg.idNumber,"
+					+ "reg.dateOfBirth,reg.gender,reg.studentPhoto,dept.longName,sem.Year,sem.Semester,sect.section,reg.fkCourseType,csType.shortName,"
+					+ "reg.securityQuestionAnswer,reg.securityPin FROM registration as reg"
+					+ " INNER JOIN department as dept ON reg.fkdepartment=dept.pkDepartmentId"
+					+ " INNER JOIN section as sect ON reg.fkSection=sect.pkSectionId"
+					+ " INNER JOIN year_semester as sem ON reg.fkCurrentYearAndSem=sem.pkYearSemesterId"
+					+ " INNER JOIN course_type as csType ON reg.fkCourseType=csType.pkCourseTypeId"
+					+ " where reg.idNumber=? and reg.studentName=? and reg.securityQuestion=? and reg.securityQuestionAnswer=? and reg.securityPin=? and reg.verificationStatus=? limit 1";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, idNumber);
 			pstmt.setString(2, studentName.trim());
@@ -39,18 +43,18 @@ public class StudentLoginValidation {
 			 studentLoginValidation.put("error","Invalid Details");
 			 while (rs.next()) {
 
-				if(!rs.getString("idNumber").trim().contentEquals(idNumber.trim())){
+				if(!rs.getString(5).trim().contentEquals(idNumber.trim())){
 					studentLoginValidation.put("error","Invalid Id Number");
 				}
-				else if(!rs.getString("studentName").trim().contentEquals(studentName.trim())) {
+				else if(!rs.getString(4).trim().contentEquals(studentName.trim())) {
 					studentLoginValidation.put("error","Wrong Name");
 	
 				}
-				else if(!rs.getString("securityQuestionAnswer").trim().contentEquals(securityQuestionAnswer.trim())) {
+				else if(!rs.getString(15).trim().contentEquals(securityQuestionAnswer.trim())) {
 					studentLoginValidation.put("error","Invalid Security Question's Answer");
 
 				}
-				else if(!rs.getString("securityPin").trim().contentEquals(securityPin.trim())) {
+				else if(!rs.getString(16).trim().contentEquals(securityPin.trim())) {
 					studentLoginValidation.put("error","Invalid Security Pin");	
 				}
 				
@@ -59,19 +63,24 @@ public class StudentLoginValidation {
 
 					Student student = new Student();
 
-				student.setPkRegistrationId(rs.getInt("pkRegistrationId"));
-				student.setFkCurrentYearAndSem(rs.getInt("fkCurrentYearAndSem"));
-				student.setFkdepartment(rs.getInt("fkdepartment"));
-				student.setStudentName(rs.getString("studentName"));
-				student.setIdNumber(rs.getString("idNumber"));
-				student.setDepartment(rs.getString("longName"));
-				student.setDOB(rs.getString("dateOfBirth"));
-				student.setGender(rs.getString("gender"));
-				student.setYear(rs.getInt("Year"));
-				student.setSemester(rs.getInt("Semester"));
-				student.setSection(rs.getInt("section"));
-				Blob blob = rs.getBlob("studentPhoto");
 
+					student.setPkRegistrationId(rs.getInt(1));
+					student.setFkCurrentYearAndSem(rs.getInt(2));
+					student.setFkdepartment(rs.getInt(3));
+					student.setStudentName(rs.getString(4));
+					student.setIdNumber(rs.getString(5));
+					student.setDOB(rs.getString(6));
+					student.setGender(rs.getString(7));
+					Blob blob = rs.getBlob(8);
+					student.setDepartment(rs.getString(9));
+					student.setYear(rs.getInt(10));
+					student.setSemester(rs.getInt(11));
+					student.setSection(rs.getInt(12));
+					student.setCourseTypeId(rs.getInt(13));
+					student.setCourseTypeName(rs.getString(14));
+					
+				
+					
 				// Preparing Image to send user
 				InputStream inputStream = blob.getBinaryStream();
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -150,16 +159,6 @@ public class StudentLoginValidation {
 
 	public static void main(String[] args) {
 
-		// System.out.println(new
-		// StudentLoginValidation().validateDetails("GNIT/2018/0348", "Satish Singh",
-		// "Your Favourite Color", "pink", "123128"));
-	//	System.out.println(new StudentLoginValidation().checkEnteryAndApproveStatus("GNIT/2018/0348", "Satish Singh",
-	//			"Your Home Town", "Siwan", "123456"));
-
-		String a="slls ";
-		
-		System.out.println(a.trim().contentEquals("slls "));
-		
 		
 	}
 

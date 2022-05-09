@@ -14,7 +14,7 @@ String departmentId=request.getParameter("departmentId");
 String sectionId=request.getParameter("sectionId");
 String courseType=request.getParameter("courseType");
 String year=request.getParameter("year");
-
+String courseName=request.getParameter("courseName");
 
 String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, year, sectionId);
 
@@ -1074,10 +1074,10 @@ footer span a:hover{
             <div style="margin-left:-70px;" class="logo"><img class="brand"src="./images/GNIT_Kolkata_logo.png"></div>
             <ul  class="menu">
                 <li><a href="./mentorPage.jsp" class="menu-btn">Home</a></li>
-                <li><a href="#home" class="menu-btn">Upload Information</a></li>
-                <li><a href="#about" class="menu-btn">Guide Students</a></li>
-                 <li><a href="#about" class="menu-btn">Students Doubt</a></li>
-                <li><a href="#skills" class="menu-btn">Subject Allotment</a></li>
+                <li><a href="#information" class="menu-btn">Upload Information</a></li>
+                <li><a href="#guide" class="menu-btn">Guide Students</a></li>
+                 <li><a href="#doubt" class="menu-btn">Students Doubt</a></li>
+                <li><a href="#allotment" class="menu-btn">Subject Allotment</a></li>
                 <li><a href="/College_Final_Year_Project/logout?action=mentor" class="menu-btn">Logout</a></li>
                 
                 
@@ -1101,7 +1101,7 @@ footer span a:hover{
     </section>
     <!-- fun fact section starts  -->
 
-<section class="fun-fact" id="info" style="height:620px;" >
+<section id="information" class="fun-fact" id="info" style="height:620px;" >
 
     <div class="box" style="margin-top:-20%;">
    
@@ -1195,7 +1195,7 @@ footer span a:hover{
  <!-- fun fact section ends -->
     <!-- about section start -->
     <section class="about" style="background-color: cadetblue;" id="about">
-        <h1 class="text-center" style=" font-size:30px;font-family: 'Times New Roman', Times, serif;font-weight: 900; text-align: center; ">GUIDE STUDENTS</h1><br><br>
+        <h1 id="guide" class="text-center" style=" font-size:30px;font-family: 'Times New Roman', Times, serif;font-weight: 900; text-align: center; ">GUIDE STUDENTS</h1><br><br>
         <div style="height:300px;overflow-y: auto;">
         <table class="table">
             <thead>
@@ -1217,7 +1217,7 @@ footer span a:hover{
           </div>
     </section>
     <section class="about" style="background-color: skyblue;height:550px;" id="about">
-        <h1 class="text-center" style=" font-size:30px;font-family: 'Times New Roman', Times, serif;font-weight: 900; text-align: center; ">Students Doubt</h1><br><br>
+        <h1 id="doubt" class="text-center" style=" font-size:30px;font-family: 'Times New Roman', Times, serif;font-weight: 900; text-align: center; ">Students Doubt</h1><br><br>
         <div style="height:300px;overflow-y: auto;">
         <table class="table">
             <thead>
@@ -1245,7 +1245,7 @@ footer span a:hover{
   
     <!-- services section start -->
     <section class="services" id="services">
-        <div class="max-width">
+        <div id="allotment" class="max-width">
             <h2 class="title">Subject Allotment</h2>
              <h4 style="margin-left:250px;">Teacher</h4>
                <h4 style="margin-left:830px;margin-top:-18px;">Student</h4>
@@ -1337,14 +1337,17 @@ footer span a:hover{
        <br>
        <label><p style="font-size:15px; text-transform: none;" id="gurdianEmailId" ></p></label>
         <br>
-      <label><p style="font-size:15px; text-transform: none;"  >Address:</p></label>  <textarea id="address"  style="margin-left: 60px; margin-top: -25px; width: 286px;height: 42px; font-size: 15px; border: 2px solid skyblue;text-transform: none;"  cols="50" rows="5"></textarea> 
+      <label><p style="font-size:15px; text-transform: none;"  >Address:</p></label>  <textarea id="address" readonly style="margin-left: 60px; margin-top: -25px; width: 286px;height: 42px; font-size: 15px; border: 2px solid skyblue;text-transform: none;"  cols="50" rows="5"></textarea> 
 
        <br>
         </div>
         <br>
         
-      <button  id="attendance" style="background-color: skyblue; width: 100px;height:49px;font-size: 15px;">Check Attendance</button>
+       
+        
       <button class="problem1" id="updateStudentRoolNo" style="background-color: skyblue;">Upload Roll & Registration No</button>     
+          <a  id="attendanceCheck" target="_blank" style="display: flex; flex-direction: column; justify-content: center; text-align: center;border:2px solid black; background-color: skyblue; color: black; width: 14%; height: 50px;margin-left:120px;margin-top:-55px;">Check Attendance</a>
+    
      </div>
          <!-- Modal footer -->
       <div class="modal-footer" >
@@ -1653,7 +1656,7 @@ footer span a:hover{
   var sectionId=<%=sectionId%>;
   var courseType=<%=courseType%>;
   var year=<%=year%>;
-
+  var courseName="<%=courseName%>";
   
   var id;
   var studentId;
@@ -1791,7 +1794,10 @@ $('#myLoader1').show();
    
        
        fetchStudentDetails(studentId);
+           
+       var attendanceUrl="AttendanceCheck.jsp?studentId="+studentId+"&departmentId="+departmentId+"&sectionId="+sectionId+"&semseter="+year+"&courseId="+courseType+"&courseName="+courseName;
        
+       $('#attendanceCheck').attr("href",attendanceUrl);
   });
   }
   

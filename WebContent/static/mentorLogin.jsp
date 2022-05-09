@@ -114,23 +114,24 @@
 
 								<br> <label for="first_name"
 									style="color: black; font-weight: bold; font-size: 15px;">Enter
-									Your Name</label> <input placeholder="Enter Your Name" id="first_name"
+									Your Name:<strong class="text-danger"style="color:red;">*</strong></label> <input placeholder="Enter Your Name" id="first_name"
 									name="name" type="text" class="validate"> <label
 									for="mentor_mail"
 									style="color: black; font-weight: bold; font-size: 15px;">Enter
-									Your Mail ID</label> <input placeholder="Enter Mail ID"
+									Your Mail Id:<strong class="text-danger"style="color:red;">*</strong></label> <input placeholder="Enter Mail ID"
 									id="mentor_mail" name="email" type="email" class="validate">
 
 
 								<label for="first_name"
 									style="color: black; font-weight: bold; font-size: 15px;">Enter
-									Password</label> <input placeholder="Enter Password" name="password"
+									Password:<strong class="text-danger"style="color:red;">*</strong></label> <input placeholder="Enter Password" name="password"
 									id="first_name" type="password" class="validate">
 								<div class="btn-group center-align" role="group">
 									<button type="submit" id="loginSubmit" value="submit"
 										class="btn #2196f3 blue">Submit</button>
 									<button type="clear" id="loginClear" value="Clear"
 										class="btn #2196f3 blue">Clear</button>
+										<a href="forgetPassword.jsp" target="_blank" class="btn #2196f3 blue">Forget Password</a>
 								</div>
 							</form>
 

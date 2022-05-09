@@ -364,7 +364,7 @@ form span{
                
                 
                 
-                <a href="#contact">Reply To Mentors</a>
+                <a href="#reply">Reply To Mentors</a>
                 <a href="#delete">Delete Account</a>
              </div>
             
@@ -393,36 +393,21 @@ form span{
                                             <input type="text" name="name" placeholder="Enter Mentor Name" class="box" required>
                                         
                                         <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Course:<strong class="text-danger">*</strong></span>
-                                            <select class="box" name="course"  id="ddselect">
+                                            <select class="box" name="course"  id="courseTypeSelect">
                                           
                                               <option>Select Course</option>
-                                                <option value="1">B.Tech</option>
-                                                <option value="2">M.Tech</option>
-                                                <option value="3">BCA</option>
-                                                <option value="4">MCA</option>
-                                                <option value="5">B.H.M</option>
-                                                <option value="6">Diploma</option>
-                                                <option value="7">ASHU</option>
-                                              
+                                                
                                           </select>
  
                                         
                                         
                                         
-                                          <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Year:<strong class="text-danger">*</strong></span>
+                                          <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Semester:<strong class="text-danger">*</strong></span>
                                             
-                                            <select class="box" name="year">
+                                            <select class="box" name="year" id="semesterSelect">
 
 											<option>--Select--</option>
-											<option value="1">1st Year,1st Semester</option>
-											<option value="2">1st Year,2nd Semester</option>
-											<option value="3">2nd Year,3rd Semester</option>
-											<option value="4">2nd Year,4th Semester</option>
-											<option value="5">3rd Year,5th Semester</option>
-											<option value="6">3rd Year,6th Semester</option>
-											<option value="7">4th Year,7th Semester</option>
-											<option value="8">4th Year,8th Semester</option>
-
+											
 										</select>
         
                                           
@@ -442,22 +427,9 @@ form span{
                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Mentor Email:<strong class="text-danger">*</strong></span>
                                             <input type="email" name="email" placeholder="Enter Mentor Email" class="box" required>
                                               <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Department:<strong class="text-danger">*</strong></span>
-                                            <select class="box" name="department">
+                                            <select class="box" name="department" id="departmentSelect">
                                                   <option>Select Department</option>
 											
-                                              <option value="1">CSE</option>
-                                              <option value="2">ECE</option>
-                                              <option value="3">IT</option>
-                                              <option value="4">EE</option>
-                                              <option value="5">AEIE</option>
-                                              <option value="6">FT</option>
-                                              <option value="7">BHM</option>
-                                              <option value="8">ASHU</option>
-                                              <option value="9">BCA</option>
-                                            
-                                              <option>Cyber scurity</option>
-                                              <option>Data Science</option>
-        
                                             </select><br>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Select Section<strong class="text-danger">*</strong></span>
 
@@ -495,7 +467,7 @@ form span{
                 <section>
                     <h1 class="heading"> Reply To <span>Mentors </span> </h1>
                      <!--Table-->
-            <div style=" height:350px;width:110%;margin-left:-5%;border:1px solid skyblue; overflow-y: auto;">
+            <div id="reply" style=" height:350px;width:110%;margin-left:-5%;border:1px solid skyblue; overflow-y: auto;">
             <table id="customers">
            
                  <thead >
@@ -518,7 +490,7 @@ form span{
                 </section>
                <section style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
                 <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
-                <div class="col-md-12">
+                <div id="delete" class="col-md-12">
                     <div class="row">
                         <div class="col-md-6">
                             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -624,7 +596,10 @@ form span{
           var id;
           
           $(document).ready(function () {
-        	  console.log("Jquery loded");
+        	  fetchDropDown("department","departmentSelect");
+        		fetchDropDown("courseType","courseTypeSelect");
+        		fetchDropDown("semester","semesterSelect");
+        		
         	 $('#myLoader').show();
         	  fetchDoubt();
         	  	
@@ -873,7 +848,28 @@ form span{
 		    });
 		});
         
-          
+
+    function fetchDropDown(action,id){
+    	
+    	 $.ajax({
+    		      type: "GET",
+    		      url:"/College_Final_Year_Project/dropdown?action="+action,
+    		      success: function (data, textStatus, jqXHR) {
+    		    	  var JsonData= jQuery.parseJSON(data);
+    		    	 if(JsonData==null){
+    		    		 $('#'+id).append(new Option("No Option is Present",""));
+    		    	 }
+    		    	 else{
+    		          $(JsonData).each(function (index, item) {  
+    		        	  $('#'+id).append(new Option(item.name.trim(), item.pkId));
+    		          }); 
+    		    	 }
+    		      },
+    		      error: function (jqXHR, textStatus, errorThrown) {
+    		    	  $('#'+id).append(new Option("No Option is Present",""));
+    		      }
+    		    });  
+    }  
           
           
           </script>

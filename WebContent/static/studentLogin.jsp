@@ -128,6 +128,7 @@ session.removeAttribute("message");
 <div class="btn-group center-align"  role="group">
     <button type="submit" id="loginSubmit" value="submit"  class="btn #2196f3 blue">Submit</button>
     <button type="clear" value="Clear" class="btn #2196f3 blue" >Clear</button>
+   <a  href="ForgetCredentials.jsp" target="_blank" class="btn #2196f3 blue" >Forget Credentials</a>
   </div>
 </form>
 

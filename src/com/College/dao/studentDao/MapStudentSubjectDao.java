@@ -1,15 +1,10 @@
 package com.college.dao.studentDao;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -284,6 +279,51 @@ public class MapStudentSubjectDao {
 		}
 	return questionBankCount;
 	}	
+	
+	
+	
+	public String getLink(Integer courseTypeId,Integer fkDepartmentId, Integer fkYearId, Integer fkSectionId,String action) {
+		
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		String query=null,result=null;
+		try {
+				
+			if(action.trim().equalsIgnoreCase("feedback")){
+			query = "select link from mentor_feedback_link where fkCourseTypeId=? and fkDepartmentId=? and fkYearId=? and fkSectionId=? order by updateDate desc";
+			}else if(action.trim().equalsIgnoreCase("subjectChoice")){
+				query = "select link from mentor_subject_choice_link where fkCourseTypeId=? and fkDepartmentId=? and fkYearId=? and fkSectionId=? order by updateDate desc";
+			}
+				
+				
+				PreparedStatement pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, courseTypeId);
+				pstmt.setInt(2, fkDepartmentId);
+				pstmt.setInt(3, fkYearId);
+				pstmt.setInt(4,fkSectionId );
+				
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					
+					result=rs.getString(1);
+					
+				}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	return result;
+	}	
+	
+	
 	
 	
 	 public static void main(String[] args) { 

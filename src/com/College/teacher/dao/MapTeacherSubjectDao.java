@@ -24,6 +24,7 @@ public class MapTeacherSubjectDao {
 					+ " INNER JOIN department ON map_teacher_subject.fkDepartmentId=department.pkDepartmentId"
 					+ " INNER JOIN year_semester ON map_teacher_subject.fkSemester=year_semester.pkYearSemesterId"
 					+ " INNER JOIN section ON map_teacher_subject.fkSection=section.pkSectionId"
+					+ " INNER JOIN course_type ON map_teacher_subject.fkCourseTypeId=course_type.pkCourseTypeId"
 					+ " where fkTeacherPkId=?";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
@@ -48,6 +49,9 @@ public class MapTeacherSubjectDao {
 				subject.setFkSubjectId(rs.getInt("fkSubjectId"));
 				subject.setSubjectCode(rs.getString("subjectCode"));
 				subject.setSubjectName(rs.getString("subjectName"));
+				subject.setCourseType(rs.getString("course_type.shortName"));
+				subject.setCourseTypeId(rs.getInt("course_type.pkCourseTypeId"));
+				
 				if (rs.getInt("fkSubjectType") == 1) {
 					totalSubjects++;
 				} else {

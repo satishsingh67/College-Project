@@ -1,3 +1,18 @@
+<%@page errorPage="errorPage.jsp" %>
+<%@page import="com.college.model.CanvasAccount" %>
+<%
+
+CanvasAccount canvasAccount=(CanvasAccount)session.getAttribute("canvas");
+if(canvasAccount==null){
+	response.sendRedirect("canvasLogin.jsp");
+	return;
+}
+
+
+
+%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -38,68 +53,17 @@
       background-color: #04AA6D;
       color: white;
     }
+    th {
+	position: sticky;
+	top: 0px;
+	height: 10px;
+}
     .view-btn{
-          width: 90px;
-          background-color: lightblue;
+          width: 100px;
+          height:40px;
+          background-color: skyblue;
         }
-    /* The Modal (background) */
-    .modal {
-          display: none;
-          /* Hidden by default */
-          position:fixed;
-          /* Stay in place */
-          z-index: 1;
-          /* Sit on top */
-          padding-top: 100px;
-          /* Location of the box */
-          left: 0;
-          top: 0;
-          width: 100%;
-          /* Full width */
-          height: 100%;
-          /* Full height */
-          overflow: auto;
-          /* Enable scroll if needed */
-       /*   background-color: rgb(0, 0, 0);*/
-          /* Fallback color */
-        /*  background-color: rgba(0, 0, 0, 0.4);
-          /* Black w/ opacity */
-        }
-    
-        /* Modal Content */
-        .modal-content {
-        
-          
-          margin: auto;
-       
-          padding: 20px;
-          border: 1px solid #888;
-          width: 50%;
-          height: 50%;
-          background-color: cadetblue;
-          box-shadow: 5 px 5px 5px solid red;
-        }
-    
-        /* The Close Button */
-        .close {
-           
-          color: #ffffff;
-          float: right;
-          margin-left: 97%;
-          margin-top: -3%;
-          font-size: 28px;
-          font-weight: bold;
-          background-color: black;
-          border-radius:5px ;
-          
-        }
-    
-        .close:hover,
-        .close:focus {
-          color: rgb(215, 230, 17);
-          text-decoration: none;
-          cursor: pointer;
-        }
+   
         .heading {
   text-align: center;
   margin-bottom: 3rem;
@@ -253,24 +217,119 @@ section {
   padding: 5rem 10%;
 }
 
+.loader2 {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #3498db;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+/* The Modal (background) */
+.modalLoader {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	padding-top: 100px;
+	/* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-loader {
+	background-color: #fefefe;
+	margin: auto;
+	margin-top: 10%;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 35%;
+	height: 30%;
+}
+
     </style>
     
-    <title>All Queries </title>
+    <title>Canvas Management </title>
 </head>
 <body>
   <header class="header">
     <nav class="navbar">
  
        <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
- 
-       <div class="links">
-          <a href="#home">home</a>
-          <a href="#about">Information</a>
-          <a href="./contactus.html">Contact Us</a>
-          
-          
-         
-          <a href="/College_Final_Year_Project/logout?action=canvas">Log Out</a>
+        <p style="color:white;font-size:22px;">GURU NANAK INSTITUTE OF TECHNOLOGY</p>
+       <div style="width:350px;margin-left:40px;">
+                   <a href="chnagePasswordCanvas.jsp" target="_blank" style="color:red;"><p style="font-size:20px;margin-left:70px;">Change Password</p></a>
+          <a href="/College_Final_Year_Project/logout?action=canvas" style="color:red;"><p style="font-size:20px;margin-left:250px;margin-top:-45px;">Logout</p></a>
        </div>
        <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
        <div id="menu-btn" class="fa fa-bars"></div>
@@ -284,80 +343,158 @@ section {
 <!-- home section starts  -->
 
 <section class="home" id="home">
- <div class="content">
-    <h4>Name Of The Teacher</h4>
-    <p>Assistant Prof. of ECE Depertment</p>
-   <p>Id:</p>
+ <div class="content" style="margin-top:-110px;height:140px;">
+<p style="color:black">Id: <%=canvasAccount.getPkId() %></p>
+<p style="color:black; margin-top:-65px;">Name: <%=canvasAccount.getName() %></p>
+<p style="color:black;margin-top:-65px;">Email Id: <%=canvasAccount.getEmailId()%></p>
+<p style="color:black;margin-top:-65px;">Department: <%=canvasAccount.getDepartmentLongName() %></p>
+
+
  </div>
 
 </section>
-  <section>
+  <section style="height:200px;">
+  <div style="margin-top:-75px;margin-left:-110px;width:120%;height:350px;overflow-y:auto;">
     <table id="customers">
-      <thead>
-        <th>Name</th>
-        <th>Relation</th>
-        <th>Department</th>
-        
-       
-        <th>Post Type</th>
-        <th>View</th>
-        <th>Accept</th>
-        <th>Reject</th>
+      <thead >
+       <th style="text-align:center;">Sl.No</th>
+        <th style="text-align:center;">Name</th>
+        <th style="text-align:center;">Relation with College</th>
+         <th style="text-align:center;">Person Id</th>
+        <th style="text-align:center;">Department</th>
+        <th style="text-align:center;">Post Type</th>
+        <th style="text-align:center;">Title</th>
+        <th style="text-align:center;">File Type</th>
+         <th style="text-align:center;">Create Date</th>
+          <th style="text-align:center;">Update Date</th>
+        <th style="text-align:center;">Status</th>
+        <th style="text-align:center;">View</th>
+        <th style="text-align:center;">Accept</th>
+        <th style="text-align:center;">Reject</th>
         
       </thead>
+     <tbody id="Table">
      
-      <tr>
-  <td>Sornali Hazra</td>
-  <td>Student</td>
-  <td>ECE</td>
-  <td>Cutural Fest</td>
-  <td><button class="view-btn" id="bt">View</button></td>
- 
-  
-  <td><button class="view-btn" >Accept</button></td>
-  <td><button class="view-btn" >Reject</button></td>
-  
-      </tr>
-  
-      
      
+     </tbody>
     </table>
   
-    <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close" id="s" >&times;</span>
-       
-        <div id="tableDiv">
-          
-          <embed src="./fpdf/4.2.1-with-front-page.pdf" height="400px" width="900px" type="application/pdf">
-           
-
-        </div>
-
-
-      </div>
-  
-    </div>
+  </div>
+   
   </section>
+  
+  
+  <div class="loader2" style="margin-top:-10%;margin-left:45%;display: none;" id="myLoader"></div>
+  
+  <div id="myModal" class="modalLoader">
+
+		<!-- Modal content -->
+		<div class="modal-content-loader">
+			<div class="loader1" style="display: none;">
+				<div class="loader"
+					style="margin: auto; margin-left: 40%; margin-top: 10%;"></div>
+
+				<h4
+					style="margin: auto; margin-left: 30%; margin-top: 0%; color: rgb(30, 169, 224); letter-spacing: 5px; padding: 10px; font-size: 20px;">
+					Please wait....</h4>
+			</div>
+		</div>
+
+	</div>
+  
 <script>
-$("#bt").click(function (event) {
-  $('#myModal').show();
-        //Calling Loader
-        $(".loader1").show();
-
-
-});
-$("#s").click(function (event) {
-  $('#myModal').hide();
-        //Calling Loader
-        $(".loader1").hide();
-
+$(document).ready(function () {
+	$('#myLoader').show();
+	
+	fetchFiles();
 
 });
 
+function fetchFiles(){
+	
+	 $.ajax({
+	      type: "GET",
+	      url:"/College_Final_Year_Project/canvas?action=fetchAllFiles",
+	      success: function (data, textStatus, jqXHR) {
+	    	  var JsonData= jQuery.parseJSON(data);
+	    	  $('#Table').empty();
+	    	 if(JsonData.length==0){
+		     $("#Table").html('<tr class="no-records"><td colspan="9" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+	    		$('#myLoader').hide();
+	    	 }
+	    	 else{
+	          $(JsonData).each(function (index, item) {  
+	        	
+	        	 $('#Table').append(
+	        			  '<tr style="height:20px">'+
+	        			'<td style="text-align: center;display:none;">'+item.pkId+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.SlNo+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.name+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.personType+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.collegeId+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.departmentName+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.postType+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;"><textarea name="title" readonly style="font-size: 15px; border: 2px solid skyblue;text-transform: none;  width:200px;"  cols="50" rows="5">'+(item.title==null?" ":item.title)+'</textarea></td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.fileType+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.createDate+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+(item.updateDate==null?" ":item.updateDate)+'</td>'+
+	        			 '<td style="text-align: center;font-size: 15px;">'+item.status+'</td>'+
+	        			 '<td style="text-align: center;"><a href="'+item.filePath+'" target="_blank" class="view-btn"  >View</a></td>'+
+	        		     '<td style="text-align: center;">'+(item.status=="Approved"?'<input type="submit" value="Approve" onclick=myFunction() disabled class="view-btn" id=button >':'<input type="submit" value="Approve" onclick=myFunction('+item.pkId+')  class="view-btn" >')+'</td>'+
+	        		     '<td style="text-align: center;">'+(item.status=="Rejected"?'<input type="submit" value="Reject" onclick=myFunction1() disabled class="view-btn" id=button >':'<input type="submit" value="Reject" onclick=myFunction1('+item.pkId+')  class="view-btn"  >')+'</td>'+
+	        		      '</tr>'
+	        	  );
+	        	  
+	        	  
+		      });
+	    		$('#myLoader').hide();
 
+	    	 }
+	      },
+	      error: function (jqXHR, textStatus, errorThrown) {
+	    		$('#myLoader').hide();
+          alert("Sorry Something went wrong while loading.");
+      
+	      }
+	    });  
+}
+
+
+function myFunction(id){
+	changeStatus("Approved",id);
+}
+function myFunction1(id){
+	
+	changeStatus("Rejected",id);
+	
+}
+
+function changeStatus(action,id){
+		 $(".loader1").show();
+       $('#myModal').show();
+  	 $.ajax({
+		      type: "GET",
+		      url:"/College_Final_Year_Project/canvas?action=changeStatus&action1="+action+"&id="+id,
+		      success: function (data, textStatus, jqXHR) {
+		    	  $(".loader1").hide();
+		        $('#myModal').hide();
+		        if (data.trim().includes("Successfully")) {
+		          swal("Done", data, "success");
+		        }
+		        else {
+		          swal("Error", data, "error");
+		        }
+		        fetchFiles();
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+		    	  $(".loader1").hide();
+			        $('#myModal').hide();
+		    	  swal("Error", errorThrown, "error");
+		    	  fetchFiles();
+		 		
+		      }
+		    });  
+}
 
 
 </script>

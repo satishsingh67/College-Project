@@ -94,7 +94,7 @@ public class AccountCreation {
 
 				if (dbStatus > 0) {
 
-					result = "Account deleted Successfully";
+					result = "Account Deleted Successfully";
 				} else {
 					result = "Something went wrong.Please try again";
 
@@ -397,7 +397,7 @@ public class AccountCreation {
 
 					if (dbStatus > 0) {
 
-						result = "Account deleted Successfully";
+						result = "Account Deleted Successfully";
 					} else {
 						result = "Something went wrong.Please try again";
 

@@ -1,3 +1,14 @@
+<%@page errorPage="errorPage.jsp" %>
+<%@page import="com.college.model.Admin" %>
+
+<%
+Admin admin=(Admin)session.getAttribute("admin");
+if(admin==null){
+	response.sendRedirect("adminLogin.jsp");
+	return;
+}
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -340,20 +351,9 @@ form span{
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Email Id:<strong class="text-danger">*</strong></span>
                                             <input type="email" name="email" placeholder="Enter Email Id " class="box" required>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Department:<strong class="text-danger">*</strong></span>
-                                            <select class="box" name="department"  id="ddselect">
+                                            <select class="box" name="department"  id="departmentSelect">
                                                 <option>--Select Department--</option>
-                                                <option value="1">CSE</option>
-                                                <option value="2">ECE</option>
-                                                <option value="3">IT</option>
-                                                <option value="4">EE</option>
-                                                <option value="5">AEIE</option>
-                                                <option value="6">FT</option>
-                                                <option value="7">BHM</option>
-                                                <option value="8">ASHU</option>
-                                                <option value="9">BCA</option>
-                                              
-                                                <option>Cyber scurity</option>
-                                                <option>Data Science</option>
+                                               
                                             </select><br>
                                           <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Password:<strong class="text-danger">*</strong></span>
                                             <input type="password" name="password" placeholder="Enter Password" class="box" required>
@@ -366,6 +366,29 @@ form span{
                         </div>
                     </div>
                 </section>
+                    <section style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
+                <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div  class="col-md-6">
+                            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_nux6g0kx.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>        </div>
+                        <div class="col-md-6">
+                          <form id="deleteAccountForm"  style="border:1px solid red;height:300px;">
+                     
+                              
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :<strong class="text-danger">*</strong></span>
+                              <input type="text" name="id"  placeholder="enter Id" class="box" required>
+                              <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter Email:<strong class="text-danger">*</strong></span>
+                              <input type="text" name="email" placeholder="enter your email" class="box" required>
+                              
+                              <input type="submit" value="Delete" name="submit" id="delteAccount" class="link-btn" style="margin-right: 5px;background-color: black;">
+                              <input type="submit" value="Clear" name="submit" id="delteAccountClear" class="link-btn"  style="background-color: black;">
+                           </form>   
+                      </div>
+                    </div>
+                </div>
+               </section>
              </main>
    
    
@@ -390,7 +413,10 @@ form span{
        
        <script>
        
-       
+       $(document).ready(function () {
+    		
+    		fetchDropDown("department","departmentSelect");
+       });
        
        
               $('#acconutCreationButton').click(function (event){
@@ -441,6 +467,81 @@ form span{
         $('#canvasAccountForm')[0].reset();
 
     });
+    
+    $('#delteAccountClear').click(function (event){
+	    event.preventDefault();
+        $('#deleteAccountForm')[0].reset();
+
+    });
+    
+    
+    $('#delteAccount').click(function (event){
+			event.preventDefault();
+				
+			$('#myModal').show();
+		//Calling Loader
+		$(".loader1").show();
+
+		    var form = $('#deleteAccountForm')[0];
+		    // Create an FormData object 
+		    var data = new FormData(form);
+		    data.append("action", "canvasAccountDelete");
+		    // disabled the submit button
+		    $("#delteAccount").prop("disabled", true);
+		    $.ajax({
+		      type: "POST",
+		      enctype: 'multipart/form-data',
+		      url: "/College_Final_Year_Project/canvas",
+		      data: data,
+		      processData: false,
+		      contentType: false,
+		      success: function (data, textStatus, jqXHR) {
+		        $(".loader1").hide();
+		        $('#myModal').hide();
+		        if (data.trim().includes("Successfully")) {
+		          swal("Done", data, "success");
+		          $('#deleteAccountForm')[0].reset();
+		        }
+		        else {
+		          swal("Error", data, "error");
+		        }
+		        
+		        $("#delteAccount").prop("disabled", false);
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+		        $(".loader1").hide();
+		        $('#myModal').hide();
+		        swal("Error", data, "error");
+		        $("#delteAccount").prop("disabled", false);
+		      }
+		    });
+		});
+      
+    
+
+    function fetchDropDown(action,id){
+    	
+    	 $.ajax({
+    		      type: "GET",
+    		      url:"/College_Final_Year_Project/dropdown?action="+action,
+    		      success: function (data, textStatus, jqXHR) {
+    		    	  var JsonData= jQuery.parseJSON(data);
+    		    	 if(JsonData==null){
+    		    		 $('#'+id).append(new Option("No Option is Present",""));
+    		    	 }
+    		    	 else{
+    		          $(JsonData).each(function (index, item) {  
+    		        	  $('#'+id).append(new Option(item.name.trim(), item.pkId));
+    		          }); 
+    		    	 }
+    		      },
+    		      error: function (jqXHR, textStatus, errorThrown) {
+    		    	  $('#'+id).append(new Option("No Option is Present",""));
+    		      }
+    		    });  
+    }
+    
+    
        </script>
           
        

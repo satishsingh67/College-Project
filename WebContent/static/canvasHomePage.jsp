@@ -1178,7 +1178,7 @@ input {
           padding: 20px;
           border: 1px solid #888;
           width: 40%;
-          height: 80%;
+          height: 85%;
           background-color: rgb(213, 249, 250);
           box-shadow: 5 px 5px 5px solid red;
           text-align: justify;
@@ -1341,7 +1341,7 @@ input {
         margin-top: 0;
       }
     } 
-        
+
         
         
 </style>
@@ -1359,6 +1359,9 @@ input {
                         </li>
                         <li class="nav__item">
                             <a href="#place" class="nav__link">Images</a>
+                        </li>
+                         <li class="nav__item">
+                            <a href="#place1" class="nav__link">Videos</a>
                         </li>
                         <li class="nav__item">
                             <a href="./canvasWriteUp.jsp" class="nav__link">WriteUps</a>
@@ -1473,23 +1476,24 @@ input {
                     <label for="cars">Name:<strong style="color:red;">*</strong></label>&nbsp;&nbsp;<input name="name"  style="width: 200px;height: 25px;margin-left:155px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;"type="text"><br><br>
                     <label for="cars">Department:<strong style="color:red;">*</strong></label>&nbsp;&nbsp;
 
-                    <select name="department" id="department" style="width: 200px;height: 25px;margin-left:105px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;">
+                    <select name="department" id="department" style="text-align:center;width: 200px;height: 25px;margin-left:105px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;">
                      <option>--Select--</option>
                
                     </select><br><br>
                     <label for="cars">ID(Student Id/Teacher Id):<strong style="color:red;">*</strong></label>&nbsp;&nbsp;<input name="id"  style="width: 200px;height: 25px;margin-left:15px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;" type="text"><br><br>
                     <label for="cars">Post Type:<strong style="color:red;">*</strong></label>&nbsp;&nbsp;
 
-                    <select name="postType" id="postType" style="margin-left:125px;width: 200px;height: 25px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;">
+                    <select name="postType" id="postType" style="text-align:center;margin-left:125px;width: 200px;height: 25px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;">
                    <option>--Select--</option>
                    
                     </select>
                   <br> <br>
-                   <label for="cars">Write Something:</label>&nbsp;&nbsp;<input name="title" style="margin-left:85px;width: 200px;height: 25px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;"type="text" placeholder="Give Title of Your Write Up"><br><br>
-                  
+                   <label for="cars" >Write Something:<strong style="color:red;display:none;" id="redMarkDisplay">*</strong></label><br>
+              <textarea name="title"  style="margin-left:222px; margin-top:-31px; width: 200px;height: 50px; font-size: 15px; border: 2px solid skyblue;text-transform: none;"  cols="50" rows="5"></textarea> <br>
+                  <br>
                     <label for="cars">File Type:<strong style="color:red;">*</strong></label>&nbsp;&nbsp;
 
-                    <select name="fileType" id="fileType" style="margin-left:134px;width: 200px;height: 25px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;">
+                    <select name="fileType" id="fileType" style="text-align:center;margin-left:134px;width: 200px;height: 25px; background-color: rgb(250, 247, 245);font-weight: bold;font-size: 15px;">
                     <option>--Select--</option>
                     </select><br><br>
                     <label for="cars">Select Your File:<strong style="color:red;">*</strong></label> &nbsp;&nbsp;<input name="file" style="margin-left:85px;" type="file"><br><br>
@@ -1513,7 +1517,7 @@ input {
             <section class="place section" id="place" style="border:1px solid red;">
                
 
-                <div class="place__container container grid"  id="test12" style="margin-top:-100px;">
+                <div class="place__container container grid"  id="imageFiles" style="margin-top:-100px;">
                    
                 </div>
             </section>
@@ -1522,211 +1526,14 @@ input {
             
 
                     <!--==================== PLACES ====================-->
-            <section class="place section" id="place">
+            <section class="place section" id="place1" style="border:1px solid red;">
                
 
-                <div class="place__container container grid" style="margin-top:-100px;">
-                    <!--==================== PLACES CARD 1 ====================-->
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <h3 class="place__title">Gnit Campus</h3>
-                            </span>
-
-                            <div class="place__data">
-                                
-                                <span class="place__subtitle">Sornali Hazra</span>
-                                <span class="place__subtitle">4th Year ECE-2</span>
-                               
-                            </div>
-                        </div>
-
-                        
-                    </div>
-
-                    <!--==================== PLACES CARD 2 ====================-->
-                    <div class="place__card">
-                        <video src="./images/video/video_2021-12-21_02-14-51.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <h3 class="place__title">Gnit Cultural Fest</h3>
-                            </span>
-
-                            <div class="place__data">
-                                
-                                <span class="place__price">Sornali Hazra</span>
-                                <span class="place__subtitle">4th Year ECE-2</span>
-                            </div>
-                        </div>
-
-                       
-                               
-                    </div>
-
-                    <!--==================== PLACES CARD 3 ====================-->
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,9</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">Sodepur</h3>
-                                <span class="place__subtitle">Kolkata</span>
-                                
-                            </div>
-                        </div>
-
-                       
-                    </div>
-
-                    <!--==================== PLACES CARD 4 ====================-->
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,8</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">GNIT</h3>
-                                <span class="place__subtitle">Sodepur,Kolkata</span>
-                               
-                            </div>
-                        </div>
-
-                       
-                    </div>
-                      
-
-
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,8</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">GNIT</h3>
-                                <span class="place__subtitle">Sodepur,Kolkata</span>
-                               
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,8</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">GNIT</h3>
-                                <span class="place__subtitle">Sodepur,Kolkata</span>
-                               
-                            </div>
-                        </div>
-
-                       
-                    </div>
-
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,8</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">GNIT</h3>
-                                <span class="place__subtitle">Sodepur,Kolkata</span>
-                               
-                            </div>
-                        </div>
-
-                       
-                    </div>
-                      
-
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,8</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">GNIT</h3>
-                                <span class="place__subtitle">Sodepur,Kolkata</span>
-                               
-                            </div>
-                        </div>
-
-                       
-                    </div>
-                      
-
-
-                    <!--==================== PLACES CARD 5 ====================-->
-                    <div class="place__card">
-                        <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-                        <div class="place__content">
-                            <span class="place__rating">
-                                <i class="ri-star-line place__rating-icon"></i>
-                                <span class="place__rating-number">4,8</span>
-                            </span>
-
-                            <div class="place__data">
-                                <h3 class="place__title">GNIT</h3>
-                                <span class="place__subtitle">Sodepur</span>
-                                <span class="place__price">Kolkata</span>
-                            </div>
-                        </div>
-
-
-                        
-                         
-                    </div>
+                <div class="place__container container grid" id="videoFiles" style="margin-top:-100px;">
+                
                 </div>
             </section>
 
-               
-
-          
-
-
-            
-           
-
-           
-            
-
-           
-            
-           
         </main>
 
         <!--==================== FOOTER ====================-->
@@ -1828,10 +1635,11 @@ input {
       </div>
       <!--==========Loader Model End ==========-->
   
-
-
-
-
+ 
+  
+  
+  
+  
 
         <!--=============== SCROLL REVEAL===============-->
         <script src="./js/scrol.min.js"></script>
@@ -1847,37 +1655,13 @@ input {
                <script>
         
      $(document).ready(function(){
+    	  $('#myModal1').show();
+    		//Calling Loader
+    		$(".loader1").show();
+
     	 dropDowns();
-       $('#myModal').show();
-       
-       for(let i=0;i<10;i++){
-       	
-       	var card=' <div class="place__card" style="width:470px;">'
-              + '<img src="./fpdf/gnit3.jpg" alt="" class="place__img">'
-           +'<div class="place__content">'
-               +'<span class="place__rating">'
-               +'  <i class="ri-star-line place__rating-icon"></i>'
-               +'  <h3 class="place__title">Gnit Campus</h3>'
-               +'  </span>'
-
-               +' <div class="place__data">'
-               +'     <h3 class="place__title">GNIT Campus</h3>'
-               +'   <span class="place__subtitle">Sornali Hazra</span>'
-               +'   <span class="place__subtitle">4th Year ECE-2</span>'
-                  
-               +'  </div>'
-               +'  </div>'
-               +'<button class="button button--flex place__button">'
-               +' <i class="ri-arrow-right-line"></i>'
-               +'</button>'
-               +'</div>';
-               
-               $('#test12').append(card);  
-               
-              
-       }
-
-	
+    fetchCanvasFiles();
+   
       });
         
         
@@ -1902,7 +1686,9 @@ input {
         	console.log(type =="2" || type=="3");
         	if(type =="2" || type=="3")
         	{
-        		  alert(type);
+        		$('#redMarkDisplay').show();
+        	}else{
+        		$('#redMarkDisplay').hide();
         	}
         	
         	});
@@ -1916,7 +1702,6 @@ input {
    		      url:"/College_Final_Year_Project/dropdown?action=canvas",
    		      success: function (data, textStatus, jqXHR) {
    		    	  var JsonData= jQuery.parseJSON(data);
-   		    	  console.log(JsonData==null);
    		    	 if(JsonData==null){
    		    		 $('#postType').append(new Option("No Option is Present",""));
    		    		 $('#department').append(new Option("No Option is Present",""));
@@ -1982,6 +1767,81 @@ input {
   		      }
   		    });
     });
+        
+        
+        function fetchCanvasFiles(){
+        	
+       	 $.ajax({
+  		      type: "GET",
+  		      url:"/College_Final_Year_Project/canvas?action=canvasGallery",
+  		      success: function (data, textStatus, jqXHR) {
+  		    	
+  		      var JsonData= jQuery.parseJSON(data);
+  		      
+  		    	 if(JsonData==null){
+  		    		var test= '<h4 style="margin-left:80px;">Sorry, no data found</h4>';
+		    		 
+		    		  $('#imageFiles').append(test);  
+		    		   $('#videoFiles').append(test);   
+		    		   $(".loader1").hide();
+		  		        $('#myModal1').hide();
+  		    	 }
+  		    	 else{
+  		    		
+  		    		 if(JsonData.imageList.length>0){
+  		          $(JsonData.imageList).each(function (index, item) {  
+  		        	var card=' <div class="place__card" style="border:1px solid red; width:470px;">'
+  		              + '<img src="'+item.filePath+'" alt="" class="place__img" style="width:470px;">'
+  		               +'<button class="button button--flex place__button">'
+  		               +'<p>By: '+item.name+'</p>'
+  		               +' <a href="'+item.filePath+'" target="_blank" style="color:white" class="ri-arrow-right-line"></a>'
+  		               +'</button>'
+  		               +'</div>';		      
+  		             $('#imageFiles').append(card);    	  
+  		          });
+  		    		 }else{
+  		    			var test= '<h4 style="margin-left:80px;">Sorry, no data found</h4>';
+  			    		 
+  		    		  $('#imageFiles').append(test);  
+  		    			 
+  		    			 
+  		    		 }
+  		          
+  		    		 if(JsonData.videoList.length>0){
+  		     $(JsonData.videoList).each(function (index, item) {  		        
+ 		        
+		        	var card=' <div class="place__card" style=" width:370px;height:230px;">'
+		        		+'<video width="370" height="1140" controls>'
+		        		+'  <source src="'+item.filePath+'" type="video/mp4">'
+		        		+'</video>'
+		        		+'<h4 style="text-align:center;">By: '+item.name+'</h4>'
+		               +'</div>';
+		               
+		        	 $('#videoFiles').append(card);  
+  		     });
+  		    	 }else{
+  		    		 
+  		    		var test= '<h4 style="margin-left:80px;">Sorry, no data found</h4>';
+		    		   $('#videoFiles').append(test);  
+  		    	 }
+  		     
+  		     
+  		 
+  		   $(".loader1").hide();
+		        $('#myModal1').hide();
+  		    	 }
+  		      },
+  		      error: function (jqXHR, textStatus, errorThrown) {
+  		    	var test= '<h4 style="margin-left:80px;">Sorry, Something went wrong,Please refresh the page</h4>';
+	    		  $('#imageFiles').append(test);  
+	    		   $('#videoFiles').append(test);   
+	    		   $(".loader1").hide();
+	  		        $('#myModal1').hide();
+  		      }
+  		    });  
+        	
+        	
+        }
         
         
         

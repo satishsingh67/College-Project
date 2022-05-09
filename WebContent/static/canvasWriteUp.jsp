@@ -12,7 +12,8 @@
   <!-- bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
- 
+  <script src="./lib/jquery.min.js"></script>
+  <script src="./lib/sweetalert.min.js"></script>
   <!-- OWN CSS -->
   <link rel="stylesheet" href="css/subject.css">
   <link rel="stylesheet" href="css/responsive-style.css">
@@ -189,6 +190,30 @@
   color: crimson;
   padding-right: 5px;
 }
+
+ .loader2 {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
   </style>
 </head>
 
@@ -207,6 +232,12 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#place">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#place1">Blogs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./canvasHomePage.jsp">Gallery </a>
@@ -252,209 +283,48 @@
  
  <hr>
     
-  
-      
- <div class="container">
-
-  <h1 class="heading">ARTICLES</h1>
-
-  <div class="box-container">
-
-     <div class="box">
-        <div class="image">
-           <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-        </div>
-        <div class="content">
-           <h3>Basic Electrical Engineering</h3>
-           <p>
-               1st Year ECE-1
-           </p>
-           <a href="./teachersubj1.html" class="btn">Enter The Class</a>
-           <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-              <span> <i class="fas fa-user"></i> by admin </span>
-           </div>
-        </div>
-     </div>
-
-     <div class="box">
-      <div class="image">
-          <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-       </div>
-       <div class="content">
-          <h3>Basic Electrical Engineering</h3>
-          <p>
-              1st Year ECE-2
-          </p>
-          <a href="#" class="btn">Enter The Class</a>
-          <div class="icons">
-             <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-             <span> <i class="fas fa-user"></i> by admin </span>
-          </div>
-       </div>
-     </div>
-
-     <div class="box">
-      <div class="image">
-          <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-       </div>
-       <div class="content">
-          <h3>MATHS I</h3>
-          <p>
-              1st Year ECE-1
-          </p>
-          <a href="#" class="btn">Enter The Class</a>
-          <div class="icons">
-             <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-             <span> <i class="fas fa-user"></i> by admin </span>
-          </div>
-       </div>
-     </div>
-
-     <div class="box">
-      <div class="image">
-          <img src="images/teachers/undraw_teaching_f-1-cm.svg" alt="">
-       </div>
-       <div class="content">
-          <h3>Basic Electrical Engineering LAB</h3>
-          <p>
-              1st Year EE-1
-          </p>
-          <a href="#" class="btn">Enter The Class</a>
-          <div class="icons">
-             <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-             <span> <i class="fas fa-user"></i> by admin </span>
-          </div>
-       </div>
-
-
-       
-     </div>
-
-     <div class="box">
-        <div class="image">
-           <img src="images/img-5.jpg" alt="">
-        </div>
-        <div class="content">
-           <h3>blog title goes here</h3>
-           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-           <a href="#" class="btn">read more</a>
-           <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-              <span> <i class="fas fa-user"></i> by admin </span>
-           </div>
-        </div>
-     </div>
-
-     <div class="box">
-        <div class="image">
-           <img src="images/img-6.jpg" alt="">
-        </div>
-        <div class="content">
-           <h3>blog title goes here</h3>
-           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-           <a href="#" class="btn">read more</a>
-           <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-              <span> <i class="fas fa-user"></i> by admin </span>
-           </div>
-        </div>
-     </div>
-
-     <div class="box">
-        <div class="image">
-           <img src="images/img-7.jpg" alt="">
-        </div>
-        <div class="content">
-           <h3>blog title goes here</h3>
-           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-           <a href="#" class="btn">read more</a>
-           <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-              <span> <i class="fas fa-user"></i> by admin </span>
-           </div>
-        </div>
-     </div>
-
-     <div class="box">
-        <div class="image">
-           <img src="images/img-8.jpg" alt="">
-        </div>
-        <div class="content">
-           <h3>blog title goes here</h3>
-           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-           <a href="#" class="btn">read more</a>
-           <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-              <span> <i class="fas fa-user"></i> by admin </span>
-           </div>
-        </div>
-     </div>
-
-     <div class="box">
-        <div class="image">
-           <img src="images/img-9.jpg" alt="">
-        </div>
-        <div class="content">
-           <h3>blog title goes here</h3>
-           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-           <a href="#" class="btn">read more</a>
-           <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-              <span> <i class="fas fa-user"></i> by admin </span>
-           </div>
-        </div>
-     </div>
-
-  </div>
-
    <!-- section-4 explore food-->
-   <section id="write">
-    <div class="explore-food wrapper " style=" background-color: rgb(181, 227, 235);">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="text-content text-center">
-               <h2>Blogging</h2>
-           
-           
-          </div>
-        </div>
-        <div class="row pt-5">
-          <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-            <div class="card">
-              
-               
-              
-               
-             </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-           <div class="card">
-               <embed src="./fpdf/4.2.1-with-front-page.pdf" height="350px" width="400px" type="application/pdf">
-             <div class="pt-3">
-               <span>Poem</span><h4>By</h4>
-               <h6 style="float: right;">ECE-2(4th year)</h6>
-               <h5>Sornali Hazra</h5>
-              
-              
-             </div>
+   <section id="write" >
+     <div id="place" class="explore-food wrapper " style="background-color: lightcyan;">
+       <div class="container" style="margin-top:-100px;">
+        <div class="col-sm-12">
+             <div class="text-content text-center">
+                <h2 style="font-family: 'Times New Roman', Times, serif; border-bottom: 2px solid red;">Articles</h2>
+            
            </div>
          </div>
-         <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-           <div class="card">
-           
-             <div class="pt-3">
-              
-             </div>
-             
+         <br>
+         <br>
+         <div class="row" id="articlesList" style="border:1px solid lightcyan;">
+        
+       
+         
+         </div>
+       </div>
+     </div>
+   </section><br>
+   <hr>
+   
+    
+<!-- section-4 explore food-->
+   <section id="write" >
+     <div id="place1" class="explore-food wrapper " style="background-color: lightcyan;">
+       <div  class="container" style="margin-top:-100px;">
+        <div class="col-sm-12">
+             <div class="text-content text-center">
+                <h2  style="font-family: 'Times New Roman', Times, serif; border-bottom: 2px solid red;">Blogs</h2>
+            
+            
            </div>
          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+         <br>
+         <br>
+         <div class="row" id="blogsList" style="border:1px solid lightcyan;">
+      
+         </div>
+       </div>
+     </div>
+   </section>
 
   
   <!-- section-9 footer-->
@@ -479,7 +349,7 @@
           <div class="col-sm-12">
             <div class="footer-copy">
               <div class="copy-right text-center pt-5">
-                <p class="text-light">©Developer.Sornali Hazra</p>
+                <p class="text-light">©Developer- Sornali Hazra & @Satish Singh</p>
               </div>
             </div>
           </div>
@@ -488,12 +358,121 @@
     </div>
   </footer>
    
+     
+<div class="loader2" style="margin-top:-48%;margin-left:48%;display:none;" id="myLoader"></div>
+     <div class="loader2" style="margin-top:20%;margin-left:48%;display:none;" id="myLoader1"></div>
+  
+   
+   
 
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
   <!-- own js -->
   <script src="js/subject1.js"></script>
+  
+  <script >
+  
+  $(document).ready(function(){
+	  
+	  $('#myLoader').show();
+	  $('#myLoader1').show();
+	fetchCanvasFiles();
+  
+  
+  
+  });
+  
+  
+  
+  function fetchCanvasFiles(){
+  	
+    	 $.ajax({
+		      type: "GET",
+		      url:"/College_Final_Year_Project/canvas?action=canvasWriteUp",
+		      success: function (data, textStatus, jqXHR) {
+		     var JsonData= jQuery.parseJSON(data);
+		    	 if(JsonData==null){
+		    		var test= '<h4 style="text-align:center">Sorry, no data found</h4>';
+		    		 
+		    		  $('#articlesList').append(test);  
+		    		   $('#blogsList').append(test);   
+		    		   $('#myLoader').hide();
+		    		   $('#myLoader1').hide();
+		    	 }
+		    	 else{
+		    		 
+		    		if(JsonData.articlesList.length>0){
+		          $(JsonData.articlesList).each(function (index, item) {  
+
+		        	  var card='<div class="col-lg-4 col-md-6 mb-lg-0 mb-5">'
+					         +'<div class="card"  style="height:250px;margin-bottom:30px;">'
+					         +'<textarea name="title"  style="width: 400px;height: 200px; font-size: 15px; border: 2px solid skyblue;text-transform: none;margin-bottom:10px;" readonly cols="50" rows="5">'+item.title+'</textarea>'
+					         +'    <a class="nav-link" style="border:1px solid blue;color:skyblue;width:80px;"  href="'+item.filePath+'" target="_blank">View </a>'
+					         +'   <h4 style="margin-left:150px;margin-top:-30px;">By : '+item.name+'</h4>'
+					         +'    </div>'
+					         +'   </div> ';
+
+		             $("#articlesList").append(card);  
+		          });
+		          $('#myLoader').hide();
+		    		}else{
+		    			var test= '<h4 style="text-align:center">Sorry, no data found</h4>';
+			    		 
+			    		  $('#articlesList').append(test);
+				          $('#myLoader').hide();
+
+		    		}
+		          
+		    		if(JsonData.blogsList.length>0){
+		     $(JsonData.blogsList).each(function (index, item) {  		        
+		        
+
+		    		var card='<div class="col-lg-4 col-md-6 mb-lg-0 mb-5">'
+				         +'<div class="card"  style="height:250px;margin-bottom:30px;">'
+				         +'<textarea name="title"  style="width: 400px;height: 200px; font-size: 15px; border: 2px solid skyblue;text-transform: none;margin-bottom:10px;" readonly cols="50" rows="5">'+item.title+'</textarea>'
+				         +'    <a class="nav-link" style="border:1px solid blue;color:skyblue;width:80px;"  href="'+item.filePath+'" target="_blank">View </a>'
+				         +'   <h4 style="margin-left:150px;margin-top:-30px;">By : '+item.name+'</h4>'
+				         +'    </div>'
+				         +'   </div> ';
+
+
+			           $('#blogsList').append(card);       
+		     
+		     });
+		 
+	          $('#myLoader1').hide();
+		    		}else{
+		    			
+		    			var test= '<h4 style="text-align:center">Sorry, no data found</h4>';
+			    		 
+			    		  $('#blogsList').append(test);
+				          $('#myLoader1').hide();
+		    		}
+	          
+	          
+		    	 }
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+		    	  var test= '<h4 style="text-align:center">Sorry, Something went wrong,Please refresh the page</h4>';
+		    	  $('#articlesList').append(test);  
+	    		   $('#blogsList').append(test);   
+	    		   $('#myLoader').hide();
+	    		   $('#myLoader1').hide();
+		      }
+		    });  
+     	
+     	
+     }
+  
+  
+  
+  
+  
+  
+  </script>
+  
+  
 </body>
 </html>
 

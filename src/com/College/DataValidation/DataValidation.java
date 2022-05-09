@@ -117,7 +117,7 @@ public class DataValidation {
 		   
 		   String result=null;
 		   
-		   result=((teacherName.trim().isEmpty())?"Faculty Name":(departmentId.trim().isEmpty())?"Department":(departmentId.trim().equalsIgnoreCase("-Select Faculty Depertment -"))?"Department":(emailId.trim().isEmpty() || !(emailId.trim().contains("@")))?"Email Id":(password.trim().isEmpty())?"Password":"True");
+		   result=((teacherName.trim().isEmpty())?"Faculty Name":(departmentId.trim().isEmpty())?"Department":(departmentId.trim().equalsIgnoreCase("-Select Faculty Department -"))?"Department":(emailId.trim().isEmpty() || !(emailId.trim().contains("@")))?"Email Id":(password.trim().isEmpty())?"Password":"True");
 		   
 		   return result;
 	   }
@@ -125,7 +125,7 @@ public class DataValidation {
 	public String changeTeacherPassword(String existingEmail, String currentPassword, String newPassword,
 			String reNewPassword) {
 		String result=null;
-		result=((existingEmail.trim().isEmpty())?"Please Enter Your Email":(!(existingEmail.trim().contains("@")))?"Please Enter Your Valid Email":(currentPassword.trim().isEmpty())?"Please Enter Your Current Password":(newPassword.trim().isEmpty())?"Please Enter Your New Password":(reNewPassword.trim().isEmpty())?"Please Re-Enter Your New Password":!(reNewPassword.trim().equalsIgnoreCase(newPassword.trim()))?"New and Confirm Password Sholud be same":"True");
+		result=((existingEmail.trim().isEmpty())?"Please Enter Your Email":(!(existingEmail.trim().contains("@")))?"Please Enter Your Valid Email":(currentPassword.trim().isEmpty())?"Please Enter Your Current Password":(newPassword.trim().isEmpty())?"Please Enter Your New Password":(currentPassword.trim().equalsIgnoreCase(newPassword.trim()))?"New and Old password can't be same":(reNewPassword.trim().isEmpty())?"Please Re-Enter Your New Password":!(reNewPassword.trim().equalsIgnoreCase(newPassword.trim()))?"New and Confirm Password Sholud be same":"True");
 		return result;
 	}  
 		
@@ -158,7 +158,7 @@ public class DataValidation {
 	public String changeAdminPassword(String name, String email, String phoneNumber, String oldPassword,
 			String password, String confirmPassword) {
 		String result=null;
-		result=((name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(oldPassword.trim().isEmpty())?"Old Password":(password.trim().isEmpty())?"New Password":(confirmPassword.trim().isEmpty())?"Confirm Password":"True");
+		result=((name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(oldPassword.trim().isEmpty())?"Old Password":(password.trim().isEmpty())?"New Password":(oldPassword.trim().equalsIgnoreCase(password.trim()))?"Old and New Password can't be same":(confirmPassword.trim().isEmpty())?"Confirm Password":!(password.trim().equalsIgnoreCase(confirmPassword.trim()))?"Password and Confirm should be same":"True");
 		return result;
 	}
 
@@ -215,5 +215,16 @@ public class DataValidation {
 		
 		return result;
 	}
+
+	public String forgetPasswordDataValidation(String personType, String name, String email) {
+		String result=null;
+		result=(personType.trim().equalsIgnoreCase("--Select--")?"Person Type":(name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":"True");
+		return result;	
+       }
+	public String forgetCredsDataValidation(String credsType, String name, String email) {
+		String result=null;
+		result=(credsType.trim().equalsIgnoreCase("--Select--")?"Credential Type":(name.trim().isEmpty())?"Name":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":"True");
+		return result;	
+       }
 }
  

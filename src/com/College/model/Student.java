@@ -15,6 +15,9 @@ public class Student {
 	private Integer semester;
 	private String base64Image;
 	private Integer section;
+	private String courseTypeName;
+	private Integer courseTypeId;
+	
 	
 	public Integer getPkRegistrationId() {
 		return pkRegistrationId;
@@ -93,6 +96,18 @@ public class Student {
 	}
 	public void setSemester(Integer semester) {
 		this.semester = semester;
+	}
+	public String getCourseTypeName() {
+		return courseTypeName;
+	}
+	public void setCourseTypeName(String courseTypeName) {
+		this.courseTypeName = courseTypeName;
+	}
+	public Integer getCourseTypeId() {
+		return courseTypeId;
+	}
+	public void setCourseTypeId(Integer courseTypeId) {
+		this.courseTypeId = courseTypeId;
 	}
 
 	

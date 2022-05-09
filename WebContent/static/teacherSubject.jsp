@@ -18,6 +18,8 @@ String subjectCode=request.getParameter("subjectCode");
 String section=request.getParameter("section");
 String year=request.getParameter("year");
 String semester=request.getParameter("semester");
+String courseId=request.getParameter("courseId");
+String courseName=request.getParameter("courseName");
 
 //Metting link
 LinkManagement mettingLinks=new LinkManagement();
@@ -47,7 +49,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
   <!-- bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
- 
+  
   <!-- OWN CSS -->
   <link rel="stylesheet" href="css/subject.css">
   <link rel="stylesheet" href="css/responsive-style.css">
@@ -71,7 +73,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
+              <a class="nav-link active" aria-current="page" href="teacherPage.jsp">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#notes">Notes&Suggestion</a>
@@ -123,6 +125,15 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             <br>
              <input type="text" style="height:37px;" id="classLink" placeholder="Enter class link">
              <button  class="btn btn-primary" id="uploadClassLink">Upload Class Link <i class="fas fa-users-class"></i></button>
+          <br><br>
+          <%
+         
+          String attendanceUrl="AttendanceCheckTeacher.jsp?subjectName="+subjectName+"&subjectCode="+subjectCode+"&subjectId="+subjectId+"&departmentId="+fkDepartment+"&sectionId="+section+"&semseter="+semester+"&courseId="+courseId;
+         %>
+          <button  class="btn btn-primary" id="takeAttendance">Take Attendance <i class="fas fa-users-class"></i></button>
+         <a href="<%=attendanceUrl %>" target="_blank" class="btn btn-primary" id="">View Attendance <i class="fas fa-users-class"></i></a>
+          
+          
           </div>
 
           <div class="col-lg-5 col-md-6">
@@ -473,24 +484,11 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
     <div class="footer py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center">
-            <a class="footer-link" href="#">Blog</a>
-            <a class="footer-link" href="#">Contact Us</a>
-            <a class="footer-link" href="#">Affiliate</a>
-            <a class="footer-link" href="#">FAQ</a>
-            <div class="footer-social pt-4 text-center">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
+          
           <div class="col-sm-12">
             <div class="footer-copy">
               <div class="copy-right text-center pt-5">
-                <p class="text-light">©Developer.Sornali Hazra</p>
+                <p class="text-light">@Developer - Sornali Hazra & Satish Singh</p>
               </div>
             </div>
           </div>
@@ -629,11 +627,55 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 <!-- View Question Paper Modal end -->
 
 
+<!-- The  Question Paper Modal -->
+<div class="modalViewQuestionPaper6"  id="myModalQuestionPaper6">
+    <div class="modal-contentViewQuestionPaper6">
+
+      <!-- Modal Header -->
+     
+        <h4 class="modal-title" style="text-align: center;">Take Attendance</h4>
+     
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div  style="height:200px;border:1px solid skyblue;overflow-y: auto;">
+      <table id="doubtTable" class="table table-striped">
+    <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
+     <th style="text-align: center;">Sl.No</th>
+        
+        <th style="text-align: center;">Name</th>
+        
+    </thead>
+    <tbody id='attendanceBody'>
+    
+
+	</tbody>
+  </table>
+  </div>
+    
+   <button id="submitAttendance" style="margin-top:12px;"  class="btn btn-primary">Submit</button>            
+        
+  </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer" >
+        <button type="button" id="closeQuestionPaperModel6" class="btn btn-danger">Close</button>
+      </div>
+
+    </div>
+</div>
+<!-- View Question Paper Modal end -->
+
+
+
+
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
   <!-- own js -->
   <script src="js/subject1.js"></script>
+  
   
   <script>
   var fkTeacherPkId=<%= fkTeacherPkId%>;
@@ -644,11 +686,18 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
   var fkSectionId=<%= section%>;
   var fkYear=<%= year%>;
   var fkSemester=<%= semester%>;
+  var courseTypeId=<%=courseId%>;
+  
+  
   $(document).ready(function () {
-	
 	  fetchStudentDoubt();
-
+	  fetchstudentList();
   });
+  
+  
+  
+  
+  
   
 	function myFunction(){
 		
@@ -1352,6 +1401,130 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             }
   	  }); 	
 	}
+	  
+	  //Attendance Module
+	
+	 $('#takeAttendance').click(function (event){
+			event.preventDefault();
+			 $('#myModalQuestionPaper6').show();
+		});
+	
+	  $('#closeQuestionPaperModel6').click(function (event){
+			event.preventDefault();
+			 $('#myModalQuestionPaper6').hide();
+	            $("#selectAll").prop('checked', false);
+
+			 $('#attendanceBody tr td input[type="checkbox"]').each(function(){
+		            $(this).prop('checked', false);
+		        });
+			 
+		});
+	
+	  function fetchstudentList(){
+		  $.ajax({
+		      type: "GET",
+		      url:"/College_Final_Year_Project/attendance?action=studentList&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
+		      success: function (data, textStatus, jqXHR) {
+		    	  var JsonData= jQuery.parseJSON(data);
+		    	  $('#attendanceBody').empty();
+		    	 if(JsonData.length==0){
+			     $("#attendanceBody").html('<tr class="no-records"><td colspan="3" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+		    	 }
+		    	 else{
+		          $(JsonData).each(function (index, item) {  
+		        	  $('#attendanceBody').append(
+		        			  '<tr class="row-select">'
+		        			  	+'<td style="text-align: center;display:none">'+item.pkId+'</td>'
+								+'<td style="text-align: center;"><input type="checkbox"></td>'
+								+'<td style="text-align: center;">'+item.SlNo+'</td>'
+								+'<td style="text-align: center;">'+item.name+'</td>'
+								+'</tr>'
+		        	  );
+			      });
+		    	 }
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+	           alert("Sorry Something went wrong while loading ");
+		      }
+		    });
+	  }
+	  
+	  $('#selectAll').click(function (e) {
+		    $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+		});
+	  
+	 
+
+	  $('#submitAttendance').click(function (event){
+			event.preventDefault();
+			 $('#myModalQuestionPaper6').hide();
+			  $('#myModal').show();
+			  $(".loader1").show();
+			 var presentId = new Array();
+			 var absentId = new Array();
+
+			 
+			$('.row-select input:checked').each(function() {
+			      var id;
+			      id = $(this).closest('tr').find('td').eq(0).text();
+			      presentId.push(id);
+			    });
+			$('.row-select input:not(:checked)').each(function() {
+			      var id;
+			      id = $(this).closest('tr').find('td').eq(0).text();
+			      absentId.push(id);
+			    });
+		
+			submitAttendanceMethod(presentId,absentId);
+			
+		  		});
+	 
+	  
+	 function submitAttendanceMethod(presentId,absentId){
+
+		 var form_data = new FormData(); // Creating object of FormData class
+   	  form_data.append("action", "submitAttendance"); // Appending parameter named file with properties of file_field to form
+   	  form_data.append("teacherId",fkTeacherPkId);
+   	  form_data.append("departmentId",fkDepartment);
+   	  form_data.append("semesterId",fkSemester);
+   	  form_data.append("sectionId",fkSectionId);
+   	  form_data.append("subjectId",fksubjectId);
+   	  form_data.append("courseTypeId",courseTypeId);
+   	  form_data.append("presentId",presentId);
+   	  form_data.append("absentId",absentId);
+   	  
+   	  $.ajax({
+   		  type: "POST",
+             enctype: 'multipart/form-data',
+             url: "/College_Final_Year_Project/attendance",
+             data: form_data,
+             processData: false,
+             contentType: false,
+		    success: function(data,textStatus,jqXHR){
+		  	 $(".loader1").hide();
+		     $('#myModal').hide();
+				 $('#myModalQuestionPaper6').show();
+			  if(data.trim().includes("Successfully")){
+				  $("#selectAll").prop('checked', false);
+
+					 $('#attendanceBody tr td input[type="checkbox"]').each(function(){
+				            $(this).prop('checked', false);
+				        });
+				  swal("Done", data, "success");	       
+			       }else{
+				  swal("Error",data,"error");
+			       }
+		      },
+		    error:function(jqXHR,textStatus,errorThrown){
+		    	$('#myModalQuestionPaper6').show();
+		    	$(".loader1").hide();
+		         $('#myModal').hide();
+		        swal("Error",data,"error");
+					 
+		    }
+		});
+
+	 }
 	  
 	  
 	  

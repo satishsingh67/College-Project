@@ -1,11 +1,27 @@
 <%@page import="com.college.model.Student" %>
 <%@page errorPage="errorPage.jsp" %>
+<%@page import="com.college.dao.studentDao.MapStudentSubjectDao" %>
 <%
 Student student=(Student)session.getAttribute("student");
 if(student==null){
 	response.sendRedirect("studentLogin.jsp");
 	return;
 }
+
+Integer courseTypeId=student.getCourseTypeId();
+Integer fkDepartmentId=student.getFkdepartment();
+Integer fkYearId=student.getYear();
+Integer fkSectionId=student.getSection();
+
+//Feedback Link
+String feedbackLink=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartmentId, fkYearId, fkSectionId, "feedback");
+
+//SubjectChoice
+String subjectChoice=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartmentId, fkYearId, fkSectionId, "subjectChoice");
+
+
+
+
 %>
     
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -1229,20 +1245,42 @@ display: block;
                             <a href="./index.html" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#profile" class="nav__link">Your Profile</a>
+                            <a href="#profile" class="nav__link">Profile</a>
                         </li>
-                        <li class="nav__item">
-                            <a href="#" class="nav__link">Attendance</a>
-                        </li>
+                        
                         <li class="nav__item">
                             <a href="./studentClassroom.jsp" target="_self" class="nav__link">Class Room</a>
                         </li>
                         <li class="nav__item">
-                          <a href="#" class="nav__link">Feedback</a>
-
+                        <%
+                        if(feedbackLink==null){
+                        %>
+                          <a href="" style="pointer-events: none" class="nav__link">Feedback</a>
+                               <%
+                        }else{
+                               %>
+                         <a href="<%=feedbackLink %>" target="_blank" class="nav__link">Feedback</a>
+                            <%
+                        }
+                            %>   
+                               
+                               
+                               
                       </li>
                       <li class="nav__item">
-                        <a href="#" class="nav__link">Choose Subject</a>
+                       <%
+                        if(subjectChoice==null){
+                        %>
+                        <a href="" style="pointer-events: none" class="nav__link">Choose Subject</a>
+                               <%
+                        }else{
+                               %>
+                        <a href="<%=subjectChoice %>" target="_blank" class="nav__link">Choose Subject</a>
+                            <%
+                        }
+                            %>   
+                               
+                      
 
                     </li>
                     <li class="nav__item">
@@ -1336,7 +1374,7 @@ display: block;
             
             <!--==================== DISCOVER ====================-->
             <section class="products" id="profile">
-              <h2 style="text-align: center; color: mediumblue;font-weight: 900;font-size: 30px;font-family: 'Times New Roman', Times, serif;text-decoration: wavy;border-bottom: 2px solid black;">Your Profile</h2>
+              <h2 style="text-align: center; color: mediumblue;font-weight: 900;font-size: 30px;font-family: 'Times New Roman', Times, serif;text-decoration: wavy;border-bottom: 2px solid black;">Profile</h2>
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-4">
@@ -1348,7 +1386,9 @@ display: block;
                       <hr>
                       <label class="details">I.D Number :</label><br>
                       <hr>
-                      <label class="details">Depertment :</label><br>
+                      <label class="details">Course :</label><br>
+                      <hr>
+                      <label class="details">Department :</label><br>
                       <hr>
                       <label class="details">Year:</label><br>
                       <hr>
@@ -1364,6 +1404,8 @@ display: block;
                       <label type="label" class="box" name="student_name"><b><%= student.getStudentName() %></b></label><br> 
                       <hr>
                       <label type="text" class="box" name="student_id" ><b><%= student.getIdNumber() %></b></label><br>
+                      <hr>
+                      <label type="text" class="box" name="student_course" ><b><%= student.getCourseTypeName() %></b></label><br>
                       <hr>
                       <label type="text"class="box" name="student_depertment" ><b><%= student.getDepartment() %></b></label><br>
                      <hr>
@@ -1387,24 +1429,11 @@ display: block;
                         <h3 class="footer__title">GNIT Campus</h3>
                         <p class="footer__description">Most Beautiful Green Campus.
                         </p>
-                        <div>
-                            <a href="https://www.facebook.com/" target="_blank" class="footer__social">
-                                <i class="ri-facebook-box-fill"></i>
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" class="footer__social">
-                                <i class="ri-twitter-fill"></i>
-                            </a>
-                            <a href="https://www.instagram.com/" target="_blank" class="footer__social">
-                                <i class="ri-instagram-fill"></i>
-                            </a>
-                            <a href="https://www.youtube.com/" target="_blank" class="footer__social">
-                                <i class="ri-youtube-fill"></i>
-                            </a>
-                        </div>
+                   
                     </div>
     
                     <div class="footer__data">
-                        <h3 class="footer__subtitle">Contact Us</h3>
+                        <h3 class="footer__subtitle" style="text-align:center;">Contact Us</h3>
                         <ul>
                             <li class="footer__item">
                                 <a href="" class="footer__link">157/F Nilgunj Road, Panihati, Kolkata-700114, West Bengal
@@ -1419,46 +1448,50 @@ display: block;
                         </ul>
                     </div>
     
-                    <div class="footer__data">
-                        <h3 class="footer__subtitle">Quick Links</h3>
+                    <div class="footer__data" >
+                        <h3 class="footer__subtitle" style="text-align:center;">Quick Links</h3>
                         <ul>
-                            <li class="footer__item">
-                                <a href="#" class="footer__link">Attendance</a>
-                            </li>
+                           
                             <li class="footer__item">
                                 <a href="./studentClassroom.jsp" target="_self" class="footer__link">Class Room</a>
                             </li>
                             <li class="footer__item">
-                                <a href="#" class="footer__link">FeedBack</a>
+                             <%
+                        if(feedbackLink==null){
+                        %>
+                                <a href="" style="pointer-events: none"  class="footer__link">Feedback</a>
+                               <%
+                        }else{
+                               %>
+                                <a href="<%=feedbackLink %>" target="_blank" class="footer__link">Feedback</a>
+                            <%
+                        }
+                            %>   
+                            
+                            
                             </li>
                             <li class="footer__item">
-                                <a href="# "class="footer__link">Subject Choose</a>
+                              <%
+                        if(subjectChoice==null){
+                        %>
+                        <a href="" style="pointer-events: none" class="footer__link">Choose Subject</a>
+                               <%
+                        }else{
+                               %>
+                        <a href="<%=subjectChoice %>" target="_blank" class="footer__link">Choose Subject</a>
+                            <%
+                        }
+                            %>   
                             </li>
                         </ul>
                     </div>
     
-                    <div class="footer__data">
-                        <h3 class="footer__subtitle">Exam Links</h3>
-                        <ul>
-                            <li class="footer__item">
-                                <a href="" class="footer__link">WBJEE</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="" class="footer__link">JEE Main</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="" class="footer__link">CEE Ampai</a>
-                            </li>
-                        </ul>
-                    </div>
+                  
                 </div>
 
-                <div class="footer__rights">
-                    <p class="footer__copy">Developer@Sornali_Hazra</p>
-                    <div class="footer__terms">
-                        <a href="#" class="footer__terms-link">Terms & Agreements</a>
-                        <a href="#" class="footer__terms-link">Privacy Policy</a>
-                    </div>
+                <div class="footer__rights" style="margin-left:400px;>
+                    <p class="footer__copy" ">@Developer - Sornali Hazra & Satish Singh</p>
+                    
                 </div>
             </div>
         </footer>

@@ -356,7 +356,7 @@ form span{
                                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_9wpyhdzo.json"  background="transparent"  speed="2"  style="width: 500px; height: 600px;"  loop  autoplay></lottie-player>  </div>
                                 <div class="col-md-6">
-                                  <form id="canvasLoginForm"  style="border:2px solid skyblue;height:550px;" >
+                                  <form id="canvasLoginForm"  style="border:2px solid skyblue;height:580px;" >
                                	<%
 					  Message msg = (Message) session.getAttribute("message");
 						if (msg != null) {
@@ -375,20 +375,9 @@ form span{
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Email Id:<strong class="text-danger">*</strong></span>
                                             <input type="email" name="email" placeholder="Enter Email Id " class="box" required>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Department:<strong class="text-danger">*</strong></span>
-                                            <select class="box" name="department"  id="ddselect">
+                                            <select class="box" name="department"  id="departmentSelect">
                                                 <option>--Select Department--</option>
-                                                <option value="1">CSE</option>
-                                                <option value="2">ECE</option>
-                                                <option value="3">IT</option>
-                                                <option value="4">EE</option>
-                                                <option value="5">AEIE</option>
-                                                <option value="6">FT</option>
-                                                <option value="7">BHM</option>
-                                                <option value="8">ASHU</option>
-                                                <option value="9">BCA</option>
                                               
-                                                <option>Cyber scurity</option>
-                                                <option>Data Science</option>
                                             </select><br>
                                           <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;"> Password:<strong class="text-danger">*</strong></span>
                                             <input type="password" name="password" placeholder="Enter Password" class="box" required>
@@ -397,7 +386,7 @@ form span{
                                             <input type="submit" value="Log In" name="Submit" id="canvasLogin" class="link-btn" style="margin-right: 5px;background-color: black;">
                                             <input type="submit" value="Clear" name="submit" id="acconutCreationClear" class="link-btn"  style="background-color: black;">
                                             
-                                       
+                                        <a href="forgetPassword.jsp" target="_blank" class="link-btn"  style="background-color: black;">Forget Password</a>
                                         
                                    
                                  </form>   
@@ -426,7 +415,8 @@ form span{
    
        <script>
        
-       
+       fetchDropDown("department","departmentSelect");
+
        
        
         $('#canvasLogin').click(function (event){
@@ -477,6 +467,30 @@ form span{
         $('#canvasAccountForm')[0].reset();
 
     });
+    
+    function fetchDropDown(action,id){
+      	
+     	 $.ajax({
+     		      type: "GET",
+     		      url:"/College_Final_Year_Project/dropdown?action="+action,
+     		      success: function (data, textStatus, jqXHR) {
+     		    	  var JsonData= jQuery.parseJSON(data);
+     		    	 if(JsonData==null){
+     		    		 $('#'+id).append(new Option("No Option is Present",""));
+     		    	 }
+     		    	 else{
+     		          $(JsonData).each(function (index, item) {  
+     		        	  $('#'+id).append(new Option(item.name.trim(), item.pkId));
+     		          }); 
+     		    	 }
+     		      },
+     		      error: function (jqXHR, textStatus, errorThrown) {
+     		    	  $('#'+id).append(new Option("No Option is Present",""));
+     		      }
+     		    });  
+     }
+     
+    
        </script>
               
         

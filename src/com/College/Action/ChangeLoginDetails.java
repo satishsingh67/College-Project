@@ -77,7 +77,7 @@ public class ChangeLoginDetails extends HttpServlet {
 		String adminId=request.getParameter("adminId");
 		String mentorId=request.getParameter("mentorId");
         String phoneNubmerOld=request.getParameter("phoneNubmerOld");
-
+        String canvasId=request.getParameter("canvasId");
 		
 		
 	    if(action.trim().equalsIgnoreCase("changeMobileNumber")) {
@@ -109,6 +109,17 @@ public class ChangeLoginDetails extends HttpServlet {
 
 			if(dataValidationResult.trim().equalsIgnoreCase("True")) {
 			status=new ChangePassword().changeMentorPassword(mentorId,existingEmail, currentPassword, newPassword, reNewPassword);
+			}else {
+			
+				status=	dataValidationResult;
+			}
+			
+	    }   else if(action.trim().equalsIgnoreCase("canvasPassword")) {
+	    	
+			String dataValidationResult=new DataValidation().changeTeacherPassword(existingEmail, currentPassword, newPassword, reNewPassword);
+
+			if(dataValidationResult.trim().equalsIgnoreCase("True")) {
+			status=new ChangePassword().changeCanvasPassword(canvasId,existingEmail, currentPassword, newPassword, reNewPassword);
 			}else {
 			
 				status=	dataValidationResult;

@@ -14,7 +14,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
   <script src="./lib/jquery.min.js"></script>
    <script src="./lib/sweetalert.min.js"></script>
-    <title>adminlogin</title>
+    <title>Admin Login</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
@@ -212,20 +212,20 @@ form span{
     </style>
 </head>
 <body style="background-image: url(./images/background/properback.png);background-repeat: no-repeat;background-size: cover;">
-    <section  class="login" id="contact" style=" background-color: rgb(158, 158, 240);" >
+    <section  class="login" id="contact" style="height:640px; background-color: rgb(158, 158, 240);" >
 
         <h1 class="heading" style= "font-size: 40px; font-weight: 900;font-family: 'Times New Roman', Times, serif;
         padding-top: 1rem;
         color: rgb(252, 250, 255); text-shadow: 0.4rem 0.4rem 0 rgba(12, 12, 12, 0.2);">Admin Login</h1>
      <div class="col-md-12" style="box-shadow:  5px 5px 5px solid grey;">
-         <div class="row">
+         <div class="row"  >
              <div class="col-md-6">
                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-               <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_1z0fledt.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+               <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_1z0fledt.json"  background="transparent"  speed="1"  style="width: 500px; height: 530px;"  loop  autoplay></lottie-player>
                
                </div>
              <div class="col-md-6">
-                <form id="loginForm" style="background-color: rgb(224, 170, 224);box-shadow: 5px 5px 5px solid rgb(129, 47, 47);border-radius: 10px;"><br><br>
+                <form id="loginForm" style="background-color: rgb(224, 170, 224);box-shadow: 5px 5px 5px solid rgb(129, 47, 47);border-radius: 10px;height: 450px"><br><br>
 						<%
 							Message msg = (Message) session.getAttribute("message");
 						if (msg != null) {
@@ -260,6 +260,8 @@ form span{
                   
                     <input type="submit" id="loginSubmit" style="background-color: black;margin: 20px;" value="Submit" name="submit" class="link-btn"> 
                     <input type="submit" id="loginClear" style="background-color: black;margin: 20px;" value="Clear" name="Submit" class="link-btn" style="border-bottom-right-radius: 20px;">
+                    <a href="forgetPassword.jsp" target="_blank" style="background-color: black;margin: 20px;"  class="link-btn" style="border-bottom-right-radius: 20px;">Forget Password</a>
+               
                  </form>  
             </div>
          </div>

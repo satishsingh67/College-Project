@@ -360,10 +360,10 @@ form span{
          
                <div class="links" style="margin-left:15%;">
                   <a href="#home">home</a>
-                  <a href="#reg">New Teacher Registration</a>
+                  <a href="#RegTeacher">New Teacher Registration</a>
             
-                  <a href="#contact">Reply To Teacher</a>
-                  <a href="#delete">Delete Account</a>
+                  <a href="#ReplyTeacher">Reply To Teacher</a>
+                  <a href="#Delete">Delete Account</a>
                </div>
               
                <div id="menu-btn" class="fa fa-bars"></div>
@@ -377,7 +377,7 @@ form span{
                 
                 <section style="background-image: url(./images/background/back7.jpg) ;background-repeat: no-repeat; background-size: cover;">
                     <h1 class="heading">New Teacher <span>Registration </span> </h1>
-                    <div class="col-md-12">
+                    <div id="RegTeacher" class="col-md-12">
                         <div class="row">
                             <div class="col-md-5">
                                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -392,21 +392,9 @@ form span{
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Email:<strong class="text-danger">*</strong></span>
                                             <input type="email" name="email" placeholder="Enter Teacher Email" class="box" required>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Department:<strong class="text-danger">*</strong></span>
-                                            <select name="department" class="box">
+                                            <select name="department" id="departmentSelect" class="box">
                                                 <option>Select Department</option>
-											<option value="1">CSE</option>
-											<option value="2">ECE</option>
-											<option value="3">IT</option>
-											<option value="4">EE</option>
-											<option value="5">AEIE</option>
-											<option value="6">FT</option>
-											<option value="7">BHM</option>
-											<option value="8">ASHU</option>
-											<option value="9">BCA</option>
-
-											<option>Cyber scurity</option>
-											<option>Data Science</option>
-
+											
 										</select>
                                         </div>
                                         <div class="col-md-6">
@@ -454,7 +442,7 @@ form span{
                 <section>
                     <h1 class="heading"> Reply To <span>Teachers </span> </h1>
                      <!--Table-->
-            <div style=" height:350px;width:110%;margin-left:-5%;border:1px solid skyblue; overflow-y: auto;">
+            <div id="ReplyTeacher" style=" height:350px;width:110%;margin-left:-5%;border:1px solid skyblue; overflow-y: auto;">
             <table id="customers">
            
                  <thead >
@@ -477,7 +465,7 @@ form span{
                 </section>
                <section style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
                 <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
-                <div class="col-md-12">
+                <div id="Delete" class="col-md-12">
                     <div class="row">
                         <div  class="col-md-6">
                             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -583,7 +571,8 @@ form span{
           var id;
           
           $(document).ready(function () {
-        	  console.log("Jquery loded");
+        	    
+       fetchDropDown("department","departmentSelect");
         	 $('#myLoader').show();
         	  fetchDoubt();
         	  	
@@ -830,6 +819,36 @@ form span{
   	          $('#deleteAccountForm')[0].reset();
 
             });
+          
+          
+      
+
+          function fetchDropDown(action,id){
+          	
+          	 $.ajax({
+          		      type: "GET",
+          		      url:"/College_Final_Year_Project/dropdown?action="+action,
+          		      success: function (data, textStatus, jqXHR) {
+          		    	  var JsonData= jQuery.parseJSON(data);
+          		    	 if(JsonData==null){
+          		    		 $('#'+id).append(new Option("No Option is Present",""));
+          		    	 }
+          		    	 else{
+          		          $(JsonData).each(function (index, item) {  
+          		        	  $('#'+id).append(new Option(item.name.trim(), item.pkId));
+          		          }); 
+          		    	 }
+          		      },
+          		      error: function (jqXHR, textStatus, errorThrown) {
+          		    	  $('#'+id).append(new Option("No Option is Present",""));
+          		      }
+          		    });  
+          }
+
+  
+          
+          
+          
           </script>
           
              

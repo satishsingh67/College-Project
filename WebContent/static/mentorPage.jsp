@@ -740,10 +740,10 @@ section {
 
       <div class="links">
          
-         <a href="#services">Allotted Classes</a>
+         <a href="#classes">Allotted Classes</a>
          
          
-         <a href="#contact">contact Admin</a>
+         <a href="#contact">Contact Admin</a>
          <a href="./mentorUpdateProfile.jsp" target="_blank">Profile</a>
          <a href="./changePasswordMentor.jsp" target="_blank">Change Password</a>
          <a href="/College_Final_Year_Project/logout?action=mentor">Logout</a>
@@ -799,7 +799,7 @@ section {
 
     <h1 class="heading">Allotted Classes</h1>
  
-    <div class="box-container">
+    <div id="classes" class="box-container">
  <%
  if(classList.size()!=0 && classList!=null){
  for(Mentor obj:classList){
@@ -814,7 +814,7 @@ section {
             
            <p style="margin-top:-10%;"><%=(obj.getYear().trim().equalsIgnoreCase("1")?"1st":obj.getYear().trim().equalsIgnoreCase("2")?"2nd":obj.getYear().trim().equalsIgnoreCase("3")?"3rd":"4th")+" Year"+" - "+((obj.getSemester()==1)?( obj.getSemester()+"st Semester"):(obj.getSemester()==2)?( obj.getSemester()+"nd Semester"):(obj.getSemester()==3)?( obj.getSemester()+"rd Semester"):obj.getSemester()+"th Semester")%></p>            
          
-       <a href="mentorGuideStudent.jsp?departmentId=<%=obj.getFkDepartmentId()+"&sectionId="+obj.getFkSectionId()+"&courseType="+obj.getFkCourseTypeId()+"&year="+obj.getYear() %>"  class="btn">Enter The Class</a>
+       <a href="mentorGuideStudent.jsp?departmentId=<%=obj.getFkDepartmentId()+"&sectionId="+obj.getFkSectionId()+"&courseType="+obj.getFkCourseTypeId()+"&courseName="+obj.getCourseShortName()+"&year="+obj.getYear() %>"  class="btn">Enter The Class</a>
    
          </div>
        </div>

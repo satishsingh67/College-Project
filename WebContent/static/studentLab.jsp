@@ -180,8 +180,11 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="studentPage1.jsp">Home</a>
+            </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
+              <a class="nav-link active" aria-current="page" href="studentClassroom.jsp">Classroom</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#application">Application </a>
@@ -515,24 +518,11 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
     <div class="footer py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center">
-            <a class="footer-link" href="#">Blog</a>
-            <a class="footer-link" href="#">Contact Us</a>
-            <a class="footer-link" href="#">Affiliate</a>
-            <a class="footer-link" href="#">FAQ</a>
-            <div class="footer-social pt-4 text-center">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
+         
           <div class="col-sm-12">
             <div class="footer-copy">
               <div class="copy-right text-center pt-5">
-                <p class="text-light">©Developer.Sornali Hazra & Satish Singh</p>
+                <p class="text-light">@Developer - Sornali Hazra & Satish Singh</p>
               </div>
             </div>
           </div>

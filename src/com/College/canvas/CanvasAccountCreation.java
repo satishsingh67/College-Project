@@ -2,6 +2,7 @@ package com.college.canvas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 
@@ -47,4 +48,59 @@ public class CanvasAccountCreation {
 
 		return result;
 	}
+	
+	public String deleteAccount(String id, String email) {
+
+		String result = null;
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		try {
+			String query = null;
+			PreparedStatement pstmt;
+			query = "Select count(*) from canvas_account where pkCanvasAccountId=? and emailId=? and isDeleted=? limit 1";
+
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setInt(1, Integer.parseInt(id));
+			pstmt.setString(2, email.trim());
+			pstmt.setInt(3, 0);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+
+			int count = rs.getInt(1);
+
+			if (count > 0) {
+
+				query = "update canvas_account set isDeleted=?,updateDate=? where pkCanvasAccountId=? and emailId=?";
+
+				pstmt = con.prepareStatement(query);
+
+				pstmt.setInt(1, 1);
+				pstmt.setObject(2, new Date());
+				pstmt.setInt(3, Integer.parseInt(id));
+				pstmt.setString(4, email.trim());
+
+				int dbStatus = pstmt.executeUpdate();
+
+				if (dbStatus > 0) {
+
+					result = "Account Deleted Successfully";
+				} else {
+					result = "Something went wrong.Please try again";
+
+				}
+
+			} else {
+
+				result = "Sorry No Account Found with given Data";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = "Something went wrong.Please try again";
+		}
+
+		return result;
+	}
+	
 }

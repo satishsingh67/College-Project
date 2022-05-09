@@ -42,7 +42,30 @@ public class FetchDropDowns extends HttpServlet {
 				result = new FetchDropDownsDao().fetchCanvasDropDown();
 
 				out.print(result);
-			} else {
+			}
+			else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("department")) {
+
+				result = new FetchDropDownsDao().fetchDepartmentDropDown();
+
+				out.print(result);
+			}else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("courseType")) {
+
+				result = new FetchDropDownsDao().fetchCourseTypeDropDown();
+
+				out.print(result);
+			}else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("semester")) {
+
+				result = new FetchDropDownsDao().fetchSemesterDropDown();
+
+				out.print(result);
+			}
+			else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("section")) {
+
+				result = new FetchDropDownsDao().fetchSectionDropDown();
+
+				out.print(result);
+			}
+			else {
 
 				out.print(result);
 			}

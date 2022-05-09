@@ -93,8 +93,142 @@ public class FetchDropDownsDao {
 
 	}
 
+	public static String fetchDepartmentDropDown() {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+		try {
+		String	query = "Select pkDepartmentId,shortName from department ORDER BY pkDepartmentId";
+
+		Statement stmt = con.createStatement();
+		ResultSet	rs = stmt.executeQuery(query);
+
+		List<ViewVariables>	dropDownList = new ArrayList<ViewVariables>();
+			while (rs.next()) {
+
+				ViewVariables viewVariablesObj = new ViewVariables();
+
+				viewVariablesObj.setPkId(rs.getInt(1));
+				viewVariablesObj.setName(rs.getString(2));
+
+				dropDownList.add(viewVariablesObj);
+			}
+	
+			Gson json = new Gson();
+			result = json.toJson(dropDownList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
+	public static String fetchCourseTypeDropDown() {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+		try {
+		String	query = "Select pkCourseTypeId,shortName from course_type ORDER BY pkCourseTypeId";
+
+		Statement stmt = con.createStatement();
+		ResultSet	rs = stmt.executeQuery(query);
+
+		List<ViewVariables>	dropDownList = new ArrayList<ViewVariables>();
+			while (rs.next()) {
+
+				ViewVariables viewVariablesObj = new ViewVariables();
+
+				viewVariablesObj.setPkId(rs.getInt(1));
+				viewVariablesObj.setName(rs.getString(2));
+
+				dropDownList.add(viewVariablesObj);
+			}
+	
+			Gson json = new Gson();
+			result = json.toJson(dropDownList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
+	public static String fetchSemesterDropDown() {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+		try {
+		String	query = "Select pkYearSemesterId,Semester from year_semester ORDER BY pkYearSemesterId";
+
+		Statement stmt = con.createStatement();
+		ResultSet	rs = stmt.executeQuery(query);
+
+		List<ViewVariables>	dropDownList = new ArrayList<ViewVariables>();
+			while (rs.next()) {
+
+				ViewVariables viewVariablesObj = new ViewVariables();
+
+				viewVariablesObj.setPkId(rs.getInt(1));
+				viewVariablesObj.setName(rs.getInt(2)==1?"1st Semester":rs.getInt(2)==2?"2nd Semester":rs.getInt(2)==3?"3rd Semester":rs.getInt(2)+"th Semester");
+
+				dropDownList.add(viewVariablesObj);
+			}
+	
+			Gson json = new Gson();
+			result = json.toJson(dropDownList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
+	
+	
+	public static String  fetchSectionDropDown() {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+		try {
+		String	query = "Select pkSectionId,section from section ORDER BY pkSectionId";
+
+		Statement stmt = con.createStatement();
+		ResultSet	rs = stmt.executeQuery(query);
+
+		List<ViewVariables>	dropDownList = new ArrayList<ViewVariables>();
+			while (rs.next()) {
+
+				ViewVariables viewVariablesObj = new ViewVariables();
+
+				viewVariablesObj.setPkId(rs.getInt(1));
+				viewVariablesObj.setName("Section-"+rs.getInt(2));
+
+				dropDownList.add(viewVariablesObj);
+			}
+	
+			Gson json = new Gson();
+			result = json.toJson(dropDownList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(new FetchDropDownsDao().fetchCanvasDropDown());
+		System.out.println(fetchDepartmentDropDown());
+		System.out.println(fetchCourseTypeDropDown());
+		System.out.println(fetchSemesterDropDown());
+		System.out.println(fetchSectionDropDown());
 	}
 
 }

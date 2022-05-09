@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GNIT</title>
+  <link rel="shortcut icon" type="image" href="./images/GNIT_Kolkata_logo.png">
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./css/newcss/style.css">
+  <link rel="stylesheet" href="./css/newcss/media_queries.css">
+  <link rel="stylesheet" href="./css/newcss/animation.css">
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/sweetalert.min.js"></script>
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800;900&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+
+<style>
+
+
+.loader2 {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+</style>
+
+
+</head>
+
+
+
+
+<body style="background-color: rgb(190, 170, 199);">
+
+  <!--
+    - main container
+  -->
+
+  <div class="container">
+
+    <!--
+      - #HEADER
+    -->
+
+    <header>
+
+      <nav>
+        <div class="wrapper">
+          <div class="logo"><img src="./images/GNIT_Kolkata_logo.png"></div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="./aboutusnw.html">About Us</a></li>
+            <li>
+              <a href="#" class="desktop-item">T & P Cell</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Mega Menu</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_22mjkcbb.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player> </div>
+                  <div class="row">
+                    
+                    <ul class="mega-links">
+                      <li><a href="./t&pcell.html">Training</a></li>
+                      <li><a href="./placementoverview.html">Placement Overview</a></li>
+                      <li><a href="./carriercounc.html">Career Counselling & Preparation</a></li>
+                      
+                      
+                    </ul>
+                  </div>
+                  <div class="row">
+                    
+                    <ul class="mega-links">
+                      <li><a href="./training&internship.html">Training & Internship</a></li>
+                      <li><a href="#">Higher Studies</a></li>
+                      <li><a href="#">Industry Initiative</a></li>
+                      
+                    </ul>
+                  </div>
+                  <div class="row">
+                   
+                    <ul class="mega-links">
+                      <li><a href="#">Student’s Speak</a></li>
+                      <li><a href="#">Entrepreneurship</a></li>
+                      <li><a href="#">Skill Development</a></li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="desktop-item">LogIn</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+              <ul class="drop-menu">
+                <li><a href="./studentLogin.jsp">Student Login</a></li>
+                <li><a href="./teacherLogin.jsp">Teacher Login</a></li>
+                <li><a href="./mentorLogin.jsp">Mentor Login</a></li>
+                <li><a href="./adminLogin.jsp">Admin Login</a></li>
+                <li><a href="./eventManage.jsp">Events Co-ordination</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#" class="desktop-item">Registration</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+              <ul class="drop-menu">
+                <li><a href="./newlogin.html">New Students Registration</a></li>
+                <li><a href="./correction1.html">Change Mobile Number</a></li>
+                <li><a href="./correction2.html">Change Email Id</a></li>
+                <li><a href="./correction3.html">Change 6 Digit Security Pin</a></li>
+                <li><a href="./correction4.html">Change Security Question Ans</a></li>
+                <li><a href="./correction5.html">Change Entire Login Details</a></li>
+              </ul>
+            </li>
+            <li>
+
+              <li>
+                <a href="#" class="desktop-item">Admission</a>
+                <input type="checkbox" id="showDrop">
+                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+                <ul class="drop-menu">
+                 
+                  <li><a href="./entranceexam.html">Entrance Examination</a></li>
+                  <li><a href="./images/clg-1/admission-analysis_2.1.1_Supporting-doc.pdf">Admission Analysis</a></li>
+                  <li><a href="./docneedadmission.html">Documents Required For Admission</a></li>
+                  <li><a href="./instractionwbjee.html">Instruction For WBJEE Allotted Candidate</a></li>
+                  <li><a href="./howtoapply.html">How To Apply</a></li>
+                  <li><a href="./image/pdf/Eligibility-Criteria-1.pdf">Eligibility Criteria</a></li>
+                  <li><a href="./admissionquery.html">ADMISSION QUERY</a></li>
+                  <li><a href="https://makautwb.ac.in/">University Registration Guideline</a></li>
+                  <li><a href="./scholarship.html">Scholerships</a></li>
+                  
+                  
+                </ul>
+              </li>
+              <li>
+              <a href="#" class="desktop-item">Facilities</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Mega Menu</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_zrqthn6o.json"  background="transparent"  speed="0.3"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                  </div>
+                  <div class="row">
+                    
+                    <ul class="mega-links">
+                      <li><a href="">BCT</a></li>
+                      <li><a href="#">Evaluation Process</a></li>
+                      <li><a href="#">Student Centric Methods
+                      </a></li>
+                      <li><a href="#">Gender Equity</a></li>
+                      <li><a href="#">Canteen/Caffeteria</a></li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    
+                    <ul class="mega-links">
+                      <li><a href="./e">Ecosystem</a></li>
+                      <li><a href="./tlp.html">TLP</a></li>
+                      <li><a href="#">ICT Tools</a></li>
+                      <li><a href="./welfatreactivities.html">Welfare Activities</a></li>
+                      <li><a href="#">Bank</a></li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                   
+                    <ul class="mega-links">
+                      <li><a href="#">Divyangan Facilities</a></li>
+                      <li><a href="#">Common Room</a></li>
+                      <li><a href="#">SLC</a></li>
+                      <li><a href="#">Green Initiative</a></li>
+                      <li><a href="#">Games/Sports</a></li>
+                      <li><a href="#">Language Lab</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="./aboutlibrary.html">Library</a></li>
+            <li><a href="./contactus.html">Contact Us</a></li>
+            
+          </ul>
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+    </header>
+
+
+
+
+
+    <main>
+
+      <!--
+        - #HOME SECTION
+      -->
+
+      <section class="home" id="home">
+
+        <div class="deco-shape shape-1">
+          <img src="./image/newhome/shape-1.png" alt="art shape" width="70">
+        </div>
+        <div class="deco-shape shape-2">
+          <img src="./image/newhome/shape-2.png" alt="art shape" width="55">
+        </div>
+        <div class="deco-shape shape-3">
+          <img src="./image/newhome/shape-3.png" alt="art shape" width="120">
+        </div>
+        <div class="deco-shape shape-4">
+          <img src="./image/newhome/shape-4.png" alt="art shape" width="30">
+        </div>
+
+        <div class="home-left">
+
+          <p class="section-subtitle">Welcome To GNIT</p>
+
+          <h1 class="main-heading">
+           Learn From Best
+            <span class="underline-img">Teachers <img src="./image/newhome/banner-line.png" alt="line"></span>
+          </h1>
+
+          <p class="section-text">
+            Guru Nanak Institute of Technology Is the Best Institute For Learning .
+               </p>
+
+          <div class="home-btn-group">
+            <button class="btn btn-primary">
+              <p class="btn-text">Explore Departments</p>
+              <span class="square"></span>
+            </button>
+
+            <button class="btn btn-secondary">
+              <p class="btn-text">Contact Us</p>
+              <span class="square"></span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="home-right">
+
+          <div class="img-box">
+
+            <img src="./images/BACKEND-1.jpeg" alt="colorful background shape" class="background-shape">
+            <img src="./image/newhome/banner-img.png" alt="banner image" class="banner-img" style="height: 500px;">
+
+            <img src="./image/newhome/banner-aliment-icon-1.png" alt="" class="icon-1 smooth-zigzag-anim-1" width="250">
+            <img src="./image/newhome/banner-aliment-icon-2.png" alt="" class="icon-2 smooth-zigzag-anim-2" width="240">
+            <img src="./image/newhome/banner-aliment-icon-3.png" alt="" class="icon-3 smooth-zigzag-anim-3" width="195">
+            <img src="./image/newhome/banner-aliment-icon-4.png" alt="" class="icon-4 drop-anim">
+
+          </div>
+
+        </div>
+
+      </section><br>
+
+
+
+
+
+     
+
+      <section class="category" style="background-color: rgb(238, 222, 222);">
+
+       
+
+        <h2 class="section-title">Explore Now</h2>
+
+        <ul class="course-item-group" >
+
+          <li class="course-category-item">
+
+            <div class="wrapper">
+             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_ltuqrtmn.json"  background="transparent"  speed="1"  style="width: 200px; height: 100px;"  loop  autoplay></lottie-player>      </div>
+
+            <div class="course-category-content">
+              <h3 class="category-title">
+                <a href="./feedback.html">FeedBack</a>
+              </h3>
+
+              <p class="category-subtitle">Explore Feedback</p>
+            </div>
+
+          </li>
+
+
+          <li class="course-category-item">
+
+            <div class="wrapper">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_O4WDjy.json"  background="transparent"  speed="1"  style="width: 200px; height: 100px;"  loop  autoplay></lottie-player>
+            </div>
+
+            <div class="course-category-content">
+              <h3 class="category-title">
+                <a href="./campuslife.html">Campus Life</a>
+              </h3>
+
+              <p class="category-subtitle">Learn More About Our Campus</p>
+            </div>
+
+          </li>
+
+
+          <li class="course-category-item">
+
+            <div class="wrapper">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_dd7yh7kk.json"  background="transparent"  speed="1"  style="width: 200px; height: 100px;"  loop  autoplay></lottie-player>
+
+            </div>
+
+            <div class="course-category-content">
+              <h3 class="category-title">
+                <a href="./fpdf/Digital Student Handbook of  GNIT - June 2021.pdf">Hand Book</a>
+              </h3>
+
+              <p class="category-subtitle">Read The Hand Book </p>
+            </div>
+
+          </li>
+
+
+          <li class="course-category-item">
+
+            <div class="wrapper">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_xdsbmxmk.json"  background="transparent"  speed="1"  style="width: 200px; height: 100px;"  loop  autoplay></lottie-player>
+            </div>
+
+            <div class="course-category-content">
+              <h3 class="category-title">
+                <a href="./facultystaff.html">Faculty & Staff</a>
+              </h3>
+
+              <p class="category-subtitle">Learn More</p>
+            </div>
+
+          </li>
+
+
+          <li class="course-category-item">
+
+            <div class="wrapper">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_jjfm4unn.json"  background="transparent"  speed="1"  style="width: 200px; height: 100px;"  loop  autoplay></lottie-player>
+
+            </div>
+
+            <div class="course-category-content">
+              <h3 class="category-title">
+                <a href="#">Events/Blog</a>
+              </h3>
+
+              <p class="category-subtitle">Read & Write</p>
+            </div>
+
+          </li>
+
+
+          <li class="course-category-item">
+
+            <div class="wrapper">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_xrptzsed.json"  background="transparent"  speed="1"  style="width: 200px; height: 100px;"  loop  autoplay></lottie-player>
+            </div>
+
+            <div class="course-category-content">
+              <h3 class="category-title">
+                <a href="./hostel.html">Hostel</a>
+              </h3>
+
+              <p class="category-subtitle">Learn About Hostel</p>
+            </div>
+
+          </li>
+
+        </ul>
+
+      </section>
+
+
+
+
+
+      <!--
+        - #ABOUT SECTION
+      -->
+
+      <section class="about" id="about" style=" background-color: rgb(203, 213, 231);">
+
+        <div class="about-left">
+
+          <div class="img-box">
+            <img src="./image/newhome/banner-line.png" alt="about bg" class="about-bg">
+
+            <img src="./image/gnit-1-1.png" alt="about person" class="about-img">
+
+            <img src="./image/newhome/banner-aliment-icon-1.png" alt="" class="icon-1 smooth-zigzag-anim-1" width="250">
+            <img src="./image/newhome/banner-aliment-icon-3.png" alt="" class="icon-2 smooth-zigzag-anim-3" width="195">
+          </div>
+
+        </div>
+
+        <div class="about-right">
+
+          <p class="section-subtitle">About Us</p>
+
+          <h2 class="section-title">WHY GNIT?</h2>
+
+          <p class="section-text" style="text-align: justify; color: black;">
+            Guru Nanak Institute of Technology is instituted with a vision to empower the aspiring professionals with the technological knowledge and professional expertise under the aegis of JIS Group Educational Initiatives in the year 2003. This technical campus offers undergraduate and postgraduate courses under MAKAUT (Formerly known as WBUT) and some courses are NBA Accredited. The Institute is approved by AICTE and accredited by UGC, NAAC and located in one of the prime locations in North Kolkata near Sodepur. The Institute offers latest technology oriented courses as per industry trends and nurtures creativity, innovations and research initiatives both at faculty and student levels to enrich and enhance the teaching learning process.
+
+          </p>
+
+          <ul class="about-ul">
+
+            <li>
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <p>Best Institute</p>
+            </li>
+
+            <li>
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <p>Best Teachers</p>
+            </li>
+
+            <li>
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <p>Best For Learning</p>
+            </li>
+
+          </ul>
+
+          <button class="btn btn-primary">
+            <a href="./aboutusnw.html" class="btn-text">Explore More</a>
+            <span class="square"></span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+           <!--
+        - #FEATURES SECTION
+      -->
+
+      <section class="features">
+
+        <div class="features-left">
+
+         
+
+          <h2 class="section-title">DEPARTMENTS Of GNIT</h2>
+
+          <ul>
+
+            <li class="features-item">
+              <div class="item-icon-box blue">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_x3gop2dt.json"  background="transparent"  speed="0.3"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+              </div>
+
+              <div class="wrapper">
+
+                <h3 class="item-title">Bachelor Degree</h3>
+
+                <p class="item-text">
+                  1.Computer Science & Engineering - 180 Seats.<br>
+                  2.Information Technology - 90 Seats<br>
+                  3.Electronics & Communication Engineering - 120 Seats<br>
+                  4.Food Technology - 60 Seats<br>
+                  5.Electrical Engineering - 30 Seats<br>
+                  6.Applied Electronics & Instrumentation - 30 Seats<br>
+                  7.Electronics & Computer Science Engineering - 30 Seats
+                </p>
+
+              </div>
+            </li>
+
+            <li class="features-item">
+              <div class="item-icon-box pink">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_qedmivnw.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+              </div>
+
+              <div class="wrapper">
+
+                <h3 class="item-title">Diploma Engineering</h3>
+
+                <p class="item-text">
+                  1.Electronics & Telecommunication Engineering (ETCE) - 60 Seat<br>
+                  2.Electrical Engineering - 60 Seats
+                 
+                </p>
+
+              </div>
+            </li>
+
+            <li class="features-item">
+              <div class="item-icon-box purple">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://assets5.lottiefiles.com/private_files/lf30_cts81mpw.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+              </div>
+
+              <div class="wrapper">
+
+                <h3 class="item-title">Post Graduate</h3>
+
+                <p class="item-text">
+                  1.Masters in Computer Application (MCA) - 60 Seats<br>
+                  2.M.Tech in Computer Science & Engineering - 18 Seats<br>
+                  3.M.Tech in Electronics & Communication Engineering (ECE) - 18 Seats
+                 
+                </p>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="features-right">
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_ggt4iszh.json"  background="transparent"  speed="0.3"  style="width: 500px; height: 700px;"  loop  autoplay></lottie-player>
+        </div>
+
+      </section>
+
+
+
+
+
+      <!--
+        - #COURSE SECTION
+      -->
+
+      <section class="course" id="course">
+
+        
+
+        <h2 class="section-title">Academic Unit</h2>
+
+        <div class="course-grid">
+
+          <div class="course-card">
+
+            <div class="course-banner">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_9f7xo6y7.json"  background="transparent"  speed="1"  style="width: 390px; height: 300px;"  loop  autoplay></lottie-player>
+              <div class="course-tag-box">
+                <a href="./depertment.html" class="badge-tag orange">Read More</a>
+                
+              </div>
+            </div>
+
+            <div class="course-content">
+
+              <h3 class="card-title">
+                <a href="#">Department</a>
+              </h3>
+
+              <div class="wrapper border-bottom">
+
+                <div class="author">
+                  <img src="./images/BACKEND-1.jpeg" alt="course instructor image" class="author-img">
+
+                  
+                </div>
+                <div class="rating">
+                  <ion-icon name="star"></ion-icon>
+                  <p>Guru Nanak Institute of Technology</p>
+                </div>
+               
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+
+          <div class="course-card">
+
+            <div class="course-banner">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_5qrzyxod.json"  background="transparent"  speed="1"  style="width: 400px; height: 300px;"  loop  autoplay></lottie-player>
+
+              <div class="course-tag-box">
+                <a href="https://www.coursera.org/" class="badge-tag orange">Read More</a>
+               
+              </div>
+            </div>
+
+            <div class="course-content">
+
+              <h3 class="card-title">
+                <a href="#">Courseware</a>
+              </h3>
+
+              <div class="wrapper border-bottom">
+
+                <div class="author">
+                  <img src="./images/BACKEND-1.jpeg" alt="course instructor image" class="author-img">
+
+                  
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star"></ion-icon>
+                  <p>Guru Nanak Institute of Technology</p>
+                </div>
+
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+
+          <div class="course-card">
+
+            <div class="course-banner">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_j9u1jwjx.json"  background="transparent"  speed="0.3"  style="width: 400px; height: 300px;"  loop  autoplay></lottie-player>
+              <div class="course-tag-box">
+                <a href="#" class="badge-tag orange">Read More</a>
+                
+              </div>
+            </div>
+
+            <div class="course-content">
+
+              <h3 class="card-title">
+                <a href="#">Fees Structure</a>
+              </h3>
+
+              <div class="wrapper border-bottom">
+
+                <div class="author">
+                  <img src="./images/BACKEND-1.jpeg" alt="course instructor image" class="author-img">
+
+                  
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star"></ion-icon>
+                  <p>Guru Nanak Institute of Technology</p>
+                </div>
+
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+
+          <div class="course-card">
+
+            <div class="course-banner">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_ovkwxuvz.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 300px;"  loop  autoplay></lottie-player>
+              <div class="course-tag-box">
+                <a href="#" class="badge-tag orange">Read More</a>
+               
+              </div>
+            </div>
+
+            <div class="course-content">
+
+              <h3 class="card-title">
+                <a href="./committess.html">Committees</a>
+              </h3>
+
+              <div class="wrapper border-bottom">
+
+                <div class="author">
+                  <img src="./images/BACKEND-1.jpeg" alt="course instructor image" class="author-img">
+                  
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star"></ion-icon>
+                  <p>Guru Nanak Institute of Technology</p>
+                </div>
+
+              </div>
+
+              
+            </div>
+
+          </div>
+
+
+
+          <div class="course-card">
+
+            <div class="course-banner">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_nGkgs2.json"  background="transparent"  speed="0.3"  style="width: 500px; height: 300px;"  loop  autoplay></lottie-player>
+
+              <div class="course-tag-box">
+                <a href="#" class="badge-tag orange">Read Now</a>
+                
+              </div>
+            </div>
+
+            <div class="course-content">
+
+              <h3 class="card-title">
+                <a href="#">Notices</a>
+              </h3>
+
+              <div class="wrapper border-bottom">
+
+                <div class="author">
+                  <img src="./images/BACKEND-1.jpeg" alt="course instructor image" class="author-img">
+                  
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star"></ion-icon>
+                  <p>Guru Nanak Institute of Technology</p>
+                </div>
+
+              </div>
+
+             
+
+            </div>
+
+          </div>
+
+
+          <div class="course-card">
+
+            <div class="course-banner">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_DEjwMw.json"  background="transparent"  speed="0.4"  style="width: 500px; height: 300px;"  loop  autoplay></lottie-player>
+              <div class="course-tag-box">
+                <a href="#" class="badge-tag orange">Explore More</a>
+                
+              </div>
+            </div>
+
+            <div class="course-content">
+
+              <h3 class="card-title">
+                <a href="#">Eergy Conservation Initiatives</a>
+              </h3>
+
+              <div class="wrapper border-bottom">
+
+                <div class="author">
+                  <img src="./images/BACKEND-1.jpeg" alt="course instructor image" class="author-img">
+                  
+                
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star"></ion-icon>
+                  <p>Guru Nanak Institute of Technology</p>
+                </div>
+
+              </div>
+
+             
+
+            </div>
+
+          </div>
+
+        </div>
+
+       
+
+      </section>
+
+
+
+
+
+      <!--
+        - #EVENT SECTION
+      -->
+
+      <section class="event">
+        
+        <div class="event-left">
+          <p class="section-subtitle">Our Green Campus</p>
+
+          <div class="event-banner">
+            <img src="./images/gallery/g-5.jpg" alt="event banner" class="banner-img">
+          </div>
+
+          <button class="play smooth-zigzag-anim-1">
+            <div class="play-icon pulse-anim">
+              <ion-icon name="play-circle"></ion-icon>
+            </div>
+
+            <p>Watch It!</p>
+          </button>
+
+        </div>
+
+        <div class="event-right">
+
+         
+          <h2 class="section-title">Notices</h2>
+
+          <div class="event-card-group" id="noticeSection" style="border:1px solid skyblue;height:500px;overflow-y:auto;">
+
+           <!--  dynamic notice -->
+
+          </div>
+
+        </div>
+  <div class="loader2" style="margin-top:-110%;margin-left:150%;display:none;" id="myLoader"></div>
+
+      </section>
+
+
+
+
+
+      
+
+
+      <!--
+        - #INSTRUCTOR SECTION
+      -->
+
+      <section class="instructor">
+
+        
+
+        <h2 class="section-title">MORE..</h2>
+
+        <div class="instructor-grid">
+
+          <div class="instructor-card">
+
+            <div class="instructor-img-box">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_32u0rjyo.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
+              <div class="social-link">
+                <a href="#" class="facebook">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+
+                <a href="#" class="instagram">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+                <a href="#" class="twitter">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </div>
+            </div>
+
+            <h4 class="instructor-name">Mission Of Us</h4>
+
+            
+
+          </div>
+
+          <div class="instructor-card">
+
+            <div class="instructor-img-box">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_nzgbrf1c.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+              <div class="social-link">
+                <a href="#" class="facebook">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+
+                <a href="#" class="instagram">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+                <a href="#" class="twitter">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </div>
+            </div>
+
+            <h4 class="instructor-name">Vission Of Us</h4>
+
+           
+
+          </div>
+
+          <div class="instructor-card">
+
+            <div class="instructor-img-box">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_vezxxffq.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
+              <div class="social-link">
+                <a href="#" class="facebook">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+
+                <a href="#" class="instagram">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+                <a href="#" class="twitter">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </div>
+            </div>
+
+            <h4 class="instructor-name">Training & Placement</h4>
+
+           
+
+          </div>
+
+          <div class="instructor-card">
+
+            <div class="instructor-img-box">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_yjrdpceb.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
+              <div class="social-link">
+                <a href="#" class="facebook">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+
+                <a href="#" class="instagram">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+                <a href="#" class="twitter">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </div>
+            </div>
+
+            <h4 class="instructor-name">Latest Research</h4>
+
+          
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+
+
+      <!--
+        - #TESTIMONIALS
+      -->
+
+      <section class="testimonials" style="background-color: rgb(112, 148, 150);">
+
+        <div class="testimonials-left">
+
+          <p class="section-subtitle">MESSAGE FROM</p>
+
+          <h2 class="section-title">OUR LEADERSHIP TEAM</h2>
+
+          <div class="testimonials-card">
+            <img src="./quote.png" alt="quote icon" class="quote-img">
+
+            <p class="testimonials-text">
+              "Proin feugiat tortor non neque eleifend, at fermentum est elementum. Ut mollis leo odio vulputate rutrum.
+              Nunc sagittis
+              sit amet ligula ut eleifend. Mauris consequat mauris sit amet turpis commodo fermentum. Quisque consequat
+              tortor ut nisl
+              finibus".
+            </p>
+
+            <div class="testimonials-client">
+
+              <div class="client-img-box">
+                <img src="./images/aboutus/download.jpg" alt="client christine rose">
+              </div>
+
+              <div class="client-detail">
+                <h4 class="client-name">
+
+                Late Sardar Jodh Singh
+                </h4>
+
+                <p class="client-title">CHAIRMAN EMERITUS</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials-right">
+       <br><br><br><br>
+          <div class="testimonials-card">
+            <img src="./quote.png" alt="quote icon" class="quote-img">
+
+            <p class="testimonials-text">
+              "Proin feugiat tortor non neque eleifend, at fermentum est elementum. Ut mollis leo odio vulputate rutrum.
+              Nunc sagittis
+              sit amet ligula ut eleifend. Mauris consequat mauris sit amet turpis commodo fermentum. Quisque consequat
+              tortor ut nisl
+              finibus".
+            </p>
+
+            <div class="testimonials-client">
+
+              <div class="client-img-box">
+                <img src="./principal.jpg" alt="client christine rose">
+              </div>
+
+              <div class="client-detail">
+                <h4 class="client-name">Prof. Dr. Santanu Kumar Sen
+                </h4>
+
+                <p class="client-title">Principal Of GNIT</p>
+              </div>
+
+            </div>
+          </div>
+          
+
+        </div>
+
+      </section>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <section class="blog" id="blog">
+
+        <p class="section-subtitle">Our Canvas</p>
+
+        <h2 class="section-title">Latest Blog & News</h2>
+
+        <div class="blog-grid">
+
+          <div class="blog-card">
+
+            <div class="blog-banner-box">
+              <img src="./images/clg-1/f-2.jpg" alt="blog banner">
+            </div>
+
+            <div class="blog-content">
+
+              <h3 class="blog-title">
+                <a href="#">Cultural Fest </a>
+              </h3>
+
+              <div class="wrapper">
+
+                <div class="blog-publish-date">
+                  <img src="./images/clg-1/calendar.png" alt="calendar icon">
+
+                  <a href="#">07 Jan, 2022</a>
+                </div>
+
+                <div class="blog-comment">
+                  <img src="./images/clg-1/comment.png" alt="comment icon">
+
+                  <a href="#">3 Comments</a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="blog-card">
+
+            <div class="blog-banner-box">
+              <img src="./images/clg-1/sports-1.jpg" alt="blog banner">
+            </div>
+
+            <div class="blog-content">
+
+              <h3 class="blog-title">
+                <a href="#">Annual Sports</a>
+              </h3>
+
+              <div class="wrapper">
+
+                <div class="blog-publish-date">
+                  <img src="./images/clg-1/calendar.png" alt="calendar icon">
+
+                  <a href="#">04 Jan, 2022</a>
+                </div>
+
+                <div class="blog-comment">
+                  <img src="./images/clg-1/comment.png" alt="comment icon">
+
+                  <a href="#">10 Comments</a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="blog-card">
+
+            <div class="blog-banner-box">
+              <img src="./images/clg-1/f-5.jpg" alt="blog banner">
+            </div>
+
+            <div class="blog-content">
+
+              <h3 class="blog-title">
+                <a href="#">Proin feugiat tortor non neque eleifend.</a>
+              </h3>
+
+              <div class="wrapper">
+
+                <div class="blog-publish-date">
+                  <img src="./images/clg-1/calendar.png" alt="calendar icon">
+
+                  <a href="#">01 Jan, 2022</a>
+                </div>
+
+                <div class="blog-comment">
+                  <img src="./images/clg-1/comment.png" alt="comment icon">
+
+                  <a href="#">5 Comments</a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <section class="contact">
+
+        <div class="contact-card" id="contact">
+          <img src="./images/cta-bg-img.png" alt="shape" class="contact-card-bg">
+
+          <h2>Start Your Journey With Us</h2>
+
+          <button class="btn btn-primary">
+            <a href="./aboutusnw.html" class="btn-text" style="color: white;">Contact Us</a>
+            <span class="square"></span>
+          </button>
+        </div>
+
+      </section>
+
+    </main>
+
+
+
+
+
+    <!--
+      - #FOOTER
+    -->
+
+    <footer>
+
+      <div class="footer-grid">
+
+        <div class="grid-item">
+
+          <div class="footer-logo">
+            <img src="./images/GNIT_Kolkata_logo.png" alt="educator logo white">
+          </div>
+
+          <p class="footer-text">
+            Duis a tempor magna. Maecenas ligula felis, imperdiet quis arcu eget, blandit ultricies risus. Vivamus
+            fringilla urna
+            vel risus congue accumsan.
+          </p>
+
+          <div class="social-link">
+            <a href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </div>
+
+        </div>
+
+        <ul class="grid-item">
+
+          <h4 class="item-heading">Our Link</h4>
+
+          <li class="list-item">
+            <a href="#home">Home</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#about">About Us</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#course">Courses</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#blog">Blog</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#contact">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <ul class="grid-item">
+
+          <h4 class="item-heading">Other Link</h4>
+
+          <li class="list-item">
+            <a href="#">Instructor</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#">FAQ</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#">Event</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+
+          <li class="list-item">
+            <a href="#">Term & Condition</a>
+          </li>
+
+        </ul>
+
+        <div class="grid-item">
+
+          <h4 class="item-heading">Locate Us</h4>
+
+          <div class="wrapper">
+           
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d471153.93880418467!2d88.3789!3d22.695133!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6e3fc1531d1cb33!2sGuru%20Nanak%20Institute%20of%20Technology!5e0!3m2!1sen!2sus!4v1651478435021!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <button class="send-btn">
+              <ion-icon name="paper-plane"></ion-icon>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="copyright">
+        Copyright © 2022 <a href="#">SornaliHazra</a>. All rights reserved.
+      </p>
+
+    </footer>
+
+  </div>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./js/homejs/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+$(document).ready(function () {
+   $('#myLoader').show();
+
+	 fetchNotice();
+
+});
+
+
+function fetchNotice(){
+	 $.ajax({
+	      type: "GET",
+	      url:"/College_Final_Year_Project/update?action=notices",
+	      success: function (data, textStatus, jqXHR) {
+	    	var JsonData= jQuery.parseJSON(data);
+	    	  if(JsonData==null){
+	    		  var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+	    		  $('#noticeSection').append(test);
+			     $('#myLoader').hide();
+	    	 }
+	    	 else{
+	    		
+	    		 if(JsonData.length>0){
+	    		 
+	          $(JsonData).each(function (index, item) {  
+	        	  var card='<div class="event-card">'
+	        			+' <div class="content-left">'
+	        	    +'  <p class="date" style="color:blue;">'+item.createDate+'</p>'
+	        	      +'  </div>'
+	        	    +' <div class="content-right">'
+	        	    +'    <p class="time">'+item.name+'</p>'
+	        	        +((item.link.length>0) ?'<a href="/College_Final_Year_Project/update?action=downloadNotices&id='+item.pkId+'" class="event-name">View</a>':'<a href="" class="event-name" style="pointer-events: none">View</a>')
+	        	      +' </div>'
+	        	  +'</div>';
+	        		
+	        		$('#noticeSection').append(card);
+	        	  
+	          });
+	          
+	      
+	    		 }else{
+	    			 var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+	    			 $('#noticeSection').append(test);
+	    			 
+	    		 }
+	    
+             $('#myLoader').hide();
+         
+	    	 }
+	      },
+	      error: function (jqXHR, textStatus, errorThrown) {
+      
+	    	  var test= '<h4 style="text-align:center;margin-top:20px;">Sorry, Something went wrong,Please refresh the page</h4>';
+	    	
+	    		$('#noticeSection').append(test);
+ $('#myLoader').hide(); 
+						}
+					});
+	
+	
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -344,20 +344,9 @@ if(msg !=null){
                             <i class="fas fa-eye" ></i>
                         </div>
                         
-                            <select name="departmentId" class="div "required="">
-								<option>-Select Faculty Depertment -</option>
-                                  <option value="1">CSE</option>
-                                  <option value="2">ECE</option>
-                                  <option value="3">IT</option>
-                                  <option value="4">EE</option>
-                                  <option value="5">AEIE</option>
-                                  <option value="6">FT</option>
-                                  <option value="7">BHM</option>
-                                   <option value="8">ASHU</option>
-                                    <option value="9">BCA</option>
-               
-                                     <option>Cyber scurity</option>
-                                    <option>Data Science</option>
+                            <select name="departmentId" class="div" id="departmentSelect" required="">
+								<option>-Select Faculty Department -</option>
+                                 
 							   </select>
                        
                     </div>
@@ -387,6 +376,7 @@ if(msg !=null){
                 <input type="submit" id="teacherLogin"  class="btn" value="Login">
 
                 <input type="submit" id="clearForm" class="btn" value="Clear">
+                <a href="forgetPassword.jsp" target="_blank" class="btn" >Forget Password</a>
 
             </form>
         </div>
@@ -447,8 +437,9 @@ function show() {
 }
     </script>
   <script>
+  fetchDropDown("department","departmentSelect");
   $(document).ready(function () {
-	    console.log("Page loaded");
+		
 	    $('#teacherLogin').click(function (event) {
 	      event.preventDefault();
 
@@ -499,6 +490,30 @@ function show() {
       event.preventDefault();
       $('#teacherLoginForm')[0].reset();
   });
+  
+
+  function fetchDropDown(action,id){
+  	
+  	 $.ajax({
+  		      type: "GET",
+  		      url:"/College_Final_Year_Project/dropdown?action="+action,
+  		      success: function (data, textStatus, jqXHR) {
+  		    	  var JsonData= jQuery.parseJSON(data);
+  		    	 if(JsonData==null){
+  		    		 $('#'+id).append(new Option("No Option is Present",""));
+  		    	 }
+  		    	 else{
+  		          $(JsonData).each(function (index, item) {  
+  		        	  $('#'+id).append(new Option(item.name.trim(), item.pkId));
+  		          }); 
+  		    	 }
+  		      },
+  		      error: function (jqXHR, textStatus, errorThrown) {
+  		    	  $('#'+id).append(new Option("No Option is Present",""));
+  		      }
+  		    });  
+  }
+  
   
   
   </script>  

@@ -252,4 +252,47 @@ public class ChangePassword {
 		}
 		return result;
 	}
+	
+	public String changeCanvasPassword(String canvasId, String existingEmail, String currentPassword,
+			String newPassword, String reNewPassword) {
+		String result=null;
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		try {
+			String checkDetailsQuery = "Select emailId,password from canvas_account where pkCanvasAccountId=? LIMIT 1";
+			PreparedStatement pstmt = con.prepareStatement(checkDetailsQuery);
+			pstmt.setInt(1, Integer.parseInt(canvasId));
+			ResultSet rst = pstmt.executeQuery();
+			if (rst.next()) {
+				
+				String status=(!(rst.getString(1).trim().equalsIgnoreCase(existingEmail))?"Wrong Email":!(rst.getString(2).trim().equalsIgnoreCase(currentPassword))?"Wrong Current Password":"True");
+				
+				if(status.trim().equalsIgnoreCase("true")) {
+					String passwordUpdateQuery = "update canvas_account set password=?,updateDate=? where pkCanvasAccountId=?";
+					PreparedStatement pstmt1 = con.prepareStatement(passwordUpdateQuery);
+					pstmt1.setString(1, newPassword);
+					pstmt1.setObject(2, new Date());
+					pstmt1.setInt(3, Integer.parseInt(canvasId));
+					// Updating details
+					int updateStatus = pstmt1.executeUpdate();
+					if (updateStatus > 0) {
+						result = "Password Updated Successfully";
+					} else {
+						result = "Password Not Updated";
+					}
+				}
+				else {
+					result=status;
+				}
+			} else {
+				result = "Data not found with given details";
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = "Something went wrong.Please try again";
+		}
+		return result;
+	}
+	
+	
 }

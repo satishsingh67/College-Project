@@ -12,7 +12,8 @@
   <!-- bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
- 
+  <script src="./lib/jquery.min.js"></script>
+  <script src="./lib/sweetalert.min.js"></script>
   <!-- OWN CSS -->
   <link rel="stylesheet" href="css/subject.css">
   <link rel="stylesheet" href="css/responsive-style.css">
@@ -102,6 +103,30 @@
    color:var(--white);
    line-height: 2;
 }
+.imagess{
+  height: 400px;
+}
+ .loader2 {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
   </style>
 </head>
@@ -122,6 +147,12 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#home">Home</a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#place">Images</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#place1">Videos</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="./canvasHomePage.jsp">Gallery </a>
               </li>
@@ -141,21 +172,13 @@
   </header>
    
   <!-- section-1 top-banner -->
-  <section id="home" style="background-color: wheat;">
+  <section id="home" >
    
     <div class="container-fluid px-0 top-banner">
-        <h1 style="text-align: center;">SOCIAL SERVICE</h1>
+        
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 col-md-8">
-           
-            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_xdsbmxmk.json"  background="transparent"  speed="1"  style="width: 800px; height: 300px;"  loop  autoplay></lottie-player>
-           
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-              </div>
+         <img class="imagess" src="./image/1651607119289.jpg">
         </div>
       </div>
     </div>
@@ -163,107 +186,51 @@
   <hr>
  
  <hr>
-    
   
       
   <!-- section-4 explore food-->
-   <section id="write">
-     <div class="explore-food wrapper " style=" background-color: lightcyan;">
-       <div class="container">
-         <div class="row">
-           <div class="col-sm-12">
+   <section id="write" >
+     <div id="place" class="explore-food wrapper " style="background-color: lightcyan;">
+       <div class="container" style="margin-top:-100px;">
+        <div class="col-sm-12">
              <div class="text-content text-center">
                 <h2 style="font-family: 'Times New Roman', Times, serif; border-bottom: 2px solid red;">Images</h2>
             
             
            </div>
          </div>
-         <div class="row pt-5">
-           <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-             <div class="card">
-               
-                
-               
-                
-              </div>
-             </div>
-           </div>
-           <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-            <div class="card">
-                <img src="./images/covid/vax.jpg">
-               <div class="pt-3">
-                <span>Public</span><h4>By</h4>
-                <h6 style="float: right;">ECE-2(4th year)</h6>
-                <h5>Sornali Hazra</h5>
-               
-               
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-            <div class="card">
-            
-              <div class="pt-3">
-               
-              </div>
-              
-            </div>
-          </div>
+         <br>
+         <br>
+         <div class="row" id="imageFiles" style="border:1px solid lightcyan;">
+        
+         
          </div>
        </div>
      </div>
    </section><br>
    <hr>
-
-  <!-- section-4 explore food-->
-  <section id="write">
-    <div class="explore-food wrapper " style=" background-color: lightcyan;">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="text-content text-center">
-               <h2 style="font-family: 'Times New Roman', Times, serif; border-bottom: 2px solid red;">Videos</h2>
-           
-           
-          </div>
-        </div>
-        <div class="row pt-5">
-          <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-            <div class="card">
-              
-               
-              
-               
-             </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-           <div class="card">
-            <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-              <div class="pt-3">
-               <span>Public</span><h4>By</h4>
-               <h6 style="float: right;">ECE-2(4th year)</h6>
-               <h5>Sornali Hazra</h5>
-              
-              
-             </div>
+   
+    
+<!-- section-4 explore food-->
+   <section id="write" >
+     <div id="place1" class="explore-food wrapper " style="background-color: lightcyan;">
+       <div  class="container" style="margin-top:-100px;">
+        <div class="col-sm-12">
+             <div class="text-content text-center">
+                <h2  style="font-family: 'Times New Roman', Times, serif; border-bottom: 2px solid red;">Videos</h2>
+            
+            
            </div>
          </div>
-         <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-           <div class="card">
-            <video src="./images/video/Video - Google Photos_2.mp4" controls type="video/mp4" alt="" class="place__img">
-                        
-             <div class="pt-3">
-              
-             </div>
-             
-           </div>
+         <br>
+         <br>
+         <div class="row" id="videoFiles" style="border:1px solid lightcyan;">
+       
          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+       </div>
+     </div>
+   </section>
+  
 
   
   <!-- section-9 footer-->
@@ -288,7 +255,7 @@
           <div class="col-sm-12">
             <div class="footer-copy">
               <div class="copy-right text-center pt-5">
-                <p class="text-light">©Developer.Sornali Hazra</p>
+                <p class="text-light">©Developer- Sornali Hazra & @Satish Singh</p>
               </div>
             </div>
           </div>
@@ -297,12 +264,116 @@
     </div>
   </footer>
    
-
+<div class="loader2" style="margin-top:-48%;margin-left:48%;display:none;" id="myLoader"></div>
+     <div class="loader2" style="margin-top:18%;margin-left:48%;display:none;" id="myLoader1"></div>
+   
+   
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
   <!-- own js -->
   <script src="js/subject1.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+  
+	  $('#myLoader').show();
+	  $('#myLoader1').show();
+	  fetchCanvasFiles();
+  
+  
+  
+  });
+  
+  
+  
+  function fetchCanvasFiles(){
+  	
+    	 $.ajax({
+		      type: "GET",
+		      url:"/College_Final_Year_Project/canvas?action=canvasSocialService",
+		      success: function (data, textStatus, jqXHR) {
+		    	var JsonData= jQuery.parseJSON(data);
+		    	  if(JsonData==null){
+		    		  var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+		    		  $('#imageFiles').append(test);  
+		    		   $('#videoFiles').append(test);  
+		   		    $('#myLoader').hide();
+		    	 $('#myLoader1').hide();
+				 
+		    	 }
+		    	 else{
+		    		
+		    		 if(JsonData.imageList.length>0){
+		    		 
+		          $(JsonData.imageList).each(function (index, item) {  
+
+		        	var card='<div class="col-lg-4 col-md-6 mb-lg-0 mb-5">'
+		           +'<div class="card"  style="margin-bottom:15px;height:500px;">'
+		           +' <img src="'+item.filePath+' " style="height:450px;">'
+		           +' <div class="pt-3">'
+		           +'  <h4 style="text-align:center;">By : Satish Singh</h4>'
+		           +' </div>'
+	              
+		           +' </div>'
+		           +'</div>  '
+
+		             $('#imageFiles').append(card);  
+		              
+		        	  
+		          });
+		          
+		          $('#myLoader').hide();
+		    		 }else{
+		    			 var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+			    		  $('#imageFiles').append(test);  
+				          $('#myLoader').hide();
+		    		 }
+		          
+		          
+		    		 if(JsonData.videoList.length>0){
+
+		     $(JsonData.videoList).each(function (index, item) {  		        
+		    	 var card='<div class="col-lg-4 col-md-6 mb-lg-0 mb-5">'
+		    	 +'<div class="card" style=" width:370px;height:230px;">'
+		        		+'<video width="370" controls>'
+		        		+'  <source src="'+item.filePath+'" type="video/mp4">'
+		        		+'</video>'
+		        		+'<h4 style="text-align:center;">By: '+item.name+'</h4>'
+		               +'</div>';
+
+			           $('#videoFiles').append(card);       
+		     
+		     });
+		 
+	          $('#myLoader1').hide();
+		    		 }else{
+		    			 var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+			    		  $('#videoFiles').append(test);  
+				          $('#myLoader1').hide();
+		    		 }
+	          
+	          
+		    	 }
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+	       
+		    	  var test= '<h4 style="text-align:center">Sorry, Something went wrong,Please refresh the page</h4>';
+		    	
+			              
+								$('#imageFiles').append(test);
+								$('#videoFiles').append(test);
+								$('#myLoader').hide();
+								$('#myLoader1').hide();
+
+							}
+						});
+
+			}
+		</script>
+  
+  
+  
 </body>
 </html>
 

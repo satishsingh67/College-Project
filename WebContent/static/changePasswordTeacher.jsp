@@ -117,14 +117,14 @@ Integer fkDepartment=teacher.getFkdepartment();
     
 
 <label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter Your Previous Password</label>
-<input placeholder="Enter Password" name="currentPassword" id="currentPassword" type="password" class="validate">
+<input placeholder="Enter Old Password" name="currentPassword" id="currentPassword" type="password" class="validate">
 <label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter New Password</label>
-<input placeholder="Enter Password" name="newPassword" id="first_name" type="password" class="validate">
+<input placeholder="Enter New Password" name="newPassword" id="first_name" type="password" class="validate">
 <label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Confirm Password</label>
-<input placeholder="Enter Password" name="reNewPassword" id="first_name" type="password" class="validate">
+<input placeholder="Re-Enter New Password" name="reNewPassword" id="first_name" type="password" class="validate">
 <div class="btn-group center-align"  role="group">
     <button type="submit" id="changePassButton" value="submit"  class="btn #2196f3 blue">Submit</button>
-    <button type="clear" value="Clear" class="btn #2196f3 blue" >Clear</button>
+    <button type="clear" id="clearButton" value="Clear" class="btn #2196f3 blue" >Clear</button>
   </div>
 </form>
 
@@ -195,7 +195,11 @@ data.append("teacherId",teacherId);
     });    
 });	  
 
+$('#clearButton').click(function (event){
+    event.preventDefault();
+    $('#changePassForm')[0].reset();
 
+});
 
 
 

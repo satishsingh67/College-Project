@@ -1,5 +1,12 @@
 $(document).ready(function () {
-  console.log("added");
+	
+	fetchDropDown("department","departmentSelect");
+	fetchDropDown("courseType","courseTypeSelect");
+	fetchDropDown("semester","semesterSelect");
+	fetchDropDown("section","sectionSelect");
+	
+	
+	
   $("#regSubmit").click(function (event) {
       //stop submit the form, we will post it manually.
       event.preventDefault();
@@ -46,4 +53,30 @@ $(window).scrollTop(0);
      
   });
 
+  
+  
 });
+
+
+function fetchDropDown(action,id){
+	
+	 $.ajax({
+		      type: "GET",
+		      url:"/College_Final_Year_Project/dropdown?action="+action,
+		      success: function (data, textStatus, jqXHR) {
+		    	  var JsonData= jQuery.parseJSON(data);
+		    	 if(JsonData==null){
+		    		 $('#'+id).append(new Option("No Option is Present",""));
+		    	 }
+		    	 else{
+		          $(JsonData).each(function (index, item) {  
+		        	  $('#'+id).append(new Option(item.name.trim(), item.pkId));
+		          }); 
+		    	 }
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+		    	  $('#'+id).append(new Option("No Option is Present",""));
+		      }
+		    });  
+}
+

@@ -37,7 +37,20 @@ public class ViewVariables {
 	private String bloodGroup;
 	private Date DOB;
 	private String address;
-
+	private String filePath;
+	private String title;
+	private String personType;
+	private String postType;
+	private String fileType;
+    private Integer presentCount;
+    private Integer absentCount;
+    private Integer totalattendance;
+    private Integer percentageAttendance;
+	private String present;
+	private String absent;
+	
+	
+	
 	public Integer getPkId() {
 		return pkId;
 	}
@@ -302,4 +315,94 @@ public class ViewVariables {
 		this.address = address;
 	}
 
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getPersonType() {
+		return personType;
+	}
+
+	public void setPersonType(String personType) {
+		this.personType = personType;
+	}
+
+	public String getPostType() {
+		return postType;
+	}
+
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public Integer getPresentCount() {
+		return presentCount;
+	}
+
+	public void setPresentCount(Integer presentCount) {
+		this.presentCount = presentCount;
+	}
+
+	public Integer getAbsentCount() {
+		return absentCount;
+	}
+
+	public void setAbsentCount(Integer absentCount) {
+		this.absentCount = absentCount;
+	}
+
+	public Integer getTotalattendance() {
+		return totalattendance;
+	}
+
+	public void setTotalattendance(Integer totalattendance) {
+		this.totalattendance = totalattendance;
+	}
+
+	public Integer getPercentageAttendance() {
+		return percentageAttendance;
+	}
+
+	public void setPercentageAttendance(Integer percentageAttendance) {
+		this.percentageAttendance = percentageAttendance;
+	}
+
+	public String getPresent() {
+		return present;
+	}
+
+	public void setPresent(String present) {
+		this.present = present;
+	}
+
+	public String getAbsent() {
+		return absent;
+	}
+
+	public void setAbsent(String absent) {
+		this.absent = absent;
+	}
+
+	
+	
 }

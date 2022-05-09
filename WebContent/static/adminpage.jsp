@@ -384,13 +384,11 @@ td {
            <a> <img src="./images/GNIT_Kolkata_logo.png"></a>
         </div>
         <ul>
-            <li> <i class="fas fa-th-large"></i>&nbsp; <a href="#"><span>DashBoard</span></a> </li>
             <li> <i class="fas fa-user-graduate"></i>&nbsp;<a href="./ValidateTableAdmin.jsp" target="_blank"><span>Students</span></a> </li>
             <li> <i class="fas fa-chalkboard-teacher"></i>&nbsp;<a href="./adminteachers.jsp" target="_blank"><span>Teachers</span></a> </li>
             <li><i class="fas fa-chalkboard-teacher"></i>&nbsp;<a href="./adminmentor.jsp" target="_blank"><span>Mentors</span> </a></li>
             <li><i class="fas fa-chalkboard-teacher"></i>&nbsp;<a href="./NewAdmin.jsp" target="_blank"><span>New Admin</span></a> </li>
             
-            <li><i class="fas fa-info"></i>&nbsp;<a href="#"><span>Update Information</span> </a></li>
             <li>  <i class="fas fa-cog"></i>&nbsp;<a href="./canvasManagement.jsp" target="_blank"><span>Canvas Management</span></a> </li>
             <li>  <i class="fas fa-cog"></i>&nbsp;<a href="./adminChangePassword.jsp" target="_blank"><span>Change Password</span></a> </li>
             <li>  <i class="fas fa-cog"></i>&nbsp;<a href="./adminAccountDelete.jsp" target="_blank"><span>Delete Account</span></a> </li>
@@ -464,87 +462,42 @@ td {
                     </div>
                     <table>
                         <tr>
-                            <th>Information</th>
-                            <th>Choose File</th>
+                            <th style="text-align:center;">Information</th>
+                            <th style="text-align:center;">Choose File</th>
                             
-                           <th>Message</th>
-                            <th>Select File type</th>
-                            <th>Upload</th>
+                           <th style="text-align:center;">Message</th>
+                            <th style="text-align:center;">Upload</th>
                         </tr>
                         <tbody id="Table">
                        
                         <tr>
-                            <td>Post Notice</td>
-                            <td><input id="noticeFile" type="file"></td>
-                             <td><input id="noticeText" type="text"></td>
-                             <td>
+                            <td style="text-align:center;">Post Notice</td>
+                            <td style="text-align:center;"><input id="noticeFile" type="file"></td>
+                             <td style="text-align:center;"><input id="noticeText" type="text"></td>
+                          
+                         <td style="text-align:center;"><button type="button" id="postNoticeButton" class="btn btn-primary">Post</button></td>
+                        </tr>
+                        <tr >
+                            <td style="text-align:center;">Update Gallery</td>
+                            <td style="text-align:center;"><input id="galleryFile" type="file"></td>
+                            <td style="text-align:center;"><input id="galleryText" type="text"></td>
+                         
                            
-                               <select id="noticeType">
-                                <option>Select file type</option>
-                                   <option>Cultural Fest</option>
-                                   <option>Tech Fest</option>
-                                   <option>College</option>
-                                   <option>Tech Fest</option>
-                                   <option>Video</option>
-                                   <option>Others</option>
-                               </select>
-                           </td>
-                         <td><button type="button" id="postNoticeButton" class="btn btn-primary">Post</button></td>
+                         <td style="text-align:center;"><button type="button" id="postGalleryButton" class="btn btn-primary">Post</button></td>
                         </tr>
                         <tr>
-                            <td>Update Gallery</td>
-                            <td><input id="galleryFile" type="file"></td>
-                            <td><input id="galleryText" type="text"></td>
-                           <td>
+                            <td style="text-align:center;">Post Exam Schedule</td>
+                            <td style="text-align:center;"><input id="examFile" type="file"></td>
+                           <td style="text-align:center;"><input  id="examText" type="text"></td>
                            
-                               <select id="galleryType">
-                                <option>Select file type</option>
-                                   <option>Cultural Fest</option>
-                                   <option>Tech Fest</option>
-                                   <option>College</option>
-                                   <option>Tech Fest</option>
-                                   <option>Video</option>
-                                   <option>Others</option>
-                               </select>
-                           </td>
-                           
-                         <td><button type="button" id="postGalleryButton" class="btn btn-primary">Post</button></td>
+                            <td style="text-align:center;"><button type="button" id="postExamButton" class="btn btn-primary">Post</button></td>
                         </tr>
-                        <tr>
-                            <td>Post Exam Schedule</td>
-                            <td><input id="examFile" type="file"></td>
-                           <td><input  id="examText" type="text"></td>
-                           <td>
+                        <tr >
+                            <td style="text-align:center;">Post  PopUp</td>
+                            <td style="text-align:center;"><input id="popUpFile"  type="file"></td>
+                          <td style="text-align:center;"> <input id="popUpText" type="text"></td>
                            
-                               <select id="examType">
-                                <option>Select file type</option>
-                                   <option>Cultural Fest</option>
-                                   <option>Tech Fest</option>
-                                   <option>College</option>
-                                   <option>Tech Fest</option>
-                                   <option>Video</option>
-                                   <option>Others</option>
-                               </select>
-                           </td>
-                            <td><button type="button" id="postExamButton" class="btn btn-primary">Post</button></td>
-                        </tr>
-                        <tr>
-                            <td>Post  PopUp</td>
-                            <td><input id="popUpFile" type="file"></td>
-                          <td><input id="popUpText" type="text"></td>
-                           <td>
-                           
-                               <select id="popUpType">
-                                <option>Select file type</option>
-                                   <option>Cultural Fest</option>
-                                   <option>Tech Fest</option>
-                                   <option>College</option>
-                                   <option>Tech Fest</option>
-                                   <option>Video</option>
-                                   <option>Others</option>
-                               </select>
-                           </td>
-                         <td><button type="button" id="postPopUpButton" class="btn btn-primary">Post</button></td>
+                         <td style="text-align:center;"><button type="button" id="postPopUpButton" class="btn btn-primary">Post</button></td>
                           </tr>
                         
                         </tbody>
@@ -584,37 +537,35 @@ td {
 
 $('#postNoticeButton').click(function (event){
 		event.preventDefault();
-		uploadInformation("postNoticeButton","noticeFile","noticeText","noticeType","notice");
+		uploadInformation("postNoticeButton","noticeFile","noticeText","notice");
 });
 
 $('#postGalleryButton').click(function (event){
 		event.preventDefault();
-		uploadInformation("postGalleryButton","galleryFile","galleryText","galleryType","gallery");
+		uploadInformation("postGalleryButton","galleryFile","galleryText","gallery");
 	});
 
 $('#postExamButton').click(function (event){
 		event.preventDefault();
-		uploadInformation("postExamButton","examFile","examText","examType","examSchedule");
+		uploadInformation("postExamButton","examFile","examText","examSchedule");
 	});
 
 $('#postPopUpButton').click(function (event){
 		event.preventDefault();
-		uploadInformation("postPopUpButton","popUpFile","popUpText","popUpType","popUp");
+		uploadInformation("postPopUpButton","popUpFile","popUpText","popUp");
 	});
 
 
 
-function uploadInformation(buttonId,file,text,type,action){
+function uploadInformation(buttonId,file,text,action){
 	  $("#"+buttonId).prop("disabled",true);
 	    $('#myModal').show();
 	  $(".loader1").show();
 	  
 	  var text1=$("#"+text).val();
-	  var type1=$("#"+type).val();
      	  var form_data = new FormData(); // Creating object of FormData class
      	  form_data.append("file",  $('#'+file).prop("files")[0]); // Appending parameter named file with properties of file_field to form_data
      	  form_data.append("text", text1); // Adding extra parameters to form_data
-     	  form_data.append("type",type1);
      	  form_data.append("action",action);
      	  $.ajax({
      		  type: "POST",

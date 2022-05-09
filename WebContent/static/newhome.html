@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="./css/newcss/style.css">
   <link rel="stylesheet" href="./css/newcss/media_queries.css">
   <link rel="stylesheet" href="./css/newcss/animation.css">
- 
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/sweetalert.min.js"></script>
 
   <!--
     - google font link
@@ -24,7 +25,38 @@
     href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800;900&family=Roboto:wght@400;500&display=swap"
     rel="stylesheet">
 
+<style>
+
+
+.loader2 {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+</style>
+
+
 </head>
+
+
+
 
 <body style="background-color: rgb(190, 170, 199);">
 
@@ -823,65 +855,14 @@
          
           <h2 class="section-title">Notices</h2>
 
-          <div class="event-card-group">
+          <div class="event-card-group" id="noticeSection" style="border:1px solid skyblue;height:500px;overflow-y:auto;">
 
-            <div class="event-card">
-
-              <div class="content-left">
-                <p class="day">28</p>
-                <p class="month">Feb, 2022</p>
-              </div>
-
-              <div class="content-right">
-                <div class="schedule">
-                  <p class="time">10:30am To 2:30pm</p>
-                  <p class="place">Poland</p>
-                </div>
-
-                <a href="#" class="event-name">Business creativity workshops</a>
-              </div>
-
-            </div>
-
-            <div class="event-card">
-
-              <div class="content-left">
-                <p class="day">15</p>
-                <p class="month">Mar, 2022</p>
-              </div>
-
-              <div class="content-right">
-                <div class="schedule">
-                  <p class="time">10:30am To 2:30pm</p>
-                  <p class="place">Poland</p>
-                </div>
-
-                <a href="#" class="event-name">Street Performance: Call for Art.</a>
-              </div>
-
-            </div>
-
-            <div class="event-card">
-
-              <div class="content-left">
-                <p class="day">20</p>
-                <p class="month">May, 2022</p>
-              </div>
-
-              <div class="content-right">
-                <div class="schedule">
-                  <p class="time">10:30am To 2:30pm</p>
-                  <p class="place">Poland</p>
-                </div>
-
-                <a href="#" class="event-name">Digital transformation conference</a>
-              </div>
-
-            </div>
+           <!--  dynamic notice -->
 
           </div>
 
         </div>
+  <div class="loader2" style="margin-top:-110%;margin-left:150%;" id="myLoader"></div>
 
       </section>
 
@@ -1367,6 +1348,70 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+$(document).ready(function () {
+	 fetchNotice();
+});
+
+
+function fetchNotice(){
+	 $.ajax({
+	      type: "GET",
+	      url:"/College_Final_Year_Project/update?action=notices",
+	      success: function (data, textStatus, jqXHR) {
+	    	var JsonData= jQuery.parseJSON(data);
+	    	  if(JsonData==null){
+	    		  var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+	    		  $('#noticeSection').append(test);
+			     $('#myLoader').hide();
+	    	 }
+	    	 else{
+	    		
+	    		 if(JsonData.length>0){
+	    		 
+	          $(JsonData).each(function (index, item) {  
+	        	  var card='<div class="event-card">'
+	        			+' <div class="content-left">'
+	        	    +'  <p class="date" style="color:blue;">'+item.createDate+'</p>'
+	        	      +'  </div>'
+	        	    +' <div class="content-right">'
+	        	    +'    <p class="time">'+item.name+'</p>'
+	        	        +((item.link.length>0) ?'<a href="/College_Final_Year_Project/update?action=downloadNotices&id='+item.pkId+'" class="event-name">View</a>':'<a href="" class="event-name" style="pointer-events: none">View</a>')
+	        	      +' </div>'
+	        	  +'</div>';
+	        		
+	        		$('#noticeSection').append(card);
+	        	  
+	          });
+	          
+	      
+	    		 }else{
+	    			 var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+	    			 $('#noticeSection').append(test);
+	    			 
+	    		 }
+	    
+             $('#myLoader').hide();
+         
+	    	 }
+	      },
+	      error: function (jqXHR, textStatus, errorThrown) {
+      
+	    	  var test= '<h4 style="text-align:center;margin-top:20px;">Sorry, Something went wrong,Please refresh the page</h4>';
+	    	
+	    		$('#noticeSection').append(test);
+ $('#myLoader').hide(); 
+						}
+					});
+	
+	
+}
+
+
+
+</script>
+
 
 </body>
 

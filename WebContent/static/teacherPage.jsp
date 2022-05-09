@@ -51,12 +51,6 @@ String image=new TeacherLoginCheck().fetchTeacherPhoto(fkTeacherPkId);
 
 <header class="header">
 
-   <div class="contact-info">
-      <p> <i class="fas fa-map"></i> Address of Teacher</p>
-      <p> <i class="fas fa-envelope"></i> teacher@gmail.com </p>
-      <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-   </div>
-
    <nav class="navbar">
 
       <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
@@ -64,10 +58,10 @@ String image=new TeacherLoginCheck().fetchTeacherPhoto(fkTeacherPkId);
       <div class="links">
          <a href="#home">home</a>
          <a href="#about">Information</a>
-         <a href="#services">Classes</a>
+         <a href="#classes">Classes</a>
          
          
-         <a href="#contact">contact</a>
+         <a href="#contact">Contact Admin</a>
          <a href="changePasswordTeacher.jsp" target="_blank">Change Password</a>
          <a href="teacherUpdateProfile.jsp" target="_blank">Update Profile</a>
          <a href="/College_Final_Year_Project/logout?action=teacher" class="nav__link">Logout</a>
@@ -168,7 +162,7 @@ String image=new TeacherLoginCheck().fetchTeacherPhoto(fkTeacherPkId);
 <div class="container">
 
     <h1 class="heading">MY CLASSES</h1>
-   <div class="box-container" id="subject">
+   <div id="classes" class="box-container" id="subject">
  <%
 if(subjects.size()==0){
 	%>
@@ -186,14 +180,14 @@ for(MapTeacherSubject obj:subjects){
          <div class="content" style=" text-align: center">
             <h2><%=obj.getSubjectCode()+"-"+obj.getSubjectName() %></h2>
             <p>
-            <%= obj.getDepartmentShortName()+"-"+obj.getSection()%>
+            <%= obj.getCourseType()+" , "+obj.getDepartmentShortName()+"-"+obj.getSection()%>
             <br>
             <%= (obj.getYear()==1)?( obj.getYear()+"st Year"):(obj.getYear()==2)?( obj.getYear()+"nd Year"):(obj.getYear()==3)?( obj.getYear()+"rd Year"):obj.getYear()+"th Year" %>
             <%= "-" %>
             <%=  (obj.getSemester()==1)?( obj.getSemester()+"st Semester"):(obj.getSemester()==2)?( obj.getSemester()+"nd Semester"):(obj.getSemester()==3)?( obj.getSemester()+"rd Semester"):obj.getSemester()+"th Semester"%>
             </p>
 
-        <a href="<%=(obj.getSubjectType()==1?"teacherSubject.jsp?":"teacherLab.jsp?")%><%="subjectId="+obj.getFkSubjectId()+"&"+"subjectName="+obj.getSubjectName()+"&"+"subjectCode="+obj.getSubjectCode() +"&section="+obj.getSection()+"&semester="+obj.getSemester()+"&year="+obj.getYear()%>"  class="btn">Enter The Class</a>
+        <a href="<%=(obj.getSubjectType()==1?"teacherSubject.jsp?":"teacherLab.jsp?")%><%="subjectId="+obj.getFkSubjectId()+"&"+"subjectName="+obj.getSubjectName()+"&"+"subjectCode="+obj.getSubjectCode() +"&section="+obj.getSection()+"&semester="+obj.getSemester()+"&year="+obj.getYear()+"&courseId="+obj.getCourseTypeId()+"&courseName="+obj.getCourseType()%>"  class="btn">Enter The Class</a>
    
          </div>
        </div>
@@ -209,7 +203,7 @@ for(MapTeacherSubject obj:subjects){
 
 <!-- contact section starts  -->
 
-<section class="contact" id="contact">
+<section  class="contact" id="contact">
 
 		<h1 class="heading">
 			<span>contact</span> With Admin

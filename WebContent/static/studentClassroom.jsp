@@ -22,6 +22,9 @@ Integer fkStudentPkId=student.getPkRegistrationId();
 Integer fkDepartment=student.getFkdepartment();
 Integer fkSemester=student.getFkCurrentYearAndSem();
 Integer fkSection=student.getSection();
+Integer courseTypeId=student.getCourseTypeId();
+String courseName=student.getCourseTypeName();
+
 
 Map<String,Object> subjectList=mapStudentSubject.getAllSubjects(fkStudentPkId,fkDepartment,fkSemester,fkSection);
 List<MapStudentSubject> subjects=(List<MapStudentSubject>)subjectList.get("subjects");
@@ -62,15 +65,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 
 		<nav class="navbar">
 
-			<img src="./images/GNIT_Kolkata_logo.png" class="logo">
-			<h2 class="text1">Guru Nanak Institute of Technology</h2>
+			<img src="./images/GNIT_Kolkata_logo.png"  class="logo">
 			<div class="links">
-				<a href="./studentpage.html">home</a> <a href="#about">Information</a>
-				<a href="#services">Classes</a> <a href="#contact">contact</a>
+             <a href="./studentPage1.jsp">home</a>
+             
+              <%
+         
+          String attendanceUrl="AttendanceCheck.jsp?studentId="+fkStudentPkId+"&departmentId="+fkDepartment+"&sectionId="+fkSection+"&semseter="+fkSemester+"&courseId="+courseTypeId+"&courseName="+courseName;
+         %>
+             
+              <a href="<%=attendanceUrl%>" target="_blank" >Check Attendance</a>
+				<a href="./studentPage1.jsp">home</a> <a href="#about">Information</a>
+				<a href="#classes">Classes</a> <a href="#contact">Contact</a>
+			 <a href="#contact">View Profile</a>
                 <a href="/College_Final_Year_Project/logout?action=student">Logout</a>
 			</div>
 			<img src="./images/teachers/1200px-JIS_University.svg.png"
-				class="logo">
+				class="logo" >
 			<div id="menu-btn" class="fa fa-bars"></div>
 
 		</nav>
@@ -88,9 +99,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 		</div>
 
 		<div class="content">
-			<p>Student Name: <b><%= student.getStudentName() %></b></p>
-			<P>Branch: <b><%= student.getDepartment()+"-"+student.getSection() %></b>  </P>
-			<p>Class Roll No.</p>
+			<p><b>Student Name: <%= student.getStudentName() %></b></p>
+			<P><b>Course Name: <%= student.getCourseTypeName()%></b>  </P>
+			<P><b>Branch: <%= student.getDepartment()%></b>  </P>
+			<P><b>Semester: <%= student.getSemester() %></b>  </P>
+			<P><b>Section: <%= student.getSection() %></b>  </P>
+			
 
 		</div>
 
@@ -156,7 +170,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 
 	<!-- about section ends -->
 
-	<div class="container">
+	<div id="classes" class="container">
 
     <h1 class="heading">MY CLASSES & LAB</h1>
  

@@ -20,5 +20,15 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/SATISH/Desktop/College-Final-Year-Project/Server/apache-tomcat-8.5.68-windows-x64/apache-tomcat-8.5.68/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/Users/SATISH/Desktop/College-Final-Year-Project/Server/apache-tomcat-8.5.68-windows-x64/apache-tomcat-8.5.68/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SATISH/Desktop/College-Final-Year-Project/lib/activation-1.1.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/SATISH/Desktop/College-Final-Year-Project/lib/javax.mail.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

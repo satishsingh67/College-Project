@@ -152,6 +152,15 @@
 		<servlet-name>FetchDropDowns</servlet-name>
 		<servlet-class>com.college.action.FetchDropDowns</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ForgetPassword</servlet-name>
+		<servlet-class>com.college.action.ForgetPassword</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AttendanceManagement</servlet-name>
+		<servlet-class>com.college.action.AttendanceManagement</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ContactUs</servlet-name>
@@ -301,5 +310,13 @@
 		<url-pattern>/dropdown</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>ForgetPassword</servlet-name>
+		<url-pattern>/forget</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AttendanceManagement</servlet-name>
+		<url-pattern>/attendance</url-pattern>
+	</servlet-mapping>
 
 </web-app>

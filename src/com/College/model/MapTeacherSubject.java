@@ -17,6 +17,10 @@ public class MapTeacherSubject {
 	private Integer section;
 	private Integer  semester;
 	private Integer year;
+	private String courseType;
+	private Integer courseTypeId;
+	
+	
 	public Integer getPkTeacherSubjectMapId() {
 		return pkTeacherSubjectMapId;
 	}
@@ -112,6 +116,18 @@ public class MapTeacherSubject {
 	}
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+	public String getCourseType() {
+		return courseType;
+	}
+	public void setCourseType(String courseType) {
+		this.courseType = courseType;
+	}
+	public Integer getCourseTypeId() {
+		return courseTypeId;
+	}
+	public void setCourseTypeId(Integer courseTypeId) {
+		this.courseTypeId = courseTypeId;
 	}
 	
 
