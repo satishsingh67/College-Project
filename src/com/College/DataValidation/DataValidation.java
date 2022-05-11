@@ -138,7 +138,7 @@ public class DataValidation {
 	
 	public String teacherAccountDataValidation(String name,String post,String email,String phoneNumber,String department,String gender,String joiningDate,String password) {
 		String result=null;
-		result=((name.trim().isEmpty())?"Teacher Name":(post.trim().isEmpty())?"Teacher Post":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("Select Department"))?"Department":(gender.trim().isEmpty())?"Gender":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(joiningDate.trim().isEmpty())?"Joining Date":(password.trim().isEmpty())?"Password":"True");
+		result=((name.trim().isEmpty())?"Teacher Name":(post.trim().equalsIgnoreCase("--Select Designation--"))?"Teacher Designation":(email.trim().isEmpty())?"Valid Email":(!(email.trim().contains("@")))?"Valid Email":(phoneNumber.trim().isEmpty())?"Mobile Number":(phoneNumber.trim().length()>11)?"Mobile Number":(department.trim().isEmpty())?"Department":(department.trim().equalsIgnoreCase("--Select Department--"))?"Department":(gender.trim().isEmpty())?"Gender":(gender.trim().equalsIgnoreCase("--Select--"))?"Gender":(joiningDate.trim().isEmpty())?"Joining Date":(password.trim().isEmpty())?"Password":"True");
 		return result;
 	}
 	
@@ -182,17 +182,24 @@ public class DataValidation {
 		return result;
 	}
 
-	public String subjectAllotStudentValidation(String courseTypeId, String departmentId, String semseter,
-			String section, String studentsName, String subjects) {
+	public String subjectAllotStudentValidation( String studentsName, String subjects) {
 
 		String result=null;
         
-		result=(studentsName.trim().equalsIgnoreCase("null")?"Students Name":subjects.trim().equalsIgnoreCase("null")?"Subjects":(courseTypeId.trim().equalsIgnoreCase("--Select--"))?"Course Type":(departmentId.trim().equalsIgnoreCase("--Select--"))?"Department":(semseter.trim().equalsIgnoreCase("--Select--"))?"Semester":
-			(section.trim().equalsIgnoreCase("--Select--"))?"Section":"True");
+		result=(studentsName.trim().equalsIgnoreCase("null")?"Students Name":subjects.trim().equalsIgnoreCase("null")?"Subjects":"True");
 		
 		return result;
 	}
 
+	public String subjectAllotTeacherValidation(String teacherName, String subjects) {
+
+		String result=null;
+        
+		result=(teacherName.trim().equalsIgnoreCase("null")?"Teacher Name":subjects.trim().equalsIgnoreCase("null")?"Subjects":"True");
+		
+		return result;
+	}
+	
 	public String canvasAccountDataValidation(String name, String email, String department, String password) {
 		// TODO Auto-generated method stub
 		String result=null;

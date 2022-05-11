@@ -10,12 +10,12 @@ import com.college.dataBaseConnection.DataBaseConnection;
 public class LinkManagement {
 
 	public String uploadDailyClassLink(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, String meetLink) {
+			String subjectId, String meetLink,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query = "INSERT INTO `daily_class_link` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `meetingLink`, `createDate`, `updatedate`)"
-					+ " VALUES (?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO `daily_class_link` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `meetingLink`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(teacherId));
 			pstmt.setInt(2, Integer.parseInt(departmentId));
@@ -25,7 +25,8 @@ public class LinkManagement {
 			pstmt.setString(6, meetLink);
 			pstmt.setObject(7, new Date());
 			pstmt.setObject(8, new Date());
-
+			pstmt.setInt(9, Integer.parseInt(courseTypeId));
+			
 			int dbStatus = pstmt.executeUpdate();
 
 			if (dbStatus > 0) {
@@ -44,12 +45,12 @@ public class LinkManagement {
 	}
 
 	public String uploadApplicationLink(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, String meetLink) {
+			String subjectId, String meetLink,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query = "INSERT INTO `lab_application_link` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `link`, `createDate`, `updatedate`)"
-					+ " VALUES (?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO `lab_application_link` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `link`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(teacherId));
 			pstmt.setInt(2, Integer.parseInt(departmentId));
@@ -59,6 +60,7 @@ public class LinkManagement {
 			pstmt.setString(6, meetLink);
 			pstmt.setObject(7, new Date());
 			pstmt.setObject(8, new Date());
+			pstmt.setInt(9, Integer.parseInt(courseTypeId));
 
 			int dbStatus = pstmt.executeUpdate();
 
@@ -78,11 +80,11 @@ public class LinkManagement {
 	}
 	
 	public String getDailyClassLink(String teacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId) {
+			String fkSubjectId,String courseId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query = "Select `meetingLink` from `daily_class_link` where `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and fkTeacherId=? ORDER BY `updatedate` DESC LIMIT 1";
+			String query = "Select `meetingLink` from `daily_class_link` where `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and fkTeacherId=? and fkCourseTypeId=? ORDER BY `updatedate` DESC LIMIT 1";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
@@ -90,6 +92,7 @@ public class LinkManagement {
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
 			pstmt.setInt(5, Integer.parseInt(teacherId));
+			pstmt.setInt(6, Integer.parseInt(courseId));
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getString("meetingLink");
@@ -108,11 +111,11 @@ public class LinkManagement {
 		return result;
 	}
 	
-	public String getExamMeetingLink(Integer fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String teacherId ) {
+	public String getExamMeetingLink(Integer fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String teacherId,String courseTypeId ) {
 		String result=null;
 		Connection con=new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? ORDER BY `updatedate` DESC LIMIT 1";
+			String query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
 			
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setInt(1,fkExamType);
@@ -121,6 +124,8 @@ public class LinkManagement {
 			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			pstmt.setInt(5, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(6, Integer.parseInt(courseTypeId));
+
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result=rs.getString("examMeetingLink");
@@ -143,12 +148,12 @@ public class LinkManagement {
 		return result;
 	}
 	
-	public String uploadExamMeetingLink(String fkExamType,String fkTeacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String examLink ) {
+	public String uploadExamMeetingLink(String fkExamType,String fkTeacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String examLink,String courseTypeId ) {
 		String result=null;
 		Connection con=new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query="Insert INTO `exam_link` (`fkExamType`,`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `examMeetingLink`, `createDate`, `updatedate`)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?)";
+			String query="Insert INTO `exam_link` (`fkExamType`,`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `examMeetingLink`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setInt(1,Integer.parseInt(fkExamType));
@@ -160,11 +165,12 @@ public class LinkManagement {
 			pstmt.setString(7,examLink);
 			pstmt.setObject(8,new Date());
             pstmt.setObject(9,new Date());
-			
+			pstmt.setInt(10, Integer.parseInt(courseTypeId));
+
 			int dbStatus=pstmt.executeUpdate();
 			
 			if(dbStatus>0){
-			result="Exam Link is Updated Successfully";
+			result="Exam Link is Uploaded Successfully";
 			}
 			else{
 			result="Unable to upload Exam Link";
@@ -190,11 +196,11 @@ public class LinkManagement {
 	
 	
 	public String getApplicationLink(String teacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId) {
+			String fkSubjectId,String courseTypeId) {
 	String result=null;
 	Connection con=new DataBaseConnection().getDatabaseConnection();
 		try {
-        String query="Select `link` from lab_application_link where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=? order by `updatedate` DESC LIMIT 1";				
+        String query="Select `link` from lab_application_link where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=? and fkCourseTypeId=? order by `updatedate` DESC LIMIT 1";				
 			
 		    PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
@@ -202,6 +208,7 @@ public class LinkManagement {
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
 			pstmt.setInt(5, Integer.parseInt(teacherId));
+			pstmt.setInt(6, Integer.parseInt(courseTypeId));
 
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -214,12 +221,12 @@ public class LinkManagement {
 		return result;
 	}
 	
-	public String uploadSemExamMeetingLink(String fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId, String examLink ) {
+	public String uploadSemExamMeetingLink(String fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId, String examLink ,String courseTypeId) {
 		String result=null;
 		Connection con=new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query="Insert INTO `exam_link` (`fkExamType`,`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `examMeetingLink`, `createDate`, `updatedate`)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?)";
+			String query="Insert INTO `exam_link` (`fkExamType`,`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `examMeetingLink`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setInt(1,Integer.parseInt(fkExamType));
@@ -231,7 +238,8 @@ public class LinkManagement {
 			pstmt.setString(7,examLink);
 			pstmt.setObject(8,new Date());
             pstmt.setObject(9,new Date());
-			
+			pstmt.setInt(10, Integer.parseInt(courseTypeId));
+
 			int dbStatus=pstmt.executeUpdate();
 			
 			if(dbStatus>0){
@@ -258,19 +266,19 @@ public class LinkManagement {
 		return result;
 	}
 	
-	public String getSemExamMeetingLink(Integer fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId) {
+	public String getSemExamMeetingLink(Integer fkExamType,String fkDepartmentId, String fkSemesterId, String fkSectionId,String courseTypeId) {
 		String result=null;
 		Connection con=new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? ORDER BY `updatedate` DESC LIMIT 1";
+			String query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
 			
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setInt(1,fkExamType);
 			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
-			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
-			
+			pstmt.setInt(5, Integer.parseInt(courseTypeId));
+
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result=rs.getString("examMeetingLink");

@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -155,21 +156,42 @@ public class AdminLoginValidation {
 					int update=0;
 					
 					if(!recoveryEmail.trim().isEmpty()) {
+						
 						sb.append(columns[0]+"=?");
 						update++;
 					}
 					if(!recoveryMobileNumber.trim().isEmpty()) {
-						sb.append(","+columns[1]+"=?");
-						update++;
+                        if(update>0) {
+                        	sb.append(","+columns[1]+"=?");
+    						update++;
+						}else {
+							sb.append(columns[1]+"=?");
+							update++;
+						}
+						
 					}
 					if(!dob.trim().isEmpty()) {
-						sb.append(","+columns[2]+"=?");
-						update++;
+						 if(update>0) {
+							 sb.append(","+columns[2]+"=?");
+								update++;
+							}else {
+								sb.append(columns[2]+"=?");
+								update++;
+							}
+						
 					}
 					if(photo.getSize()!=0) {
-						sb.append(","+columns[3]+"=?");
-						update++;
+						 if(update>0) {
+							 sb.append(","+columns[3]+"=?");
+								update++;
+							}else {
+								sb.append(columns[3]+"=?");
+								update++;
+							}
+					
 					}
+					sb.append(",updateDate=?");
+					
 					
 					
 					if(update>0) {
@@ -194,9 +216,11 @@ public class AdminLoginValidation {
 						}
 						if(photo.getSize()!=0) {
 							pstmt.setBlob(count, photo.getInputStream());
-						
+						count++;
 						}
-					
+						pstmt.setObject(count, new Date());
+
+						
 						// Updating details
 						int updateStatus = pstmt.executeUpdate();
 						if (updateStatus > 0) {

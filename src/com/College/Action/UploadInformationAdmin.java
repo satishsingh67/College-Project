@@ -51,10 +51,32 @@ public class UploadInformationAdmin extends HttpServlet {
 			out.print(result);
 		} else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("popUp")) {
 
-			result = new updateInformation().fetchNotices();
+			result = new updateInformation().fetchPopUp();
 			out.print(result);
 		} else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("downloadNotices")) {
 			Map<String, Object> fileData =  new updateInformation().downloadNoticeFile(id);
+			if ((boolean) fileData.get("status")) {
+				String fileName = (String) fileData.get("fileName");
+				String fileExtension = (String) fileData.get("fileExtension");
+				InputStream inputStream = (InputStream) fileData.get("fileData");
+
+				response.setContentType("APPLICATION/OCTET-STREAM");
+				response.setHeader("Content-Disposition",
+						"attachment; filename=\"" + fileName + "." + fileExtension + "\"");
+
+				int in;
+				while ((in = inputStream.read()) != -1) {
+					out.write(in);
+				}
+				inputStream.close();
+			} else {
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Error while downloading file.Please try again.');");
+				out.println("</script>");
+			}
+
+		}else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("downloadPopUp")) {
+			Map<String, Object> fileData =  new updateInformation().downloadPopUpFile(id);
 			if ((boolean) fileData.get("status")) {
 				String fileName = (String) fileData.get("fileName");
 				String fileExtension = (String) fileData.get("fileExtension");

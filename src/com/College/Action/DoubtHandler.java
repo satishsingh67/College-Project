@@ -44,12 +44,13 @@ public class DoubtHandler extends HttpServlet {
 		String action1=request.getParameter("action1");
 		String teacherId=request.getParameter("teacherId");
 		String mentorId=request.getParameter("mentorId");
+		String courseTypeId=request.getParameter("courseTypeId");
 
 	    String result=null;
 	    PrintWriter out=response.getWriter();
 		if(action.trim().toLowerCase().equalsIgnoreCase("viewdoubt")) {
 			
-			result=new StudentDoubt().viewDoubt(action1,studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,teacherId,mentorId);
+			result=new StudentDoubt().viewDoubt(action1,studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,teacherId,mentorId,courseTypeId);
 			
 		}
 		else {
@@ -74,7 +75,10 @@ public class DoubtHandler extends HttpServlet {
 		String action = request.getParameter("action");
 		String teacherId=request.getParameter("teacherId");
 		String mentorId=request.getParameter("mentorId");
+		String courseTypeId=request.getParameter("courseTypeId");
 
+		
+		
 		String result=null;
 		PrintWriter out=response.getWriter();
 		if(action.trim().equalsIgnoreCase("askdoubt")) {
@@ -83,7 +87,7 @@ public class DoubtHandler extends HttpServlet {
 				out.append(result);
 			}
 			else {
-				String doubtSubmitStatus=new StudentDoubt().askDoubt(studentId.trim(), fkDepartmentId.trim(), fkSemesterId.trim(), fkSectionId.trim(), fkSubjectId.trim(), message.trim());
+				String doubtSubmitStatus=new StudentDoubt().askDoubt(studentId.trim(), fkDepartmentId.trim(), fkSemesterId.trim(), fkSectionId.trim(), fkSubjectId.trim(), message.trim(),courseTypeId);
 				
 				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
 					result="Your Doubt Submitted Succesfully";
@@ -101,7 +105,7 @@ public class DoubtHandler extends HttpServlet {
 				out.append(result);
 			}
 			else {
-				String doubtSubmitStatus=new StudentDoubt().askDoubtMentor(studentId.trim(), fkDepartmentId.trim(), fkSemesterId.trim(), fkSectionId.trim(), message.trim());
+				String doubtSubmitStatus=new StudentDoubt().askDoubtMentor(studentId.trim(), fkDepartmentId.trim(), fkSemesterId.trim(), fkSectionId.trim(), message.trim(),courseTypeId);
 				
 				if(doubtSubmitStatus.trim().equalsIgnoreCase("submitted")) {
 					result="Your Doubt Submitted Succesfully";

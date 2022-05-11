@@ -51,6 +51,9 @@ public class SubjectAllotmentMentor extends HttpServlet {
 		String semseter = request.getParameter("yearSemester");
 		String section = request.getParameter("section");
 		String studentsName = request.getParameter("studentsName");
+		String teacherName = request.getParameter("teacherName");
+
+		
 		String subjects = request.getParameter("subjects");
 		String action = request.getParameter("action");
 		String result = null;
@@ -59,8 +62,7 @@ public class SubjectAllotmentMentor extends HttpServlet {
 
 		
 		if(action.trim().equalsIgnoreCase("students")) {
-		String dataValidationResult = new DataValidation().subjectAllotStudentValidation(courseTypeId, departmentId,
-				semseter, section, studentsName, subjects);
+		String dataValidationResult = new DataValidation().subjectAllotStudentValidation( studentsName, subjects);
 
 		if (dataValidationResult.trim().equalsIgnoreCase("True")) {
 
@@ -71,13 +73,12 @@ public class SubjectAllotmentMentor extends HttpServlet {
 
 		}
 		}else if(action.trim().equalsIgnoreCase("teachers")) {
-			String dataValidationResult = new DataValidation().subjectAllotStudentValidation(courseTypeId, departmentId,
-					semseter, section, studentsName, subjects);
+			String dataValidationResult = new DataValidation().subjectAllotTeacherValidation(teacherName, subjects);
 
 			if (dataValidationResult.trim().equalsIgnoreCase("True")) {
 
 				result = new SubjectAllotmentDao().allotSubjectTeachers(courseTypeId, departmentId, semseter, section,
-						studentsName, subjects);
+						teacherName, subjects);
 			} else {
 				result = "Please Select " + dataValidationResult.trim();
 			}

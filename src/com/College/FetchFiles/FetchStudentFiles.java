@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 public class FetchStudentFiles {
 
 	public String FetchStudentAnswerScript(String examTypeId, String teacherId, String fkDepartmentId,
-			String fkSemesterId, String fkSectionId, String fkSubjectId) {
+			String fkSemesterId, String fkSectionId, String fkSubjectId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -25,7 +25,7 @@ public class FetchStudentFiles {
 					+ " INNER JOIN registration AS stud ON answ.fkStudentId=stud.pkRegistrationId "
 					+ " INNER JOIN department AS dept ON answ.fkDepartmentId=dept.pkDepartmentId "
 					+ " INNER JOIN exam_question_paper AS ques ON answ.fkQuestionPaperId=ques.pkExamQuestionPaperId "
-					+ "WHERE answ.fkDepartmentId=? AND answ.fkSemesterId=? AND answ.fkSectionId=? AND answ.fkSubjectId=? AND answ.fkExamType=? AND ques.fkTeacherId=?";
+					+ "WHERE answ.fkDepartmentId=? AND answ.fkSemesterId=? AND answ.fkSectionId=? AND answ.fkSubjectId=? AND answ.fkExamType=? AND ques.fkTeacherId=? AND answ.fkCourseTypeId=? AND ques.fkCourseTypeId=?";
 
 			pstmt = con.prepareStatement(query);
 
@@ -35,6 +35,8 @@ public class FetchStudentFiles {
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
 			pstmt.setInt(5, Integer.parseInt(examTypeId));
 			pstmt.setInt(6, Integer.parseInt(teacherId));
+			pstmt.setInt(7, Integer.parseInt(courseTypeId));
+			pstmt.setInt(8, Integer.parseInt(courseTypeId));
 			
 			ResultSet rs = pstmt.executeQuery();
 
@@ -77,7 +79,7 @@ public class FetchStudentFiles {
 		return result;
 	}
 	public String viewLabCopy(String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId, String action) {
+			String fkSubjectId, String action,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -88,7 +90,7 @@ public class FetchStudentFiles {
 				query = "Select lab.pkWeeklyLabExperimentId,lab.LabFileName,lab.updatedate,dept.shortName,lab.fkSemesterId,lab.fkSectionId,stud.studentName,stud.universityRollNo from weekly_lab_experiment AS lab "
 						+ " INNER JOIN registration AS stud ON lab.fkStudentId=stud.pkRegistrationId "
 						+ " INNER JOIN department AS dept ON lab.fkDepartmentId=dept.pkDepartmentId "
-						+ "where lab.fkDepartmentId=? and lab.fkSemesterId=? and lab.fkSectionId=? and lab.fkSubjectId=?";
+						+ "where lab.fkDepartmentId=? and lab.fkSemesterId=? and lab.fkSectionId=? and lab.fkSubjectId=? and lab.fkCourseTypeId=?";
 
 			}
 			if (!action.isEmpty() && action.trim().equalsIgnoreCase("viewweeklylaboutput")) {
@@ -96,7 +98,7 @@ public class FetchStudentFiles {
 				query = "Select lab.pkWeeklyLabOutputId,lab.outputFileName,lab.updatedate,dept.shortName,lab.fkSemesterId,lab.fkSectionId,stud.studentName,stud.universityRollNo from weekly_lab_output AS lab "
 						+ " INNER JOIN registration AS stud ON lab.fkStudentId=stud.pkRegistrationId "
 						+ " INNER JOIN department AS dept ON lab.fkDepartmentId=dept.pkDepartmentId "
-						+ "where lab.fkDepartmentId=? and lab.fkSemesterId=? and lab.fkSectionId=? and lab.fkSubjectId=?";
+						+ "where lab.fkDepartmentId=? and lab.fkSemesterId=? and lab.fkSectionId=? and lab.fkSubjectId=? and lab.fkCourseTypeId=?";
 			}
 
 			if (!action.isEmpty() && action.trim().equalsIgnoreCase("finalLabCopy")) {
@@ -104,7 +106,7 @@ public class FetchStudentFiles {
 				query = "Select lab.pkFinalLabCopyId,lab.LabFileName,lab.updatedate,dept.shortName,lab.fkSemesterId,lab.fkSectionId,stud.studentName,stud.universityRollNo from final_lab_copy AS lab "
 						+ " INNER JOIN registration AS stud ON lab.fkStudentId=stud.pkRegistrationId "
 						+ " INNER JOIN department AS dept ON lab.fkDepartmentId=dept.pkDepartmentId "
-						+ "where lab.fkDepartmentId=? and lab.fkSemesterId=? and lab.fkSectionId=? and lab.fkSubjectId=?";
+						+ "where lab.fkDepartmentId=? and lab.fkSemesterId=? and lab.fkSectionId=? and lab.fkSubjectId=? and lab.fkCourseTypeId=?";
 			}
 			
 			
@@ -114,6 +116,8 @@ public class FetchStudentFiles {
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, Integer.parseInt(courseTypeId));
+
 			ResultSet rs = pstmt.executeQuery();
 
 			int count=0;
@@ -157,7 +161,7 @@ public class FetchStudentFiles {
 	}
 	
 	public String FetchStudentAssignment(String teacherId, String fkDepartmentId,
-			String fkSemesterId, String fkSectionId, String fkSubjectId) {
+			String fkSemesterId, String fkSectionId, String fkSubjectId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -168,7 +172,7 @@ public class FetchStudentFiles {
 					+ " INNER JOIN registration AS stud ON asign.fkStudentId=stud.pkRegistrationId "
 					+ " INNER JOIN department AS dept ON asign.fkDepartmentId=dept.pkDepartmentId "
 					+ " INNER JOIN assignment AS ques ON asign.fkAssignmentId=ques.pkAssignmentId "
-					+ "WHERE asign.fkDepartmentId=? AND asign.fkSemesterId=? AND asign.fkSectionId=? AND asign.fkSubjectId=? AND ques.fkTeacherId=? AND ques.fkDepartmentId=? AND ques.fkSemesterId=? AND ques.fkSectionId=? AND ques.fkSubjectid=?";
+					+ "WHERE asign.fkDepartmentId=? AND asign.fkSemesterId=? AND asign.fkSectionId=? AND asign.fkSubjectId=? AND ques.fkTeacherId=? AND ques.fkDepartmentId=? AND ques.fkSemesterId=? AND ques.fkSectionId=? AND ques.fkSubjectid=? AND asign.fkCourseTypeId=? AND ques.fkCourseTypeId=?";
 
 			pstmt = con.prepareStatement(query);
 
@@ -181,6 +185,8 @@ public class FetchStudentFiles {
 			pstmt.setInt(7, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(8, Integer.parseInt(fkSectionId));
 			pstmt.setInt(9, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(10, Integer.parseInt(courseTypeId));
+			pstmt.setInt(11, Integer.parseInt(courseTypeId));
 
 			ResultSet rs = pstmt.executeQuery();
 

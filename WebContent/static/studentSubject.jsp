@@ -16,25 +16,29 @@ Integer studentId=student.getPkRegistrationId();
 Integer departmentId= student.getFkdepartment();
 Integer sectionId=student.getSection();
 Integer semesterId=student.getSemester();
+Integer courseTypeId=student.getCourseTypeId();
+
+
+
 String subjectId=request.getParameter("subjectId");
 String subjectName=request.getParameter("subjectName");
 String subjectcode=request.getParameter("subjectCode");
 MapStudentSubjectDao mapStudentSubjectDaoObj=new MapStudentSubjectDao();
-Integer notesCount=mapStudentSubjectDaoObj.getTotalNotes(departmentId, semesterId, sectionId, Integer.parseInt(subjectId)) ;
-Integer suggestionCount=mapStudentSubjectDaoObj.getTotalSuggestion(departmentId, semesterId, sectionId, Integer.parseInt(subjectId));
-Integer questionBankCount=mapStudentSubjectDaoObj.getTotalQuestionBank(departmentId, semesterId, sectionId, Integer.parseInt(subjectId));
+Integer notesCount=mapStudentSubjectDaoObj.getTotalNotes(departmentId, semesterId, sectionId, Integer.parseInt(subjectId),courseTypeId) ;
+Integer suggestionCount=mapStudentSubjectDaoObj.getTotalSuggestion(departmentId, semesterId, sectionId, Integer.parseInt(subjectId),courseTypeId);
+Integer questionBankCount=mapStudentSubjectDaoObj.getTotalQuestionBank(departmentId, semesterId, sectionId, Integer.parseInt(subjectId),courseTypeId);
 
 //Meeting links
 MettingLinks mettingLinks=new MettingLinks();
-String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-String unitTest1Link=mettingLinks.getExamMeetingLink(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-String unitTest2Link=mettingLinks.getExamMeetingLink(2,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
+String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+String unitTest1Link=mettingLinks.getExamMeetingLink(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+String unitTest2Link=mettingLinks.getExamMeetingLink(2,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 
 //Exam Paper
-Map<String,Object> unitTest1PaperStatus =new ExamPaper().getExamPaperActiveStatus(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-Map<String,Object> unitTest2PaperStatus =new ExamPaper().getExamPaperActiveStatus(2,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-Map<String,Object> semPaperStatus =new ExamPaper().getExamPaperActiveStatus(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
+Map<String,Object> unitTest1PaperStatus =new ExamPaper().getExamPaperActiveStatus(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+Map<String,Object> unitTest2PaperStatus =new ExamPaper().getExamPaperActiveStatus(2,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+Map<String,Object> semPaperStatus =new ExamPaper().getExamPaperActiveStatus(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 
 //Answer Script
 
@@ -49,6 +53,7 @@ unitTest2AnswerSubmissionStatus.put("status", false);
 semExamAnswerSubmissionStatus.put("status", false);
 
 if((boolean)unitTest1PaperStatus.get("status")){
+
 	unitTest1AnswerSubmissionStatus =answerScriptObj.checkAnswerScriptSubmissionStatus(String.valueOf(unitTest1PaperStatus.get("pkQuestionPaperId")),"1");
 }
 
@@ -70,18 +75,23 @@ unitTest1AnswerScriptCheckForDownload.put("status",false);
 unitTest2AnswerScriptCheckForDownload.put("status",false);
 semExamAnswerScriptCheckForDownload.put("status",false);
 
+Map<String,Object> unitTest1PaperStatus1 =new ExamPaper().getExamPaperActiveStatus1(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+Map<String,Object> unitTest2PaperStatus1 =new ExamPaper().getExamPaperActiveStatus1(2,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+Map<String,Object> semPaperStatus1 =new ExamPaper().getExamPaperActiveStatus1(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 
-if((boolean)unitTest1PaperStatus.get("status")){
-	unitTest1AnswerScriptCheckForDownload =answerScriptObj.checkAnswerScriptAvailableForDownload(String.valueOf(unitTest1PaperStatus.get("pkQuestionPaperId")), "1", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
+
+
+//checking file is present or not for download
+if((boolean)unitTest1PaperStatus1.get("status")){
+unitTest1AnswerScriptCheckForDownload =answerScriptObj.checkAnswerScriptAvailableForDownload(String.valueOf(unitTest1PaperStatus1.get("pkQuestionPaperId")), "1", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+}
+if((boolean)unitTest2PaperStatus1.get("status")){
+	unitTest2AnswerScriptCheckForDownload =answerScriptObj.checkAnswerScriptAvailableForDownload(String.valueOf(unitTest2PaperStatus1.get("pkQuestionPaperId")), "2", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+}
+if((boolean)semPaperStatus1.get("status")){
+	semExamAnswerScriptCheckForDownload =answerScriptObj.checkAnswerScriptAvailableForDownload(String.valueOf(semPaperStatus1.get("pkQuestionPaperId")), "3", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 }
 
-if((boolean)unitTest2PaperStatus.get("status")){
-	unitTest2AnswerScriptCheckForDownload =answerScriptObj.checkAnswerScriptAvailableForDownload(String.valueOf(unitTest2PaperStatus.get("pkQuestionPaperId")), "2", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-}
-
-if((boolean)semPaperStatus.get("status")){
-	semExamAnswerScriptCheckForDownload =answerScriptObj.checkAnswerScriptAvailableForDownload(String.valueOf(semPaperStatus.get("pkQuestionPaperId")), "3", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-}
 
 
 
@@ -794,10 +804,13 @@ if((boolean)semPaperStatus.get("status")){
   var sectionId=<%=sectionId%>;
   var semesterId=<%=semesterId %>;
   var subjectId=<%=subjectId %>;
+  var courseTypeId=<%=courseTypeId%>;
+  
+  
   $(document).ready(function () {
 	  let dataPerPage=5,pageNo=1;
 	  var total;
-	  var url="StudentSubjectAssignmentPagination.jsp?requestType=countRecords"+"&"+"studentId="+studentId+"&"+"departmentId="+departmentId+"&"+"sectionId="+sectionId+"&"+"semesterId="+semesterId+"&"+"subjectId="+subjectId;
+	  var url="StudentSubjectAssignmentPagination.jsp?requestType=countRecords"+"&"+"studentId="+studentId+"&"+"departmentId="+departmentId+"&"+"sectionId="+sectionId+"&"+"semesterId="+semesterId+"&"+"subjectId="+subjectId+"&courseTypeId="+courseTypeId;
 	  $.ajax({
 	      type: "GET",
 	      url: url,
@@ -945,7 +958,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 		}
 	  
 	 function fetchAssignment(start,limit){
-		  var url1="StudentSubjectAssignmentPagination.jsp?requestType=getRecords"+"&"+"studentId="+studentId+"&"+"departmentId="+departmentId+"&"+"sectionId="+sectionId+"&"+"semesterId="+semesterId+"&"+"subjectId="+subjectId+"&"+"start="+start+"&"+"limit="+limit;
+		  var url1="StudentSubjectAssignmentPagination.jsp?requestType=getRecords"+"&"+"studentId="+studentId+"&"+"departmentId="+departmentId+"&"+"sectionId="+sectionId+"&"+"semesterId="+semesterId+"&"+"subjectId="+subjectId+"&"+"start="+start+"&"+"limit="+limit+"&courseTypeId="+courseTypeId;
 
 		  $.ajax({
 		      type: "GET",
@@ -1017,7 +1030,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 	  function fetchStudentMaterial(action){
 		  $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/view?action="+action+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId,
+		      url:"/College_Final_Year_Project/view?action="+action+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#notesBody').empty();
@@ -1059,6 +1072,9 @@ let sub=((rem!=0)?rem:dataPerPage);
      	data.append("semesterId",semesterId);    
      	data.append("sectionId",sectionId);
     	data.append("subjectId",subjectId);
+    	data.append("courseTypeId",courseTypeId);
+
+    	
      	   $.ajax({
  		      type: "POST",
  		      enctype: 'multipart/form-data',
@@ -1096,7 +1112,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 	       $('#viewDoubt').prop("disabled", true);  
 	    	 $.ajax({
 			      type: "GET",
-			      url:"/College_Final_Year_Project/doubt?action=viewDoubt&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId,
+			      url:"/College_Final_Year_Project/doubt?action=viewDoubt&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId+"&courseTypeId="+courseTypeId,
 			      success: function (data, textStatus, jqXHR) {
 			    	  var JsonData= jQuery.parseJSON(data);
 			    	  $('#doubtBody').empty();
@@ -1181,6 +1197,10 @@ let sub=((rem!=0)?rem:dataPerPage);
       	  form_data.append("sectionId",sectionId);
       	  form_data.append("subjectId",subjectId); 
       	 form_data.append("action","answerScriptSubmit"); 
+      	 form_data.append("courseTypeId",courseTypeId); 
+
+      	 
+      	 
       	  $.ajax({
       		  type: "POST",
                 enctype: 'multipart/form-data',

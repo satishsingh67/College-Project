@@ -48,8 +48,9 @@ public class ViewVariables {
     private Integer percentageAttendance;
 	private String present;
 	private String absent;
-	
-	
+	private String recoverMobileNumber;
+    private Integer isAccountUpdationAllowed;
+	private String dob;
 	
 	public Integer getPkId() {
 		return pkId;
@@ -401,6 +402,30 @@ public class ViewVariables {
 
 	public void setAbsent(String absent) {
 		this.absent = absent;
+	}
+
+	public String getRecoverMobileNumber() {
+		return recoverMobileNumber;
+	}
+
+	public void setRecoverMobileNumber(String recoverMobileNumber) {
+		this.recoverMobileNumber = recoverMobileNumber;
+	}
+
+	public Integer getIsAccountUpdationAllowed() {
+		return isAccountUpdationAllowed;
+	}
+
+	public void setIsAccountUpdationAllowed(Integer isAccountUpdationAllowed) {
+		this.isAccountUpdationAllowed = isAccountUpdationAllowed;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	

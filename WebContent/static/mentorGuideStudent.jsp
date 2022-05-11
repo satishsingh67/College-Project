@@ -16,7 +16,8 @@ String courseType=request.getParameter("courseType");
 String year=request.getParameter("year");
 String courseName=request.getParameter("courseName");
 
-String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, year, sectionId);
+String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, year, sectionId,courseType);
+
 
 
 %>
@@ -24,7 +25,6 @@ String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,8 +41,7 @@ String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, 
      <script src="./lib/jquery.min.js"></script>
    <script src="./lib/sweetalert.min.js"></script> 
    
-   
-   
+
    
     <style>
   .loader2 {
@@ -194,11 +193,11 @@ String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, 
     .modal-contentViewQuestionPaper1 {
       background-color: #fefefe;
       margin: auto;
-      margin-top: 5%;
+      margin-top: 3%;
       padding: 20px;
       border: 1px solid skyblue;
       width: 65%;
-      height: 85%;
+      height: 90%;
     }
     
         .modalViewQuestionPaper2 {
@@ -303,6 +302,74 @@ String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, 
       height: 30%;
     } 
    
+             .modalViewQuestionPaper5 {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+     
+    }
+ /* Modal Content */
+    .modal-contentViewQuestionPaper5 {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 5%;
+      padding: 20px;
+      border: 1px solid skyblue;
+      width: 48%;
+      height: 65%;
+    } 
+     
+            .modalViewQuestionPaper6 {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+     
+    }
+ /* Modal Content */
+    .modal-contentViewQuestionPaper6 {
+     background-color: #fefefe;
+      margin: auto;
+      margin-top: 5%;
+      padding: 20px;
+      border: 1px solid skyblue;
+      width: 48%;
+      height: 65%;
+    }  
+    
     
         /*  import google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
@@ -1540,6 +1607,120 @@ footer span a:hover{
 <!-- View Question Paper Modal end -->   
   
    
+  
+         <!-- The  Question Paper Modal -->
+<div class="modalViewQuestionPaper5"  id="myModalQuestionPaper5">
+    <div class="modal-contentViewQuestionPaper5">
+
+      <!-- Modal Header -->
+     
+        <h4  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Allot Subject For Teacher</h4>
+     
+
+      <!-- Modal body -->
+      <div class="modal-body" style="margin-top:10px;text-align: center;">
+ 
+ <div style="height:300px;width:300px;overflow-y: auto;">
+       <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Teachers List</h5>
+        <table class="table">
+         <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
+        <th style="text-align: center;">Name</th>
+        
+    </thead>
+            <tbody id="doubtTableBody">
+          
+            </tbody>
+          </table>
+          </div>
+          
+ <div style="height:300px;width:300px;margin-left:350px;margin-top:-300px;overflow-y: auto;">
+  <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Subject List</h5>
+      
+        <table class="table" >
+         <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
+        <th style="text-align: center;">Name</th>
+        
+    </thead>
+            <tbody id="doubtTableBody">
+          
+            </tbody>
+          </table>
+          </div>
+ 
+ 
+  </div>
+<br>
+<div style="text-align:center;">
+
+                 <button  id="submitTeacherSubjectList5" style="background-color: skyblue; width: 70px;height:40px;font-size: 15px;">Submit</button>
+    
+             <button  id="closeQuestionPaperModel5" style="background-color: red; width: 70px;height:40px;font-size: 15px;margin-left:15px;">Cancel</button>
+
+</div>
+    </div>
+</div>
+<!-- View Question Paper Modal end -->   
+  
+     
+         <!-- The  Question Paper Modal -->
+<div class="modalViewQuestionPaper6"  id="myModalQuestionPaper6">
+    <div class="modal-contentViewQuestionPaper6">
+
+      <!-- Modal Header -->
+     
+        <h4  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Allot Subject For Student</h4>
+     
+
+      <!-- Modal body -->
+      <div class="modal-body" style="margin-top:10px;text-align: center;">
+ 
+ <div style="height:300px;width:300px;overflow-y: auto;">
+       <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Teachers List</h5>
+        <table class="table">
+         <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
+        <th style="text-align: center;">Name</th>
+        
+    </thead>
+            <tbody id="doubtTableBody">
+          
+            </tbody>
+          </table>
+          </div>
+          
+ <div style="height:300px;width:300px;margin-left:350px;margin-top:-300px;overflow-y: auto;">
+  <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Subject List</h5>
+      
+        <table class="table" >
+         <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
+        <th style="text-align: center;">Name</th>
+        
+    </thead>
+            <tbody id="doubtTableBody">
+          
+            </tbody>
+          </table>
+          </div>
+ 
+ 
+  </div>
+<br>
+<div style="text-align:center;">
+
+                 <button  id="submitTeacherSubjectList6" style="background-color: skyblue; width: 70px;height:40px;font-size: 15px;">Submit</button>
+    
+             <button  id="closeQuestionPaperModel6" style="background-color: red; width: 70px;height:40px;font-size: 15px;margin-left:15px;">Cancel</button>
+
+</div>
+    </div>
+</div>
+<!-- View Question Paper Modal end -->   
+  
+   
+   
    
               <!-- Loader Modal Start -->
    <div id="myModal" class="modal">
@@ -1651,6 +1832,13 @@ footer span a:hover{
     </script>
   
   <script>
+
+	
+</script>
+  
+  
+  
+  <script>
   
   var departmentId=<%=departmentId%>;
   var sectionId=<%=sectionId%>;
@@ -1745,7 +1933,7 @@ $('#myLoader1').show();
   function fetchStudentDoubt(){
 		 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/solveDoubt?action=mentorDoubt&departmentId="+departmentId+"&semesterId="+year+"&sectionId="+sectionId,
+		      url:"/College_Final_Year_Project/solveDoubt?action=mentorDoubt&departmentId="+departmentId+"&semesterId="+year+"&sectionId="+sectionId+"&courseTypeId="+courseType,
 		      success: function (data, textStatus, jqXHR) {
 		    	  $('#myLoader1').hide();
 
@@ -1945,7 +2133,7 @@ function examLink(buttonId,filedId,LinkFieldId,examType){
 	  $.ajax({
 		  type: "POST",
           url: "/College_Final_Year_Project/teacherLink", 
-          data:{action:'semExamLink',examType:examType,departmentId:departmentId,semseter:year,section:sectionId,meetingLink:meetingLink},
+          data:{action:'semExamLink',examType:examType,departmentId:departmentId,semseter:year,section:sectionId,meetingLink:meetingLink,courseTypeId:courseType},
           success: function(data,textStatus,jqXHR){
         	  $(".loader1").hide();
               $('#myModal').hide();
@@ -2014,7 +2202,7 @@ function uploadfiles(buttonId,fileId,action){
 	        	  form_data.append("departmentId",departmentId);
 	        	  form_data.append("semesterId",year);
 	        	  form_data.append("sectionId",sectionId);
-	        	  
+
 	        	  $.ajax({
 	        		  type: "POST",
 	                  enctype: 'multipart/form-data',

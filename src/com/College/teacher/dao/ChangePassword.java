@@ -68,18 +68,39 @@ public class ChangePassword {
 						update++;
 					}
 					if(!recoveryMobileNumber.trim().isEmpty()) {
-						sb.append(","+columns[1]+"=?");
-						update++;
+						 if(update>0) {
+	                        	sb.append(","+columns[1]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[1]+"=?");
+								update++;
+							}
+						
 					}
 					if(!dob.trim().isEmpty()) {
-						sb.append(","+columns[2]+"=?");
-						update++;
+						 if(update>0) {
+	                        	sb.append(","+columns[2]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[2]+"=?");
+								update++;
+							}
+						
 					}
 					if(photo.getSize()!=0) {
-						sb.append(","+columns[3]+"=?");
-						update++;
+						
+						 if(update>0) {
+	                        	sb.append(","+columns[3]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[3]+"=?");
+								update++;
+							}
+						
+						
 					}
-					
+					sb.append(",updateDate=?");
+
 					
 					if(update>0) {
 						sb.append(" where pkTeacherId="+Integer.parseInt(teacherId));
@@ -103,8 +124,9 @@ public class ChangePassword {
 						}
 						if(photo.getSize()!=0) {
 							pstmt.setBlob(count, photo.getInputStream());
-						
+						count++;
 						}
+						pstmt.setObject(count, new Date());
 					
 						// Updating details
 						int updateStatus = pstmt.executeUpdate();
@@ -187,21 +209,48 @@ public class ChangePassword {
 						update++;
 					}
 					if(!recoveryMobileNumber.trim().isEmpty()) {
-						sb.append(","+columns[1]+"=?");
-						update++;
+						 if(update>0) {
+	                        	sb.append(","+columns[1]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[1]+"=?");
+								update++;
+							}
+						
 					}
 					if(!dob.trim().isEmpty()) {
-						sb.append(","+columns[2]+"=?");
-						update++;
+						
+						 if(update>0) {
+	                        	sb.append(","+columns[2]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[2]+"=?");
+								update++;
+							}
+						
 					}
 					if(photo.getSize()!=0) {
-						sb.append(","+columns[3]+"=?");
-						update++;
+						 if(update>0) {
+	                        	sb.append(","+columns[3]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[3]+"=?");
+								update++;
+							}
+						
 					}
 					if(!existingPhoneNumber.trim().isEmpty()) {
-						sb.append(","+columns[4]+"=?");
-						update++;
+						 if(update>0) {
+	                        	sb.append(","+columns[4]+"=?");
+	    						update++;
+							}else {
+								sb.append(columns[4]+"=?");
+								update++;
+							}
+					
 					}
+					sb.append(",updateDate=? ");
+					
 					
 					if(update>0) {
 						sb.append(" where pkMentorResgistrationId="+Integer.parseInt(mentorId));
@@ -229,7 +278,10 @@ public class ChangePassword {
 						}
 						if(!existingPhoneNumber.trim().isEmpty()) {
 							pstmt.setString(count, existingPhoneNumber);
+							count++;
 						}
+						
+						pstmt.setObject(count, new Date());
 						// Updating details
 						int updateStatus = pstmt.executeUpdate();
 						if (updateStatus > 0) {

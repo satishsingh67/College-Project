@@ -55,6 +55,150 @@ subjectList=new SubjectAllotmentDao().fetchSubjectList(courseType, departmentId,
  
  
     <style>
+    .heading span {
+  color: #2597f4;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  background: #fff;
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  color: #334;
+  border: 0.2rem solid #334;
+}
+
+.btn:hover {
+  background: #2597f4;
+  border-color: #2597f4;
+  color: #fff;
+}
+
+.header .contact-info {
+  padding: 2rem 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: #39b32e;
+}
+
+.header .contact-info p {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.header .contact-info p i {
+  padding-right: 0.5rem;
+  color: yellow;
+}
+
+.header .navbar {
+  padding: 2rem 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: rgb(25, 122, 167);
+  border-bottom: 0.2rem solid #334;
+  position: relative;
+  z-index: 1000;
+}
+
+.header .navbar.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: none;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.header .navbar .logo {
+  width: 130px;
+  height: 60px;
+}
+
+.header .navbar .logo i {
+  color: #2597f4;
+}
+
+.header .navbar .links a {
+  margin-left: 2rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: rgb(254, 254, 255);
+}
+
+.header .navbar .links a:hover {
+  text-decoration: underline;
+  color: #eefa41;
+}
+
+.header #menu-btn {
+  font-size: 3rem;
+  cursor: pointer;
+  color: #334;
+  display: none;
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.home .image {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+}
+
+.home .image img {
+  width: 50%;
+}
+
+.home .content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+}
+
+.home .content h3 {
+  font-size: 4rem;
+  text-transform: capitalize;
+  color: #334;
+}
+
+.home .content p {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #777;
+  padding: 1rem 0;
+}
+section {
+  padding: 5rem 10%;
+}
     
         #customers {
       font-family: Arial, Helvetica, sans-serif;
@@ -145,16 +289,26 @@ subjectList=new SubjectAllotmentDao().fetchSubjectList(courseType, departmentId,
     <title>Student Subject Allotment </title>
 </head>
 <body>
+
+<header class="header">
+    <nav class="navbar">
+ 
+       <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
+        <p style="color:white;font-size:22px;margin-left:40px;">GURU NANAK INSTITUTE OF TECHNOLOGY</p>
+       
+       <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+       <div id="menu-btn" class="fa fa-bars"></div>
+ 
+    </nav>
+ 
+ </header>
    <form id="allotForm">
         <table id="customers">
           <thead >
            
             <th style="text-align: center;">Student Name</th>
             <th style="text-align: center;">Subject</th>
-            <th style="text-align: center;">Course </th>
-            <th style="text-align: center;">Department</th>
-            <th style="text-align: center;">Semester</th>
-            <th style="text-align: center;">Section</th>
+           
             <th style="text-align: center;">Allot</th>
             
           </thead>
@@ -217,55 +371,8 @@ subjectList=new SubjectAllotmentDao().fetchSubjectList(courseType, departmentId,
    
   </select>
       </td>
-    <td>
-    <select class="text1" name="course"  id="1ddselect">
-               <option>--Select--</option>
-               <option value="1">B.Tech</option>
-               <option value="2">M.Tech</option>
-               <option value="3">BCA</option>
-               <option value="4">MCA</option>
-               <option value="5">Diploma</option>
-               <option value="6">BHM</option>
-    
-           </select>
-      </td>
-      <td>
-      <select class="text1" name="department"  id="ddselect">
-                 <option>--Select--</option>
-                 <option value="1">CSE</option>
-                 <option value="2">ECE</option>
-                 <option value="3">IT</option>
-                 <option value="4">EE</option>
-                 <option value="5">AEIE</option>
-                 <option value="6">FT</option>
-                 <option value="7">BHM</option>
-                 <option value="8">ASHU</option>
-                 <option value="9">BCA</option>
-               
-                 <option>Cyber scurity</option>
-                 <option>Data Science</option>
-             </select>
-      </td>
-      <td>
-     <select class="text1" name="yearSemester"  id="1ddselect">
-               <option>--Select--</option>
-               <option value="1">1st Year,1st Semester</option>
-               <option value="2">1st Year,2nd Semester</option>
-               <option value="3">2nd Year,3rd Semester</option>
-               <option value="4">2nd Year,4th Semester</option>
-               <option value="5">3rd Year,5th Semester</option>
-               <option value="6">3rd Year,6th Semester</option>
-               <option value="7">4th Year,7th Semester</option>
-               <option value="8">4th Year,8th Semester</option>
-           </select>
-      </td>
-      <td>
-     <select class="text1" name="section"  id="ddselect">
-                           <option>--Select--</option>
-                           <option value="1">Section-1</option>
-                           <option value="2">Section-2</option>
-                       </select>
-      </td>
+   
+   
       <td><button class="view-btn" id="allotButton">Allot</button></td>
      
           </tr>
@@ -335,11 +442,15 @@ $('#subjectDropDown').multiselect({
 		var subjects=$('#subjectDropDown').val();
 		
 		
-		   var form = $('#allotForm')[0];
-		 	  var form_data = new FormData(form); 
+		 	  var form_data = new FormData(); 
 		 	 form_data.append("studentsName",studentsName);
 		 	form_data.append("subjects",subjects);
 		 	form_data.append("action","students");
+		 	form_data.append("department",departmentId);
+		 	form_data.append("section",sectionId);
+		 	form_data.append("course",courseType);
+		 	form_data.append("yearSemester",year);
+		 	
 		 $.ajax({
 			  type: "POST",
               enctype: 'multipart/form-data',

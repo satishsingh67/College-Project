@@ -223,12 +223,41 @@ public class FetchDropDownsDao {
 
 		return result;
 	}
+	public static String  fetchTeacherDesigantionDropDown() {
 
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+		try {
+		String	query = "Select pkTeacherDesignationId,designation from teacher_designation ORDER BY pkTeacherDesignationId";
+
+		Statement stmt = con.createStatement();
+		ResultSet	rs = stmt.executeQuery(query);
+
+		List<ViewVariables>	dropDownList = new ArrayList<ViewVariables>();
+			while (rs.next()) {
+
+				ViewVariables viewVariablesObj = new ViewVariables();
+
+				viewVariablesObj.setPkId(rs.getInt(1));
+				viewVariablesObj.setName(rs.getString(2));
+
+				dropDownList.add(viewVariablesObj);
+			}
+	
+			Gson json = new Gson();
+			result = json.toJson(dropDownList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
 	public static void main(String[] args) {
-		System.out.println(fetchDepartmentDropDown());
-		System.out.println(fetchCourseTypeDropDown());
-		System.out.println(fetchSemesterDropDown());
-		System.out.println(fetchSectionDropDown());
+		
+		System.out.println(fetchTeacherDesigantionDropDown());
 	}
 
 }

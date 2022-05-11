@@ -13,11 +13,11 @@ import com.college.dataBaseConnection.DataBaseConnection;
 public class ExamPaper {
 
 	public Map<String, Object> getExamPaperActiveStatus(Integer fkExamType, String fkDepartmentId, String fkSemesterId,
-			String fkSectionId, String fkSubjectId) {
+			String fkSectionId, String fkSubjectId,Integer courseTypeId) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query = "Select count(*),pkExamQuestionPaperId from `exam_question_paper` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `isActive`=? ORDER BY `updatedate` DESC LIMIT 1";
+			String query = "Select count(*),pkExamQuestionPaperId from `exam_question_paper` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `isActive`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, fkExamType);
@@ -26,6 +26,8 @@ public class ExamPaper {
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			pstmt.setInt(5, Integer.parseInt(fkSubjectId));
 			pstmt.setInt(6, 1);
+			pstmt.setInt(7, courseTypeId);
+			
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			if (rs.getInt(1) > 0) {
@@ -48,6 +50,45 @@ public class ExamPaper {
 		return result;
 	}
 
+	public Map<String, Object> getExamPaperActiveStatus1(Integer fkExamType, String fkDepartmentId, String fkSemesterId,
+			String fkSectionId, String fkSubjectId,Integer courseTypeId) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		try {
+			String query = "Select count(*),pkExamQuestionPaperId from `exam_question_paper` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, fkExamType);
+			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
+			pstmt.setInt(4, Integer.parseInt(fkSectionId));
+			pstmt.setInt(5, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(6, courseTypeId);
+			
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			if (rs.getInt(1) > 0) {
+				result.put("status", true);
+				result.put("pkQuestionPaperId", rs.getInt(2));
+			} else {
+				result.put("status", false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	
+	
 	public Map<String, Object> downloadExamPaper(String id) {
 		Map<String, Object> examQuestionData = new HashMap<String, Object>();
 		Connection con = new DataBaseConnection().getDatabaseConnection();
@@ -91,10 +132,5 @@ public class ExamPaper {
 		return examQuestionData;
 	}
 
-	public static void main(String[] args) {
-		Map<String, Object> result = new ExamPaper().getExamPaperActiveStatus(2, "1", "4", "1", "10");
-
-		System.out.println(result.get("status"));
-
-	}
+	
 }

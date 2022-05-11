@@ -14,12 +14,12 @@ import com.google.gson.Gson;
 public class StudentDoubt {
 
 	public String askDoubt(String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId, String message) {
+			String fkSubjectId, String message,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
-			String query = "Insert into view_doubts (`fkTeacherId`, `fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `question`, `createDate`) "
-					+ "     values(?,?,?,?,?,?,?,?)";
+			String query = "Insert into view_doubts (`fkTeacherId`, `fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `question`, `createDate`,`fkCourseTypeId`) "
+					+ "     values(?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, 0);
@@ -30,6 +30,7 @@ public class StudentDoubt {
 			pstmt.setInt(6, Integer.parseInt(fkSubjectId));
 			pstmt.setString(7, message);
 			pstmt.setObject(8, new Date());
+			pstmt.setInt(9, Integer.parseInt(courseTypeId));
 
 			int dbStatus = pstmt.executeUpdate();
 			if (dbStatus > 0) {
@@ -55,19 +56,21 @@ public class StudentDoubt {
 	}
 
 	public String viewDoubt(String action,String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId,String teacherId,String mentorId) {
+			String fkSubjectId,String teacherId,String mentorId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
 			String query=null;
 			PreparedStatement pstmt=null;
 			if(action !=null && action.trim().equalsIgnoreCase("mentorDoubt")) {
-			query = "Select `question`,`answer`,`createDate`,`updateDate` from view_doubts_mentor where `fkStudentId`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=?";
+			query = "Select `question`,`answer`,`createDate`,`updateDate` from view_doubts_mentor where `fkStudentId`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkCourseTypeId`=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(studentId));
 			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
+			pstmt.setInt(5, Integer.parseInt(courseTypeId));
+
 			}
 			
 			else if(action !=null && action.trim().equalsIgnoreCase("adminDoubt")) {
@@ -82,13 +85,15 @@ public class StudentDoubt {
 				}
 			
 			else {
-			 query = "Select `question`,`answer`,`createDate`,`updateDate` from view_doubts where `fkStudentId`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=?";
+			 query = "Select `question`,`answer`,`createDate`,`updateDate` from view_doubts where `fkStudentId`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=?";
 			    pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(studentId));
 				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
 				pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 				pstmt.setInt(4, Integer.parseInt(fkSectionId));
 				pstmt.setInt(5, Integer.parseInt(fkSubjectId));
+				pstmt.setInt(6, Integer.parseInt(courseTypeId));
+
 			}
 
 			ResultSet rs = pstmt.executeQuery();
@@ -126,12 +131,12 @@ public class StudentDoubt {
 	}
 
 	public String askDoubtMentor(String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			 String message) {
+			 String message,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
-			String query = "Insert into view_doubts_mentor (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`,`question`, `createDate`) "
-					+ "     values(?,?,?,?,?,?)";
+			String query = "Insert into view_doubts_mentor (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`,`question`, `createDate`,`fkCourseTypeId`) "
+					+ "     values(?,?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
@@ -141,7 +146,10 @@ public class StudentDoubt {
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			pstmt.setString(5, message);
 			pstmt.setObject(6, new Date());
+			pstmt.setInt(7, Integer.parseInt(courseTypeId));
 
+			
+			
 			int dbStatus = pstmt.executeUpdate();
 			if (dbStatus > 0) {
 				result = "submitted";

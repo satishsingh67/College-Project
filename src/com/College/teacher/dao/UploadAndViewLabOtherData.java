@@ -14,7 +14,7 @@ import com.college.dataBaseConnection.DataBaseConnection;
 public class UploadAndViewLabOtherData {
 
 	public String uploadLabOtherData(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, Part uploadFile, String action) {
+			String subjectId, Part uploadFile, String action,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String file[] = (uploadFile.getSubmittedFileName().split("\\."));
@@ -25,13 +25,13 @@ public class UploadAndViewLabOtherData {
 			String query = null;
  
 			if(action.trim().equalsIgnoreCase("manual")) {
-				query = "INSERT INTO `lab_manual` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `FileName`,`fileExtension`,`FileData`,`createDate`, `updatedate`)"
-						+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+				query = "INSERT INTO `lab_manual` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `FileName`,`fileExtension`,`FileData`,`createDate`, `updatedate`,`fkCourseTypeId`)"
+						+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 				
 			}
 			else if(action.trim().equalsIgnoreCase("other")) {
-				query = "INSERT INTO `lab_other_data` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `FileName`,`fileExtension`,`FileData`,`createDate`, `updatedate`)"
-						+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+				query = "INSERT INTO `lab_other_data` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `FileName`,`fileExtension`,`FileData`,`createDate`, `updatedate`,`fkCourseTypeId`)"
+						+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 				
 			}
 			
@@ -46,7 +46,8 @@ public class UploadAndViewLabOtherData {
 				pstmt.setBlob(8,uploadFileInputStream);
 				pstmt.setObject(9, new Date());
 				pstmt.setObject(10, new Date());
-				
+				pstmt.setInt(11, Integer.parseInt(courseTypeId));
+
              int dbStatus=pstmt.executeUpdate();
          	if(dbStatus>0) {
 				result="File uploaded Successfully";

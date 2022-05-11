@@ -1,5 +1,5 @@
-<%@page import="com.college.teacher.dao.LinkManagement" %>
 <%@page errorPage="errorPage.jsp" %>
+<%@page import="com.college.teacher.dao.LinkManagement" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
 <%@page import="com.college.model.TeacherDetails" %>
@@ -23,16 +23,16 @@ String courseName=request.getParameter("courseName");
 
 //Metting link
 LinkManagement mettingLinks=new LinkManagement();
-String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(fkTeacherPkId), String.valueOf(fkTeacherPkId), semester, section, subjectId);
-String unitTest1Link=mettingLinks.getExamMeetingLink(1,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId));
-String unitTest2Link=mettingLinks.getExamMeetingLink(2,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId));
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId));
+String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(fkTeacherPkId), String.valueOf(fkTeacherPkId), semester, section, subjectId,courseId);
+String unitTest1Link=mettingLinks.getExamMeetingLink(1,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
+String unitTest2Link=mettingLinks.getExamMeetingLink(2,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
 
 //Notes and Suggestion
 MapTeacherSubjectDao mapTeacherSubjectDaoObj=new MapTeacherSubjectDao();
-Integer notesCount=mapTeacherSubjectDaoObj.getTotalNotes(fkTeacherPkId, fkDepartment, Integer.parseInt(semester),  Integer.parseInt(section),  Integer.parseInt(subjectId), null);
-Integer suggestionCount=mapTeacherSubjectDaoObj.getTotalSuggestion(fkTeacherPkId, fkDepartment, Integer.parseInt(semester),  Integer.parseInt(section),  Integer.parseInt(subjectId));
-Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacherPkId, fkDepartment, Integer.parseInt(semester),  Integer.parseInt(section),  Integer.parseInt(subjectId));
+Integer notesCount=mapTeacherSubjectDaoObj.getTotalNotes(fkTeacherPkId, fkDepartment, Integer.parseInt(semester),  Integer.parseInt(section),  Integer.parseInt(subjectId), null,courseId);
+Integer suggestionCount=mapTeacherSubjectDaoObj.getTotalSuggestion(fkTeacherPkId, fkDepartment, Integer.parseInt(semester),  Integer.parseInt(section),  Integer.parseInt(subjectId),courseId);
+Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacherPkId, fkDepartment, Integer.parseInt(semester),  Integer.parseInt(section),  Integer.parseInt(subjectId),courseId);
 
 
 %>
@@ -104,6 +104,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
         <div class="row">
           <div class="col-lg-5 col-md-6">
             <h3 style="font-family: 'Times New Roman', Times, serif;"><%= subjectName +" ["+subjectCode+"]" %></h3>
+        <p style="font-family: 'Times New Roman', Times, serif;color:black;font-size:20px;"><%=courseName %></p>
             <p style="font-family: 'Times New Roman', Times, serif;color:black;font-size:20px;"><%=(Integer.parseInt(year)==1)?(year+"st Year"):(Integer.parseInt(year)==2)?( year+"nd Year"):(Integer.parseInt(year)==3)?(year+"rd Year"):year+"th Year"%> 
            <%=","+((Integer.parseInt(semester)==1)?(semester+"st Semester"):(Integer.parseInt(semester)==2)?( semester+"nd Semester"):
             	(Integer.parseInt(semester)==3)?(semester+"rd Semester"):semester+"th Semester")%>
@@ -218,7 +219,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
                     </form>
                <ul class="list-unstyled py-3">
                   <%
-          String assignmentCheckUrl="dynamicTableTeacher.jsp?action=assignmentCheck&examType=Assignment Details&examTypeCode=3&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String assignmentCheckUrl="dynamicTableTeacher.jsp?action=assignmentCheck&examType=Assignment Details&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
                  <li><a href="<%=assignmentCheckUrl %>" target="_blank"  style="font-size: 25px;font-weight: bold; color: rgb(245, 229, 10);border-bottom: 2px solid red;text-align: center;" ><span>Checked Submitted Assignments</span></a></li>
@@ -350,7 +351,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             <div style="text-align:center;">
             
             <%
-          String unit1Url="dynamicTableTeacher.jsp?action=exam&examType=Unit Test-1&examTypeCode=1&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String unit1Url="dynamicTableTeacher.jsp?action=exam&examType=Unit Test-1&examTypeCode=1&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
           <a href="<%=unit1Url%>" target="_blank" class="btn btn-primary">Check</a>      
@@ -408,7 +409,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
                
             <div style="text-align:center;">
               <%
-          String unit2Url="dynamicTableTeacher.jsp?action=exam&examType=Unit Test-2&examTypeCode=2&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String unit2Url="dynamicTableTeacher.jsp?action=exam&examType=Unit Test-2&examTypeCode=2&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
           <a href="<%=unit2Url%>" target="_blank" class="btn btn-primary">Check</a>      
@@ -464,7 +465,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
                
           <div style="text-align:center;">
             <%
-          String semUrl="dynamicTableTeacher.jsp?action=exam&examType=Semester Exam&examTypeCode=3&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String semUrl="dynamicTableTeacher.jsp?action=exam&examType=Semester Exam&examTypeCode=3&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
           <a href="<%=semUrl%>" target="_blank" class="btn btn-primary">Check</a>      
@@ -806,7 +807,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 	 function fetchStudentDoubt(){
 		 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/solveDoubt?action=viewDoubt&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId,
+		      url:"/College_Final_Year_Project/solveDoubt?action=viewDoubt&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#Table').empty();
@@ -850,7 +851,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 		  $.ajax({
     		  type: "POST",
               url: "/College_Final_Year_Project/teacherLink", 
-              data:{action:'dailyClasslink',teacherId:fkTeacherPkId,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,meetingLink:meetingLink},
+              data:{action:'dailyClasslink',teacherId:fkTeacherPkId,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,meetingLink:meetingLink,courseTypeId:courseTypeId},
               success: function(data,textStatus,jqXHR){
             	  $(".loader1").hide();
                   $('#myModal').hide();
@@ -862,10 +863,10 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             			 $('#joinClassLink').removeClass("btn btn-primary btn-md disabled");
             			 $('#joinClassLink').addClass("btn btn-primary btn-md");
             			 $("#joinClassLink").attr("href", meetingLink);
-             			$('#'+LinkFieldId).attr("target", "_blank");
+             			$('#joinClassLink').attr("target", "_blank");
             		  }else{
             			  $("#joinClassLink").attr("href", meetingLink);
-              			$('#'+LinkFieldId).attr("target", "_blank");
+              			$('#joinClassLink').attr("target", "_blank");
 
             		  }
             	   swal("Done", data, "success");
@@ -886,10 +887,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 
 	});
   
-     $('#uploadClassLink').click(function (event){
-		 
-		 examLink(buttonId,filedId,LinkFieldId,"1");
-	 });
+     
     $('#uploadExamLinkUT1').click(function (event){
 		 
 		 examLink("uploadExamLinkUT1","examLinkUT1","unit1TestUrl","1");
@@ -914,7 +912,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 		  $.ajax({
     		  type: "POST",
               url: "/College_Final_Year_Project/teacherLink", 
-              data:{action:'examLink',teacherId:fkTeacherPkId,examType:examType,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,meetingLink:meetingLink},
+              data:{action:'examLink',teacherId:fkTeacherPkId,examType:examType,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,meetingLink:meetingLink,courseTypeId:courseTypeId},
               success: function(data,textStatus,jqXHR){
             	  $(".loader1").hide();
                   $('#myModal').hide();
@@ -987,7 +985,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 	        	  form_data.append("semesterId",fkSemester);
 	        	  form_data.append("sectionId",fkSectionId);
 	        	  form_data.append("subjectId",fksubjectId);
-	        	  
+	        	  form_data.append("courseTypeId",courseTypeId);
 	        	  $.ajax({
 	        		  type: "POST",
 	                  enctype: 'multipart/form-data',
@@ -1056,7 +1054,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 	  function fetchStudentMaterial(action,query){
 		  $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/uploadNotesAndView?action="+action+"&query="+query+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&teacherId="+fkTeacherPkId,
+		      url:"/College_Final_Year_Project/uploadNotesAndView?action="+action+"&query="+query+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&teacherId="+fkTeacherPkId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#notesBody').empty();
@@ -1126,6 +1124,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 			        	  form_data.append("semesterId",fkSemester);
 			        	  form_data.append("sectionId",fkSectionId);
 			        	  form_data.append("subjectId",fksubjectId);
+			        	  form_data.append("courseTypeId",courseTypeId);
 			        	  
 			        	  $.ajax({
 			        		  type: "POST",
@@ -1163,7 +1162,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 	  function fetchAssignment(action){
 		  $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/uploadAssignmentAndView?action="+action+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&teacherId="+fkTeacherPkId,
+		      url:"/College_Final_Year_Project/uploadAssignmentAndView?action="+action+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&teacherId="+fkTeacherPkId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#assignmentBody').empty();
@@ -1226,6 +1225,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
 			        	  form_data.append("sectionId",fkSectionId);
 			        	  form_data.append("subjectId",fksubjectId);
 			        	  form_data.append("examType",examType);
+			        	  form_data.append("courseTypeId",courseTypeId);
 			        	  
 			        	  $.ajax({
 			        		  type: "POST",
@@ -1294,12 +1294,15 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
     	  form_data.append("subjectId",fksubjectId);
     	  form_data.append("examType",examType);
     	  form_data.append("action","viewPaperDetails");
+    	  form_data.append("courseTypeId","courseTypeId");
+
+    	  
       	$('#questionPaperName').text("");
 
     	  $.ajax({
     		  type: "GET",
               url: "/College_Final_Year_Project/postQuestionPaper?action=viewPaperDetails&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester
-            		  +"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examType="+examType,
+            		  +"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examType="+examType+"&courseTypeId="+courseTypeId,
               success: function(data,textStatus,jqXHR){
             	  var JsonData= jQuery.parseJSON(data);
 

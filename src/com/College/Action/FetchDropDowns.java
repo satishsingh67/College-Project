@@ -65,6 +65,12 @@ public class FetchDropDowns extends HttpServlet {
 
 				out.print(result);
 			}
+			else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("teacherDesignation")) {
+
+				result = new FetchDropDownsDao().fetchTeacherDesigantionDropDown();
+
+				out.print(result);
+			}
 			else {
 
 				out.print(result);

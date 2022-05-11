@@ -359,7 +359,7 @@ form span{
            
        
              <div class="links" style="margin-left:15%;">
-                <a href="#home">home</a>
+                <a href="adminpage.jsp">home</a>
                 <a href="#reg">Assign New Mentor</a>
                
                 

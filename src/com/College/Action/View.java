@@ -42,20 +42,22 @@ public class View extends HttpServlet {
 		String fkSubjectId = request.getParameter("subjectId");
         String downloadId=request.getParameter("id");
 		String action = request.getParameter("action");
+		String courseTypeId = request.getParameter("courseTypeId");
 
+		
 		ViewStudentMaterials viewStudentMaterialsObj = new ViewStudentMaterials();
 		if (action.equalsIgnoreCase("notes")) {
-			result = viewStudentMaterialsObj.viewNotes(fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId);
+			result = viewStudentMaterialsObj.viewNotes(fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,courseTypeId);
 			out.print(result);
 		}
 		
 		else if (action.equalsIgnoreCase("suggestion")) {
-			result = viewStudentMaterialsObj.viewSuggestion(fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId);
+			result = viewStudentMaterialsObj.viewSuggestion(fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,courseTypeId);
 			out.print(result);
 		}
 		
 		else if (action.equalsIgnoreCase("questionBank")) {
-			result = viewStudentMaterialsObj.viewQuestionBank(fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId);
+			result = viewStudentMaterialsObj.viewQuestionBank(fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId,courseTypeId);
 			out.print(result);
 		}
          

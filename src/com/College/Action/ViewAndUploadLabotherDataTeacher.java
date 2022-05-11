@@ -51,6 +51,8 @@ public class ViewAndUploadLabotherDataTeacher extends HttpServlet {
 		String query=request.getParameter("query");
 		String action = request.getParameter("action");
 		Part uploadFile = request.getPart("file");
+		String courseTypeId = request.getParameter("courseTypeId");
+
 		String result=null;
 		PrintWriter out=response.getWriter();
 		try {
@@ -58,7 +60,7 @@ public class ViewAndUploadLabotherDataTeacher extends HttpServlet {
 			if(!action.isEmpty() && action.trim().equalsIgnoreCase("upload")) {
 			if(uploadFile.getSize()!=0) {
 				
-				result	=new UploadAndViewLabOtherData().uploadLabOtherData(teacherId, departmentId, semester, section, subjectId, uploadFile, query);
+				result	=new UploadAndViewLabOtherData().uploadLabOtherData(teacherId, departmentId, semester, section, subjectId, uploadFile, query,courseTypeId);
 				out.print(result);
 			}
 			else {

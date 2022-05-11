@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 public class UploadAndViewNotes {
 
 	public String uploadNotes(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, String action,Part uploadFile) {
+			String subjectId, String action,Part uploadFile,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String file[] = (uploadFile.getSubmittedFileName()).split("\\.");
@@ -28,16 +28,16 @@ public class UploadAndViewNotes {
 			String query=null;
 			if(!action.isEmpty()) {
 				if(action.trim().equalsIgnoreCase("notes")) {
-					query = "INSERT INTO `notes` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `notesName`,`fileExtension`,`notesData`, `createDate`, `updatedate`)" + 
-							" VALUES (?,?,?,?,?,?,?,?,?,?)";
+					query = "INSERT INTO `notes` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `notesName`,`fileExtension`,`notesData`, `createDate`, `updatedate`,`fkCourseTypeId`)" + 
+							" VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 				}
 				if(action.trim().equalsIgnoreCase("suggestion")) {
-					query = "INSERT INTO `suggestion` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `suggestionName`,`fileExtension`,`suggestionData`, `createDate`, `updatedate`)" + 
-							" VALUES (?,?,?,?,?,?,?,?,?,?)";
+					query = "INSERT INTO `suggestion` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `suggestionName`,`fileExtension`,`suggestionData`, `createDate`, `updatedate`,`fkCourseTypeId`)" + 
+							" VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 				}
 				if(action.trim().equalsIgnoreCase("questionBank")) {
-					query = "INSERT INTO `question_bank` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `questionBankName`,`fileExtension`,`questionBankData`, `createDate`, `updatedate`)" + 
-							" VALUES (?,?,?,?,?,?,?,?,?,?)";
+					query = "INSERT INTO `question_bank` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `questionBankName`,`fileExtension`,`questionBankData`, `createDate`, `updatedate`,`fkCourseTypeId`)" + 
+							" VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 				}
 				
 				PreparedStatement pstmt = con.prepareStatement(query);
@@ -51,7 +51,8 @@ public class UploadAndViewNotes {
                 pstmt.setBlob(8,uploadFileInputStream);
 				pstmt.setObject(9, new Date());
 				pstmt.setObject(10, new Date());
-
+				pstmt.setInt(11, Integer.parseInt(courseTypeId));
+				
 				int dbStatus = pstmt.executeUpdate();
 
 				if (dbStatus > 0) {
@@ -71,7 +72,7 @@ public class UploadAndViewNotes {
 	return result;
 	}
 	
-	public String viewNotesAndOtherData(String teacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String action) {
+	public String viewNotesAndOtherData(String teacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String action,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -80,15 +81,15 @@ public class UploadAndViewNotes {
 			if(!action.isEmpty()) {
 				
 				if(action.trim().equalsIgnoreCase("notes")) {
-					query = "Select pkNotesId,notesName,createDate from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=?";
+					query = "Select pkNotesId,notesName,createDate from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=? and fkCourseTypeId=?";
 	
 				}
 				if(action.trim().equalsIgnoreCase("suggestion")) {
-					query = "Select pkSuggestionId,suggestionName,createDate from suggestion where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=?";
+					query = "Select pkSuggestionId,suggestionName,createDate from suggestion where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=? and fkCourseTypeId=?";
 	
 				}
 				if(action.trim().equalsIgnoreCase("questionBank")) {
-					query = "Select pkQuestionBankId,questionBankName,createDate from question_bank where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=?";
+					query = "Select pkQuestionBankId,questionBankName,createDate from question_bank where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=? and fkCourseTypeId=?";
 	
 				}
 
@@ -98,6 +99,9 @@ public class UploadAndViewNotes {
 				pstmt.setInt(3, Integer.parseInt(fkSectionId));
 				pstmt.setInt(4, Integer.parseInt(fkSubjectId));
 				pstmt.setInt(5, Integer.parseInt(teacherId));
+				pstmt.setInt(6, Integer.parseInt(courseTypeId));
+
+				
 				ResultSet rs = pstmt.executeQuery();
 
 				List<ViewVariables> suggestionList = new ArrayList<ViewVariables>();
@@ -135,7 +139,7 @@ public class UploadAndViewNotes {
 		return result;
 	}
 	public static void main(String[] args) {
-		System.out.println(new UploadAndViewNotes().viewNotesAndOtherData("1", "1", "4", "1", "10", "notes"));
+		//System.out.println(new UploadAndViewNotes().viewNotesAndOtherData("1", "1", "4", "1", "10", "notes"));
 	}
 	
 }

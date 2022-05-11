@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 
 public class PostQuestionPaperAndTakeAction {
 	public String uploadQuestionPaper(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, Part uploadFile, String examType) {
+			String subjectId, Part uploadFile, String examType,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String file[] = (uploadFile.getSubmittedFileName().split("\\."));
@@ -29,8 +29,8 @@ public class PostQuestionPaperAndTakeAction {
 			InputStream uploadFileInputStream = uploadFile.getInputStream();
 			String query = null;
  
-				query = "INSERT INTO `exam_question_paper` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `questionPaperName`,`fileExtension`,`questionPaperData`,`fkExamType`, `createDate`, `updatedate`)"
-						+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+				query = "INSERT INTO `exam_question_paper` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `questionPaperName`,`fileExtension`,`questionPaperData`,`fkExamType`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+						+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				PreparedStatement pstmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 				pstmt.setInt(1, Integer.parseInt(teacherId));
@@ -44,7 +44,8 @@ public class PostQuestionPaperAndTakeAction {
 				pstmt.setInt(9,Integer.parseInt(examType));
 				pstmt.setObject(10, new Date());
 				pstmt.setObject(11, new Date());
-				
+				pstmt.setInt(12, Integer.parseInt(courseTypeId));
+
                 pstmt.executeUpdate();
                 
 				ResultSet rs = pstmt.getGeneratedKeys();
@@ -80,11 +81,11 @@ public class PostQuestionPaperAndTakeAction {
 	}
 	
 	public String fetchPaperDetails(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, String examType){
+			String subjectId, String examType,String courseId){
 		String result=null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 	try {
-		String query="Select pkExamQuestionPaperId,questionPaperName,fileExtension,isActive from exam_question_paper where fkTeacherId=? and fkExamType=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? order by updatedate desc";
+		String query="Select pkExamQuestionPaperId,questionPaperName,fileExtension,isActive from exam_question_paper where fkTeacherId=? and fkExamType=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=? order by updatedate desc";
 		
 		PreparedStatement pstmt = con.prepareStatement(query);
 		pstmt.setInt(1, Integer.parseInt(teacherId));
@@ -93,7 +94,8 @@ public class PostQuestionPaperAndTakeAction {
 		pstmt.setInt(4, Integer.parseInt(semseter));
 		pstmt.setInt(5, Integer.parseInt(section));
 		pstmt.setInt(6, Integer.parseInt(subjectId));
-		
+		pstmt.setInt(7, Integer.parseInt(courseId));
+
 		ResultSet rs=pstmt.executeQuery();
 		
 		Map<String,Object> questionPaperList=new HashMap<String,Object>();

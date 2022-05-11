@@ -359,7 +359,7 @@ form span{
              
          
                <div class="links" style="margin-left:15%;">
-                  <a href="#home">home</a>
+                  <a href="adminpage.jsp">home</a>
                   <a href="#RegTeacher">New Teacher Registration</a>
             
                   <a href="#ReplyTeacher">Reply To Teacher</a>
@@ -393,14 +393,16 @@ form span{
                                             <input type="email" name="email" placeholder="Enter Teacher Email" class="box" required>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Department:<strong class="text-danger">*</strong></span>
                                             <select name="department" id="departmentSelect" class="box">
-                                                <option>Select Department</option>
+                                                <option>--Select Department--</option>
 											
 										</select>
                                         </div>
                                         <div class="col-md-6">
-                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Post:<strong class="text-danger">*</strong></span>
-                                            
-                                            <input type="text" name="post" placeholder="enter Teacher Post" class="box" required>
+                                            <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Designation:<strong class="text-danger">*</strong></span>
+                                             <select name="post" id="designationSelect" class="box">
+                                                <option>--Select Designation--</option>
+											
+										</select>
                                             <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Teacher Mobile no.:<strong class="text-danger">*</strong></span>
                                             
                                             <input type="text" name="mobileNumber"  placeholder="enter Teacher Mobile No" class="box" required>
@@ -573,6 +575,8 @@ form span{
           $(document).ready(function () {
         	    
        fetchDropDown("department","departmentSelect");
+       fetchDropDown("teacherDesignation","designationSelect");
+
         	 $('#myLoader').show();
         	  fetchDoubt();
         	  	
@@ -792,11 +796,12 @@ form span{
         		        $('#myModal').hide();
         		        if (data.trim().includes("Successfully")) {
         		          swal("Done", data, "success");
+          		          $('#teacherAccountForm')[0].reset();
+
         		        }
         		        else {
         		          swal("Error", data, "error");
         		        }
-      		          $('#teacherAccountForm')[0].reset();
         		        $("#teacherAccountButton").prop("disabled", false);
         		      },
         		      error: function (jqXHR, textStatus, errorThrown) {

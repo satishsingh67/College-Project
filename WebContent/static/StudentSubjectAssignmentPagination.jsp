@@ -8,14 +8,16 @@ String semesterId=request.getParameter("semesterId");
 String subjectId=request.getParameter("subjectId");
 String start=request.getParameter("start");
 String limit=request.getParameter("limit");
+String courseTypeId=request.getParameter("courseTypeId");
+
 String data="";
 MapStudentSubjectDao mapSubject=new MapStudentSubjectDao();
 
 if(req.equals("countRecords")){
-    data=mapSubject.getAllAssigmentCount(Integer.parseInt(studentId),Integer.parseInt(departmentId),Integer.parseInt(sectionId),Integer.parseInt(semesterId),Integer.parseInt(subjectId));
+    data=mapSubject.getAllAssigmentCount(Integer.parseInt(studentId),Integer.parseInt(departmentId),Integer.parseInt(sectionId),Integer.parseInt(semesterId),Integer.parseInt(subjectId),courseTypeId);
 }
 if(req.equalsIgnoreCase("getRecords")){
-	data=mapSubject.getAllAssigment(Integer.parseInt(studentId),Integer.parseInt(departmentId),Integer.parseInt(sectionId),Integer.parseInt(semesterId),Integer.parseInt(subjectId),Integer.parseInt(start),Integer.parseInt(limit));
+	data=mapSubject.getAllAssigment(Integer.parseInt(studentId),Integer.parseInt(departmentId),Integer.parseInt(sectionId),Integer.parseInt(semesterId),Integer.parseInt(subjectId),Integer.parseInt(start),Integer.parseInt(limit),courseTypeId);
 }
 
 out.print(data);

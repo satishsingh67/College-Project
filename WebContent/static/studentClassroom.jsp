@@ -26,9 +26,9 @@ Integer courseTypeId=student.getCourseTypeId();
 String courseName=student.getCourseTypeName();
 
 
-Map<String,Object> subjectList=mapStudentSubject.getAllSubjects(fkStudentPkId,fkDepartment,fkSemester,fkSection);
+Map<String,Object> subjectList=mapStudentSubject.getAllSubjects(fkStudentPkId,fkDepartment,fkSemester,fkSection,courseTypeId);
 List<MapStudentSubject> subjects=(List<MapStudentSubject>)subjectList.get("subjects");
-Integer notesCount=mapStudentSubject.getTotalNotes(fkDepartment, fkSemester, fkSection, null) ;
+Integer notesCount=mapStudentSubject.getTotalNotes(fkDepartment, fkSemester, fkSection, null,courseTypeId) ;
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -77,7 +77,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
               <a href="<%=attendanceUrl%>" target="_blank" >Check Attendance</a>
 				<a href="./studentPage1.jsp">home</a> <a href="#about">Information</a>
 				<a href="#classes">Classes</a> <a href="#contact">Contact</a>
-			 <a href="#contact">View Profile</a>
+			 <a href="studentUpdateProfile.jsp" target="_blank">Update Profile</a>
                 <a href="/College_Final_Year_Project/logout?action=student">Logout</a>
 			</div>
 			<img src="./images/teachers/1200px-JIS_University.svg.png"
@@ -335,6 +335,8 @@ var studentId =<%=fkStudentPkId%>;
 var departmentId=<%=fkDepartment %>;
 var sectionId=<%=fkSection%>;
 var semesterId=<%=fkSemester %>;
+var courseTypeId=<%=courseTypeId%>;
+
 
 $(document).ready(function () {
 	  console.log("Jquery loded");
@@ -360,6 +362,9 @@ data.append("studentId",studentId);
 data.append("departmentId",departmentId);
 data.append("semesterId",semesterId);    
 data.append("sectionId",sectionId);
+data.append("courseTypeId",courseTypeId);
+
+
    $.ajax({
       type: "POST",
       enctype: 'multipart/form-data',
@@ -393,7 +398,7 @@ $('#viewDoubt').click(function (event){
  	 $('#viewDoubt').prop("disabled", true);  
         $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/doubt?action=viewDoubt&action1=mentorDoubt&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId,
+		      url:"/College_Final_Year_Project/doubt?action=viewDoubt&action1=mentorDoubt&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#doubtBody').empty();

@@ -1,6 +1,7 @@
 package com.college.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -37,8 +38,15 @@ public class StudentLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
- 
- 
+		String id=request.getParameter("id");
+		
+		String result=null;
+		PrintWriter out=response.getWriter();
+		
+		result=new StudentLoginValidation().fetchStudentDetails(id);
+		
+		out.print(result);
+    
 	}
 
 	/**

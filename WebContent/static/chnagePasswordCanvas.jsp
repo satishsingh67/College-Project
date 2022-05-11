@@ -108,15 +108,15 @@ if(canvasAccount==null){
 	 <label style="color:green; font-weight: bold;  font-size: 15px;margin-bottom:10%"></label>
 	
 <br>
-     <label for="mentor_mail" style="color:black; font-weight: bold; font-size: 15px;">Enter Your Mail ID</label>
+     <label for="mentor_mail" style="color:black; font-weight: bold; font-size: 15px;">Enter Your Mail ID<strong class="text-danger"style="color:red;">*</strong></label>
     <input placeholder="Enter Mail ID" id="mentor_mail" name="existingEmail" type="email" class="validate">
     
 
-<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter Your Previous Password</label>
+<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter Your Previous Password<strong class="text-danger"style="color:red;">*</strong></label>
 <input placeholder="Enter Old Password" name="currentPassword" id="currentPassword" type="password" class="validate">
-<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter New Password</label>
+<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Enter New Password<strong class="text-danger"style="color:red;">*</strong></label>
 <input placeholder="Enter New Password" name="newPassword" id="first_name" type="password" class="validate">
-<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Confirm Password</label>
+<label for="first_name" style="color:black; font-weight: bold;font-size: 15px;">Confirm Password<strong class="text-danger"style="color:red;">*</strong></label>
 <input placeholder="Re-Enter New Password" name="reNewPassword" id="first_name" type="password" class="validate">
 <div class="btn-group center-align"  role="group">
     <button type="submit" id="changePassButton" value="submit"  class="btn #2196f3 blue">Submit</button>

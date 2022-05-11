@@ -162,6 +162,13 @@
 		<servlet-class>com.college.action.AttendanceManagement</servlet-class>
 	</servlet>
 
+
+	<servlet>
+		<servlet-name>StudentProfileUpdate</servlet-name>
+		<servlet-class>com.college.action.StudentProfileUpdate</servlet-class>
+	</servlet>
+
+
 	<servlet-mapping>
 		<servlet-name>ContactUs</servlet-name>
 		<url-pattern>/contactUS</url-pattern>
@@ -317,6 +324,11 @@
 	<servlet-mapping>
 		<servlet-name>AttendanceManagement</servlet-name>
 		<url-pattern>/attendance</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>StudentProfileUpdate</servlet-name>
+		<url-pattern>/studentProfileUpdate</url-pattern>
 	</servlet-mapping>
 
 </web-app>

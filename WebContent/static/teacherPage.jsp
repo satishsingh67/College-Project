@@ -18,7 +18,7 @@ Integer fkDepartment=teacher.getFkdepartment();
 //Subject List
 Map<String,Object> subjectList=new MapTeacherSubjectDao().getAllSubjects(fkTeacherPkId,fkDepartment);
 List<MapTeacherSubject> subjects=(List<MapTeacherSubject>)subjectList.get("subjects");
-Integer notesCount=new MapTeacherSubjectDao().getTotalNotes(fkTeacherPkId, null, null, null, null, "total");
+Integer notesCount=new MapTeacherSubjectDao().getTotalNotes(fkTeacherPkId, null, null, null, null, "total",null);
 
 String image=new TeacherLoginCheck().fetchTeacherPhoto(fkTeacherPkId);
 

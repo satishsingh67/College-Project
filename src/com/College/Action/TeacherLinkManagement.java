@@ -51,33 +51,35 @@ public class TeacherLinkManagement extends HttpServlet {
 		String meetLink = request.getParameter("meetingLink");
         String appLink=request.getParameter("appLink");
 		String examType=request.getParameter("examType");
+		String courseTypeId=request.getParameter("courseTypeId");
+		
 		String result = null;
 
 		if (action.trim().equalsIgnoreCase("dailyClassLink")) {
 			if (!meetLink.isEmpty()) {
 				result = linkManagementObj.uploadDailyClassLink(teacherId, departmentId, semseter, section, subjectId,
-						meetLink);
+						meetLink,courseTypeId);
 			} else {
 				result = "Please Enter Meeting Link";
 			}
 		}
 		else if(action.trim().equalsIgnoreCase("appLink")) {
 			if (!appLink.isEmpty()) {
-				result = linkManagementObj.uploadApplicationLink(teacherId, departmentId, semseter, section, subjectId, appLink);
+				result = linkManagementObj.uploadApplicationLink(teacherId, departmentId, semseter, section, subjectId, appLink,courseTypeId);
 			} else {
 				result = "Please Enter Application Link";
 			}
 		}
 		else if(action.trim().equalsIgnoreCase("examLink")) {
 			if (!meetLink.isEmpty()) {
-				result = linkManagementObj.uploadExamMeetingLink(examType, teacherId, departmentId, semseter, section, subjectId,meetLink);
+				result = linkManagementObj.uploadExamMeetingLink(examType, teacherId, departmentId, semseter, section, subjectId,meetLink,courseTypeId);
 			} else {
 				result = "Please Enter Exam Link";
 			}
 		}
 		else if(action.trim().equalsIgnoreCase("semExamLink")) {
 			if (!meetLink.isEmpty()) {
-				result = linkManagementObj.uploadSemExamMeetingLink(examType, departmentId, semseter, section, meetLink);
+				result = linkManagementObj.uploadSemExamMeetingLink(examType, departmentId, semseter, section, meetLink,courseTypeId);
 			} else {
 				result = "Please Enter Exam Link";
 			}

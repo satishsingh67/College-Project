@@ -20,7 +20,7 @@ import com.college.dao.studentDao.ViewStudentMaterials;
  * Servlet implementation class LabHandler
  */
 @WebServlet("/LabHandler")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024*1024*100)
 public class LabHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,10 +49,11 @@ public class LabHandler extends HttpServlet {
 		String action = request.getParameter("action");
 		String action1 = request.getParameter("action1");
         String studentId=request.getParameter("studentId");
-        
+        String courseTypeId=request.getParameter("courseTypeId");
+
         if(action.trim().toLowerCase().contains("viewweeklylab")) {
         	
-        	result= new LabDataHandling().viewLabCopyHistory(studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId, action);
+        	result= new LabDataHandling().viewLabCopyHistory(studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId, action,courseTypeId);
         	out.append(result);
         }
 		else if(action.toLowerCase().contains("download")) {
@@ -105,6 +106,7 @@ public class LabHandler extends HttpServlet {
 		String action = request.getParameter("action");
 		String isFinalLabCopy = request.getParameter("isFinalLabCopy");
 		Part labCopy = request.getPart("file");
+        String courseTypeId=request.getParameter("courseTypeId");
 
 		String result = null;
 		PrintWriter out = response.getWriter();
@@ -114,7 +116,7 @@ public class LabHandler extends HttpServlet {
 
 		} else {
 			String submitResult = new LabDataHandling().submitLabCopy(studentId, fkDepartmentId, fkSemesterId,
-					fkSectionId, fkSubjectId, labCopy, action, Boolean.valueOf(isFinalLabCopy.trim()));
+					fkSectionId, fkSubjectId, labCopy, action, Boolean.valueOf(isFinalLabCopy.trim()),courseTypeId);
 			if (submitResult.trim().equalsIgnoreCase("submitted")) {
 				result = (action.trim().equalsIgnoreCase("submitweeklylaboutput")
 						? "Your Output file Submitted Successfully"

@@ -29,7 +29,7 @@ Integer adminId=admin.getPkadminId();
 <script src="./lib/jquery.min.js"></script>
   <script src="./lib/sweetalert.min.js"></script>
 
-    <title>NewAdmin</title>
+    <title>New Admin Registration</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
@@ -198,13 +198,13 @@ section{
              <div class="col-md-6">
                 <form  id="adminForm">
            
-                    <span>your name :</span>
-                    <input type="text" name="name" placeholder="enter your name" class="box" required>
-                    <span>your email :</span>
-                    <input type="email" name="email" placeholder="enter your email" class="box" required>
-                    <span>your number :</span>
-                    <input type="text" name="mobileNumber" placeholder="enter your number" class="box" required>
-                    <span>Gender:</span>
+                    <span>your name :<strong class="text-danger">*</strong></span>
+                    <input type="text" name="name" placeholder="Enter Name" class="box" required>
+                    <span>your email :<strong class="text-danger">*</strong></span>
+                    <input type="email" name="email" placeholder="Enter Email" class="box" required>
+                    <span>your mobile number :<strong class="text-danger">*</strong></span>
+                    <input type="text" name="mobileNumber" placeholder="Enter  Mobile Number" class="box" required>
+                    <span>Gender:<strong class="text-danger">*</strong></span>
                      <select name="gender" class="box">
                                               <option>--Select--</option>
 											<option>Male</option>
@@ -213,10 +213,10 @@ section{
 
 										</select> 
                    
-                    <span>your New Password:</span>
-                    <input type="password" name="password" placeholder="enter your Password" class="box" required>
-                    <span>Confirm your Password:</span>
-                    <input type="password"  name="ConfirmPassword" placeholder="confirm your password" class="box" required>
+                    <span>your Password:<strong class="text-danger">*</strong></span>
+                    <input type="password" name="password" placeholder="Enter Password" class="box" required>
+                    <span>Confirm your Password:<strong class="text-danger">*</strong></span>
+                    <input type="password"  name="ConfirmPassword" placeholder="Confirm Your Password" class="box" required>
                     <input type="submit" id="admintSubmit" style="background-color: black;" value="Submit" name="submit" class="link-btn"> 
                     <input type="submit" id="adminClear" style="background-color: black;" value="Clear" name="Submit" class="link-btn" style="border-bottom-right-radius: 20px;">
                  </form>  

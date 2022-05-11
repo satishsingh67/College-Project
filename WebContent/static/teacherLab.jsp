@@ -23,11 +23,11 @@ String courseName=request.getParameter("courseName");
 
 //Meeting Link
 LinkManagement mettingLinks=new LinkManagement();
-String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(fkTeacherPkId), String.valueOf(fkDepartment), semester, section, subjectId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId));
+String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(fkTeacherPkId), String.valueOf(fkDepartment), semester, section, subjectId,courseId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
 
 //App Link
-String labAppLink=mettingLinks.getApplicationLink(String.valueOf(fkTeacherPkId), String.valueOf(fkDepartment), semester, section, subjectId);
+String labAppLink=mettingLinks.getApplicationLink(String.valueOf(fkTeacherPkId), String.valueOf(fkDepartment), semester, section, subjectId,courseId);
 
 //Lab File Download
 
@@ -343,7 +343,7 @@ height:1px;
                 <a class="nav-link" href="#doubt">Doubt Clearence</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="#assignment">Lab Copy Submission</a>
+              <a class="nav-link" href="#assignment">Lab Copy Check</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#exam">Exams</a>
@@ -532,7 +532,6 @@ height:1px;
             <tbody id='Table'>
             <tr class="doubtRow">
             <td>
-            hhh
             </td>
             </tr>
           </tbody>
@@ -570,23 +569,23 @@ height:1px;
        <div id="assignment"class="container food-type" style="background-color:darkseagreen;">
            <div class="row align-items-center">
              <div class="col-lg-5 col-md-12 text-sec mb-lg-0 mb-5">
-                <h2>Lab Copy Submission</h2>
+                <h2>Lab Copy Check</h2>
                 <p>Check All The Lab Copy And Outputs</p>
                 <ul class="list-unstyled py-3">
                      <%
-          String weekLyLabUrl="dynamicTableTeacher.jsp?action=WeeklyLab&examType=Weekly Lab File&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String weekLyLabUrl="dynamicTableTeacher.jsp?action=WeeklyLab&examType=Weekly Lab File&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
                   <li><a href="<%= weekLyLabUrl %>" target="_blank"><span>Check Weekly Lab Experiment</span></a>
                    </li>
                      <%
-          String LabOutPutUrl="dynamicTableTeacher.jsp?action=WeeklyLabOutput&examType=Lab Experiment File&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String LabOutPutUrl="dynamicTableTeacher.jsp?action=WeeklyLabOutput&examType=Lab Experiment File&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>  
                   <li><a href="<%=LabOutPutUrl %>" target="_blank"><span>Check Experment Output</span></a>
                    </li>
                            <%
-          String finalLabCopy="dynamicTableTeacher.jsp?action=FInalLabCopy&examType=Final Lab Copy Files&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String finalLabCopy="dynamicTableTeacher.jsp?action=FInalLabCopy&examType=Final Lab Copy Files&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
                   <li>
@@ -662,7 +661,7 @@ height:1px;
               <h3 style="text-align: center;">Check Answer Paper</h3>
               <div style="text-align:center;">
                 <%
-          String semUrl="dynamicTableTeacher.jsp?action=exam&examType=Semester Lab Exam&examTypeCode=3&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId; 
+          String semUrl="dynamicTableTeacher.jsp?action=exam&examType=Semester Lab Exam&examTypeCode=3&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
           <a href="<%=semUrl%>" target="_blank" class="btn btn-primary">Check</a>      
@@ -927,7 +926,7 @@ height:1px;
 	 function fetchStudentDoubt(){
 		 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/solveDoubt?action=viewDoubt&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId,
+		      url:"/College_Final_Year_Project/solveDoubt?action=viewDoubt&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#Table').empty();
@@ -971,7 +970,7 @@ height:1px;
 		  $.ajax({
     		  type: "POSt",
               url: "/College_Final_Year_Project/teacherLink", 
-              data:{action:'dailyClasslink',teacherId:fkTeacherPkId,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,meetingLink:meetingLink},
+              data:{action:'dailyClasslink',teacherId:fkTeacherPkId,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,meetingLink:meetingLink,courseTypeId:courseTypeId},
               success: function(data,textStatus,jqXHR){
             	  $(".loader1").hide();
                   $('#myModal').hide();
@@ -1016,7 +1015,7 @@ height:1px;
 		  $.ajax({
   		  type: "POSt",
             url: "/College_Final_Year_Project/teacherLink", 
-            data:{action:'appLink',teacherId:fkTeacherPkId,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,appLink:appLink},
+            data:{action:'appLink',teacherId:fkTeacherPkId,departmentId:fkDepartment,semseter:fkSemester,section:fkSectionId,subjectId:fksubjectId,appLink:appLink,courseTypeId:courseTypeId},
             success: function(data,textStatus,jqXHR){
           	  $(".loader1").hide();
                 $('#myModal').hide();
@@ -1048,10 +1047,7 @@ height:1px;
 
 	});
   
-  $('#viewSemsterPaper').click(function (event){
-		event.preventDefault();
-		 $('#myModalQuestionPaper').show();
-	});
+  
 
 $('#closeQuestionPaperModel').click(function (event){
 		event.preventDefault();
@@ -1084,7 +1080,8 @@ function postQuestionPaper(buttonId,fileId,examType){
 	        	  form_data.append("sectionId",fkSectionId);
 	        	  form_data.append("subjectId",fksubjectId);
 	        	  form_data.append("examType",examType);
-	        	  
+	        	  form_data.append("courseTypeId",courseTypeId);
+
 	        	  $.ajax({
 	        		  type: "POST",
 	                  enctype: 'multipart/form-data',
@@ -1148,7 +1145,8 @@ function postLabFile(buttonId,fileId,query){
 	        	  form_data.append("subjectId",fksubjectId);
 	        	  form_data.append("action","upload");
 	        	  form_data.append("query",query);
-	        	  
+	        	  form_data.append("courseTypeId",courseTypeId);
+
 	        	  $.ajax({
 	        		  type: "POST",
 	                  enctype: 'multipart/form-data',
@@ -1206,12 +1204,15 @@ $('#'+buttonId).prop("disabled", true);
   form_data.append("subjectId",fksubjectId);
   form_data.append("examType",examType);
   form_data.append("action","viewPaperDetails");
+  form_data.append("courseTypeId",courseTypeId); 
+
+  
 	$('#questionPaperName').text("");
 
   $.ajax({
 	  type: "GET",
       url: "/College_Final_Year_Project/postQuestionPaper?action=viewPaperDetails&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester
-    		  +"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examType="+examType,
+    		  +"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examType="+examType+"&courseTypeId="+courseTypeId,
       success: function(data,textStatus,jqXHR){
     	  var JsonData= jQuery.parseJSON(data);
 

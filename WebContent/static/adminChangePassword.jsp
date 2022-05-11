@@ -197,18 +197,18 @@ section{
              <div class="col-md-6">
                 <form id="adminForm" >
            
-                    <span style="font-weight: bold;color: black; font-size: 20px;">your name :</span>
-                    <input type="text" name="name" placeholder="enter your name" class="box" required>
-                    <span style="font-weight: bold;color: black; font-size: 20px;">your email :</span>
-                    <input type="email" name="email" placeholder="enter your email" class="box" required>
-                    <span style="font-weight: bold;color: black; font-size: 20px;">your Phone number :</span>
-                    <input type="text" name="mobileNumber" placeholder="enter your number" class="box" required>
-                    <span style="font-weight: bold;color: black; font-size: 20px;">your Old Password:</span>
-                    <input type="password" name="oldPassword" placeholder="enter old Password" class="box" required>
+                    <span style="font-weight: bold;color: black; font-size: 20px;">your name :<strong class="text-danger">*</strong></span>
+                    <input type="text" name="name" placeholder="Enter Your Name" class="box" required>
+                    <span style="font-weight: bold;color: black; font-size: 20px;">your email :<strong class="text-danger">*</strong></span>
+                    <input type="email" name="email" placeholder="Enter Your Email" class="box" required>
+                    <span style="font-weight: bold;color: black; font-size: 20px;">your Mobile number :<strong class="text-danger">*</strong></span>
+                    <input type="text" name="mobileNumber" placeholder="Enter Your Mobile Number" class="box" required>
+                    <span style="font-weight: bold;color: black; font-size: 20px;">your Old Password:<strong class="text-danger">*</strong></span>
+                    <input type="password" name="oldPassword" placeholder="Enter Old Password" class="box" required>
                      <span style="font-weight: bold;color: black; font-size: 20px;">your New Password:</span>
-                    <input type="password" name="password" placeholder="enter new Password" class="box" required>
-                    <span style="font-weight: bold;color: black; font-size: 20px;">confirm your Password:</span>
-                    <input type="password"  name="ConfirmPassword" placeholder="confirm your Password" class="box" required>
+                    <input type="password" name="password" placeholder="Enter New Password" class="box" required>
+                    <span style="font-weight: bold;color: black; font-size: 20px;">confirm your Password:<strong class="text-danger">*</strong></span>
+                    <input type="password"  name="ConfirmPassword" placeholder="Confirm Your Password" class="box" required>
                     <input type="submit" id="adminChangesButton" style="background-color: black;" value="Submit" name="submit" class="link-btn"> 
                     <input type="submit" id="adminClearButton" style="background-color: black;" value="Clear" name="Submit" class="link-btn" style="border-bottom-right-radius: 20px;">
                  </form>  

@@ -20,7 +20,7 @@ import com.college.dao.studentDao.ViewStudentMaterials;
  * Servlet implementation class AnswerScriptSubmit
  */
 @WebServlet("/AnswerScriptSubmit")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class AnswerScriptSubmit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -84,14 +84,15 @@ public class AnswerScriptSubmit extends HttpServlet {
 		String fkExamTypeId=request.getParameter("examTypeId");
 		Part answerScript=request.getPart("file");
 		String action = request.getParameter("action");
-		
+		String courseTypeId = request.getParameter("courseTypeId");
+
 		String result=null;
 		if(action.toLowerCase().contains("scriptsubmit")) {
 			if(answerScript.getSize() == 0) {
 				result="Please Choose a file.";
 				
 			}else {
-				String submitStatus=new AnswerScript().submitAnswerScript(fkQuestionPaperId, fkExamTypeId, studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId, answerScript);
+				String submitStatus=new AnswerScript().submitAnswerScript(fkQuestionPaperId, fkExamTypeId, studentId, fkDepartmentId, fkSemesterId, fkSectionId, fkSubjectId, answerScript,courseTypeId);
 				if(submitStatus.toLowerCase().contains("successfully")) {
 					result=submitStatus;
 				}else {

@@ -132,21 +132,16 @@ public class AccountCreationAdmin extends HttpServlet {
 					password,ConfirmPassword);
 
 			if (dataValidationResult.trim().equalsIgnoreCase("true")) {
-
-				if(password.trim().contentEquals(ConfirmPassword.trim())) {
 					result = accountCreationObj.changeAdminPassword(name, email, mobileNumber,oldPassword,
 							password);
-					
-				}
-				else {
-					result="New Password and Confirm Password are not same";
-				}
 
-				
-				
 			}else {
 				
-				result="Please Enter "+dataValidationResult;
+				if(dataValidationResult.trim().contains("same")) {
+					result=dataValidationResult;	
+				}else {
+					result="Please Enter "+dataValidationResult;
+				}
 			}
 
 

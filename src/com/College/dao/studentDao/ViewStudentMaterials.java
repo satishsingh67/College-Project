@@ -17,17 +17,19 @@ import com.google.gson.Gson;
 
 public class ViewStudentMaterials {
 
-	public String viewNotes(String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId) {
+	public String viewNotes(String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
-			String query = "Select pkNotesId,notesName,createDate from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+			String query = "Select pkNotesId,notesName,createDate from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, Integer.parseInt(courseTypeId));
+
 			ResultSet rs = pstmt.executeQuery();
 
 			List<ViewVariables> notesList = new ArrayList<ViewVariables>();
@@ -61,17 +63,19 @@ public class ViewStudentMaterials {
 		return result;
 	}
 
-	public String viewSuggestion(String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId) {
+	public String viewSuggestion(String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
-			String query = "Select pkSuggestionId,suggestionName,createDate from suggestion where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+			String query = "Select pkSuggestionId,suggestionName,createDate from suggestion where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, Integer.parseInt(courseTypeId));
+
 			ResultSet rs = pstmt.executeQuery();
 
 			List<ViewVariables> suggestionList = new ArrayList<ViewVariables>();
@@ -105,17 +109,19 @@ public class ViewStudentMaterials {
 		return result;
 	}
 
-	public String viewQuestionBank(String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId) {
+	public String viewQuestionBank(String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
-			String query = "Select pkQuestionBankId,questionBankName,createDate from question_bank where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+			String query = "Select pkQuestionBankId,questionBankName,createDate from question_bank where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, Integer.parseInt(courseTypeId));
+
 			ResultSet rs = pstmt.executeQuery();
 
 			List<ViewVariables> suggestionList = new ArrayList<ViewVariables>();

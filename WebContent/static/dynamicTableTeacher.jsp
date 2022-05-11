@@ -15,6 +15,10 @@ String semester=request.getParameter("semesterId");
 String examName=request.getParameter("examType");
 String examTypeId=request.getParameter("examTypeCode");
 String action=request.getParameter("action");
+String courseTypeId=request.getParameter("courseTypeId");
+
+
+
 %>
 
 
@@ -130,17 +134,165 @@ height:1px;
       padding: 20px;
       border: 1px solid #888;
       width: 35%;
-      height: 30%;
+      height: 35%;
     }
+    
+    
+        .heading {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 4rem;
+  text-transform: capitalize;
+  color: #334;
+}
+
+.heading span {
+  color: #2597f4;
+}
+
+
+
+.header .contact-info {
+  padding: 2rem 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: #39b32e;
+}
+
+.header .contact-info p {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.header .contact-info p i {
+  padding-right: 0.5rem;
+  color: yellow;
+}
+
+.header .navbar {
+  padding: 2rem 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: rgb(25, 122, 167);
+  border-bottom: 0.2rem solid #334;
+  position: relative;
+  z-index: 1000;
+}
+
+.header .navbar.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: none;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.header .navbar .logo {
+  width: 130px;
+  height: 60px;
+}
+
+.header .navbar .logo i {
+  color: #2597f4;
+}
+
+.header .navbar .links a {
+  margin-left: 2rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: rgb(254, 254, 255);
+}
+
+.header .navbar .links a:hover {
+  text-decoration: underline;
+  color: #eefa41;
+}
+
+.header #menu-btn {
+  font-size: 3rem;
+  cursor: pointer;
+  color: #334;
+  display: none;
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.home .image {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+}
+
+.home .image img {
+  width: 50%;
+}
+
+.home .content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+}
+
+.home .content h3 {
+  font-size: 4rem;
+  text-transform: capitalize;
+  color: #334;
+}
+
+.home .content p {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #777;
+  padding: 1rem 0;
+}
+    
+    
 </style>
 </head>
 <body>
-
+<header class="header">
+    <nav class="navbar">
+ 
+       <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
+        <p style="color:white;font-size:22px;margin-left:40px;">GURU NANAK INSTITUTE OF TECHNOLOGY</p>
+       
+       <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+       <div id="menu-btn" class="fa fa-bars"></div>
+ 
+    </nav>
+ 
+ </header>
 <%
 if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
 %>
      <H3 style="text-align:center"><%=examName+" Student's Answer Scripts" %> </H3>
-       <div style="border:1px solid red;  height:600px; overflow-y: auto;">
+       <div style="border:1px solid red;  height:500px; overflow-y: auto;">
             <table id="customers">
             <tr>
               <thead >
@@ -167,7 +319,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
 }else if(!action.isEmpty() && action.trim().equalsIgnoreCase("WeeklyLab")){
            %>
  <H3 style="text-align:center"><%="Student's "+examName %> </H3>
-       <div style="border:1px solid red;  height:600px; overflow-y: auto;">
+       <div style="border:1px solid red;  height:500px; overflow-y: auto;">
             <table id="customers">
             <tr>
               <thead >
@@ -193,7 +345,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
 }else if(!action.isEmpty() && action.trim().equalsIgnoreCase("WeeklyLabOutput")){
  %>
  <H3 style="text-align:center"><%="Student's "+examName %> </H3>
-       <div style="border:1px solid red;  height:600px; overflow-y: auto;">
+       <div style="border:1px solid red;  height:500px; overflow-y: auto;">
             <table id="customers">
             <tr>
               <thead >
@@ -219,7 +371,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
 }else if(!action.isEmpty() && action.trim().equalsIgnoreCase("FInalLabCopy")){
  %>
  <H3 style="text-align:center"><%="Student's "+examName %> </H3>
-       <div style="border:1px solid red;  height:600px; overflow-y: auto;">
+       <div style="border:1px solid red;  height:500px; overflow-y: auto;">
             <table id="customers">
             <tr>
               <thead >
@@ -246,7 +398,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
 }else if(!action.isEmpty() && action.trim().equalsIgnoreCase("assignmentCheck")){
  %>
  <H3 style="text-align:center"><%="Student's "+examName %> </H3>
-       <div style="border:1px solid red;  height:600px; overflow-y: auto;">
+       <div style="border:1px solid red;  height:500px; overflow-y: auto;">
             <table id="customers">
             <tr>
               <thead >
@@ -301,6 +453,8 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
     var fkSemester=<%= semester%>;
     var examTypeId=<%=examTypeId%>
     var action="<%=action%>"
+    var courseTypeId=<%=courseTypeId%>;
+    
     $(document).ready(function () {
     	console.log("Page loaded");
     	
@@ -311,7 +465,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
     	 
     	 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/fetchDetails?action=viewExamAnswerScript&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examTypeId="+examTypeId,
+		      url:"/College_Final_Year_Project/fetchDetails?action=viewExamAnswerScript&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examTypeId="+examTypeId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#Table').empty();
@@ -357,7 +511,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
     	 
     	 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/fetchDetails?action=viewLab&query=weeklyLabFile&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId,
+		      url:"/College_Final_Year_Project/fetchDetails?action=viewLab&query=weeklyLabFile&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#Table').empty();
@@ -401,7 +555,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
     	 
     	 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/fetchDetails?action=viewLab&query=viewweeklylaboutput&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId,
+		      url:"/College_Final_Year_Project/fetchDetails?action=viewLab&query=viewweeklylaboutput&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#Table').empty();
@@ -443,7 +597,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
     	 
     	 $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/fetchDetails?action=viewLab&query=finalLabCopy&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId,
+		      url:"/College_Final_Year_Project/fetchDetails?action=viewLab&query=finalLabCopy&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#Table').empty();
@@ -486,7 +640,7 @@ if(!action.isEmpty() && action.trim().equalsIgnoreCase("exam")){
 	 
 	 $.ajax({
 	      type: "GET",
-	      url:"/College_Final_Year_Project/fetchDetails?action=viewAssignment&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&examTypeId="+examTypeId,
+	      url:"/College_Final_Year_Project/fetchDetails?action=viewAssignment&teacherId="+fkTeacherPkId+"&departmentId="+fkDepartment+"&semesterId="+fkSemester+"&sectionId="+fkSectionId+"&subjectId="+fksubjectId+"&courseTypeId="+courseTypeId,
 	      success: function (data, textStatus, jqXHR) {
 	    	  var JsonData= jQuery.parseJSON(data);
 	    	  $('#Table').empty();

@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 
 public class AssignmentUploadAndView {
 	public String uploadAssignment(String teacherId, String departmentId, String semseter, String section,
-			String subjectId, String action, Part uploadFile, String dueDate) {
+			String subjectId, String action, Part uploadFile, String dueDate,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String fileName = (uploadFile.getSubmittedFileName());
@@ -29,8 +29,8 @@ public class AssignmentUploadAndView {
 			String query = null;
 			if (!action.isEmpty()) {
 
-				query = "INSERT INTO `assignment` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `assignmentName`,`assignmentData`,`assignmentCreateDate`,`dueDate`, `createDate`, `updatedate`)"
-						+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+				query = "INSERT INTO `assignment` (`fkTeacherId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `assignmentName`,`assignmentData`,`assignmentCreateDate`,`dueDate`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+						+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				PreparedStatement pstmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 				pstmt.setInt(1, Integer.parseInt(teacherId));
@@ -44,15 +44,15 @@ public class AssignmentUploadAndView {
 				pstmt.setObject(9, dueDate);
 				pstmt.setObject(10, new Date());
 				pstmt.setObject(11, new Date());
-
+				pstmt.setInt(12, Integer.parseInt(courseTypeId));
 				pstmt.executeUpdate();
 
 				ResultSet rs = pstmt.getGeneratedKeys();
 				if(rs.next()) {
 					int pkAssignmentId=rs.getInt(1);
 
-				String assignmentQuery="INSERT INTO `student_assignment_status` (`fkStudentSubjectMapId`,`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `fkAssignmentId`, `status`, `createDate`)" 
-				+" SELECT pkstudentSubjectMapId,fkStudentPkId,?,?,?,?,?,?,? FROM map_student_subject  WHERE fkDepartmentId=? AND fkSemester=? AND fkSection=? AND fkSubjectId=?"; 
+				String assignmentQuery="INSERT INTO `student_assignment_status` (`fkStudentSubjectMapId`,`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `fkAssignmentId`, `status`, `createDate`,`fkCourseTypeId`)" 
+				+" SELECT pkstudentSubjectMapId,fkStudentPkId,?,?,?,?,?,?,?,? FROM map_student_subject  WHERE fkDepartmentId=? AND fkSemester=? AND fkSection=? AND fkSubjectId=? AND fkCourseTypeId=?"; 
 				
 				PreparedStatement pstmt1 = con.prepareStatement(assignmentQuery);
 
@@ -63,11 +63,13 @@ public class AssignmentUploadAndView {
 				pstmt1.setInt(5, pkAssignmentId);
 				pstmt1.setInt(6, 0);
 				pstmt1.setObject(7, new Date());
-				pstmt1.setInt(8, Integer.parseInt(departmentId));
-				pstmt1.setInt(9, Integer.parseInt(semseter));
-				pstmt1.setInt(10, Integer.parseInt(section));
-				pstmt1.setInt(11, Integer.parseInt(subjectId));
-					
+				pstmt1.setInt(8, Integer.parseInt(courseTypeId));
+				pstmt1.setInt(9, Integer.parseInt(departmentId));
+				pstmt1.setInt(10, Integer.parseInt(semseter));
+				pstmt1.setInt(11, Integer.parseInt(section));
+				pstmt1.setInt(12, Integer.parseInt(subjectId));
+				pstmt1.setInt(13, Integer.parseInt(courseTypeId));
+
 				
 				int dbStatus=pstmt1.executeUpdate();
 				
@@ -94,13 +96,13 @@ public class AssignmentUploadAndView {
 		return result;
 	}
 	
-	public String viewAssignment(String teacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId) {
+	public String viewAssignment(String teacherId,String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
 			String query=null;
 		
-			    query = "Select pkAssignmentId,assignmentName,assignmentCreateDate,dueDate from assignment where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=?";
+			    query = "Select pkAssignmentId,assignmentName,assignmentCreateDate,dueDate from assignment where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkTeacherId=? and fkCourseTypeId=?";
 
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
@@ -108,6 +110,7 @@ public class AssignmentUploadAndView {
 				pstmt.setInt(3, Integer.parseInt(fkSectionId));
 				pstmt.setInt(4, Integer.parseInt(fkSubjectId));
 				pstmt.setInt(5, Integer.parseInt(teacherId));
+				pstmt.setInt(6, Integer.parseInt(courseTypeId));
 				ResultSet rs = pstmt.executeQuery();
 
 				List<ViewVariables> suggestionList = new ArrayList<ViewVariables>();

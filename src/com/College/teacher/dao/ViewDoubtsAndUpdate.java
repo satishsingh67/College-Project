@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 public class ViewDoubtsAndUpdate {
 
 	public String viewDoubt(String action, String teacherId, String fkDepartmentId, String fkSemesterId,
-			String fkSectionId, String fkSubjectId) {
+			String fkSectionId, String fkSubjectId,	String courseTypeId ) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -24,18 +24,20 @@ public class ViewDoubtsAndUpdate {
 			if (action != null && action.trim().equalsIgnoreCase("mentorDoubt")) {
 				query = "SELECT doubt.pkviewDoubtsMentorId,doubt.question,doubt.answer,doubt.createDate,doubt.updateDate,stud.studentName,stud.universityRollNo FROM view_doubts_mentor AS doubt"
 						+ " INNER JOIN registration AS stud ON doubt.fkStudentId=stud.pkRegistrationId "
-						+ "WHERE  doubt.fkDepartmentId=? AND doubt.fkSemesterId=? AND doubt.fkSectionId=?";
+						+ "WHERE  doubt.fkDepartmentId=? AND doubt.fkSemesterId=? AND doubt.fkSectionId=? AND doubt.fkCourseTypeId=?";
 
 				pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 				pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 				pstmt.setInt(3, Integer.parseInt(fkSectionId));
+				pstmt.setInt(3, Integer.parseInt(courseTypeId));
+
 			} else {
 				query = "SELECT doubt.pkviewDoubtsId,doubt.question,doubt.answer,doubt.createDate,doubt.updateDate,stud.studentName,stud.universityRollNo FROM view_doubts AS doubt"
 						+ " INNER JOIN registration AS stud ON doubt.fkStudentId=stud.pkRegistrationId "
-						+ "WHERE doubt.fkTeacherId=? AND doubt.fkDepartmentId=? AND doubt.fkSemesterId=? AND doubt.fkSectionId=? AND doubt.fkSubjectId=?";
+						+ "WHERE doubt.fkCourseTypeId=? AND doubt.fkDepartmentId=? AND doubt.fkSemesterId=? AND doubt.fkSectionId=? AND doubt.fkSubjectId=?";
 				pstmt = con.prepareStatement(query);
-				pstmt.setInt(1, Integer.parseInt(teacherId));
+				pstmt.setInt(1, Integer.parseInt(courseTypeId));
 				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
 				pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 				pstmt.setInt(4, Integer.parseInt(fkSectionId));
@@ -129,7 +131,7 @@ public class ViewDoubtsAndUpdate {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(new 	ViewDoubtsAndUpdate().viewDoubt("mentorDoubt", "", "1", "1", "1", ""));
+		//System.out.println(new 	ViewDoubtsAndUpdate().viewDoubt("mentorDoubt", "", "1", "1", "1", ""));
 	}
 	
 }

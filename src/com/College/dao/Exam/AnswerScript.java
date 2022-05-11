@@ -36,13 +36,13 @@ public class AnswerScript {
 				result.put("status", false);
 			}
 		} catch (Exception e) {
-
+e.printStackTrace();
 		}
 		return result;
 	}
 
 	public String submitAnswerScript(String fkQustionPaperId, String fkExamTypeId, String studentId,
-			String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId, Part scriptFile) {
+			String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId, Part scriptFile,String courseTypeId) {
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String file[] = (scriptFile.getSubmittedFileName()).split("\\.");
@@ -54,7 +54,7 @@ public class AnswerScript {
 			ResultSet rs = null;
 
 			String checkScriptSubmiited = "Select count(*),pkExamAnswerSubmissionId from exam_answer_submission where `fkQuestionPaperId`=? and `fkExamType`=? and `fkStudentId`=? and `fkDepartmentId`=? and "
-					+ " `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? order by `updatedate` DESC LIMIT 1";
+					+ " `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=? order by `updatedate` DESC LIMIT 1";
 
 			pstmt = con.prepareStatement(checkScriptSubmiited);
 
@@ -65,6 +65,7 @@ public class AnswerScript {
 			pstmt.setInt(5, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(6, Integer.parseInt(fkSectionId));
 			pstmt.setInt(7, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(8, Integer.parseInt(courseTypeId));
 
 			rs = pstmt.executeQuery();
 			rs.next();
@@ -89,8 +90,8 @@ public class AnswerScript {
 			} else {
 
 				String uploadScriptQuery = "Insert into `exam_answer_submission`(`fkQuestionPaperId`, `fkExamType`, `fkStudentId`, `fkDepartmentId`, `fkSemesterId`, "
-						+ "`fkSectionId`, `fkSubjectId`, `answerFileName`, `fileExtension`, `answerFileData`, `createDate`, `updatedate`)"
-						+ " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+						+ "`fkSectionId`, `fkSubjectId`, `answerFileName`, `fileExtension`, `answerFileData`, `createDate`, `updatedate`,`fkCourseTypeId`)"
+						+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				pstmt = con.prepareStatement(uploadScriptQuery);
 				pstmt.setInt(1, Integer.parseInt(fkQustionPaperId));
@@ -105,6 +106,7 @@ public class AnswerScript {
 				pstmt.setBlob(10, solutionFileInputStream);
 				pstmt.setObject(11, new Date());
 				pstmt.setObject(12, new Date());
+				pstmt.setInt(13, Integer.parseInt(courseTypeId));
 
 				int dbResult = pstmt.executeUpdate();
 				if (dbResult > 0) {
@@ -123,12 +125,12 @@ public class AnswerScript {
 	}
 
 	public Map<String,Object> checkAnswerScriptAvailableForDownload(String fkQustionPaperId, String fkExamTypeId, String studentId,
-			String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId) {
+			String fkDepartmentId, String fkSemesterId, String fkSectionId, String fkSubjectId,Integer courseTypeId) {
 		Map<String,Object> result = new HashMap<String,Object>();
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		try {
 		String checkScriptAvailable = "Select count(*),pkExamAnswerSubmissionId from exam_answer_submission where `fkQuestionPaperId`=? and `fkExamType`=? and `fkStudentId`=? and `fkDepartmentId`=? and "
-				+ " `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? order by `updatedate` DESC LIMIT 1";
+				+ " `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=? order by `updatedate` DESC LIMIT 1";
 		
     	PreparedStatement pstmt = con.prepareStatement(checkScriptAvailable);
 
@@ -139,6 +141,7 @@ public class AnswerScript {
 		pstmt.setInt(5, Integer.parseInt(fkSemesterId));
 		pstmt.setInt(6, Integer.parseInt(fkSectionId));
 		pstmt.setInt(7, Integer.parseInt(fkSubjectId));
+		pstmt.setInt(8, courseTypeId);
 
 	    ResultSet rs = pstmt.executeQuery();
 		rs.next();
@@ -199,11 +202,7 @@ public class AnswerScript {
 		}
 		return answerScriptData;
 	}
-	
 	public static void main(String[] args) {
-		Map<String, Object> result = new AnswerScript().checkAnswerScriptAvailableForDownload("1", "1", "1", "1", "4", "1", "10");
-
-		System.out.println(result.get("status")+" "+result.get("pkAnswerScriptId"));
-
+		System.out.println(new AnswerScript().checkAnswerScriptSubmissionStatus("18","1"));
 	}
 }

@@ -44,14 +44,14 @@ public class PostQuestionPaperAndTakeActionTeacher extends HttpServlet {
 		String action1 = request.getParameter("action1");
 		String id = request.getParameter("id");
 		String isActive = request.getParameter("isActive");
-		
+		String courseTypeId = request.getParameter("courseTypeId");
 		String result=null;
 		PrintWriter out=response.getWriter();
 		try {
 			
 			if(!action.isEmpty() && action.trim().equalsIgnoreCase("viewPaperDetails")) {
 				
-				result	=new PostQuestionPaperAndTakeAction().fetchPaperDetails(teacherId, departmentId, semester, section, subjectId, examType);
+				result	=new PostQuestionPaperAndTakeAction().fetchPaperDetails(teacherId, departmentId, semester, section, subjectId, examType,courseTypeId);
 				out.print(result);
 			}
 			
@@ -90,13 +90,16 @@ public class PostQuestionPaperAndTakeActionTeacher extends HttpServlet {
 		String examType=request.getParameter("examType");
 		String action = request.getParameter("action");
 		Part uploadFile = request.getPart("file");
+		String courseTypeId = request.getParameter("courseTypeId");
+
+		
 		String result=null;
 		PrintWriter out=response.getWriter();
 		try {
 			
 			if(uploadFile.getSize()!=0) {
 				
-				result	=new PostQuestionPaperAndTakeAction().uploadQuestionPaper(teacherId, departmentId, semester, section, subjectId, uploadFile, examType);
+				result	=new PostQuestionPaperAndTakeAction().uploadQuestionPaper(teacherId, departmentId, semester, section, subjectId, uploadFile, examType,courseTypeId);
 				out.print(result);
 			}
 			else {

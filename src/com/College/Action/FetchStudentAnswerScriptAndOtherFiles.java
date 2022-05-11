@@ -40,25 +40,26 @@ public class FetchStudentAnswerScriptAndOtherFiles extends HttpServlet {
 		String action = request.getParameter("action");
 	    String examTypeId=request.getParameter("examTypeId");
 		String query=request.getParameter("query");
-	    
+		String courseTypeId=request.getParameter("courseTypeId");
+
 		String result=null;
 		PrintWriter out=response.getWriter();
 		
 		if(!action.isEmpty() && action.trim().equalsIgnoreCase("viewExamAnswerScript")) {
 			
-			result=new FetchStudentFiles().FetchStudentAnswerScript(examTypeId, teacherId, departmentId, semester, section, subjectId);
+			result=new FetchStudentFiles().FetchStudentAnswerScript(examTypeId, teacherId, departmentId, semester, section, subjectId, courseTypeId);
 			
 			out.print(result);
 		}
 		else if(!action.isEmpty() && action.trim().equalsIgnoreCase("viewLab")) {
 			
-			result=new FetchStudentFiles().viewLabCopy(departmentId, semester, section, subjectId, query);
+			result=new FetchStudentFiles().viewLabCopy(departmentId, semester, section, subjectId, query,courseTypeId);
 			
 			out.print(result);
 		}
 	else if(!action.isEmpty() && action.trim().equalsIgnoreCase("viewAssignment")) {
 			
-			result=new FetchStudentFiles().FetchStudentAssignment(teacherId, departmentId, semester, section, subjectId);
+			result=new FetchStudentFiles().FetchStudentAssignment(teacherId, departmentId, semester, section, subjectId,courseTypeId);
 			
 			out.print(result);
 		}

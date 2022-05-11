@@ -50,6 +50,61 @@
 }
 
 
+ /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: white;
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+
+    }
+.modal-backdrop.in {
+	opacity: 0.9;
+}
+    /* Modal Content */
+    .modal-content {
+      background-color: white;
+      margin: auto;
+    margin-top:10%;
+	  margin-left:5%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 35%;
+      height: 48%;
+    }
+  /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      margin-left: 97%;
+      margin-top: -3%;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
 </style>
 
 
@@ -228,6 +283,7 @@
 
 
     <main>
+
 
       <!--
         - #HOME SECTION
@@ -420,7 +476,7 @@
       </section>
 
 
-
+  
 
 
       <!--
@@ -862,7 +918,7 @@
           </div>
 
         </div>
-  <div class="loader2" style="margin-top:-110%;margin-left:150%;display:none;" id="myLoader"></div>
+  <div class="loader2" style="margin-top:-110%;margin-left:150%;" id="myLoader"></div>
 
       </section>
 
@@ -1335,6 +1391,19 @@
   </div>
 
 
+ <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+	                  <span class="close" id="s" >&times;</span>
+
+      <div class="loader1"  id="popUpContent">
+       
+     
+      </div>
+    </div>
+
+  </div>
 
 
 
@@ -1351,12 +1420,15 @@
 
 <script>
 $(document).ready(function () {
-   $('#myLoader').show();
-
 	 fetchNotice();
-
+	 fetchPopUp();
+	 
 });
-
+ $("#s").click(function (event) {
+          $('#myModal').hide();
+  		//Calling Loader
+  		$(".loader1").hide();
+        });
 
 function fetchNotice(){
 	 $.ajax({
@@ -1410,7 +1482,59 @@ function fetchNotice(){
 	
 	
 }
-
+function fetchPopUp(){
+	 $.ajax({
+	      type: "GET",
+	      url:"/College_Final_Year_Project/update?action=popUp",
+	      success: function (data, textStatus, jqXHR) {
+	    	var JsonData= jQuery.parseJSON(data);
+	    	  if(JsonData==null){
+	    		  var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+	    		  $('#popUpContent').append(test);
+	    	 }
+	    	 else{
+	    		
+	    		 if(JsonData.length>0){
+	    		 
+	          $(JsonData).each(function (index, item) {  
+	        	  var card='<div class="event-card">'
+	        			+' <div class="content-left">'
+	        	    +'  <p class="date" style="color:blue;">'+item.createDate+'</p>'
+	        	      +'  </div>'
+	        	    +' <div class="content-right">'
+	        	    +'    <p class="time">'+item.name+'</p>'
+	        	        +((item.link.length>0) ?'<a href="/College_Final_Year_Project/update?action=downloadPopUp&id='+item.pkId+'" class="event-name">View</a>':'<a href="" class="event-name" style="pointer-events: none">View</a>')
+	        	      +' </div>'
+	        	  +'</div>';
+	        		
+	        		$('#popUpContent').append(card);
+	        	  
+	          });
+	          
+	      $('#myModal').show();
+  		//Calling Loader
+  		$(".loader1").show();
+	 
+	    		 }else{
+	    			 var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
+	    			 $('#popUpContent').append(test);
+	    			 
+	    		 }         
+	    	 }
+	      },
+	      error: function (jqXHR, textStatus, errorThrown) {
+      
+	    	  var test= '<h4 style="text-align:center;margin-top:20px;">Sorry, Something went wrong,Please refresh the page</h4>';
+	    	
+	    		$('#popUpContent').append(test);
+						}
+					});
+	
+	$('#myModal').show();
+  		//Calling Loader
+  		$(".loader1").show();
+	 
+}
 
 
 </script>

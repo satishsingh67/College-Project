@@ -242,7 +242,7 @@ form span{
     }
     
     </style>
-    <title>delete account</title>
+    <title>Delete account</title>
 </head>
 <body style="background-image: url(./images/background/properback.png);background-repeat: no-repeat;background-size: cover;">
     
@@ -262,9 +262,9 @@ form span{
                <form  id="deleteForm">
           
                    
-                   <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :</span>
+                   <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter The  Id To Be Deleted :<strong class="text-danger">*</strong></span>
                    <input type="text" name="id"  id="accId" placeholder="enter Id" class="box" required>
-                   <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter your Email:</span>
+                   <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Enter your Email:<strong class="text-danger">*</strong></span>
                    <input type="text" name="email" id="emailId" placeholder="enter your email" class="box" required>
                    
                    <input type="submit" value="Delete" name="submit" id="deleteAccountButton" class="link-btn" style="margin-right: 5px;">

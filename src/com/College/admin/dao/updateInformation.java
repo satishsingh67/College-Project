@@ -139,7 +139,7 @@ public class updateInformation {
 		String result = null;
 		try {
 
-			String query = "Select pkPostPopUpId,message,createDate from post_pop_up ORDER BY pkPostPopUpId desc limit 2";
+			String query = "Select pkPostPopUpId,message,createDate,fileName from post_pop_up ORDER BY pkPostPopUpId desc limit 2";
 
 			Statement pstmt = con.createStatement();
 
@@ -153,6 +153,7 @@ public class updateInformation {
 				viewVariablesObj.setPkId(rs.getInt(1));
 				viewVariablesObj.setName(rs.getString(2));
 				viewVariablesObj.setCreateDate(rs.getTimestamp(3));
+				viewVariablesObj.setLink(rs.getString(4));
 				popUpList.add(viewVariablesObj);
 
 			}
@@ -209,4 +210,42 @@ public class updateInformation {
 	}
 	return fileData;
 	}
+	
+	public Map<String, Object> downloadPopUpFile(String id) {
+		Map<String, Object> fileData = new HashMap<String, Object>();
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		try {
+			String FileName, FileExtension;
+			String query = "Select fileName,fileExtension,fileData from post_pop_up where pkPostPopUpId=?";
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(id));
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			FileName =rs.getString(1);
+			FileExtension = rs.getString(2);
+			Blob blob = rs.getBlob(3);
+			InputStream inputStream = blob.getBinaryStream();
+			fileData.put("status", true);
+			fileData.put("fileName", FileName);
+			fileData.put("fileExtension", FileExtension);
+			fileData.put("fileData", inputStream);
+			inputStream.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+		fileData.put("status", false);
+	} finally {
+		try {
+			if (con != null) {
+				con.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			fileData.put("status", false);
+		}
+	}
+	return fileData;
+	}
+	
+	
 }

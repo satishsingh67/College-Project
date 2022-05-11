@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 public class LabDataHandling {
 
 	public String submitLabCopy(String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId, Part labFile, String action, Boolean isFinalLabCopy) {
+			String fkSubjectId, Part labFile, String action, Boolean isFinalLabCopy,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		String file[] = (labFile.getSubmittedFileName()).split("\\.");
@@ -32,20 +32,20 @@ public class LabDataHandling {
 			String query = null;
 			if (action.trim().toLowerCase().contains("submitweeklylabcopy") && !(isFinalLabCopy)) {
 
-				query = "Insert into weekly_lab_experiment (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `LabFileName`,`fileExtension`,`LabFileData`, `createDate`,`updatedate`) "
-						+ " values(?,?,?,?,?,?,?,?,?,?)";
+				query = "Insert into weekly_lab_experiment (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `LabFileName`,`fileExtension`,`LabFileData`, `createDate`,`updatedate`,`fkCourseTypeId`) "
+						+ " values(?,?,?,?,?,?,?,?,?,?,?)";
 
 			}
 			if (action.trim().toLowerCase().contains("submitweeklylaboutput") && !(isFinalLabCopy)) {
 
-				query = "Insert into weekly_lab_output (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `outputFileName`,`fileExtension`,`outputFileData`, `createDate`,`updatedate`) "
-						+ " values(?,?,?,?,?,?,?,?,?,?)";
+				query = "Insert into weekly_lab_output (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `outputFileName`,`fileExtension`,`outputFileData`, `createDate`,`updatedate`,`fkCourseTypeId`) "
+						+ " values(?,?,?,?,?,?,?,?,?,?,?)";
 
 			}
 			if (action.trim().toLowerCase().contains("submitsemfinallabcopy") && (isFinalLabCopy)) {
 
-				query = "Insert into final_lab_copy (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `LabFileName`,`fileExtension`,`LabFileData`, `createDate`,`updatedate`) "
-						+ " values(?,?,?,?,?,?,?,?,?,?)";
+				query = "Insert into final_lab_copy (`fkStudentId`, `fkDepartmentId`, `fkSemesterId`, `fkSectionId`, `fkSubjectId`, `LabFileName`,`fileExtension`,`LabFileData`, `createDate`,`updatedate`,`fkCourseTypeId`) "
+						+ " values(?,?,?,?,?,?,?,?,?,?,?)";
 
 			}
 
@@ -60,6 +60,7 @@ public class LabDataHandling {
 			pstmt.setBlob(8, inputStreamFile);
 			pstmt.setObject(9, new Date());
 			pstmt.setObject(10, new Date());
+			pstmt.setInt(11, Integer.parseInt(courseTypeId));
 
 			int dbStatus = pstmt.executeUpdate();
 			if (dbStatus > 0) {
@@ -85,7 +86,7 @@ public class LabDataHandling {
 	}
 
 	public String viewLabCopyHistory(String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId, String action) {
+			String fkSubjectId, String action,String courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		try {
@@ -93,12 +94,12 @@ public class LabDataHandling {
 
 			if (action.trim().toLowerCase().contains("viewweeklylabcopy")) {
 
-				query = "Select pkWeeklyLabExperimentId,LabFileName,createDate from weekly_lab_experiment where fkStudentId=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+				query = "Select pkWeeklyLabExperimentId,LabFileName,createDate from weekly_lab_experiment where fkStudentId=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 
 			}
 			if (action.trim().toLowerCase().contains("viewweeklylaboutput")) {
 
-				query = "Select pkWeeklyLabOutputId,outputFileName,createDate from weekly_lab_output where fkStudentId=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+				query = "Select pkWeeklyLabOutputId,outputFileName,createDate from weekly_lab_output where fkStudentId=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 
 			}
 
@@ -108,6 +109,9 @@ public class LabDataHandling {
 			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			pstmt.setInt(5, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(6, Integer.parseInt(courseTypeId));
+
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			List<ViewVariables> notesList = new ArrayList<ViewVariables>();
@@ -197,7 +201,7 @@ public class LabDataHandling {
 	}
 	
 	public String checkFinalLabCopyAndOthersFilesStatus(String studentId, String fkDepartmentId, String fkSemesterId, String fkSectionId,
-			String fkSubjectId,String action) {
+			String fkSubjectId,String action,Integer courseTypeId) {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String result = null;
 		 PreparedStatement pstmt=null;
@@ -205,26 +209,30 @@ public class LabDataHandling {
 		try {
 			String query = null;
 			if(action.trim().equalsIgnoreCase("checkFinalLabCopy")) {
-            query="Select `pkFinalLabCopyId` from final_lab_copy where fkStudentId=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? order by `updatedate` DESC LIMIT 1";				
+            query="Select `pkFinalLabCopyId` from final_lab_copy where fkStudentId=? and fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=? order by `updatedate` DESC LIMIT 1";				
             pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(studentId));
 			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(4, Integer.parseInt(fkSectionId));
 			pstmt.setInt(5, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(6, courseTypeId);
+
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result=String.valueOf(rs.getInt(1));
 			}	
 			}
 			if(action.trim().equalsIgnoreCase("checkApplicationLink")) {
-	            query="Select `link` from lab_application_link where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? order by `updatedate` DESC LIMIT 1";				
+	            query="Select `link` from lab_application_link where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=? order by `updatedate` DESC LIMIT 1";				
 			
 		    pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, courseTypeId);
+
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result=rs.getString(1);
@@ -232,13 +240,15 @@ public class LabDataHandling {
 			}
 			
 			if(action.trim().equalsIgnoreCase("checkLabManual")) {
-	            query="Select `pkLabManualId` from lab_manual where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? order by `updatedate` DESC LIMIT 1";				
+	            query="Select `pkLabManualId` from lab_manual where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=? order by `updatedate` DESC LIMIT 1";				
 			
 		    pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, courseTypeId);
+
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result=String.valueOf(rs.getInt(1));
@@ -246,13 +256,15 @@ public class LabDataHandling {
 			}
 			
 			if(action.trim().equalsIgnoreCase("checkLabOtherData")) {
-	            query="Select `pkLabOtherDataId` from lab_other_data where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? order by `updatedate` DESC LIMIT 1";				
+	            query="Select `pkLabOtherDataId` from lab_other_data where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=? order by `updatedate` DESC LIMIT 1";				
 			
 		    pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 			pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 			pstmt.setInt(3, Integer.parseInt(fkSectionId));
 			pstmt.setInt(4, Integer.parseInt(fkSubjectId));
+			pstmt.setInt(5, courseTypeId);
+
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result=String.valueOf(rs.getInt(1));

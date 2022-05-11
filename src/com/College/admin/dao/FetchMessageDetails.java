@@ -14,6 +14,7 @@ import java.util.List;
 
 import com.college.dataBaseConnection.DataBaseConnection;
 import com.college.model.ViewVariables;
+import com.college.sendMail.SendMail;
 import com.google.gson.Gson;
 
 public class FetchMessageDetails {
@@ -98,8 +99,7 @@ public class FetchMessageDetails {
 
 				}
 
-			}
-			else if (action.trim().equalsIgnoreCase("contactUs")) {
+			} else if (action.trim().equalsIgnoreCase("contactUs")) {
 				query = "Update contactus set answer=?,updateTime=? where contact_us_id=?";
 				pstmt = con.prepareStatement(query);
 
@@ -111,6 +111,7 @@ public class FetchMessageDetails {
 
 				if (dbStatus > 0) {
 					result = "Reply Saved Successfully";
+					SendMailForContactUs(id,answer);
 				} else {
 					result = "Reply not saved.Please try again.";
 
@@ -148,10 +149,10 @@ public class FetchMessageDetails {
 
 			ResultSet rs = stmt.executeQuery(query);
 			List<ViewVariables> teacherDoubtList = new ArrayList<ViewVariables>();
-             
-			int count=0;
+
+			int count = 0;
 			while (rs.next()) {
-                count++;
+				count++;
 				ViewVariables viewVariables = new ViewVariables();
 				viewVariables.setSlNo(count);
 				viewVariables.setPkId(rs.getInt(1));
@@ -162,13 +163,12 @@ public class FetchMessageDetails {
 				viewVariables.setAnswer(rs.getString(6));
 				viewVariables.setCreateDate(rs.getTimestamp(7));
 				viewVariables.setUpdateDate(rs.getTimestamp(8));
-				if(rs.getBoolean(9)) {
+				if (rs.getBoolean(9)) {
 					viewVariables.setStatus("Yes");
-				}else {
+				} else {
 					viewVariables.setStatus("No");
 				}
-				
-				
+
 				teacherDoubtList.add(viewVariables);
 
 			}
@@ -228,40 +228,38 @@ public class FetchMessageDetails {
 				viewVariables.setSemster(rs.getInt(9));
 				viewVariables.setSection(rs.getInt(10));
 				viewVariables.setCourseName(rs.getString(11));
-				if (rs.getInt(12)==1) {
+				if (rs.getInt(12) == 1) {
 					viewVariables.setStatus("Approved");
-				}else if(rs.getInt(12)==2) {
+				} else if (rs.getInt(12) == 2) {
 					viewVariables.setStatus("Rejected");
-				}
-				else {
+				} else {
 					viewVariables.setStatus("Pending");
 				}
-				
+
 				Blob blob = rs.getBlob("studentPhoto");
 				viewVariables.setUpdateDate(rs.getTimestamp(14));
-				
+
 				// Preparing Image to send user
 				inputStream = blob.getBinaryStream();
-				
+
 				byte[] buffer = new byte[4096];
 				int bytesRead = -1;
-				
+
 				while ((bytesRead = inputStream.read(buffer)) != -1) {
 					outputStream.write(buffer, 0, bytesRead);
 				}
-				
+
 				byte[] imageBytes = outputStream.toByteArray();
 				String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
 				viewVariables.setBase64Image(base64Image);
-				
+
 				studentList.add(viewVariables);
 				inputStream.close();
 				outputStream.close();
 
 			}
-			
-			
+
 			Gson json = new Gson();
 
 			result = json.toJson(studentList);
@@ -282,7 +280,7 @@ public class FetchMessageDetails {
 
 	}
 
-	public String apprveStudent(String id,String value,String action) {
+	public String apprveStudent(String id, String value, String action) {
 
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 
@@ -290,23 +288,22 @@ public class FetchMessageDetails {
 
 		try {
 			String query = "Update registration set verificationStatus=?,updateDate=? where pkRegistrationId=?";
-		
-		PreparedStatement pstmt=con.prepareStatement(query);
-		
-		pstmt.setInt(1,Integer.valueOf(value));
-		pstmt.setObject(2,new Date());
-		pstmt.setInt(3, Integer.parseInt(id));
-		
-		int dbStatus=pstmt.executeUpdate();
-		
-		if(dbStatus>0) {
-			result="Application is "+action+" Successfully";
-			
-		}else{
-			result = "Something went wrong.Please try again.";
-		}
-		
-		
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+
+			pstmt.setInt(1, Integer.valueOf(value));
+			pstmt.setObject(2, new Date());
+			pstmt.setInt(3, Integer.parseInt(id));
+
+			int dbStatus = pstmt.executeUpdate();
+
+			if (dbStatus > 0) {
+				result = "Application is " + action + " Successfully";
+
+			} else {
+				result = "Something went wrong.Please try again.";
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = "Something went wrong.Please try again.";
@@ -325,6 +322,7 @@ public class FetchMessageDetails {
 		return result;
 
 	}
+
 	public String fetchGrievance() {
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 
@@ -336,10 +334,10 @@ public class FetchMessageDetails {
 
 			ResultSet rs = stmt.executeQuery(query);
 			List<ViewVariables> List = new ArrayList<ViewVariables>();
-             
-			int count=0;
+
+			int count = 0;
 			while (rs.next()) {
-                count++;
+				count++;
 				ViewVariables viewVariables = new ViewVariables();
 				viewVariables.setSlNo(count);
 				viewVariables.setPkId(rs.getInt(1));
@@ -353,7 +351,7 @@ public class FetchMessageDetails {
 				viewVariables.setMobileNumber(rs.getString(9));
 				viewVariables.setCreateDate(rs.getTimestamp(10));
 				viewVariables.setUpdateDate(rs.getTimestamp(11));
-				
+
 				List.add(viewVariables);
 
 			}
@@ -377,11 +375,57 @@ public class FetchMessageDetails {
 
 		return result;
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(new FetchMessageDetails().fetchGrievance());
-	//System.out.println("HH");
+
+	public void SendMailForContactUs(String id, String message) {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+
+		try {
+			String query = "SELECT email_id from contactus where contact_us_id=" + Integer.parseInt(id);
+			Statement stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(query);
+
+			rs.next();
+
+			String emailId = rs.getString(1);
+
+			rs.close();
+			String subject = "Reply Of Your Query";
+
+			String status = new SendMail().sendMail(emailId.trim(), subject, message.trim());
+
+			if (status != null && status.trim().equalsIgnoreCase("Successfully")) {
+
+				String query1 = "update contactus set isEmailSend=1 where contact_us_id=" + Integer.parseInt(id);
+
+				Statement stmt1 = con.createStatement();
+
+				stmt1.executeUpdate(query1);
+
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
-	
+	public static void main(String[] args) {
+		System.out.println(new FetchMessageDetails().fetchGrievance());
+		// System.out.println("HH");
+	}
+
 }

@@ -19,20 +19,23 @@ import com.google.gson.JsonObject;
 public class MapStudentSubjectDao {
 
 	public Map<String, Object> getAllSubjects(Integer fkStudentPkId, Integer fkDepartmentId, Integer fkSemesterId,
-			Integer fkSectionId) {
+			Integer fkSectionId,Integer courseTypeId) {
 		Map<String, Object> mapSubjectList = new HashMap<String, Object>();
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 
 		try {
 			String query = "Select * from map_student_subject "
 					+ " INNER JOIN subject ON map_student_subject.fkSubjectId=subject.pkSubjectId"
-					+ " where fkStudentPkId=? and fkDepartmentId=? and fkSemester=? and fkSection=?";
+					+ " where fkStudentPkId=? and fkDepartmentId=? and fkSemester=? and fkSection=? and fkCourseTypeId=? group by fkSubjectId";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, fkStudentPkId);
 			pstmt.setInt(2, fkDepartmentId);
 			pstmt.setInt(3, fkSemesterId);
 			pstmt.setInt(4, fkSectionId);
+			pstmt.setInt(5, courseTypeId);
+
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			List<MapStudentSubject> subjectList = new ArrayList<MapStudentSubject>();
@@ -77,28 +80,32 @@ public class MapStudentSubjectDao {
 	}
 
 	public Integer getTotalNotes(Integer fkDepartmentId, Integer fkSemesterId, Integer fkSectionId,
-			Integer fkSubjectId) {
+			Integer fkSubjectId,Integer courseTypeId) {
 		Integer notesCount = 0;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String query;
 		try {
 			if (fkSubjectId == null) {
-				query = "select count(*) from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=?";
+				query = "select count(*) from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkCourseTypeId=?";
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, fkDepartmentId);
 				pstmt.setInt(2, fkSemesterId);
 				pstmt.setInt(3, fkSectionId);
+				pstmt.setInt(4, courseTypeId);
+
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();
 				notesCount = rs.getInt(1);
 
 			} else {
-				query = "select count(*) from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+				query = "select count(*) from notes where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, fkDepartmentId);
 				pstmt.setInt(2, fkSemesterId);
 				pstmt.setInt(3, fkSectionId);
 				pstmt.setInt(4, fkSubjectId);
+				pstmt.setInt(5, courseTypeId);
+
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();
 				notesCount = rs.getInt(1);
@@ -120,19 +127,20 @@ public class MapStudentSubjectDao {
 	}
 
 	public String getAllAssigmentCount(Integer studentId, Integer departmentId, Integer sectionId, Integer semesterId,
-			Integer subjectId) {
+			Integer subjectId,String courseTypeId) {
 		int count = 0;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		JsonObject obj = new JsonObject();
 		try {
 			String query = "select count(*) from student_assignment_status where fkStudentId=? and fkDepartmentId=? and fkSemesterId=?"
-					+ " and fkSectionId=? and fkSubjectId=?";
+					+ " and fkSectionId=? and fkSubjectId=? and fkCourseTypeId=?";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, studentId);
 			pstmt.setInt(2, departmentId);
 			pstmt.setInt(3, semesterId);
 			pstmt.setInt(4, sectionId);
 			pstmt.setInt(5, subjectId);
+			pstmt.setInt(6, Integer.parseInt(courseTypeId));
 
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -157,7 +165,7 @@ public class MapStudentSubjectDao {
 	}
 
 	public String getAllAssigment(Integer studentId, Integer departmentId, Integer sectionId, Integer semesterId,
-			Integer subjectId, Integer start, Integer limit) {
+			Integer subjectId, Integer start, Integer limit,String courseTypeId) {
 
 		String result = null;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
@@ -166,7 +174,7 @@ public class MapStudentSubjectDao {
 					+ "assign.assignmentName,assign.assignmentCreateDate,assign.dueDate"
 					+ " FROM student_assignment_status AS sts"
 					+ " INNER JOIN assignment AS assign ON sts.fkAssignmentId=assign.pkAssignmentId WHERE sts.fkStudentId=? AND sts.fkDepartmentId=?"
-					+ " AND sts.fkSemesterId=? AND sts.fkSectionId=?" + " AND sts.fkSubjectId=?"
+					+ " AND sts.fkSemesterId=? AND sts.fkSectionId=?" + " AND sts.fkSubjectId=? AND sts.fkCourseTypeId=? "
 					+ " ORDER BY sts.pkStudentAssignmentStatusId LIMIT ?,?";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
@@ -175,8 +183,9 @@ public class MapStudentSubjectDao {
 			pstmt.setInt(3, semesterId);
 			pstmt.setInt(4, sectionId);
 			pstmt.setInt(5, subjectId);
-			pstmt.setInt(6, start);
-			pstmt.setInt(7, limit);
+			pstmt.setInt(6, Integer.parseInt(courseTypeId));
+			pstmt.setInt(7, start);
+			pstmt.setInt(8, limit);
 
 			ResultSet rs = pstmt.executeQuery();
 
@@ -221,17 +230,20 @@ public class MapStudentSubjectDao {
 	}
 	
 	public Integer getTotalSuggestion(Integer fkDepartmentId, Integer fkSemesterId, Integer fkSectionId,
-			Integer fkSubjectId) {
+			Integer fkSubjectId,Integer courseTypeId) {
 		Integer suggestionCount = 0;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String query;
 		try {
-				query = "select count(*) from suggestion where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+				query = "select count(*) from suggestion where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and `fkCourseTypeId`=?";
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, fkDepartmentId);
 				pstmt.setInt(2, fkSemesterId);
 				pstmt.setInt(3, fkSectionId);
 				pstmt.setInt(4, fkSubjectId);
+				pstmt.setInt(5, courseTypeId);
+
+				
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();
 				suggestionCount = rs.getInt(1);
@@ -251,17 +263,19 @@ public class MapStudentSubjectDao {
 	}	
 	
 	public Integer getTotalQuestionBank(Integer fkDepartmentId, Integer fkSemesterId, Integer fkSectionId,
-			Integer fkSubjectId) {
+			Integer fkSubjectId,Integer courseTypeId) {
 		Integer questionBankCount = 0;
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 		String query;
 		try {
-				query = "select count(*) from question_bank where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=?";
+				query = "select count(*) from question_bank where fkDepartmentId=? and fkSemesterId=? and fkSectionId=? and fkSubjectId=? and `fkCourseTypeId`=?";
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, fkDepartmentId);
 				pstmt.setInt(2, fkSemesterId);
 				pstmt.setInt(3, fkSectionId);
 				pstmt.setInt(4, fkSubjectId);
+				pstmt.setInt(5, courseTypeId);
+
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();
 				questionBankCount = rs.getInt(1);
@@ -327,7 +341,7 @@ public class MapStudentSubjectDao {
 	
 	
 	 public static void main(String[] args) { 
-		 System.out.println(new MapStudentSubjectDao().getTotalQuestionBank(1, 4, 1, 10));
+		 System.out.println(new MapStudentSubjectDao().getTotalQuestionBank(1, 4, 1, 10,1));
 	 }
 	
 }

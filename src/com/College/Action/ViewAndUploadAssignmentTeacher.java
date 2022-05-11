@@ -47,11 +47,13 @@ public class ViewAndUploadAssignmentTeacher extends HttpServlet {
 		String subjectId = request.getParameter("subjectId");
 		String action = request.getParameter("action");
 		String id = request.getParameter("id");
+		String courseTypeId = request.getParameter("courseTypeId");
+
 		String result = null;
 		PrintWriter out = response.getWriter();
 		if (!action.isEmpty() && action.trim().equalsIgnoreCase("viewAssignment")) {
 			result = new AssignmentUploadAndView().viewAssignment(teacherId, departmentId, semester, section,
-					subjectId);
+					subjectId,courseTypeId);
 			out.print(result);
 		}
 
@@ -101,13 +103,15 @@ public class ViewAndUploadAssignmentTeacher extends HttpServlet {
 		String action = request.getParameter("action");
 		String dueDate = request.getParameter("dueDate");
 		Part uploadFile = request.getPart("file");
+		String courseTypeId = request.getParameter("courseTypeId");
+		
 		PrintWriter out = response.getWriter();
 		String result = null;
 		try {
 			if (uploadFile.getSize() != 9) {
 
 				result = new AssignmentUploadAndView().uploadAssignment(teacherId, departmentId, semseter, section,
-						subjectId, action, uploadFile, dueDate);
+						subjectId, action, uploadFile, dueDate,courseTypeId);
 			} else {
 				result = "Please Choose a File.";
 			}

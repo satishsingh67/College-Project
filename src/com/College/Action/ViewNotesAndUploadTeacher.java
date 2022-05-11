@@ -47,12 +47,14 @@ public class ViewNotesAndUploadTeacher extends HttpServlet {
 		String action = request.getParameter("action");
 		String query=request.getParameter("query");
 		String downloadId=request.getParameter("id");
+		String courseTypeId=request.getParameter("courseTypeId");
+		
 		String result=null;
 		PrintWriter out = response.getWriter();
 		try {
 		if(!action.isEmpty() && action.trim().equalsIgnoreCase("view")) {
 		
-			result= new UploadAndViewNotes().viewNotesAndOtherData(teacherId, departmentId, semseter, section, subjectId, query);
+			result= new UploadAndViewNotes().viewNotesAndOtherData(teacherId, departmentId, semseter, section, subjectId, query,courseTypeId);
 			
 		}
 		else if(!action.isEmpty() && action.trim().equalsIgnoreCase("download")) {
@@ -105,6 +107,7 @@ public class ViewNotesAndUploadTeacher extends HttpServlet {
 		String subjectId = request.getParameter("subjectId");
 		String action = request.getParameter("action");
 		Part uploadFile = request.getPart("file");
+		String courseTypeId=request.getParameter("courseTypeId");
 
 		PrintWriter out = response.getWriter();
 		String result = null;
@@ -112,7 +115,7 @@ public class ViewNotesAndUploadTeacher extends HttpServlet {
 			if (uploadFile != null) {
 
 				result = new UploadAndViewNotes().uploadNotes(teacherId, departmentId, semseter, section, subjectId,
-						action, uploadFile);
+						action, uploadFile,courseTypeId);
 
 			} else {
 				result = "Please Choose a File.";

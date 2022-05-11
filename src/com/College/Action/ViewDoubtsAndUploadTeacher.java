@@ -40,12 +40,12 @@ public class ViewDoubtsAndUploadTeacher extends HttpServlet {
 		String section = request.getParameter("sectionId");
 		String subjectId = request.getParameter("subjectId");
 		String action = request.getParameter("action");
-	
+		String courseTypeId = request.getParameter("courseTypeId");
 		String result=null;
 		PrintWriter out=response.getWriter();
 		if(!action.isEmpty()) {
 			
-			result=new ViewDoubtsAndUpdate().viewDoubt(action, teacherId, departmentId, semester, section, subjectId);
+			result=new ViewDoubtsAndUpdate().viewDoubt(action, teacherId, departmentId, semester, section, subjectId,courseTypeId);
 		}
 	
 	out.print(result);

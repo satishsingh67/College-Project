@@ -20,14 +20,15 @@ Integer semesterId=student.getSemester();
 String subjectId=request.getParameter("subjectId");
 String subjectName=request.getParameter("subjectName");
 String subjectcode=request.getParameter("subjectCode");
+Integer courseTypeId=student.getCourseTypeId();
 
 //Lab Class Link
 MettingLinks mettingLinks=new MettingLinks();
-String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
+String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 
 //Lab Final Exam Paper
-Map<String,Object> semPaperStatus =new ExamPaper().getExamPaperActiveStatus(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
+Map<String,Object> semPaperStatus =new ExamPaper().getExamPaperActiveStatus(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 
 //Lab Final Sem Answer Script Submission
 Map<String,Object> semExamAnswerSubmissionStatus =new HashMap<String,Object>();
@@ -40,17 +41,20 @@ if((boolean)semPaperStatus.get("status")){
 //Lab Final Sem Answer Script Download
 Map<String,Object> semExamAnserScriptCheckForDownload =new HashMap<String,Object>();
 semExamAnserScriptCheckForDownload.put("status",false);
-if((boolean)semPaperStatus.get("status")){
-	semExamAnserScriptCheckForDownload =new AnswerScript().checkAnswerScriptAvailableForDownload(String.valueOf(semPaperStatus.get("pkQuestionPaperId")), "3", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId);
+
+Map<String,Object> semPaperStatus1 =new ExamPaper().getExamPaperActiveStatus1(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+
+if((boolean)semPaperStatus1.get("status")){
+	semExamAnserScriptCheckForDownload =new AnswerScript().checkAnswerScriptAvailableForDownload(String.valueOf(semPaperStatus.get("pkQuestionPaperId")), "3", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 }
 
 //Final Lab Copy and Others Files Download Status
 LabDataHandling labDataHandlingObj=new LabDataHandling();
 
-String finalLabCopy=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkFinalLabCopy");
-String labAppLink=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkApplicationLink");
-String labManual=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkLabManual");
-String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkLabOtherData");
+String finalLabCopy=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkFinalLabCopy",courseTypeId);
+String labAppLink=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkApplicationLink",courseTypeId);
+String labManual=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkLabManual",courseTypeId);
+String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId, "checkLabOtherData",courseTypeId);
 
 %>
 
@@ -64,7 +68,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="Description" content="Enter your description here" />
-  <title>Subject Lab</title>
+  <title>Student Lab</title>
   <!-- bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -193,7 +197,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
               <a class="nav-link" href="#notes">lab Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#doubt">Doubt Clearence</a>
+                <a class="nav-link" href="#doubt">Doubt Clearance</a>
               </li>
             <li class="nav-item">
               <a class="nav-link" href="#assignment">Lab Copy Submission</a>
@@ -346,7 +350,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
              </div>
            </div>
            <div class="col-lg-5 col-md-12 text-sec">
-            <h2>Doubt Clearence</h2>
+            <h2>Doubt Clearance</h2>
             <form method="POST" id="doubtStudentForm" enctype="multipart/form-data">
                  <textarea name="doubtMessage" placeholder="message"   cols="30" rows="10"></textarea>
                <input type="submit" id="doubtSubmit"  value="send message" class="main-btn" style="margin-top:-110px;">
@@ -636,9 +640,10 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
   var sectionId=<%=sectionId%>;
   var semesterId=<%=semesterId %>;
   var subjectId=<%=subjectId %>;
-
+  var courseTypeId=<%=courseTypeId%>;
+  
+  
   $(document).ready(function () {
-	  console.log("Jquery loded");
 	
 });
   
@@ -657,6 +662,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
 	data.append("semesterId",semesterId);    
 	data.append("sectionId",sectionId);
 	data.append("subjectId",subjectId);
+	data.append("courseTypeId",courseTypeId);
 	   $.ajax({
 	      type: "POST",
 	      enctype: 'multipart/form-data',
@@ -696,7 +702,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
  	 $('#viewDoubt').prop("disabled", true);  
         $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/doubt?action=viewDoubt&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId,
+		      url:"/College_Final_Year_Project/doubt?action=viewDoubt&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#doubtBody').empty();
@@ -760,6 +766,9 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
     	  form_data.append("semesterId",semesterId);    
     	  form_data.append("sectionId",sectionId);
     	  form_data.append("subjectId",subjectId); 
+    	  form_data.append("courseTypeId",courseTypeId); 
+
+    	  
     	 form_data.append("action","answerScriptSubmit"); 
     	  $.ajax({
     		  type: "POST",
@@ -843,6 +852,9 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
    	  data.append("sectionId",sectionId);
   	  data.append("subjectId",subjectId);
   	  data.append("isFinalLabCopy",isFinalLabCopy);
+  	  data.append("courseTypeId",courseTypeId);
+
+  	  
    	   $.ajax({
 		      type: "POST",
 		      enctype: 'multipart/form-data',
@@ -900,7 +912,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
 	function fetchLabCopyRecords(action) {
 		  $.ajax({
 		      type: "GET",
-		      url:"/College_Final_Year_Project/lab?action="+action+"&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId,
+		      url:"/College_Final_Year_Project/lab?action="+action+"&studentId="+studentId+"&departmentId="+departmentId+"&semesterId="+semesterId+"&sectionId="+sectionId+"&subjectId="+subjectId+"&courseTypeId="+courseTypeId,
 		      success: function (data, textStatus, jqXHR) {
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#notesBody').empty();

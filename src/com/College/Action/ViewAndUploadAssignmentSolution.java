@@ -7,6 +7,7 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -103,12 +104,13 @@ public class ViewAndUploadAssignmentSolution extends HttpServlet {
 			InputStream solutionFileInputStream = solutionFile.getInputStream();
 			Connection con = new DataBaseConnection().getDatabaseConnection();
 			try {
-				String uploadQuery = " UPDATE student_assignment_status SET status=?,FileName=?,FileExtension=?,assignmentSolution=? WHERE pkStudentAssignmentStatusId=?";
+				String uploadQuery = " UPDATE student_assignment_status SET status=?,FileName=?,FileExtension=?,assignmentSolution=?,updatedate WHERE pkStudentAssignmentStatusId=?";
 				PreparedStatement pstmt = con.prepareStatement(uploadQuery);
 				pstmt.setBoolean(1, true);
 				pstmt.setString(2, fileName);
 				pstmt.setString(3, fileExtension);
 				pstmt.setBlob(4, solutionFileInputStream);
+				pstmt.setObject(5, new Date());
 				pstmt.setInt(5, pkAssignmentStatusId);
 				int dbResult = pstmt.executeUpdate();
 				if (dbResult > 0) {

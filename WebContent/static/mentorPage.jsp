@@ -728,11 +728,6 @@ section {
 
 <header class="header">
 
-   <div class="contact-info">
-      <p> <i class="fas fa-map"></i> Address of Teacher</p>
-      <p> <i class="fas fa-envelope"></i> teacher@gmail.com </p>
-      <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-   </div>
 
    <nav class="navbar">
 
