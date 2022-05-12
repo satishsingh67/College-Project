@@ -30,7 +30,7 @@ String image=new AllotedClass().fetchMentorPhoto(fkMentorPkId);
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Mentor page</title>
+   <title>Mentor Page</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -805,7 +805,7 @@ section {
             <img src="images/teachers/undraw_teaching_f-1-cm.svg" style="border:1px solid red;height:300px;" alt="">
          </div>
          <div class="content" style=" text-align: center;margin-top:-30%;">
-            <p style="margin-top:-30%;"><%=obj.getDepartmentShortName()+"-"+ obj.getFkSectionId() %></p>
+            <p style="margin-top:-30%;"><%=obj.getCourseShortName()+" , "+obj.getDepartmentShortName()+"-"+ obj.getFkSectionId() %></p>
             
            <p style="margin-top:-10%;"><%=(obj.getYear().trim().equalsIgnoreCase("1")?"1st":obj.getYear().trim().equalsIgnoreCase("2")?"2nd":obj.getYear().trim().equalsIgnoreCase("3")?"3rd":"4th")+" Year"+" - "+((obj.getSemester()==1)?( obj.getSemester()+"st Semester"):(obj.getSemester()==2)?( obj.getSemester()+"nd Semester"):(obj.getSemester()==3)?( obj.getSemester()+"rd Semester"):obj.getSemester()+"th Semester")%></p>            
          

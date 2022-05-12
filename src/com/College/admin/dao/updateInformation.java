@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,8 +28,6 @@ public class updateInformation {
 
 			if (text.trim().isEmpty() && file.getSize() <= 9) {
 				result = "Please Enter any valid Information";
-			}else if(action.trim().equalsIgnoreCase("gallery") && file.getSize() <= 9) {
-				result = "Please choose any file for gallery";
 			} else {
 				String fileName = null, fileExtension = null;
 				InputStream in = null;
@@ -43,10 +42,7 @@ public class updateInformation {
 				if (action.trim().equalsIgnoreCase("notice")) {
 					query = "Insert into post_notice (message,fileName,fileExtension,fileData,createDate)"
 							+ " values(?,?,?,?,?)";
-				} else if (action.trim().equalsIgnoreCase("gallery")) {
-					query = "Insert into post_gallery (message,fileName,fileExtension,fileData,createDate)"
-							+ " values(?,?,?,?,?)";
-				} else if (action.trim().equalsIgnoreCase("examSchedule")) {
+				}  else if (action.trim().equalsIgnoreCase("examSchedule")) {
 					query = "Insert into post_notice (message,fileName,fileExtension,fileData,createDate)"
 							+ " values(?,?,?,?,?)";
 				} else if (action.trim().equalsIgnoreCase("popUp")) {
@@ -247,5 +243,97 @@ public class updateInformation {
 	return fileData;
 	}
 	
+	public String updateGalleryInformationMethod(String type, Part file) {
+		String result = null;
+		try {
+
+			if (type.trim().equalsIgnoreCase("Select Type") && file.getSize() <= 9) {
+				result = "Please Enter any valid Information";
+			}else if(type.trim().equalsIgnoreCase("Select Type")) {
+				
+				result = "Please Select Gallery File Type";
+
+			}else if(file.getSize() <= 9) {
+				result = "Please Select File To Upload";
+			}
+			else {
+				result=saveGallery(type,file);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = "Something went wrong.Please try again";
+		} 
+
+		return result;
+	}
+	
+	public static String saveGallery(String fileType,Part file) {
+		// TODO Auto-generated method stub
+
+		String result = null;
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+		try {
+			// Creating a timestamp for file naming
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
+			Date date = new Date();
+
+			String baseFilePathForStoring = "C:\\Users\\SATISH\\Desktop\\College-Final-Year-Project\\College_Final_Year_Project\\WebContent\\static\\galleryFiles\\";
+
+			String baseFilePathForDisplaying = "./galleryFiles/";
+
+			String timeStamp = (String) formatter.format(date);
+
+			StringBuffer fileNameForStoring = new StringBuffer();
+			StringBuffer fileNameForDisplaying = new StringBuffer();
+			String fileNameArr[] = file.getSubmittedFileName().split("\\.");
+
+			fileNameForStoring.append(baseFilePathForStoring);
+
+			fileNameForStoring.append(fileNameArr[0]).append("_").append(timeStamp).append(".").append(fileNameArr[1]);
+
+			fileNameForDisplaying.append(baseFilePathForDisplaying);
+
+			fileNameForDisplaying.append(fileNameArr[0]).append("_").append(timeStamp).append(".")
+					.append(fileNameArr[1]);
+
+			file.write(fileNameForStoring.toString());
+			
+			 String query = "Insert into post_gallery (fileType,filePath,createDate)"
+						+ " values(?,?,?)";
+
+				String combinedFilePath = fileNameForStoring.toString() + "::" + fileNameForDisplaying.toString();
+
+				PreparedStatement pstmt  = con.prepareStatement(query);
+
+				
+				pstmt.setString(1, fileType);
+				pstmt.setString(2,combinedFilePath );
+				pstmt.setObject(3, new Date());
+				int dbStatus = pstmt.executeUpdate();
+
+				if (dbStatus > 0) {
+					result = "Information Updated Successfully";
+				} else {
+					result = "Something went wrong.Please Try again";
+				}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			result = "Something went wrong.Please Try again";
+
+		}finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				result = "Something went wrong.Please try again";
+			}
+
+		}
+
+		return result;
+	}
 	
 }

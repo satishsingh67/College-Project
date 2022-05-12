@@ -20,7 +20,7 @@ import com.college.teacher.dao.AssignmentUploadAndView;
  * Servlet implementation class UploadInformationAdmin
  */
 @WebServlet("/UploadInformationAdmin")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024*1024*100)
 public class UploadInformationAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -111,12 +111,19 @@ public class UploadInformationAdmin extends HttpServlet {
 		String action = request.getParameter("action");
 		String text = request.getParameter("text");
 		Part file = request.getPart("file");
+		String fileType = request.getParameter("fileType");
 
 		String result = null;
 		PrintWriter out = response.getWriter();
 
 		try {
-			result = new updateInformation().updateInformationMethod(text, file, action);
+			
+			if(action.trim().equalsIgnoreCase("galleryType")) {
+				result = new updateInformation().updateGalleryInformationMethod(fileType, file);	
+			}else {
+				result = new updateInformation().updateInformationMethod(text, file, action);	
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

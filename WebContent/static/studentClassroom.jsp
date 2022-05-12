@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.HashMap" %>
+<%@page import="com.college.dao.studentDao.StudentLoginValidation" %>
 
 <%@page import="com.google.gson.Gson" %> 
 <%@page import="com.google.gson.reflect.TypeToken" %>
@@ -24,6 +25,9 @@ Integer fkSemester=student.getFkCurrentYearAndSem();
 Integer fkSection=student.getSection();
 Integer courseTypeId=student.getCourseTypeId();
 String courseName=student.getCourseTypeName();
+
+String studentImage=new StudentLoginValidation().fetchStudentPhoto(student.getPkRegistrationId());
+
 
 
 Map<String,Object> subjectList=mapStudentSubject.getAllSubjects(fkStudentPkId,fkDepartment,fkSemester,fkSection,courseTypeId);
@@ -95,7 +99,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 	<section class="home" id="home">
 
 		<div class="image">
-   <img class="logo" src="data:image/jpg;base64,<%= student.getBase64Image()%>" style="margin-top:10%;margin-left:20%;width:50%; height:60%"> 
+   <img class="logo" src="data:image/jpg;base64,<%= studentImage%>" style="margin-top:10%;margin-left:20%;width:50%; height:60%"> 
 		</div>
 
 		<div class="content">

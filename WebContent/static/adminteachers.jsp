@@ -2,11 +2,11 @@
 <%@page import="com.college.model.Admin" %>
 
 <%
-Admin admin=(Admin)session.getAttribute("admin");
+ Admin admin=(Admin)session.getAttribute("admin");
 if(admin==null){
 	response.sendRedirect("adminLogin.jsp");
 	return;
-}
+} 
 %>
 
 
@@ -340,7 +340,39 @@ form span{
       width: 50%;
       height: 85%;
     }
-    
+    .modalViewQuestionPaper1 {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 70px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+     
+    }
+ /* Modal Content */
+    .modal-contentViewQuestionPaper1 {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top: 5%;
+      padding: 20px;
+      border: 1px solid skyblue;
+      width: 35%;
+      height: 30%;
+    }
  </style>
 </head>
 <body>
@@ -358,12 +390,13 @@ form span{
          
              
          
-               <div class="links" style="margin-left:15%;">
-                  <a href="adminpage.jsp">home</a>
-                  <a href="#RegTeacher">New Teacher Registration</a>
-            
+               <div class="links" style="margin-left:-5%;">
+                  <a href="adminpage.jsp" >Home</a>
+                  <a href="#RegTeacher" >New Teacher Registration</a>
                   <a href="#ReplyTeacher">Reply To Teacher</a>
-                  <a href="#Delete">Delete Account</a>
+              <a href="#upgradeTeacher"  >Upgrade Teacher Designation</a>
+                  
+                  <a href="#Delete" style="font-size:20px;">Delete Account</a>
                </div>
               
                <div id="menu-btn" class="fa fa-bars"></div>
@@ -465,6 +498,31 @@ form span{
            </table>
            </div>
                 </section>
+                
+                   <section>
+                    <h1 class="heading"> Upgrade Teacher <span>Profile </span> </h1>
+                     <!--Table-->
+            <div id="upgradeTeacher" style=" height:350px;width:110%;margin-left:-5%;border:1px solid skyblue; overflow-y: auto;">
+            <table id="customers">
+           
+                 <thead >
+                             <th style="text-align:center;">Sl.No</th>
+                          <th style="text-align:center;">Teacher Name</th>
+                           <th style="text-align:center;">Email Id</th>
+                          <th style="text-align:center;">Department Name</th>
+                           <th style="text-align:center;">Designation</th>
+                           <th style="text-align:center;">Update Date</th>
+                          <th style="text-align:center;">Update</th>
+                          
+                        </thead>                       
+                   
+            <tbody id='upgradeTable'>
+          </tbody>
+           </table>
+           </div>
+                </section> 
+                
+                
                <section style="background-image: url(./images/background/backg.jpg);background-repeat: no-repeat;background-size: cover;">
                 <h1 class="heading" style="color: white;"> Delete  <span>Account </span> </h1>
                 <div id="Delete" class="col-md-12">
@@ -490,7 +548,8 @@ form span{
                </section>
              </main>
              
-                          <div class="loader2" style="margin-top:-55%;margin-left:43%; display:none;" id="myLoader"></div>
+                          <div class="loader2" style="margin-top:-85%;margin-left:43%;" id="myLoader"></div>
+                                       <div class="loader2" style="margin-top:27%;margin-left:43%; " id="myLoader1"></div>
              
             
              <!-- Loader Modal Start -->
@@ -568,6 +627,41 @@ form span{
 <!-- View Question Paper Modal end -->      
             
              
+             
+        <!-- The  Question Paper Modal -->
+<div class="modalViewQuestionPaper1"  id="myModalQuestionPaper1">
+    <div class="modal-contentViewQuestionPaper1">
+
+      <!-- Modal Header -->
+     
+        <h4 class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Update Teacher Designation</h4>
+     
+
+      <!-- Modal body -->
+      <div class="modal-body">
+    
+    
+     <span style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:20px;">Teacher Designation:<strong class="text-danger">*</strong></span>
+                                             <select name="post" id="designationSelect1" class="box" style="width:250px;font-size:15px;">
+                                                <option>--Select Designation--</option>
+											
+										</select>
+    <br><br>
+         <div >
+     
+      <input type="submit" id="designationSubmit"  value="Submit" class="link-btn" style="margin-left:100px;">
+             <button type="button" id="closeQuestionPaperModel1" class="link-btn" style="background-color:red;">Close</button>
+     
+     </div>
+         
+  </div>
+    </div>
+</div>
+<!-- View Question Paper Modal end -->              
+             
+             
+             
+             
           <script>
           
           var id;
@@ -576,10 +670,13 @@ form span{
         	    
        fetchDropDown("department","departmentSelect");
        fetchDropDown("teacherDesignation","designationSelect");
+       fetchDropDown("teacherDesignation","designationSelect1");
+       	
 
-        	 $('#myLoader').show();
         	  fetchDoubt();
-        	  	
+        	 fetchTeacherWithDesignation();
+	        
+
         });
 
         
@@ -624,8 +721,11 @@ form span{
   			event.preventDefault();
   			 $('#myModalQuestionPaper').hide();
   		});
-          
-               
+          $('#closeQuestionPaperModel1').click(function (event){
+    			event.preventDefault();
+    			 $('#myModalQuestionPaper1').hide();
+    		});
+                  
           
           $('#doubtSubmit').click(function (event){
     			event.preventDefault();
@@ -726,7 +826,7 @@ form span{
     		      }
     		    });  
                 }  
-          
+  
           
           $('#delteAccount').click(function (event){
   			event.preventDefault();
@@ -851,9 +951,109 @@ form span{
           }
 
   
+    //Teacher Designation upgrade
+    
+    
+    function fetchTeacherWithDesignation(){
+          	
+         	 $.ajax({
+    		      type: "GET",
+    		      url:"/College_Final_Year_Project/fetch?action=teacherDesignation",
+    		      success: function (data, textStatus, jqXHR) {
+    		    	  var JsonData= jQuery.parseJSON(data);
+    		    	  $('#upgradeTable').empty();
+    		    	 if(JsonData.length==0){
+    			     $("#upgradeTable").html('<tr class="no-records"><td colspan="7" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+    		    	 }
+    		    	 else{
+    		          $(JsonData).each(function (index, item) {  
+    		        	  
+    		        
+    		        	 $('#upgradeTable').append(
+    		        			  '<tr style="height:20px">'+
+    		        			'<td style="text-align: center;">'+item.SlNo+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+item.name+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px; text-transform: none; ">'+item.emailId+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+item.departmentName+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+item.designation+'</td>'+
+    		        		         '<td style="text-align: center;font-size: 15px;">'+(item.updateDate == null ?" ":item.updateDate)+'</td>'+
+    		        		     '<td style="text-align: center;"><input type="submit" value="Update" onclick=myFunction1('+item.pkId+')  class="link-btn" id=button'+item.pkId+' ></td>'+
+    		        		      '</tr>'
+    		        	  );
+    		        	  
+    		        	  
+    			      });
+    		    	 }
+    		  	 $('#myLoader1').hide();
+    		      },
+    		      error: function (jqXHR, textStatus, errorThrown) {
+    	           alert("Sorry Something went wrong while loading teacher details.");
+    		      }
+    		    });  
+                }  
           
+    var desgTeacher;
+    
+    function myFunction1(id){
+ $('#myModalQuestionPaper1').show();
+ desgTeacher=id;
+    }
           
-          
+    
+    
+    
+ $('#designationSubmit').click(function (event){
+		event.preventDefault();
+		 $('#myModalQuestionPaper1').hide();
+
+		$('#myModal').show();
+		//Calling Loader
+		$(".loader1").show();
+
+		
+	   var value= $('#designationSelect1').val();
+
+		    // Create an FormData object 
+		    var data = new FormData();
+		    data.append("action", "teacherDesignationUpgrade");
+		    data.append("id", desgTeacher);
+		    data.append("value",value);
+		    
+		    // disabled the submit button
+		    $("#designationSubmit").prop("disabled", true);
+		    $.ajax({
+		      type: "POST",
+		      enctype: 'multipart/form-data',
+		      url: "/College_Final_Year_Project/create",
+		      data: data,
+		      processData: false,
+		      contentType: false,
+		      success: function (data, textStatus, jqXHR) {
+		        $(".loader1").hide();
+		        $('#myModal').hide();
+		        if (data.trim().includes("Successfully")) {
+		          swal("Done", data, "success");
+		          $('#designationSelect1').val("--Select Designation--");
+		          fetchTeacherWithDesignation();
+		        }
+		        else {
+		          swal("Error", data, "error");
+		        }
+		        $('#myModalQuestionPaper1').show();
+
+		        $("#designationSubmit").prop("disabled", false);
+		      },
+		      error: function (jqXHR, textStatus, errorThrown) {
+		        $(".loader1").hide();
+		        $('#myModal').hide();
+		        swal("Error", data, "error");
+		        $("#designationSubmit").prop("disabled", false);
+		        $('#myModalQuestionPaper1').show();
+
+		      }
+		    });
+	});
+   
           </script>
           
              

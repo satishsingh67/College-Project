@@ -16,7 +16,7 @@ import com.college.admin.dao.FetchMessageDetails;
  * Servlet implementation class FetchDoubtAdmin
  */
 @WebServlet("/FetchDoubtAdmin")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024*1024*10)
 public class FetchDoubtAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -65,6 +65,10 @@ public class FetchDoubtAdmin extends HttpServlet {
 		}else if (action.trim().equalsIgnoreCase("grievance")) {
 
 			result = new FetchMessageDetails().fetchGrievance();
+			out.print(result);
+		}else if (action.trim().equalsIgnoreCase("teacherDesignation")) {
+
+			result = new FetchMessageDetails().fetchTeacherList();
 			out.print(result);
 		}
 

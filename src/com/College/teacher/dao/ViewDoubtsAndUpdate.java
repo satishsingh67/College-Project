@@ -30,7 +30,7 @@ public class ViewDoubtsAndUpdate {
 				pstmt.setInt(1, Integer.parseInt(fkDepartmentId));
 				pstmt.setInt(2, Integer.parseInt(fkSemesterId));
 				pstmt.setInt(3, Integer.parseInt(fkSectionId));
-				pstmt.setInt(3, Integer.parseInt(courseTypeId));
+				pstmt.setInt(4, Integer.parseInt(courseTypeId));
 
 			} else {
 				query = "SELECT doubt.pkviewDoubtsId,doubt.question,doubt.answer,doubt.createDate,doubt.updateDate,stud.studentName,stud.universityRollNo FROM view_doubts AS doubt"

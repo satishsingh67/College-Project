@@ -292,4 +292,55 @@ public class CanvasFetchFiles {
 		return result;
 
 	}
+	
+	public static String fetchGallery(String filter) {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+		List<ViewVariables> galleryList = new ArrayList<ViewVariables>();
+		try {
+
+			String query=null;
+			PreparedStatement pstmt=null;
+			if(filter.trim().equalsIgnoreCase("all")) {
+				  query  = "Select fileType,filePath from post_gallery pkPostGalleryId";
+				  pstmt = con.prepareStatement(query);
+
+			}else {
+				  query  = "Select fileType,filePath from post_gallery pkPostGalleryId where fileType=?";
+					pstmt = con.prepareStatement(query);
+                      pstmt.setString(1, filter.trim());
+			}
+
+			
+			ResultSet rs = pstmt.executeQuery();
+
+
+			while (rs.next()) {
+
+				ViewVariables viewVariablesObj = new ViewVariables();
+
+				viewVariablesObj.setName(rs.getString(1));
+				viewVariablesObj.setFilePath(rs.getString(2).split("::")[1]);
+
+				galleryList.add(viewVariablesObj);
+			}
+			
+
+			Gson json = new Gson();
+			result = json.toJson(galleryList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+
+	}
+	
+	public static void main(String[] args) {
+		//System.out.println(fetchGallery());
+	}
 }

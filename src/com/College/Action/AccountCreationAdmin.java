@@ -66,6 +66,10 @@ public class AccountCreationAdmin extends HttpServlet {
 		String oldPassword = request.getParameter("oldPassword");
 		String otp=request.getParameter("otp");
 		
+		String value=request.getParameter("value");
+
+		
+		
 		String result = null;
 		PrintWriter out = response.getWriter();
 
@@ -198,6 +202,15 @@ public class AccountCreationAdmin extends HttpServlet {
 			}
 
 
+		}else if(!action.trim().isEmpty() && action.trim().equalsIgnoreCase("teacherDesignationUpgrade")) {
+			
+			if(value.trim().equalsIgnoreCase("--Select Designation--")) {
+				result="Please Select Designation";
+			}else {
+				result=accountCreationObj.updateTeacherProfile(id,value);
+			}
+			
+			
 		}
 		
 		out.print(result);

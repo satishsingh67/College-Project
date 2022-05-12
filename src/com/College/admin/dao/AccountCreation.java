@@ -415,9 +415,46 @@ public class AccountCreation {
 
 			return result;
 		}
+
+
+		public String updateTeacherProfile(String id, String value) {
+			// TODO Auto-generated method stub
+			String result = null;
+
+			Connection con = new DataBaseConnection().getDatabaseConnection();
+
+			try {
+
+				String query = "update teacher_registration set fkTeacherDesignation=?,updateDate=? where pkTeacherId=?";
+
+				PreparedStatement pstmt = con.prepareStatement(query);
+
+				pstmt.setInt(1, Integer.parseInt(value));
+				pstmt.setObject(2, new Date());
+				pstmt.setInt(3, Integer.parseInt(id));
+
+				int dbStatus = pstmt.executeUpdate();
+
+				if (dbStatus > 0) {
+
+					result = "Designation Updated Successfully";
+
+				} else {
+					result = "Something went wrong.Please try again";
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				result = "Something went wrong.Please try again";
+			}
+
+			return result;
+		}
+	
 	public static void main(String[] args) {
-		System.out.println(new AccountCreation().deleteAdminAccountOTP("1", "email2satish2000@gmail.com"));
-		System.out.println(new AccountCreation().deleteAdminAccount("1", "email2satish2000@gmail.com"));
+		System.out.println(new AccountCreation().updateTeacherProfile("1", "3"));
 
 	}
+	
 }

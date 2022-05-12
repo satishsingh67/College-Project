@@ -51,7 +51,8 @@ public class CanvasManagement extends HttpServlet {
 		String action = request.getParameter("action");
 		String id = request.getParameter("id");
 		String action1 = request.getParameter("action1");
-		
+		String query = request.getParameter("query");
+
 		
 		
 		String result = null;
@@ -77,6 +78,10 @@ public class CanvasManagement extends HttpServlet {
 		 else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("fetchAllFiles")) {
 
 				result = new CanvasFetchFiles().fetchCanvasAllFiles();
+			}
+		 else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("gallery")) {
+
+				result = new CanvasFetchFiles().fetchGallery(query);
 			}
 		 else if (!action.trim().isEmpty() && action.trim().equalsIgnoreCase("changeStatus")) {
 

@@ -51,6 +51,8 @@ public class ViewVariables {
 	private String recoverMobileNumber;
     private Integer isAccountUpdationAllowed;
 	private String dob;
+	private String subjectName;
+	private String designation;
 	
 	public Integer getPkId() {
 		return pkId;
@@ -426,6 +428,22 @@ public class ViewVariables {
 
 	public void setDob(String dob) {
 		this.dob = dob;
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 
 	

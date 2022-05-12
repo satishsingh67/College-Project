@@ -6,7 +6,7 @@ Admin admin=(Admin)session.getAttribute("admin");
 if(admin==null){
 	response.sendRedirect("adminLogin.jsp");
 	return;
-}
+} 
 %>
 
 
@@ -306,11 +306,27 @@ td {
       background-color: #fefefe;
       margin: auto;
       padding: 20px;
+      margin-top:65px;
       border: 1px solid skyblue;
       width: 70%;
-      height:95%;
+      height:85%;
     }
-    
+      /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      margin-left: 97%;
+      margin-top: -6%;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -367,14 +383,15 @@ td {
 
       <!-- Modal body -->
       <div class="modal-body">
-        
+          <span class="close" id="closeQuestionPaperModel" >&times;</span>
+                 
         <div style="margin-left:70%;width:20%;height:90%;">
         
        <img class="logo" id="StudentImage" src="" style="width:70%; height:90%"> 
         
         </div>
         
-        <div style="width:65%;margin-top:-150px;">
+        <div style="width:65%;margin-top:-180px;">
         
                 <label><p "font-size:15px; text-transform: none;" id="studentName" ></p></label>
        
@@ -407,10 +424,8 @@ td {
       <input type="submit" id="rejectStudent"  value="Reject" class="btn btn-primary" >
      
      </div>
-         <!-- Modal footer -->
-      <div class="modal-footer" >
-        <button type="button" id="closeQuestionPaperModel" class="btn btn-danger" style="background-color:red;">Close</button>
-      </div>
+    
+      
          
   </div>
 
@@ -497,12 +512,10 @@ td {
 			});
 		}
 
-		$('#closeQuestionPaperModel').click(function(event) {
-			event.preventDefault();
-			$('#myModalQuestionPaper').hide();
-
-		});
-		
+		 $("#closeQuestionPaperModel").click(function (event) {
+			 event.preventDefault();
+				$('#myModalQuestionPaper').hide();
+	        });
 		$('#approveStudent').click(function(event) {
 			event.preventDefault();
 			$('#myModalQuestionPaper').hide();

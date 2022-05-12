@@ -2,11 +2,11 @@
 <%@page import="com.college.model.Admin" %>
 
 <%
-Admin admin=(Admin)session.getAttribute("admin");
+ Admin admin=(Admin)session.getAttribute("admin");
 if(admin==null){
 	response.sendRedirect("adminLogin.jsp");
 	return;
-}
+} 
 %>
 
 
@@ -466,6 +466,7 @@ td {
                             <th style="text-align:center;">Choose File</th>
                             
                            <th style="text-align:center;">Message</th>
+                            <th style="text-align:center;">Select Gallery Photo Type</th>
                             <th style="text-align:center;">Upload</th>
                         </tr>
                         <tbody id="Table">
@@ -474,14 +475,24 @@ td {
                             <td style="text-align:center;">Post Notice</td>
                             <td style="text-align:center;"><input id="noticeFile" type="file"></td>
                              <td style="text-align:center;"><input id="noticeText" type="text"></td>
-                          
+                          <td style="text-align:center;">--</td>
                          <td style="text-align:center;"><button type="button" id="postNoticeButton" class="btn btn-primary">Post</button></td>
                         </tr>
                         <tr >
                             <td style="text-align:center;">Update Gallery</td>
                             <td style="text-align:center;"><input id="galleryFile" type="file"></td>
-                            <td style="text-align:center;"><input id="galleryText" type="text"></td>
-                         
+                         <td style="text-align:center;">--</td>
+                         <td style="text-align:center;">
+                               <select id="galleryType">
+                                <option>Select Type</option>
+                                   <option value="culturalFest">Cultural Fest</option>
+                                   <option value="techFest">Tech Fest</option>
+                                   <option value="college">College</option>
+                                   <option value="video">Video</option>  
+                                   <option value="hostel">Hostel</option>
+                                   <option value="other">Others</option>
+                               </select>
+                           </td>
                            
                          <td style="text-align:center;"><button type="button" id="postGalleryButton" class="btn btn-primary">Post</button></td>
                         </tr>
@@ -489,14 +500,14 @@ td {
                             <td style="text-align:center;">Post Exam Schedule</td>
                             <td style="text-align:center;"><input id="examFile" type="file"></td>
                            <td style="text-align:center;"><input  id="examText" type="text"></td>
-                           
+                           <td style="text-align:center;">--</td>
                             <td style="text-align:center;"><button type="button" id="postExamButton" class="btn btn-primary">Post</button></td>
                         </tr>
                         <tr >
                             <td style="text-align:center;">Post  PopUp</td>
                             <td style="text-align:center;"><input id="popUpFile"  type="file"></td>
                           <td style="text-align:center;"> <input id="popUpText" type="text"></td>
-                           
+                           <td style="text-align:center;">--</td>
                          <td style="text-align:center;"><button type="button" id="postPopUpButton" class="btn btn-primary">Post</button></td>
                           </tr>
                         
@@ -540,10 +551,7 @@ $('#postNoticeButton').click(function (event){
 		uploadInformation("postNoticeButton","noticeFile","noticeText","notice");
 });
 
-$('#postGalleryButton').click(function (event){
-		event.preventDefault();
-		uploadInformation("postGalleryButton","galleryFile","galleryText","gallery");
-	});
+
 
 $('#postExamButton').click(function (event){
 		event.preventDefault();
@@ -581,7 +589,6 @@ function uploadInformation(buttonId,file,text,action){
              	   swal("Done", data, "success");
              	  $('#'+file).val("");
              	 $('#'+text).val("");
-             	 $('#'+type).val("Select file type");
              	  }else{
              		  swal("Error",data,"error");
              	  }
@@ -597,7 +604,49 @@ function uploadInformation(buttonId,file,text,action){
      	  }); 
        }
   
+$('#postGalleryButton').click(function (event){
+	event.preventDefault();
 
+	 $('#postGalleryButton').prop("disabled",true);
+	    $('#myModal').show();
+	  $(".loader1").show();
+	  
+	  var type=$("#galleryType").val();
+  	  var form_data = new FormData(); // Creating object of FormData class
+  	  form_data.append("file",  $('#galleryFile').prop("files")[0]); // Appending parameter named file with properties of file_field to form_data
+  	 form_data.append("fileType",type);
+  	  form_data.append("action","galleryType");
+  	  $.ajax({
+  		  type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/College_Final_Year_Project/update",
+            data: form_data,
+            processData: false,
+            contentType: false,
+            success: function(data,textStatus,jqXHR){
+          	  $(".loader1").hide();
+                $('#myModal').hide();
+          	  if(data.trim().includes('Successfully')){
+          	   swal("Done", data, "success");
+          	  $('#galleryFile').val("");
+          	 $("#galleryType").val("Select Type");
+          	  }else{
+          		  swal("Error",data,"error");
+          	  }
+          	 $('#postGalleryButton').prop("disabled",false);
+              },
+            error:function(jqXHR,textStatus,errorThrown){
+          	  $(".loader1").hide();
+                $('#myModal').hide();
+                swal("Error",textStatus,"error");
+                $('#postGalleryButton').prop("disabled",false);
+
+            }
+  	  }); 
+
+
+
+});
 
 </script>
 </body>

@@ -1168,15 +1168,15 @@ footer span a:hover{
     </section>
     <!-- fun fact section starts  -->
 
-<section id="information" class="fun-fact" id="info" style="height:620px;" >
+<section id="information" class="fun-fact" id="info" style="height:870px;" >
 
     <div class="box" style="margin-top:-20%;">
    
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_komemhfl.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
-      <div class="info">
+      <div class="info" >
        <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Upload Routine</p><br>
-       <input id="routineFile" type="file"><br><br>
+       <input  id="routineFile" type="file"><br><br>
        <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;" id="postRoutine">Post</button>
        <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;" id="viewRoutine">View</button>
      
@@ -1187,9 +1187,9 @@ footer span a:hover{
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_msxrs1lq.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
  
-       <div class="info">
+       <div class="info" >
          <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Upload Syllabus</p><br>
-       <input id="syllabusFile" type="file"><br><br>
+       <input  id="syllabusFile" type="file"><br><br>
        <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;" id="postSyllabus">Post</button>
        <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;"id="viewSyllabus">View</button>
    
@@ -1199,7 +1199,7 @@ footer span a:hover{
     <div class="box" style="margin-top:-20%;">
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_7tbuvbtj.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
-       <div class="info">
+       <div class="info" >
 			
 						<p style="font-size: 15px; font-weight: bold; font-family: 'Times New Roman', Times, serif; border-bottom: 2px solid blueviolet; text-align: center;">Upload
 						 Link</p>
@@ -1227,7 +1227,7 @@ footer span a:hover{
      <div class="box" style="margin-top:-20%;">
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_7tbuvbtj.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
-       <div class="info">
+       <div class="info" >
          <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Upload Exam Link</p><br>
          <input style=" height:30px;" type="text" id="examLink" placeholder="Enter Link Here"><br><br>
          <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;" id="postExamLink" >Post</button>
@@ -1255,6 +1255,27 @@ footer span a:hover{
 
 			</div>
     </div>
+ 
+ <div class="box" style="margin-top:-20%;">
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_7tbuvbtj.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
+       <div class="info">
+         <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Remove Assigned Teacher From Subject</p><br>
+         <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;" id="removeAssignedTeacher" >Action</button>
+		
+			</div>
+    </div>
+ 
+     <div class="box" style="margin-top:-20%;">
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_7tbuvbtj.json"  background="transparent"  speed="1"  style="width: 300px; height: 400px;"  loop  autoplay></lottie-player>
+       <div class="info">
+         <p style="font-size: 15px;font-weight: bold;font-family: 'Times New Roman', Times, serif;border-bottom: 2px solid blueviolet;text-align: center;">Allow Student To Update Semester</p><br>
+         <button style="background-color: rgb(70, 206, 70);color: white; width: 80px;font-size: 15px;" id="alloweStudentProfileUpgradtion" >Action</button>
+		
+			</div>
+    </div>
+ 
  
  
  </section>
@@ -1614,47 +1635,32 @@ footer span a:hover{
 
       <!-- Modal Header -->
      
-        <h4  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Allot Subject For Teacher</h4>
+        <h4  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Allow Student Semester Upgradation</h4>
      
 
       <!-- Modal body -->
       <div class="modal-body" style="margin-top:10px;text-align: center;">
  
- <div style="height:300px;width:300px;overflow-y: auto;">
-       <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Teachers List</h5>
+ <div style="height:300px;overflow-y: auto;">
         <table class="table">
          <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
-        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
-        <th style="text-align: center;">Name</th>
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll4" ></th>
+        <th style="text-align: center;">Sl.No</th>
+                <th style="text-align: center;">Name</th>
         
     </thead>
-            <tbody id="doubtTableBody">
+            <tbody id="studentUpgradationTableBody">
           
             </tbody>
           </table>
           </div>
-          
- <div style="height:300px;width:300px;margin-left:350px;margin-top:-300px;overflow-y: auto;">
-  <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Subject List</h5>
-      
-        <table class="table" >
-         <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
-        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
-        <th style="text-align: center;">Name</th>
-        
-    </thead>
-            <tbody id="doubtTableBody">
-          
-            </tbody>
-          </table>
-          </div>
- 
- 
+
   </div>
-<br>
+  <br>
+  
 <div style="text-align:center;">
 
-                 <button  id="submitTeacherSubjectList5" style="background-color: skyblue; width: 70px;height:40px;font-size: 15px;">Submit</button>
+                 <button  id="submitStudentUpgradation" style="background-color: skyblue; width: 70px;height:40px;font-size: 15px;">Submit</button>
     
              <button  id="closeQuestionPaperModel5" style="background-color: red; width: 70px;height:40px;font-size: 15px;margin-left:15px;">Cancel</button>
 
@@ -1670,47 +1676,33 @@ footer span a:hover{
 
       <!-- Modal Header -->
      
-        <h4  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Allot Subject For Student</h4>
+        <h4  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Remove Assigned Teacher</h4>
      
 
       <!-- Modal body -->
       <div class="modal-body" style="margin-top:10px;text-align: center;">
  
- <div style="height:300px;width:300px;overflow-y: auto;">
-       <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Teachers List</h5>
+ <div style="height:300px;overflow-y: auto;">
         <table class="table">
          <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
-        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
+        <th style="text-align: center;"> <input type="checkbox" id="selectAll5" ></th>
+        <th style="text-align: center;">Sl.No</th>
         <th style="text-align: center;">Name</th>
-        
+        <th style="text-align: center;">Subject Name</th>
     </thead>
-            <tbody id="doubtTableBody">
+            <tbody id="removeTeachertable">
           
             </tbody>
           </table>
           </div>
-          
- <div style="height:300px;width:300px;margin-left:350px;margin-top:-300px;overflow-y: auto;">
-  <h5  class="modal-title" style="text-align: center;font-size: 20px; text-transform: none;">Subject List</h5>
-      
-        <table class="table" >
-         <thead style="color:skyblue;padding: 8px 15px;background-color:green;">
-        <th style="text-align: center;"> <input type="checkbox" id="selectAll" ></th>
-        <th style="text-align: center;">Name</th>
-        
-    </thead>
-            <tbody id="doubtTableBody">
-          
-            </tbody>
-          </table>
-          </div>
+
  
  
   </div>
 <br>
 <div style="text-align:center;">
 
-                 <button  id="submitTeacherSubjectList6" style="background-color: skyblue; width: 70px;height:40px;font-size: 15px;">Submit</button>
+                 <button  id="submitRemoveTeacherSubjectList" style="background-color: skyblue; width: 70px;height:40px;font-size: 15px;">Submit</button>
     
              <button  id="closeQuestionPaperModel6" style="background-color: red; width: 70px;height:40px;font-size: 15px;margin-left:15px;">Cancel</button>
 
@@ -2438,6 +2430,238 @@ $('#updateRollNo').click(function (event){
 	                  }
 	        	  }); 
 });
+  
+  
+  // Removing teacher from subjects
+  $('#removeAssignedTeacher').click(function (event){
+	event.preventDefault();
+	 $('#myModalQuestionPaper6').show();
+	 fetchteacherList();
+  });
+  
+  $('#closeQuestionPaperModel6').click(function (event){
+		event.preventDefault();
+		 $('#myModalQuestionPaper6').hide();
+
+	  });
+  
+  
+  function fetchteacherList(){
+
+  $.ajax({
+      type: "GET",
+      url:"/College_Final_Year_Project/mentorUpgradation?action=teacherList&departmentId="+departmentId+"&semesterId="+year+"&sectionId="+sectionId+"&courseTypeId="+courseType,
+      success: function (data, textStatus, jqXHR) {
+    	  var JsonData= jQuery.parseJSON(data);
+    	  $('#removeTeachertable').empty();
+    	 if(JsonData.length==0){
+	     $("#removeTeachertable").html('<tr class="no-records"><td colspan="4" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+    	 }
+    	 else{
+          $(JsonData).each(function (index, item) {  
+        	  
+        
+        	 $('#removeTeachertable').append(
+        			 '<tr class="row-select">'
+     			  	+'<td style="text-align: center;display:none">'+item.pkId+'</td>'
+						+'<td style="text-align: center;"><input type="checkbox"></td>'
+						+'<td style="text-align: center;">'+item.SlNo+'</td>'
+						+'<td style="text-align: center;">'+item.name+'</td>'
+						+'<td style="text-align: center;">'+item.subjectName+'</td>'
+						+'</tr>'
+        	  );
+        	  
+        	  
+	      });
+    	 }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      alert("Sorry Something went wrong while loading.");
+      }
+    });
+
+  }
+  
+  $('#selectAll5').click(function (e) {
+	    $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+	});
+
+  
+  $('#submitRemoveTeacherSubjectList').click(function (event){
+		event.preventDefault();
+		 $('#myModalQuestionPaper6').hide();
+		  $('#myModal').show();
+		  $(".loader1").show();
+		 var teacherId = new Array();
+
+		 
+		$('.row-select input:checked').each(function() {
+		      var id;
+		      id = $(this).closest('tr').find('td').eq(0).text();
+		      teacherId.push(id);
+		    });
+		
+		removeTeacher(teacherId);
+		
+	  		});
+
+  
+  function removeTeacher(teacherId){
+
+		 var form_data = new FormData(); // Creating object of FormData class
+		  form_data.append("action", "removeTeacher"); // Appending parameter named file with properties of file_field to form
+		  form_data.append("teacherId",teacherId);
+		  
+		  $.ajax({
+			  type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: "/College_Final_Year_Project/mentorUpgradation",
+	        data: form_data,
+	        processData: false,
+	        contentType: false,
+		    success: function(data,textStatus,jqXHR){
+		  	 $(".loader1").hide();
+		     $('#myModal').hide();
+				 $('#myModalQuestionPaper6').show();
+			  if(data.trim().includes("Successfully")){
+				  
+				  $("#selectAll5").prop('checked', false);
+					 $('#removeTeachertable tr td input[type="checkbox"]').each(function(){
+				            $(this).prop('checked', false);
+				        });
+				  swal("Done", data, "success");	       
+			       }else{
+				  swal("Error",data,"error");
+			       }
+			  
+			  fetchteacherList();
+		      },
+		    error:function(jqXHR,textStatus,errorThrown){
+		    	$('#myModalQuestionPaper6').show();
+		    	$(".loader1").hide();
+		         $('#myModal').hide();
+		        swal("Error",data,"error");
+					 
+		    }
+		});
+
+	}
+  
+  
+  //Student Semester upgradation
+  
+   $('#alloweStudentProfileUpgradtion').click(function (event){
+	event.preventDefault();
+	 $('#myModalQuestionPaper5').show();
+	 fetchStudentList1();
+  });
+  
+  $('#closeQuestionPaperModel5').click(function (event){
+		event.preventDefault();
+		 $('#myModalQuestionPaper5').hide();
+
+	  });
+  
+  
+  function fetchStudentList1(){
+
+  $.ajax({
+      type: "GET",
+      url:"/College_Final_Year_Project/mentorUpgradation?action=studentList&departmentId="+departmentId+"&semesterId="+year+"&sectionId="+sectionId+"&courseTypeId="+courseType,
+      success: function (data, textStatus, jqXHR) {
+    	  var JsonData= jQuery.parseJSON(data);
+    	  $('#studentUpgradationTableBody').empty();
+    	 if(JsonData.length==0){
+	     $("#studentUpgradationTableBody").html('<tr class="no-records"><td colspan="4" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+    	 }
+    	 else{
+          $(JsonData).each(function (index, item) {  
+        	  
+        
+        	 $('#studentUpgradationTableBody').append(
+        			 '<tr class="row-select1">'
+     			  	+'<td style="text-align: center;display:none">'+item.pkId+'</td>'
+						+'<td style="text-align: center;"><input type="checkbox"></td>'
+						+'<td style="text-align: center;">'+item.SlNo+'</td>'
+						+'<td style="text-align: center;">'+item.name+'</td>'
+						+'</tr>'
+        	  );
+        	  
+        	  
+	      });
+    	 }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      alert("Sorry Something went wrong while loading.");
+      }
+    });
+
+  }
+  
+  $('#selectAll4').click(function (e) {
+	    $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+	});
+
+  
+  $('#submitStudentUpgradation').click(function (event){
+		event.preventDefault();
+		 $('#myModalQuestionPaper5').hide();
+		  $('#myModal').show();
+		  $(".loader1").show();
+		 var studentId = new Array();
+
+		 
+		$('.row-select1 input:checked').each(function() {
+		      var id;
+		      id = $(this).closest('tr').find('td').eq(0).text();
+		      studentId.push(id);
+		    });
+		
+		allowStudent(studentId);
+		
+	  		});
+
+  
+  function allowStudent(studentId){
+
+		 var form_data = new FormData(); // Creating object of FormData class
+		  form_data.append("action", "allowStudent1"); // Appending parameter named file with properties of file_field to form
+		  form_data.append("studentId",studentId);
+		  
+		  $.ajax({
+			  type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: "/College_Final_Year_Project/mentorUpgradation",
+	        data: form_data,
+	        processData: false,
+	        contentType: false,
+		    success: function(data,textStatus,jqXHR){
+		  	 $(".loader1").hide();
+		     $('#myModal').hide();
+				 $('#myModalQuestionPaper5').show();
+			  if(data.trim().includes("Successfully")){
+				  
+				  $("#selectAll4").prop('checked', false);
+					 $('#studentUpgradationTableBody tr td input[type="checkbox"]').each(function(){
+				            $(this).prop('checked', false);
+				        });
+				  swal("Done", data, "success");	       
+			       }else{
+				  swal("Error",data,"error");
+			       }
+			  
+			  fetchteacherList();
+		      },
+		    error:function(jqXHR,textStatus,errorThrown){
+		    	$('#myModalQuestionPaper5').show();
+		    	$(".loader1").hide();
+		         $('#myModal').hide();
+		        swal("Error",data,"error");
+					 
+		    }
+		});
+
+	}
   
   
   

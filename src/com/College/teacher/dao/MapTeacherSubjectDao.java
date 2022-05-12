@@ -25,10 +25,12 @@ public class MapTeacherSubjectDao {
 					+ " INNER JOIN year_semester ON map_teacher_subject.fkSemester=year_semester.pkYearSemesterId"
 					+ " INNER JOIN section ON map_teacher_subject.fkSection=section.pkSectionId"
 					+ " INNER JOIN course_type ON map_teacher_subject.fkCourseTypeId=course_type.pkCourseTypeId"
-					+ " where map_teacher_subject.fkTeacherPkId=? group by map_teacher_subject.fkSubjectId";
+					+ " where map_teacher_subject.fkTeacherPkId=? and map_teacher_subject.isRemoved=? group by map_teacher_subject.fkSubjectId";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, fkStudentPkId);
+			pstmt.setInt(2, 0);
+
 			ResultSet rs = pstmt.executeQuery();
 
 			List<MapTeacherSubject> subjectList = new ArrayList<MapTeacherSubject>();

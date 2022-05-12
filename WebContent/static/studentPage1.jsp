@@ -1,6 +1,8 @@
 <%@page import="com.college.model.Student" %>
 <%@page errorPage="errorPage.jsp" %>
 <%@page import="com.college.dao.studentDao.MapStudentSubjectDao" %>
+<%@page import="com.college.dao.studentDao.StudentLoginValidation" %>
+
 <%
 Student student=(Student)session.getAttribute("student");
 if(student==null){
@@ -19,7 +21,7 @@ String feedbackLink=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartmen
 //SubjectChoice
 String subjectChoice=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartmentId, fkYearId, fkSectionId, "subjectChoice");
 
-
+String studentImage=new StudentLoginValidation().fetchStudentPhoto(student.getPkRegistrationId());
 
 
 %>
@@ -1378,7 +1380,7 @@ display: block;
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-4">
-               <img class="logo" src="data:image/jpg;base64,<%= student.getBase64Image()%>" style="margin-top:10%;margin-left:20%;width:50%; height:70%"> 
+               <img class="logo" src="data:image/jpg;base64,<%= studentImage%>" style="margin-top:10%;margin-left:20%;width:50%; height:70%"> 
                   </div>
                   <div class="col-md-3">
                     <div class="student">

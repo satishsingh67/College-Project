@@ -167,7 +167,10 @@
 		<servlet-name>StudentProfileUpdate</servlet-name>
 		<servlet-class>com.college.action.StudentProfileUpdate</servlet-class>
 	</servlet>
-
+	<servlet>
+		<servlet-name>MentorUpgradeStudent</servlet-name>
+		<servlet-class>com.college.action.MentorUpgradeStudent</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ContactUs</servlet-name>
@@ -330,5 +333,12 @@
 		<servlet-name>StudentProfileUpdate</servlet-name>
 		<url-pattern>/studentProfileUpdate</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>MentorUpgradeStudent</servlet-name>
+		<url-pattern>/mentorUpgradation</url-pattern>
+	</servlet-mapping>
+
+
 
 </web-app>

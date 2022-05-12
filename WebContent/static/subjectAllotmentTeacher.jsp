@@ -20,7 +20,7 @@ String courseType=request.getParameter("courseType");
 String year=request.getParameter("year");
 
 Map<String,Object> teacherList=new HashMap<String,Object>();
-teacherList=new SubjectAllotmentDao().fetchTeachersList( departmentId);
+teacherList=new SubjectAllotmentDao().fetchTeachersList();
 
 Map<String,Object> subjectList=new HashMap<String,Object>();
 subjectList=new SubjectAllotmentDao().fetchSubjectList(courseType, departmentId, year);

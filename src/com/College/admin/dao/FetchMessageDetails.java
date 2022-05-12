@@ -15,6 +15,7 @@ import java.util.List;
 import com.college.dataBaseConnection.DataBaseConnection;
 import com.college.model.ViewVariables;
 import com.college.sendMail.SendMail;
+import com.college.sendOTP.SendSms;
 import com.google.gson.Gson;
 
 public class FetchMessageDetails {
@@ -205,7 +206,7 @@ public class FetchMessageDetails {
 					+ " INNER JOIN department AS dept ON reg.fkdepartment=dept.pkDepartmentId"
 					+ " INNER JOIN year_semester AS sem ON reg.fkCurrentYearAndSem=sem.pkYearSemesterId"
 					+ " INNER JOIN section AS sect ON reg.fkSection=sect.pkSectionId"
-					+ " INNER JOIN course_type AS csType ON reg.fkCourseType=csType.pkCourseTypeId ORDER BY reg.pkRegistrationId";
+					+ " INNER JOIN course_type AS csType ON reg.fkCourseType=csType.pkCourseTypeId ORDER BY reg.idNumber";
 			Statement stmt = con.createStatement();
 
 			ResultSet rs = stmt.executeQuery(query);
@@ -298,8 +299,48 @@ public class FetchMessageDetails {
 			int dbStatus = pstmt.executeUpdate();
 
 			if (dbStatus > 0) {
-				result = "Application is " + action + " Successfully";
+				
+				String query1 = "Select studentName,email,phoneNumber from registration where pkRegistrationId="+Integer.parseInt(id);
 
+			    Statement stmt=con.createStatement();
+				
+			    ResultSet rs=stmt.executeQuery(query1);
+			    
+				if(rs.next()) {
+					
+					String emailId=rs.getString(2);
+					String mobileNumber=rs.getString(3);
+					
+					StringBuffer message=new StringBuffer();
+					if(value.equalsIgnoreCase("1")) {
+						message.append("Dear ").append(rs.getString(1)).append(",").append("\n").append("\n");
+						message.append("Your Registration for Online Classes is approved.Now you can login in Online Class Room using your details.").append("\n");
+						message.append("Thanks and Regards,").append("\n").append("Satish Singh");
+						
+					}else {
+						message.append("Dear ").append(rs.getString(1)).append(",").append("\n").append("\n");
+						message.append("Your Registration for Online Classes is rejected.Please contact your mentor for account approval.").append("\n");
+						message.append("Thanks and Regards,").append("\n").append("Satish Singh");
+						
+					}
+					
+					String subject="Update Of Your Online Classroom Registration";
+					
+					
+					String mailStatus=new SendMail().sendMail(emailId.trim(), subject.trim(), message.toString().trim());
+					
+					if (mobileNumber.charAt(0) == '0') {
+						mobileNumber = mobileNumber.replaceFirst(String.valueOf(mobileNumber.charAt(0)), "");
+					}
+					int statusCode = new SendSms().sendSms(message.toString().trim(), mobileNumber);
+
+					if (mailStatus!=null && mailStatus.trim().equalsIgnoreCase("Successfully") && statusCode == 200) {
+						result = "Application is " + action + " Successfully";
+					}
+					
+				}
+			    
+				
 			} else {
 				result = "Something went wrong.Please try again.";
 			}
@@ -423,9 +464,62 @@ public class FetchMessageDetails {
 
 	}
 
+	
+	public String fetchTeacherList() {
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+
+		try {
+			String query = "SELECT teach.pkTeacherId,teach.teacherName,teach.emailId,dept.longName,desg.designation,teach.updateDate from teacher_registration as teach "
+					+ " inner join department as dept on teach.fkDepartmentId=dept.pkDepartmentId"
+					+ " inner join teacher_designation as desg on teach.fkTeacherDesignation=desg.pkTeacherDesignationId "
+					+ " where teach.isDeleted=0 order by teach.pkTeacherId";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			List<ViewVariables> List = new ArrayList<ViewVariables>();
+
+			int count = 0;
+			while (rs.next()) {
+				count++;
+				ViewVariables viewVariables = new ViewVariables();
+				viewVariables.setSlNo(count);
+				viewVariables.setPkId(rs.getInt(1));
+				viewVariables.setName(rs.getString(2));
+				viewVariables.setEmailId(rs.getString(3));
+				viewVariables.setDepartmentName(rs.getString(4));
+				viewVariables.setDesignation(rs.getString(5));
+				viewVariables.setUpdateDate(rs.getTimestamp(6));
+
+				List.add(viewVariables);
+
+			}
+
+			Gson json = new Gson();
+
+			result = json.toJson(List);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+	
+	
+	
 	public static void main(String[] args) {
-		System.out.println(new FetchMessageDetails().fetchGrievance());
-		// System.out.println("HH");
+		System.out.println(new FetchMessageDetails().fetchTeacherList());
+		
 	}
 
 }

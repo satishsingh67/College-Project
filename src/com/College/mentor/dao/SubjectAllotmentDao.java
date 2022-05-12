@@ -153,7 +153,7 @@ public class SubjectAllotmentDao {
 		return result;
 
 	}
-	public Map<String,Object> fetchTeachersList(String departmentId) {
+	public Map<String,Object> fetchTeachersList() {
 
 		Connection con = new DataBaseConnection().getDatabaseConnection();
 
@@ -161,12 +161,11 @@ public class SubjectAllotmentDao {
 		result.put("status", false);
 		try {
 
-			String query = "Select pkTeacherId,teacherName from teacher_registration where  `fkDepartmentId`=? and isDeleted=? ORDER BY pkTeacherId";
+			String query = "Select pkTeacherId,teacherName from teacher_registration where isDeleted=? ORDER BY pkTeacherId";
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
-			pstmt.setInt(1, Integer.parseInt(departmentId));
-			pstmt.setInt(2, 0);
+			pstmt.setInt(1, 0);
 
 			ResultSet rs = pstmt.executeQuery();
 

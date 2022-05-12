@@ -6,6 +6,7 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
@@ -217,10 +218,7 @@ public class StudentLoginValidation {
 		return result;
 	}
 
-	public static void main(String[] args) {
 
-		System.out.println(fetchStudentDetails("1"));
-	}
 
 	public String updateStudentProfile(String id,String oldSemester, String semester, String dOB, String guardianName,
 			String guardianNumber, String guardianEmailId, String studentAddress, Part studentPhoto,
@@ -381,4 +379,47 @@ public class StudentLoginValidation {
 		}
 		return result;
 	}
+	
+	
+	public static String fetchStudentPhoto(Integer id) {
+		
+		Connection con=new DataBaseConnection().getDatabaseConnection();
+		String result=null;
+		
+		try {
+			
+			String query="Select studentPhoto from registration where pkRegistrationId="+id;
+			
+			Statement stmt=con.createStatement();
+			
+			ResultSet rs=stmt.executeQuery(query);
+			
+			rs.next();
+			
+			Blob studentPhotoBlob=rs.getBlob(1);
+			
+			if(studentPhotoBlob !=null) {
+				// Preparing Image to send user
+				InputStream inputStream = studentPhotoBlob.getBinaryStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[4096];
+				int bytesRead = -1;
+
+				while ((bytesRead = inputStream.read(buffer)) != -1) {
+					outputStream.write(buffer, 0, bytesRead);
+				}
+
+				byte[] imageBytes = outputStream.toByteArray();
+				result= Base64.getEncoder().encodeToString(imageBytes);
+
+				inputStream.close();
+				outputStream.close();
+				
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }
