@@ -466,7 +466,7 @@ td {
                             <th style="text-align:center;">Choose File</th>
                             
                            <th style="text-align:center;">Message</th>
-                            <th style="text-align:center;">Select Gallery Photo Type</th>
+                            <th style="text-align:center;">Select Gallery File Type</th>
                             <th style="text-align:center;">Upload</th>
                         </tr>
                         <tbody id="Table">

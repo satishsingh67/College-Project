@@ -60,7 +60,7 @@ public class CanvasFormSubmit {
 				pstmt.setString(5, name);
 				pstmt.setString(6, id);
 				pstmt.setString(7, combinedFilePath);
-				pstmt.setInt(8, 1);
+				pstmt.setInt(8, 0);
 				pstmt.setObject(9, new Date());
 				pstmt.setObject(10, new Date());
 			} else if (!title.trim().isEmpty()) {
@@ -79,7 +79,7 @@ public class CanvasFormSubmit {
 				pstmt.setString(6, id);
 				pstmt.setString(7, combinedFilePath);
 				pstmt.setString(8, title.trim());
-				pstmt.setInt(9, 1);
+				pstmt.setInt(9, 0);
 				pstmt.setObject(10, new Date());
 				pstmt.setObject(11, new Date());
 

@@ -905,17 +905,10 @@ let sub=((rem!=0)?rem:dataPerPage);
 	  });  
 	  
   });
-	 function  myFunction(){
-		 $(function () {
-	         $('#Table td').on('click', function () {
-	        	 $('#myModal').show();
-	        	    //Calling Loader
-	        	    $(".loader1").show();
-	        	 
-	             var row = $(this).closest('tr');
+	 function  myFunction(id){
+		  $(".loader1").show();
+          $('#myModal').show();
 	           
-	             var id = $(row).find('td').eq(0).html();
-	             
 	          var file_data=   $('#'+id).prop("files")[0];
 	             
 	          if(file_data==null){
@@ -953,8 +946,8 @@ let sub=((rem!=0)?rem:dataPerPage);
 	                  }
 	        	  }); 
 	          }
-	         });
-	     });
+	        
+	   
 		}
 	  
 	 function fetchAssignment(start,limit){
@@ -978,7 +971,7 @@ let sub=((rem!=0)?rem:dataPerPage);
                           '</td><td >'+ 
                           '<div">'+(item.dueDatePassed==1?'<input type="file" placeholder="Choose File" disabled="true" style="margin-top:15px;">'+
                           '<input type="submit" value="Submit" onclick=myFunction()  disabled="true"  class="btn btn-primary btn-sm" style="margin-top:-60px;border:1px solid skyblue;margin-left:80%;opacity: 1;background-color: #00a2ed; border-color: #00a2ed;">':'<input type="file" placeholder="Choose File" id='+item.pkStudentAssignmentStatusId+' style="margin-top:15px;">'+
-                          '<input type="submit" value="Submit" onclick=myFunction()  class="btn btn-primary btn-sm" style="margin-left:80%;margin-top:-60px;">')
+                          '<input type="submit" value="Submit" onclick=myFunction('+item.pkStudentAssignmentStatusId+')  class="btn btn-primary btn-sm" style="margin-left:80%;margin-top:-60px;">')
                         +
                       '</div>'+ (item.status=="Submitted"?'</td><td style="text-align:center;">'+
                       '<a href="/College_Final_Year_Project/viewAndDownload?pkAssignmentStatusId='+item.pkStudentAssignmentStatusId+'" target="_self" class="btn btn-primary btn-sm" style="margin-top:-15px;">View</a>'+

@@ -79,7 +79,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
          %>
              
               <a href="<%=attendanceUrl%>" target="_blank" >Check Attendance</a>
-				<a href="./studentPage1.jsp">home</a> <a href="#about">Information</a>
+				 <a href="#about">Information</a>
 				<a href="#classes">Classes</a> <a href="#contact">Contact</a>
 			 <a href="studentUpdateProfile.jsp" target="_blank">Update Profile</a>
                 <a href="/College_Final_Year_Project/logout?action=student">Logout</a>

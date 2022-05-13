@@ -49,62 +49,36 @@
   100% { transform: rotate(360deg); }
 }
 
-
- /* The Modal (background) */
-    .modal {
-      display: none;
-      /* Hidden by default */
-      position: fixed;
-      /* Stay in place */
-      z-index: 1;
-      /* Sit on top */
-      padding-top: 100px;
-      /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: white;
-      /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.4);
-      /* Black w/ opacity */
-
-    }
-.modal-backdrop.in {
-	opacity: 0.9;
-}
-    /* Modal Content */
-    .modal-content {
-      background-color: white;
-      margin: auto;
-    margin-top:10%;
-	  margin-left:5%;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 35%;
-      height: 48%;
-    }
-  /* The Close Button */
-    .close {
-      color: #aaaaaa;
+.contentpopop {
+			position: absolute;
+			top: 50%;
+			left: 20%;
+			transform: translate(-50%, -50%);
+			 width: 30%;
+             height: 45%;
+			text-align: center;
+			background-color: white;
+			box-sizing: border-box;
+			padding: 10px;
+			z-index: 100;
+			display: none;
+			/*to hide popup initially*/
+		}
+		
+		.close-btn4 {
+			 color: #aaaaaa;
       float: right;
       margin-left: 97%;
       margin-top: -3%;
       font-size: 28px;
       font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
+		}
+		.close-btn4:hover,
+    .close-btn4:focus {
       color: #000;
       text-decoration: none;
       cursor: pointer;
     }
-
 </style>
 
 
@@ -1391,20 +1365,16 @@
   </div>
 
 
- <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-	                  <span class="close" id="s" >&times;</span>
-
-      <div class="loader1"  id="popUpContent">
+	<!-- div containing the popup -->
+	<div class="contentpopop">
+		<div onclick="togglePopup()" class="close-btn4">
+			×
+		</div>
+	 <div   id="popUpContent">
        
      
       </div>
-    </div>
-
-  </div>
-
+	</div>
 
 
   <!--
@@ -1497,7 +1467,7 @@ function fetchPopUp(){
 	    		 if(JsonData.length>0){
 	    		 
 	          $(JsonData).each(function (index, item) {  
-	        	  var card='<div class="event-card">'
+	        	  var card='<div class="event-card" style="height:100px;margin-bottom:10px;">'
 	        			+' <div class="content-left">'
 	        	    +'  <p class="date" style="color:blue;">'+item.createDate+'</p>'
 	        	      +'  </div>'
@@ -1511,14 +1481,12 @@ function fetchPopUp(){
 	        	  
 	          });
 	          
-	      $('#myModal').show();
-  		//Calling Loader
-  		$(".loader1").show();
+	    togglePopup();
 	 
 	    		 }else{
 	    			 var test= '<h4 style="text-align:center">Sorry, no data found</h4>';		 
 	    			 $('#popUpContent').append(test);
-	    			 
+	    			togglePopup(); 
 	    		 }         
 	    	 }
 	      },
@@ -1527,14 +1495,18 @@ function fetchPopUp(){
 	    	  var test= '<h4 style="text-align:center;margin-top:20px;">Sorry, Something went wrong,Please refresh the page</h4>';
 	    	
 	    		$('#popUpContent').append(test);
+				togglePopup();
 						}
 					});
 	
-	$('#myModal').show();
-  		//Calling Loader
-  		$(".loader1").show();
-	 
 }
+
+// Function to show and hide the popup
+		function togglePopup() {
+			$(".contentpopop").toggle();
+			   $(".contentpopop").delay(10000).fadeOut(500);
+		}
+
 
 
 </script>

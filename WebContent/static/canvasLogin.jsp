@@ -356,7 +356,7 @@ form span{
                                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_9wpyhdzo.json"  background="transparent"  speed="2"  style="width: 500px; height: 600px;"  loop  autoplay></lottie-player>  </div>
                                 <div class="col-md-6">
-                                  <form id="canvasLoginForm"  style="border:2px solid skyblue;height:580px;" >
+                                  <form id="canvasLoginForm"  style="border:2px solid skyblue;height:620px;" >
                                	<%
 					  Message msg = (Message) session.getAttribute("message");
 						if (msg != null) {
