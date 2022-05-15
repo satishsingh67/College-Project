@@ -75,7 +75,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
              
               <%
          
-          String attendanceUrl="AttendanceCheck.jsp?studentId="+fkStudentPkId+"&departmentId="+fkDepartment+"&sectionId="+fkSection+"&semseter="+fkSemester+"&courseId="+courseTypeId+"&courseName="+courseName;
+          String attendanceUrl="AttendanceCheck.jsp?studentName="+student.getStudentName()+"&studentId="+fkStudentPkId+"&departmentId="+fkDepartment+"&sectionId="+fkSection+"&semseter="+fkSemester+"&courseId="+courseTypeId+"&courseName="+courseName;
          %>
              
               <a href="<%=attendanceUrl%>" target="_blank" >Check Attendance</a>
@@ -84,7 +84,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 			 <a href="studentUpdateProfile.jsp" target="_blank">Update Profile</a>
                 <a href="/College_Final_Year_Project/logout?action=student">Logout</a>
 			</div>
-			<img src="./images/teachers/1200px-JIS_University.svg.png"
+			<img src="./images/jis1.png"
 				class="logo" >
 			<div id="menu-btn" class="fa fa-bars"></div>
 

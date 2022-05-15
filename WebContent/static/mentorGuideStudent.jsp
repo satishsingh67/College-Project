@@ -1889,7 +1889,7 @@ $('#myLoader1').show();
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#studentListTable').empty();
 		    	 if(JsonData.length==0){
-			     $("#studentListTable").html('<tr class="no-records"><td colspan="7" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+			     $("#studentListTable").html('<tr class="no-records"><td colspan="9" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
 		    	 }
 		    	 else{
 		          $(JsonData).each(function (index, item) {  
@@ -1902,8 +1902,8 @@ $('#myLoader1').show();
 		        			  '<td style="text-align: center;">'+item.name+'</td>'+
 		        			  '<td style="text-align: center;">'+item.emailId+'</td>'+
 		        		       '<td style="text-align: center;">'+item.mobileNumber+'</td>'+
-		        		       '<td style="text-align: center;">'+(item.universityRollNo==null?"":item.universityRollNo)+'</td>'+
-		        		       '<td style="text-align: center;">'+(item.universityRegistrationNo==null?"":item.universityRegistrationNo)+'</td>'+
+		        		       '<td style="text-align: center;">'+(item.universityRollNo=="(NULL)"?"":item.universityRollNo)+'</td>'+
+		        		       '<td style="text-align: center;">'+(item.universityRegistrationNo=="(NULL)"?"":item.universityRegistrationNo)+'</td>'+
 		        		        '<td style="text-align: center;"><button  onClick="myFunction1()" style="background-color: skyblue; width: 100px;height:40px;font-size: 15px;">View</button>'+
 
 		        		      '</tr>'
@@ -1932,7 +1932,7 @@ $('#myLoader1').show();
 		    	  var JsonData= jQuery.parseJSON(data);
 		    	  $('#doubtTableBody').empty();
 		    	 if(JsonData.length==0){
-			     $("#doubtTableBody").html('<tr class="no-records"><td colspan="6" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+			     $("#doubtTableBody").html('<tr class="no-records"><td colspan="8" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
 		    	 }
 		    	 else{
 		          $(JsonData).each(function (index, item) {  
@@ -1971,11 +1971,11 @@ $('#myLoader1').show();
 	   var row = $(this).closest('tr');
        
        studentId = $(row).find('td').eq(0).html();
-   
+ var  studentName=$(row).find('td').eq(2).html();
        
        fetchStudentDetails(studentId);
            
-       var attendanceUrl="AttendanceCheck.jsp?studentId="+studentId+"&departmentId="+departmentId+"&sectionId="+sectionId+"&semseter="+year+"&courseId="+courseType+"&courseName="+courseName;
+       var attendanceUrl="AttendanceCheck.jsp?studentName="+studentName+"&studentId="+studentId+"&departmentId="+departmentId+"&sectionId="+sectionId+"&semseter="+year+"&courseId="+courseType+"&courseName="+courseName;
        
        $('#attendanceCheck').attr("href",attendanceUrl);
   });
@@ -1993,8 +1993,8 @@ $('#myLoader1').show();
 		  $('#StudentImage').attr('src', 'data:image/png;base64,'+JsonData[0].base64Image); 	
 		   $('#studentName').text("Name: "+JsonData[0].name);
 		   $('#collegeId').text("College Id: "+JsonData[0].collegeId);	
-		   $('#studrollNo').text("University Roll No: "+(JsonData[0].universityRollNo==null?"":JsonData[0].universityRollNo));	
-		   $('#registrationNo').text("University Registration No: "+(JsonData[0].universityRegistrationNo==null?"":JsonData[0].universityRegistrationNo));	
+		   $('#studrollNo').text("University Roll No: "+(JsonData[0].universityRollNo=="(NULL)"?"":JsonData[0].universityRollNo));	
+		   $('#registrationNo').text("University Registration No: "+(JsonData[0].universityRegistrationNo=="(NULL)"?"":JsonData[0].universityRegistrationNo));	
 		   $('#gender').text("Gender: "+JsonData[0].gender); 	
 		   $('#mobileNumber').text("Mobile Number: "+JsonData[0].mobileNumber);	
 		   $('#emaiLId').text("Email Id: "+JsonData[0].emailId);	
@@ -2258,7 +2258,7 @@ function fetchFiles(tableHeader,action){
 	    	  var JsonData= jQuery.parseJSON(data);
 	    	  $('#fetchFilesBody').empty();
 	    	 if(JsonData.length==0){
-		     $("#fetchFilesBody").html('<tr class="no-records"><td colspan="3" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+		     $("#fetchFilesBody").html('<tr class="no-records"><td colspan="4" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
 	    	 }
 	    	 else{
 	          $(JsonData).each(function (index, item) {  
@@ -2625,7 +2625,7 @@ $('#updateRollNo').click(function (event){
   function allowStudent(studentId){
 
 		 var form_data = new FormData(); // Creating object of FormData class
-		  form_data.append("action", "allowStudent1"); // Appending parameter named file with properties of file_field to form
+		  form_data.append("action", "allowStudent"); // Appending parameter named file with properties of file_field to form
 		  form_data.append("studentId",studentId);
 		  
 		  $.ajax({

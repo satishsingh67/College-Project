@@ -296,7 +296,7 @@ section {
        <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
         <p style="color:white;font-size:22px;margin-left:40px;">GURU NANAK INSTITUTE OF TECHNOLOGY</p>
        
-       <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+       <img src="./images/jis1.png" class="logo">  
        <div id="menu-btn" class="fa fa-bars"></div>
  
     </nav>

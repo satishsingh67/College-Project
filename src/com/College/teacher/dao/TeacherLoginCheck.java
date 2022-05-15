@@ -29,13 +29,14 @@ public class TeacherLoginCheck {
 
 			String query = "SELECT * FROM `teacher_registration` INNER JOIN department ON teacher_registration.fkDepartmentId=department.pkDepartmentId"
 					+" INNER JOIN teacher_designation ON teacher_registration.fkTeacherDesignation=teacher_designation.pkTeacherDesignationId"
-					+ " where teacherName=? and fkDepartmentId=? and emailId=? and password=? limit 1";
+					+ " where teacherName=? and fkDepartmentId=? and emailId=? and password=? and isDeleted=? limit 1";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, teacherName);
 			pstmt.setInt(2, Integer.parseInt(departmentId));
 			pstmt.setString(3, emailId.trim());
 			pstmt.setString(4, password.trim());
-	
+			pstmt.setInt(5, 0);
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			teacherLoginValidation.put("status",false);	
@@ -68,6 +69,8 @@ public class TeacherLoginCheck {
               teacherDetails.setGender(rs.getString("gender"));
               Blob blob=rs.getBlob("photo");
               // Preparing Image to send user
+              
+              if(blob!=null) {
 				InputStream inputStream = blob.getBinaryStream();
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				byte[] buffer = new byte[4096];
@@ -83,6 +86,9 @@ public class TeacherLoginCheck {
 				inputStream.close();
 				outputStream.close();
 				teacherDetails.setBase64Image(base64Image);
+				
+              }
+				
 				
 				teacherLoginValidation.put("teacher",teacherDetails);
 

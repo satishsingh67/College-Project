@@ -25,7 +25,7 @@ Integer courseTypeId=student.getCourseTypeId();
 //Lab Class Link
 MettingLinks mettingLinks=new MettingLinks();
 String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), null,courseTypeId);
 
 //Lab Final Exam Paper
 Map<String,Object> semPaperStatus =new ExamPaper().getExamPaperActiveStatus(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
@@ -44,9 +44,10 @@ semExamAnserScriptCheckForDownload.put("status",false);
 
 Map<String,Object> semPaperStatus1 =new ExamPaper().getExamPaperActiveStatus1(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 
-if((boolean)semPaperStatus1.get("status")){
-	semExamAnserScriptCheckForDownload =new AnswerScript().checkAnswerScriptAvailableForDownload(String.valueOf(semPaperStatus.get("pkQuestionPaperId")), "3", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
-}
+	if((boolean)semPaperStatus1.get("status")){
+		semExamAnserScriptCheckForDownload =new AnswerScript().checkAnswerScriptAvailableForDownload(String.valueOf(semPaperStatus1.get("pkQuestionPaperId")), "3", String.valueOf(studentId), String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+
+	}
 
 //Final Lab Copy and Others Files Download Status
 LabDataHandling labDataHandlingObj=new LabDataHandling();
@@ -208,7 +209,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
               <li class="nav-item">
               <a class="nav-link" href="/College_Final_Year_Project/logout?action=student">Logout</a>
             </li>
-            <li><img class="images" src="images/teachers/1200px-JIS_University.svg.png"></li>
+            <li><img class="images" src="images/jis1.png"></li>
           </ul>
         </div>
       </div>
@@ -386,7 +387,7 @@ String labOtherData=labDataHandlingObj.checkFinalLabCopyAndOthersFilesStatus(Str
                   
                </form></li>
               <li>
-               <a href=""><span>Submit Your Final LabCopy</a>
+               <a href=""><span>Submit Your Final Lab Copy</a>
                 <form >
                 
                 <input type="file" id="SemLabCopy" placeholder="Choose File">

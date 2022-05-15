@@ -473,7 +473,16 @@ section .title::after{
 .owl-dot:hover{
     background: crimson!important;
 }
-
+section .title::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    background: #111;
+    transform: translateX(-50%);
+    }
 /* contact section styling */
 .contact .title::after{
     content: "get in touch";
@@ -799,12 +808,12 @@ footer span a:hover{
         <div class="max-width">
             <div class="logo"><a href="#"><img src="./images/GNIT_Kolkata_logo.png"></a></div>
             <ul class="menu">
-                <li><a href="#home" class="menu-btn">Home</a></li>
-                <li><a href="./approval.html" class="menu-btn">APPROVALS & ACCREDIATION</a></li>
+                <li><a href="newhome.html" class="menu-btn">Home</a></li>
+                <li><a href="./approval.html" class="menu-btn">APPROVALS & ACCREDIATIONS</a></li>
                 <li><a href="#services" class="menu-btn">ADMINISTRATION</a></li>
                 <li><a href="#skills" class="menu-btn">Code Of Conduct</a></li>
                 <li><a href="#teams" class="menu-btn">MOU</a></li>
-                <li><a href="#contact" class="menu-btn"> Mandatory disclosure 20-21 (NAAC)</a></li>
+                <li><a href="#contact" class="menu-btn"> Mandatory Disclosure 20-21 (NAAC)</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
@@ -857,14 +866,14 @@ footer span a:hover{
                         <hr style="background-color: rgb(32, 50, 114);"><br>
                         <p>
                            <h4 style="font-size: 25px;"> Chairman Emeritus :</h4> <span style="color: rgb(243, 243, 23); font-weight: bold;font-size: 25px;"> Late Sardar Jodh Singh </span><br><br>
-                            <h4 style="font-size: 25px;">Principal GNIT :</h4> <span style="color: rgb(243, 243, 23); font-weight: bold;font-size: 25px;"> Prof.Dr.Santanu Kumar Sen</span>
+                            <h4 style="font-size: 25px;">Principal GNIT :</h4> <span style="color: rgb(243, 243, 23); font-weight: bold;font-size: 25px;"> Prof. Dr. Santanu Kumar Sen</span>
                         </p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <img class="abt_img" src="./images/aboutus/download.jpg">
-                        <div class="text" style="color: rgb(46, 170, 112);font-weight: 900;font-family: 'Times New Roman', Times, serif;">Chairman Messege</div>
+                        <div class="text" style="color: rgb(46, 170, 112);font-weight: 900;font-family: 'Times New Roman', Times, serif;">Chairman's Message</div>
                         <hr><br>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
                     </div>
@@ -872,7 +881,7 @@ footer span a:hover{
                 <div class="card">
                     <div class="box">
                         <img class="abt_img" src="./images/aboutus/71499208_2464002743693034_6191031482706821120_n-1-247x300.jpg">
-                        <div class="text" style="color: rgb(46, 170, 112);font-weight: 900;font-family: 'Times New Roman', Times, serif;">Principal Messege</div>
+                        <div class="text" style="color: rgb(46, 170, 112);font-weight: 900;font-family: 'Times New Roman', Times, serif;">Principal's Message</div>
                         <hr><br>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
                     </div>
@@ -909,7 +918,7 @@ footer span a:hover{
                     </div>
                     <div class="bars">
                         <div class="info">
-                            <span>Depertments</span>
+                            <span>Departments</span>
                             <span>10+</span>
                         </div>
                         <div class="line js"></div>
@@ -931,7 +940,7 @@ footer span a:hover{
     <!-- teams section start -->
     <section class="teams" id="teams">
         <div class="max-width">
-            <h2 class="title">Visitors FeedBack</h2>
+            <h2 class="title">Visitors Feedback</h2>
            
             <div class="carousel owl-carousel">
              <%
@@ -971,12 +980,11 @@ for(FeedBack obj:feedbackList){
             <div class="contact-content">
                 <div class="column left">
                     <div class="text">Get in Touch</div>
-                    <p>For Any Queries Please Contact usThrough Our Contact us page</p>
+                    <p>For Any Queries Please Contact Us Through Our Contact Us page</p>
                     <div class="icons">
                         <div class="row">
                             <i class="fas fa-user"></i>
                             <div class="info">
-                                <div class="head">Click Here</div>
                                 <div class="sub-title"><a href="./contactus.html">Contact Us</a></div>
                             </div>
                         </div>

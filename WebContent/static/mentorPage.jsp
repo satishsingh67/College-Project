@@ -745,7 +745,7 @@ section {
          
          
       </div>
-      <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+      <img src="./images/jis1.png" class="logo">  
       <div id="menu-btn" class="fa fa-bars"></div>
 
    </nav>

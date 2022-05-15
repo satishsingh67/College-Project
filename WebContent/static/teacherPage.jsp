@@ -67,7 +67,7 @@ String image=new TeacherLoginCheck().fetchTeacherPhoto(fkTeacherPkId);
          <a href="/College_Final_Year_Project/logout?action=teacher" class="nav__link">Logout</a>
          
       </div>
-      <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+      <img src="./images/jis1.png" class="logo">  
       <div id="menu-btn" class="fa fa-bars"></div>
 
    </nav>

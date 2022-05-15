@@ -26,7 +26,7 @@ LinkManagement mettingLinks=new LinkManagement();
 String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(fkTeacherPkId), String.valueOf(fkTeacherPkId), semester, section, subjectId,courseId);
 String unitTest1Link=mettingLinks.getExamMeetingLink(1,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
 String unitTest2Link=mettingLinks.getExamMeetingLink(2,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), null,null,courseId);
 
 //Notes and Suggestion
 MapTeacherSubjectDao mapTeacherSubjectDaoObj=new MapTeacherSubjectDao();
@@ -79,7 +79,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
               <a class="nav-link" href="#notes">Notes&Suggestion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#doubt">Doubt Clearence</a>
+                <a class="nav-link" href="#doubt">Doubt Clearance</a>
               </li>
             <li class="nav-item">
               <a class="nav-link" href="#assignment">Assignment</a>
@@ -90,7 +90,7 @@ Integer questionBankCount=mapTeacherSubjectDaoObj.getTotalQuestionBank(fkTeacher
             <li class="nav-item">
          <a href="/College_Final_Year_Project/logout?action=teacher" class="nav-link">Logout</a>
             </li>
-            <li><img class="images" src="images/teachers/1200px-JIS_University.svg.png"></li>
+            <li><img class="images" src="images/jis1.png"></li>
           </ul>
         </div>
       </div>

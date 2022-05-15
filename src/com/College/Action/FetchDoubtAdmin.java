@@ -49,6 +49,10 @@ public class FetchDoubtAdmin extends HttpServlet {
 
 			result = new FetchMessageDetails().fetchteacherMessage();
 			out.print(result);
+		}else if (action.trim().equalsIgnoreCase("mentorDoubt")) {
+
+			result = new FetchMessageDetails().fetchMentorMessage();
+			out.print(result);
 		}else if (action.trim().equalsIgnoreCase("contactUs")) {
 
 			result = new FetchMessageDetails().fetchContactUs();
@@ -94,8 +98,12 @@ public class FetchDoubtAdmin extends HttpServlet {
 
 				result = new FetchMessageDetails().upadeQuestionAnswer(id, answer, action);
 				out.print(result);
-			} 
-			else if (action.trim().equalsIgnoreCase("contactUs")) {
+			} else if (action.trim().equalsIgnoreCase("contactUs")) {
+
+				result = new FetchMessageDetails().upadeQuestionAnswer(id, answer, action);
+				out.print(result);
+			}
+			else if (action.trim().equalsIgnoreCase("mentorDoubtAnswer")) {
 
 				result = new FetchMessageDetails().upadeQuestionAnswer(id, answer, action);
 				out.print(result);

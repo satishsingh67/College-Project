@@ -18,6 +18,7 @@ String semseter=request.getParameter("semseter");
 String courseId=request.getParameter("courseId");
 String studentId=request.getParameter("studentId");
 String courseName=request.getParameter("courseName");
+String studentName=request.getParameter("studentName");
 
 
 
@@ -377,7 +378,7 @@ section {
        <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
         <p style="color:white;font-size:22px;margin-left:40px;">GURU NANAK INSTITUTE OF TECHNOLOGY</p>
        
-       <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+       <img src="./images/jis1.png" class="logo">  
        <div id="menu-btn" class="fa fa-bars"></div>
  
     </nav>
@@ -390,7 +391,7 @@ section {
 
 <section class="home" id="home">
  <div class="content" style="margin-top:-110px;height:140px;">
-<p style="color:black">Name:Satish Singh</p>
+<p style="color:black">Name: <%=studentName %></p>
 <p style="color:black; margin-top:-65px;">Course: <%=courseName %></p>
 <p style="color:black; margin-top:-65px;" id="totalAttendance"></p>
  </div>
@@ -524,7 +525,7 @@ section {
 		    	 }
 		    	 else{
 		    		 
-		    		 $('#totalAttendance').text("Total Attandance Percentage: "+JsonData.total+"%");
+		    		 $('#totalAttendance').text("Total Attendance Percentage: "+JsonData.total+"%");
 		          $(JsonData.attendance).each(function (index, item) {  
 		        	  $('#Table').append(
 		        			  '<tr style="height:20px">'+

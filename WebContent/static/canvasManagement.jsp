@@ -326,10 +326,10 @@ form span{
 </head>
 <body>
     <header>
-        <a href="#" class="logo"><img class="brand1" src="./images/teachers/1200px-JIS_University.svg.png"></i> </a>
+        <a href="#" class="logo"><img class="brand1" src="./images/jis1.png"></i> </a>
     <a href="#" class="logo"><img src="./image/GNIT_Kolkata_logo.png"></i> </a>
         <div class="brand">
-            <h2 class="text1 text-center">GURUNANAK INSTITUTE OF TECHNOLOGY</h2> 
+            <h2 class="text1 text-center">GURU NANAK INSTITUTE OF TECHNOLOGY</h2> 
         </div>
        
     </header>

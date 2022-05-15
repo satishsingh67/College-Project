@@ -171,7 +171,7 @@ public class ProfileUpgradation {
 			int dbResult[] = pstmt.executeBatch();
 
 			if (dbResult.length > 0) {
-				result = "Student Alloed Successfully";
+				result = "Student Allwoed Successfully";
 			} else {
 				result = "Something went wrong.Please Try again";
 

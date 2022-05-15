@@ -210,7 +210,7 @@ $(document).ready(function () {
 	 $('#myModal').show();
 	    //Calling Loader
 	   $(".loader1").show();
-	  fetchStudentDetails("1");
+	  fetchStudentDetails(id);
 });
 
 
@@ -246,7 +246,7 @@ data.append("oldSemester", oldSemester);
            swal("Error", data, "error");
          }
          $("#updateDetails").prop("disabled", false);
-         fetchStudentDetails(1);
+         fetchStudentDetails(id);
       },
       error: function (jqXHR, textStatus, errorThrown) {
     	  $(".loader1").hide();
@@ -275,8 +275,8 @@ function fetchStudentDetails(studentId){
 	    	 $('#studentDOB').val(JsonData[0].dob==""?"":JsonData[0].dob);
 
 	    	 
-	    	 $('#studentUniversityRollNo').val(JsonData[0].universityRollNo);
-	    	 $('#studentUniversityRegistrationNo').val(JsonData[0].universityRegistrationNo);
+	    	 $('#studentUniversityRollNo').val(JsonData[0].universityRollNo=="(NULL)"?"":JsonData[0].universityRollNo);
+	    	 $('#studentUniversityRegistrationNo').val(JsonData[0].universityRegistrationNo=="(NULL)"?"":JsonData[0].universityRegistrationNo);
 	    	 $('#studentCourse').val(JsonData[0].courseName);
 	    	 $('#studentDepartemnt').val(JsonData[0].departmentName);
 	    	 

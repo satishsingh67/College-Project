@@ -2,11 +2,11 @@
 <%@page import="com.college.model.Admin" %>
 
 <%
-Admin admin=(Admin)session.getAttribute("admin");
+ Admin admin=(Admin)session.getAttribute("admin");
 if(admin==null){
 	response.sendRedirect("adminLogin.jsp");
 	return;
-}
+} 
 %>
 
 
@@ -345,10 +345,10 @@ form span{
 </head>
 <body>
     <header>
-        <a href="#" class="logo"><img class="brand1" src="./images/teachers/1200px-JIS_University.svg.png"></i> </a>
+        <a href="#" class="logo"><img class="brand1" src="./images/jis1.png"></i> </a>
     <a href="#" class="logo"><img src="./image/GNIT_Kolkata_logo.png"></i> </a>
         <div class="brand">
-            <h2 class="text1 text-center">GURUNANAK INSTITUTE OF TECHNOLOGY</h2> 
+            <h2 class="text1 text-center">GURU NANAK INSTITUTE OF TECHNOLOGY</h2> 
         </div>
         <header class="header">
 
@@ -474,10 +474,9 @@ form span{
                           <th style="text-align:center;">Mentor Name</th>
                           <th style="text-align:center;">Email Id</th>
                           <th style="text-align:center;">Contact Number</th>
-                          <th style="text-align:center;">Department Name</th>
                            <th style="text-align:center;">Create Date</th>
                            <th style="text-align:center;">Update Date</th>
-                          <th style="text-align:center;">Messege</th>
+                          <th style="text-align:center;">Message</th>
                           <th style="text-align:center;">Answer</th>
                           <th style="text-align:center;">Reply</th>
                           
@@ -676,7 +675,7 @@ form span{
  	        	  var form_data = new FormData(); // Creating object of FormData class
  	        	  form_data.append("id", id); // Appending parameter named file with properties of file_field to form_data
  	        	  form_data.append("answer", answer); // Adding extra parameters to form_data
- 	        	  form_data.append("action", "teacherDoubtAnswer");
+ 	        	  form_data.append("action", "mentorDoubtAnswer");
  	        	  $.ajax({
  	        		  type: "POST",
  	                  enctype: 'multipart/form-data',
@@ -713,7 +712,7 @@ form span{
           	
          	 $.ajax({
     		      type: "GET",
-    		      url:"/College_Final_Year_Project/fetch?action=teacherDoubt",
+    		      url:"/College_Final_Year_Project/fetch?action=mentorDoubt",
     		      success: function (data, textStatus, jqXHR) {
     		    	  var JsonData= jQuery.parseJSON(data);
     		    	  $('#Table').empty();
@@ -729,8 +728,7 @@ form span{
     		        			'<td style="text-align: center;display:none;">'+item.pkId+'</td>'+
     		        			 '<td style="text-align: center;font-size: 15px;">'+item.name+'</td>'+
     		        			 '<td style="text-align: center;font-size: 15px; text-transform: none; ">'+item.emailId+'</td>'+
-    		        			 '<td style="text-align: center;font-size: 15px;">'+item.mobileNumber+'</td>'+
-    		        			 '<td style="text-align: center;font-size: 15px;">'+item.departmentName+'</td>'+
+    		        			 '<td style="text-align: center;font-size: 15px;">'+(item.mobileNumber==null?"":item.mobileNumber)+'</td>'+
     		        		       '<td style="text-align: center;font-size: 15px;">'+item.createDate+'</td>'+
     		        		         '<td style="text-align: center;font-size: 15px;">'+(item.updateDate == null ?" ":item.updateDate)+'</td>'+
     		        		        '<td style="text-align: center;"><textarea rows="2" cols="20" style="font-size: 15px;" readonly id=question'+item.pkId+'>'+item.question+'</textarea></td>'+

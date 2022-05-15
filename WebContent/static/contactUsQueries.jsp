@@ -321,8 +321,8 @@ td {
        <img src="./images/GNIT_Kolkata_logo.png" class="logo">  
         <p style="color:white;font-size:22px;margin-left:40px;">GURU NANAK INSTITUTE OF TECHNOLOGY</p>
        
-       <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
-       <div id="menu-btn" class="fa fa-bars"></div>
+       <img src="./images/jis1.png" class="logo">  
+       <div id="menu-btn" class="fa fa-bars"></div> 
  
     </nav>
  
@@ -456,7 +456,7 @@ td {
 				var question=$(row).find('td').eq(5).text();
 				var answer=$(row).find('td').eq(6).text();
 				
-				  $('#Name').text("Teacher Name: "+name);
+				  $('#Name').text("Name: "+name);
    	            $('#EmailId').text("Email Id : "+emailId);
    	           $('#MobileNumber').text("Contact Number: "+mobileNo);
    	          $('#teacherQuestion').val(question);
@@ -547,7 +547,7 @@ td {
 			    	  var JsonData= jQuery.parseJSON(data);
 			    	  $('#Table').empty();
 			    	 if(JsonData.length==0){
-				     $("#Table").html('<tr class="no-records"><td colspan="9" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+				     $("#Table").html('<tr class="no-records"><td colspan="10" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
 			    	 }
 			    	 else{
 			          $(JsonData).each(function (index, item) {  

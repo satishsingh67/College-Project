@@ -331,7 +331,7 @@ section {
                    <a href="chnagePasswordCanvas.jsp" target="_blank" style="color:red;"><p style="font-size:20px;margin-left:70px;">Change Password</p></a>
           <a href="/College_Final_Year_Project/logout?action=canvas" style="color:red;"><p style="font-size:20px;margin-left:250px;margin-top:-45px;">Logout</p></a>
        </div>
-       <img src="./images/teachers/1200px-JIS_University.svg.png" class="logo">  
+       <img src="./images/jis1.png" class="logo">  
        <div id="menu-btn" class="fa fa-bars"></div>
  
     </nav>

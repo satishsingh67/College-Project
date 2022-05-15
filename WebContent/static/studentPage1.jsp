@@ -24,6 +24,14 @@ String subjectChoice=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartme
 String studentImage=new StudentLoginValidation().fetchStudentPhoto(student.getPkRegistrationId());
 
 
+//Syllabus Link
+String syllabus=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartmentId, fkYearId, fkSectionId, "syllabus");
+
+//Routine
+String routine=new MapStudentSubjectDao().getLink(courseTypeId, fkDepartmentId, fkYearId, fkSectionId, "routine");
+
+
+
 %>
     
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -1235,7 +1243,7 @@ display: block;
 }
 
 </style>
-        <title>Campuslife</title>
+        <title>Campus Life</title>
     </head>
     <body>
         <header class="header" id="header">
@@ -1345,17 +1353,45 @@ display: block;
             <section class="about section" id="about">
                 <div class="about__container container grid">
                     <div class="about__data">
-                        <h2 class="section__title about__title">Academis Section</h2>
+                        <h2 class="section__title about__title">Academics Section</h2>
                         <p class="about__description">
-                          View Sem Result,Download Admit Card,Exam Form FillUp Link is Here
+                          View Semester Result,Download Admit Card and Syllabus and Routine,Exam Form Fill Up Link is Here
                         </p>
                         <div class="sbtn-1">
-                          <button class="drpdwn">Academis</button>
+                          <button class="drpdwn">Academics</button>
                             <div class="content">
                               <a href="http://jisexams.in/JISEXAMS/StudentServices/frmViewStudentGradeCardResult.aspx"target="_blank">View Result</a>
                               <a href="http://jisexams.in/JISEXAMS/LoginScreens/frmStudentLoginPage.aspx"target="_blank">Form FillUp Link</a>
                               <a href="http://jisexams.in/JISEXAMS/StudentServices/frmStudAdmitCard.aspx"target="_blank">Download Admit Card</a>
-                              
+                         
+                         <%
+                         if(syllabus==null){
+                         %>
+                       <a href="" style="pointer-events: none" target="_self">Download Syllabus</a>
+                         
+                         <%
+                         }else{
+                         %>
+                     <a href="/College_Final_Year_Project/view?action=syllabusDownload&id=<%=syllabus %>"  target="_self">Download Syllabus</a>
+                         
+                         <%
+                         }
+                         %>
+                         
+                         <%
+                         if(routine==null){
+                         %>
+                            <a href="" style="pointer-events: none" target="_self">Download Routine</a>  
+                         
+                         <%
+                         }else{
+                         %>
+                            <a href="/College_Final_Year_Project/view?action=routineDownload&id=<%=routine %>" target="_self">Download Routine</a>  
+                         
+                         <%
+                         }
+                         %>
+                         
                             </div>
                           
                         </div>

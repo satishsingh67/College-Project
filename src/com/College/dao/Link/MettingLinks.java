@@ -44,21 +44,41 @@ public class MettingLinks {
 		String result=null;
 		Connection con=new DataBaseConnection().getDatabaseConnection();
 		try {
-			String query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
+			String query=null;
+			PreparedStatement pstmt=null;
 			
-			PreparedStatement pstmt=con.prepareStatement(query);
-			pstmt.setInt(1,fkExamType);
-			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
-			pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
-			pstmt.setInt(3, Integer.parseInt(fkSemesterId));
-			pstmt.setInt(4, Integer.parseInt(fkSectionId));
-			pstmt.setInt(5, Integer.parseInt(fkSubjectId));
-			pstmt.setInt(6, courseTypeId);
+			if(fkExamType==3) {
+            query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
+				
+				pstmt=con.prepareStatement(query);
+				pstmt.setInt(1,fkExamType);
+				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+				pstmt.setInt(3, Integer.parseInt(fkSemesterId));
+				pstmt.setInt(4, Integer.parseInt(fkSectionId));
+				pstmt.setInt(5, courseTypeId);
+			}else {
+				
+				query="Select `examMeetingLink` from `exam_link` where `fkExamType`=? and `fkDepartmentId`=? and `fkSemesterId`=? and `fkSectionId`=? and `fkSubjectId`=? and `fkCourseTypeId`=? ORDER BY `updatedate` DESC LIMIT 1";
+				
+				pstmt=con.prepareStatement(query);
+				pstmt.setInt(1,fkExamType);
+				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+				pstmt.setInt(2, Integer.parseInt(fkDepartmentId));
+				pstmt.setInt(3, Integer.parseInt(fkSemesterId));
+				pstmt.setInt(4, Integer.parseInt(fkSectionId));
+				pstmt.setInt(5, Integer.parseInt(fkSubjectId));
+				pstmt.setInt(6, courseTypeId);
+			}
 
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result=rs.getString("examMeetingLink");
-	
+			
+			if(query!=null) {
+				
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result=rs.getString("examMeetingLink");
+					
+				}
 			}
 			
 		}catch(Exception e) {

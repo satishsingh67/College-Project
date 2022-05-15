@@ -174,6 +174,12 @@ public class ViewStudentMaterials {
 				if (action.equalsIgnoreCase("studentRecieptDownload")) {
 					query = "Select moneyReceiptFileName,moneyReceiptFileExtension,moneyReceipt from registration where pkRegistrationId=?";
 				}
+				if (action.equalsIgnoreCase("syllabusDownload")) {
+					query = "Select fileName,fileExtension,fileData from mentor_syllabus where pkMentorSyllabusId=?";
+				}
+				if (action.equalsIgnoreCase("routineDownload")) {
+					query = "Select fileName,fileExtension,fileData from mentor_routine where pkMentorRoutineId=?";
+				}
 				PreparedStatement pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, Integer.parseInt(id));
 				ResultSet rs = pstmt.executeQuery();

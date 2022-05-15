@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>College_Project</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+	<!-- <welcome-file-list>
+		<welcome-file>/NewFile.jsp</welcome-file>
 	</welcome-file-list>
-
+ -->
 	<servlet>
 		<servlet-name>ContactUs</servlet-name>
 		<servlet-class>com.college.action.ContactUs</servlet-class>
@@ -16,7 +16,7 @@
 		<servlet-name>Grievance</servlet-name>
 		<servlet-class>com.college.action.Grievance</servlet-class>
 	</servlet>
-	<servlet>
+	<servlet> 
 		<servlet-name>NewRegistration</servlet-name>
 		<servlet-class>com.college.action.NewRegistration</servlet-class>
 	</servlet>

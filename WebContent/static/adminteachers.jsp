@@ -377,10 +377,10 @@ form span{
 </head>
 <body>
     <header>
-        <a href="#" class="logo"><img class="brand1" src="./images/teachers/1200px-JIS_University.svg.png"></i> </a>
+        <a href="#" class="logo"><img class="brand1" src="./images/jis1.png"></i> </a>
     <a href="#" class="logo"><img src="./image/GNIT_Kolkata_logo.png"></i> </a>
         <div class="brand">
-            <h2 class="text1 text-center">GURUNANAK INSTITUTE OF TECHNOLOGY</h2> 
+            <h2 class="text1 text-center">GURU NANAK INSTITUTE OF TECHNOLOGY</h2> 
         </div>
         <header class="header">
 
@@ -487,7 +487,7 @@ form span{
                           <th style="text-align:center;">Department Name</th>
                            <th style="text-align:center;">Create Date</th>
                            <th style="text-align:center;">Update Date</th>
-                          <th style="text-align:center;">Messege</th>
+                          <th style="text-align:center;">Message</th>
                           <th style="text-align:center;">Answer</th>
                           <th style="text-align:center;">Reply</th>
                           
@@ -795,7 +795,7 @@ form span{
     		    	  var JsonData= jQuery.parseJSON(data);
     		    	  $('#Table').empty();
     		    	 if(JsonData.length==0){
-    			     $("#Table").html('<tr class="no-records"><td colspan="8" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
+    			     $("#Table").html('<tr class="no-records"><td colspan="9" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
     		    	 }
     		    	 else{
     		          $(JsonData).each(function (index, item) {  

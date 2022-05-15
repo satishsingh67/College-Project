@@ -402,7 +402,7 @@ td {
                 </div>
                 <div class="user">
                   <a href="./AdminViewProfile.jsp" target="_blank" class="btn"  style="margin-left:100px;background-color:rgb(30, 30, 68);">Profile</a>
-                  <a href="/College_Final_Year_Project/logout?action=admin" class="btn" style="background-color:rgb(30, 30, 68);">LogOut</a>
+                  <a href="/College_Final_Year_Project/logout?action=admin" class="btn" style="background-color:rgb(30, 30, 68);">Log Out</a>
                 </div>
             </div>
         </div>

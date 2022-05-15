@@ -33,7 +33,7 @@ MettingLinks mettingLinks=new MettingLinks();
 String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 String unitTest1Link=mettingLinks.getExamMeetingLink(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
 String unitTest2Link=mettingLinks.getExamMeetingLink(2,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), null,courseTypeId);
 
 //Exam Paper
 Map<String,Object> unitTest1PaperStatus =new ExamPaper().getExamPaperActiveStatus(1,String.valueOf(departmentId), String.valueOf(semesterId),String.valueOf(sectionId), subjectId,courseTypeId);
@@ -231,7 +231,7 @@ if((boolean)semPaperStatus1.get("status")){
               <a class="nav-link" href="#notes">Notes&Suggestion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#doubt">Doubt Clearence</a>
+                <a class="nav-link" href="#doubt">Doubt Clearance</a>
               </li>
             <li class="nav-item">
               <a class="nav-link" href="#assignment">Assignment</a>
@@ -243,7 +243,7 @@ if((boolean)semPaperStatus1.get("status")){
               <a class="nav-link" href="/College_Final_Year_Project/logout?action=student">Logout</a>
             </li>
             
-            <li><img class="images" src="images/teachers/1200px-JIS_University.svg.png"></li>
+            <li><img class="images" src="images/jis1.png"></li>
           </ul>
         </div>
       </div>
@@ -299,20 +299,20 @@ if((boolean)semPaperStatus1.get("status")){
     <div class="box-container container" >
  
        <div class="box">
-          <img src="image/lab1.jpg" alt="">
+          <img src="images/notes.jpeg" alt="" style="width:150px;">
           <p><%=notesCount %></p>
     <button type="button" class="btn btn-success" id="viewNotes">View Notes</button>
           
        </div>
  
        <div class="box">
-          <img src="image/unnamed.png" alt="">
+          <img src="images/suggestion.jpeg" alt="" style="width:150px;">
           <p><%=suggestionCount %></p>
      <button type="button" class="btn btn-success" id="viewSuggestion">View Suggestion</button>
 
        </div>
        <div class="box">
-        <img src="image/unnamed.png" alt="">
+        <img src="images/QuestionBank.jpeg" alt="" style="width:150px;">
         <p><%=questionBankCount %></p>
            <button type="button" class="btn btn-success" id="viewQuestionBank">View Question Bank</button>
 
@@ -397,7 +397,7 @@ if((boolean)semPaperStatus1.get("status")){
              </div>
            </div>
            <div class="col-lg-5 col-md-12 text-sec">
-            <h2>Doubt Clearence</h2>
+            <h2>Doubt Clearance</h2>
             <form method="POST" id="doubtStudentForm" enctype="multipart/form-data">
                 <textarea name="doubtMessage" placeholder="message"   cols="30" rows="10"></textarea>
                <input type="submit" id="doubtSubmit"  value="send message" class="main-btn" style="margin-top:-110px;">
@@ -600,7 +600,7 @@ if((boolean)semPaperStatus1.get("status")){
           <div class="col-sm-12">
             <div class="text-content text-center">
              
-            <h2><span>Samester Final Exam</span></h2>
+            <h2><span>Semester Final Exam</span></h2>
           </div>
         </div>
         <div class="row pt-5">
@@ -1141,7 +1141,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 	    	var fileId="unitTest1AnswerScript";
 	    	var questionPaperId= <%=String.valueOf(unitTest1AnswerSubmissionStatus.get("pkQuestionPaperId")) %>;
 	    	
-	    	submitAnswerScript(fileId,questionPaperId,1,"unitTest1AnswerScriptSubmit");
+	    	submitAnswerScript(fileId,questionPaperId,"1","unitTest1AnswerScriptSubmit");
 	    
 	    });
 	    
@@ -1151,7 +1151,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 	    	var fileId="unitTest2AnswerScript";
 	    	var questionPaperId= <%=String.valueOf(unitTest2AnswerSubmissionStatus.get("pkQuestionPaperId")) %>;
 	    	
-	    	submitAnswerScript(fileId,questionPaperId,1,"unitTest2AnswerScriptSubmit");
+	    	submitAnswerScript(fileId,questionPaperId,"2","unitTest2AnswerScriptSubmit");
 	    
 	    });
 	    	 
@@ -1161,7 +1161,7 @@ let sub=((rem!=0)?rem:dataPerPage);
 	    	var fileId="semExamAnswerScript";
 	    	var questionPaperId= <%=String.valueOf(semExamAnswerSubmissionStatus.get("pkQuestionPaperId")) %>;
 	    	
-	    	submitAnswerScript(fileId,questionPaperId,1,"semExamAnswerScriptSubmit");
+	    	submitAnswerScript(fileId,questionPaperId,"3","semExamAnswerScriptSubmit");
 	    
 	    });
 	    

@@ -306,6 +306,10 @@ public class MapStudentSubjectDao {
 			query = "select link from mentor_feedback_link where fkCourseTypeId=? and fkDepartmentId=? and fkYearId=? and fkSectionId=? order by updateDate desc";
 			}else if(action.trim().equalsIgnoreCase("subjectChoice")){
 				query = "select link from mentor_subject_choice_link where fkCourseTypeId=? and fkDepartmentId=? and fkYearId=? and fkSectionId=? order by updateDate desc";
+			}else if(action.trim().equalsIgnoreCase("syllabus")){
+				query = "select pkMentorSyllabusId from mentor_syllabus where fkCourseTypeId=? and fkDepartmentId=? and fkYearId=? and fkSectionId=? order by updateDate desc";
+			}else if(action.trim().equalsIgnoreCase("routine")){
+				query = "select pkMentorRoutineId from mentor_routine where fkCourseTypeId=? and fkDepartmentId=? and fkYearId=? and fkSectionId=? order by updateDate desc";
 			}
 				
 				
@@ -317,8 +321,13 @@ public class MapStudentSubjectDao {
 				
 				ResultSet rs = pstmt.executeQuery();
 				if(rs.next()) {
-					
-					result=rs.getString(1);
+					if(action.trim().equalsIgnoreCase("syllabus") || action.trim().equalsIgnoreCase("routine")) {
+						result=String.valueOf(rs.getInt(1));
+
+					}else {
+						result=rs.getString(1);
+
+					}
 					
 				}
 			

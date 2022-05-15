@@ -24,7 +24,7 @@ String courseName=request.getParameter("courseName");
 //Meeting Link
 LinkManagement mettingLinks=new LinkManagement();
 String dailyClassLink=mettingLinks.getDailyClassLink(String.valueOf(fkTeacherPkId), String.valueOf(fkDepartment), semester, section, subjectId,courseId);
-String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), subjectId,String.valueOf(fkTeacherPkId),courseId);
+String semExamLink=mettingLinks.getExamMeetingLink(3,String.valueOf(fkDepartment), String.valueOf(semester),String.valueOf(section), null,null,courseId);
 
 //App Link
 String labAppLink=mettingLinks.getApplicationLink(String.valueOf(fkTeacherPkId), String.valueOf(fkDepartment), semester, section, subjectId,courseId);
@@ -340,7 +340,7 @@ height:1px;
               <a class="nav-link" href="#notes">lab Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#doubt">Doubt Clearence</a>
+                <a class="nav-link" href="#doubt">Doubt Clearance</a>
               </li>
             <li class="nav-item">
               <a class="nav-link" href="#assignment">Lab Copy Check</a>
@@ -351,7 +351,7 @@ height:1px;
             <li class="nav-item">
          <a href="/College_Final_Year_Project/logout?action=teacher" class="nav-link">Logout</a>
             </li>
-            <li><img class="images" src="images/teachers/1200px-JIS_University.svg.png"></li>
+            <li><img class="images" src="images/jis1.png"></li>
           </ul>
         </div>
       </div>
@@ -542,7 +542,7 @@ height:1px;
             </div>
           </div>
           <div class="col-lg-5 col-md-12 text-sec">
-           <h2>Replay To The Students</h2>
+           <h2>Reply To The Students</h2>
            <form action="">
                 <label style="height:25px;display:none;" class="details"><p id="doubtStudentId" style="font-size:20px;"><b></b></p></label>
                 <label style="height:25px;" class="details"><p id="doubtStudentName"  style="font-size:20px;"><b>Student Name:</b></p></label>
@@ -582,14 +582,14 @@ height:1px;
           String LabOutPutUrl="dynamicTableTeacher.jsp?action=WeeklyLabOutput&examType=Lab Experiment File&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>  
-                  <li><a href="<%=LabOutPutUrl %>" target="_blank"><span>Check Experment Output</span></a>
+                  <li><a href="<%=LabOutPutUrl %>" target="_blank"><span>Check Experiment Output</span></a>
                    </li>
                            <%
           String finalLabCopy="dynamicTableTeacher.jsp?action=FInalLabCopy&examType=Final Lab Copy Files&semesterId="+semester+"&year="+year+"&section="+section+"&subject="+subjectId+"&courseTypeId="+courseId; 
             
             %>
                   <li>
-                   <a href="<%=finalLabCopy %>" target="_blank"><span>Check Final LabCopy</a>
+                   <a href="<%=finalLabCopy %>" target="_blank"><span>Check Final Lab Copy</a>
                     </li>
                 </ul> 
                 

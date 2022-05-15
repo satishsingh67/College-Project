@@ -63,7 +63,7 @@ public class ContactUs extends HttpServlet {
    	    pstmt.setObject(5, new Date());
 		int dbStatus=pstmt.executeUpdate();
 		if(dbStatus>0) {
-			status="Contact Request Submiited Successfully";
+			status="Contact Request Submitted Successfully";
 		}
 		else {
 			status="Something went wrong.Please fill Form Again";

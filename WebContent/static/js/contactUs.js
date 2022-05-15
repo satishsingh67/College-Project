@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 		 success: function(data,textStatus,jqXHR){
 		console.log(data);
-		if(data.trim()=='Contact Request Submiited Successfully'){
+		if(data.trim()=='Contact Request Submitted Successfully'){
 			swal("Done", data, "success");
 			$(".loader1").hide();
 			  $(".contact1-form").show();

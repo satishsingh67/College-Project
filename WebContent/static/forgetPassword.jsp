@@ -85,13 +85,13 @@
 </style>
 
 </head>
-<body style="background-color:    #14e058;">
+<body style="background-image: url(./images/background/properback.png);background-repeat: no-repeat;background-size: cover;">
         <!-- Page Content goes here -->
         <div class="conatiner">
 <div class="row">
 <div class="col m4 offset-m4">
 <div class="card">
-<div class="card-content" style="margin-top:40%;border: 1px solid white; background-color: yellow;box-shadow: 5px 5px 5px gray;">
+<div class="card-content" style="margin-top:40%;border: 1px solid white;background-color: rgb(158, 158, 240);box-shadow: 5px 5px 5px gray;">
     <h5 class="center-align" style="font-weight: bold;color: black;" >Forget Password</h5>
     <div class="form">
 <form method="POST"  id="changePassForm" enctype="multipart/form-data">

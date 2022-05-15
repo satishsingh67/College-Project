@@ -205,7 +205,7 @@ section{
                     <input type="text" name="mobileNumber" placeholder="Enter Your Mobile Number" class="box" required>
                     <span style="font-weight: bold;color: black; font-size: 20px;">your Old Password:<strong class="text-danger">*</strong></span>
                     <input type="password" name="oldPassword" placeholder="Enter Old Password" class="box" required>
-                     <span style="font-weight: bold;color: black; font-size: 20px;">your New Password:</span>
+                     <span style="font-weight: bold;color: black; font-size: 20px;">your New Password:<strong class="text-danger">*</strong></span>
                     <input type="password" name="password" placeholder="Enter New Password" class="box" required>
                     <span style="font-weight: bold;color: black; font-size: 20px;">confirm your Password:<strong class="text-danger">*</strong></span>
                     <input type="password"  name="ConfirmPassword" placeholder="Confirm Your Password" class="box" required>

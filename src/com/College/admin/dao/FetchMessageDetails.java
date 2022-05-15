@@ -72,6 +72,56 @@ public class FetchMessageDetails {
 
 		return result;
 	}
+	public String fetchMentorMessage() {
+
+		Connection con = new DataBaseConnection().getDatabaseConnection();
+
+		String result = null;
+
+		try {
+
+			String query = " SELECT doubt.pkMentorAdminDoubtId,doubt.question,doubt.answer,doubt.createDate,ment.name,ment.emailId,ment.mobileNumber,doubt.updateDate FROM mentor_admin_doubt AS doubt "
+					+ "INNER JOIN mentor_registration AS ment ON doubt.fkMentorId=ment.pkMentorResgistrationId";
+			Statement stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(query);
+			List<ViewVariables> teacherDoubtList = new ArrayList<ViewVariables>();
+
+			while (rs.next()) {
+
+				ViewVariables viewVariables = new ViewVariables();
+
+				viewVariables.setPkId(rs.getInt(1));
+				viewVariables.setQuestion(rs.getString(2));
+				viewVariables.setAnswer(rs.getString(3));
+				viewVariables.setCreateDate(rs.getTimestamp(4));
+				viewVariables.setName(rs.getString(5));
+				viewVariables.setEmailId(rs.getString(6));
+				viewVariables.setMobileNumber(rs.getString(7));
+				viewVariables.setUpdateDate(rs.getTimestamp(8));
+				teacherDoubtList.add(viewVariables);
+
+			}
+
+			Gson json = new Gson();
+
+			result = json.toJson(teacherDoubtList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
 
 	public String upadeQuestionAnswer(String id, String answer, String action) {
 
@@ -113,6 +163,23 @@ public class FetchMessageDetails {
 				if (dbStatus > 0) {
 					result = "Reply Saved Successfully";
 					SendMailForContactUs(id,answer);
+				} else {
+					result = "Reply not saved.Please try again.";
+
+				}
+
+			} else if (action.trim().equalsIgnoreCase("mentorDoubtAnswer")) {
+				query = "Update mentor_admin_doubt set answer=?,updateDate=? where pkMentorAdminDoubtId=?";
+				pstmt = con.prepareStatement(query);
+
+				pstmt.setString(1, answer.trim());
+				pstmt.setObject(2, new Date());
+				pstmt.setInt(3, Integer.parseInt(id));
+
+				int dbStatus = pstmt.executeUpdate();
+
+				if (dbStatus > 0) {
+					result = "Reply Saved Successfully";
 				} else {
 					result = "Reply not saved.Please try again.";
 
@@ -211,8 +278,7 @@ public class FetchMessageDetails {
 
 			ResultSet rs = stmt.executeQuery(query);
 			List<ViewVariables> studentList = new ArrayList<ViewVariables>();
-			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-			InputStream inputStream;
+			
 			int count = 0;
 			while (rs.next()) {
 				count++;
@@ -239,7 +305,8 @@ public class FetchMessageDetails {
 
 				Blob blob = rs.getBlob("studentPhoto");
 				viewVariables.setUpdateDate(rs.getTimestamp(14));
-
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				InputStream inputStream;
 				// Preparing Image to send user
 				inputStream = blob.getBinaryStream();
 
@@ -518,7 +585,7 @@ public class FetchMessageDetails {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(new FetchMessageDetails().fetchTeacherList());
+		System.out.println(new FetchMessageDetails().fetchMentorMessage());
 		
 	}
 
