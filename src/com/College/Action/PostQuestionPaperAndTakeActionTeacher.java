@@ -17,7 +17,7 @@ import com.college.teacher.dao.PostQuestionPaperAndTakeAction;
  * Servlet implementation class PostQuestionPaperAndTakeActionTeacher
  */
 @WebServlet("/PostQuestionPaperAndTakeActionTeacher")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class PostQuestionPaperAndTakeActionTeacher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

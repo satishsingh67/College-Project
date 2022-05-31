@@ -20,7 +20,7 @@ import com.college.teacher.dao.AssignmentUploadAndView;
  * Servlet implementation class MentorUploadFiles
  */
 @WebServlet("/MentorUploadFiles")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class MentorUploadFiles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

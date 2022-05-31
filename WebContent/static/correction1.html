@@ -163,7 +163,7 @@
             </div>
         </div>
         <div class="btns-group">
-          <a href="#" class="btn btn-prev">Clear</a>
+          <button id="clear" class="btn btn-prev">Clear</button>
           <input type="submit" id="changeMobileNumberSubmitButton" value="Submit" class="btn" />
 
         </div>
@@ -190,6 +190,18 @@
     </div>
 
   </div>
+
+<script type="text/javascript">
+
+$("#clear").click(function (event) {
+    event.preventDefault();
+    $('#changeMobileNumber')[0].reset();
+});
+
+
+
+</script>
+
 
 
 </body>

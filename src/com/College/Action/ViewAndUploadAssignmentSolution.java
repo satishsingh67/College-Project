@@ -23,7 +23,7 @@ import com.college.dataBaseConnection.DataBaseConnection;
  * Servlet implementation class ViewAndUploadAssignmentSolution
  */
 @WebServlet("/ViewAndUploadAssignmentSolution")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class ViewAndUploadAssignmentSolution extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

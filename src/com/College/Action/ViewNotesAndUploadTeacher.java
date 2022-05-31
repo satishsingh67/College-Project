@@ -20,7 +20,7 @@ import com.college.teacher.dao.UploadAndViewNotes;
  * Servlet implementation class ViewNotesAndUploadTeacher
  */
 @WebServlet("/ViewNotesAndUploadTeacher")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class ViewNotesAndUploadTeacher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

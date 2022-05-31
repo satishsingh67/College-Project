@@ -20,7 +20,7 @@ import com.college.model.TeacherDetails;
  * Servlet implementation class AccountCreationAdmin
  */
 @WebServlet("/AccountCreationAdmin")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class AccountCreationAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

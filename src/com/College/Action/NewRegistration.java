@@ -24,7 +24,7 @@ import com.google.gson.Gson;
  * Servlet implementation class NewRegistration
  */
 @WebServlet("/NewRegistration")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class NewRegistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

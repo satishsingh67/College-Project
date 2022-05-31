@@ -17,7 +17,7 @@ import com.college.dataValidation.DataValidation;
  * Servlet implementation class AboutUsFeedback
  */
 @WebServlet("/AboutUsFeedback")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class AboutUsFeedback extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

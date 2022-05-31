@@ -16,7 +16,7 @@ import com.college.mentor.dao.UploadLink;
  * Servlet implementation class MentorUploadLink
  */
 @WebServlet("/MentorUploadLink")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 100)
 public class MentorUploadLink extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

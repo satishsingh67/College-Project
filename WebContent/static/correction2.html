@@ -165,7 +165,7 @@
             </div>
         </div>
         <div class="btns-group">
-          <a href="#" class="btn btn-prev">Clear</a>
+          <button id="clear" class="btn btn-prev">Clear</button>
           <input type="submit" id="emailCorrectionSubmitButton" value="Submit" class="btn" />
 
         </div>
@@ -192,6 +192,16 @@
     </div>
 
   </div>
+<script type="text/javascript">
+
+$("#clear").click(function (event) {
+    event.preventDefault();
+    $('#changeEmail')[0].reset();
+});
+  
+
+
+</script>
 
 
 </body>
