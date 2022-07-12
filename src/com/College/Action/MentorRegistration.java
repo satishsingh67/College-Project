@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.college.admin.dao.AccountCreation;
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 
 /**
  * Servlet implementation class MentorRegistration

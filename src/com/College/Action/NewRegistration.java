@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.college.dataBaseConnection.DataBaseConnection;
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 import com.google.gson.Gson;
 
 /**

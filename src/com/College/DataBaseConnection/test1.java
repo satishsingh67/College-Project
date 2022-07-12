@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.servlet.http.Part;
 
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 
 public class test1 {
 public static void main(String[] args) {

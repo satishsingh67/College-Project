@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.college.admin.dao.AccountCreation;
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 import com.college.model.TeacherDetails;
 
 /**

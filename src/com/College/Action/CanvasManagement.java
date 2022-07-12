@@ -17,7 +17,7 @@ import com.college.canvas.CanvasAccountCreation;
 import com.college.canvas.CanvasFetchFiles;
 import com.college.canvas.CanvasFormSubmit;
 import com.college.canvas.CanvasLogin;
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 import com.college.model.CanvasAccount;
 import com.college.model.TeacherDetails;
 

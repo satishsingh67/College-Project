@@ -390,13 +390,13 @@ form span{
          
              
          
-               <div class="links" style="margin-left:-5%;">
-                  <a href="adminpage.jsp" >Home</a>
-                  <a href="#RegTeacher" >New Teacher Registration</a>
-                  <a href="#ReplyTeacher">Reply To Teacher</a>
-              <a href="#upgradeTeacher"  >Upgrade Teacher Designation</a>
+               <div class="links" style="font-size:18px;">
+                  <a href="adminpage.jsp" style="font-size:18px;">Home</a>
+                  <a href="#RegTeacher" style="font-size:18px;">New Teacher Registration</a>
+                  <a href="#ReplyTeacher" style="font-size:18px;">Reply To Teacher</a>
+              <a href="#upgradeTeacher" style="font-size:18px;" >Upgrade Teacher Designation</a>
                   
-                  <a href="#Delete" style="font-size:20px;">Delete Account</a>
+                  <a href="#Delete" style="font-size:18px;">Delete Account</a>
                </div>
               
                <div id="menu-btn" class="fa fa-bars"></div>

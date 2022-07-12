@@ -163,7 +163,7 @@ String meetingLinks=new LinkManagement().getSemExamMeetingLink(3, departmentId, 
       padding: 20px;
       border: 1px solid skyblue;
       width: 50%;
-      height: 65%;
+      height: 70%;
     }
     
       .modalViewQuestionPaper1 {
@@ -1490,17 +1490,17 @@ footer span a:hover{
         
          <div>
       <br>
-      <button  id="doubtSubmit" style="background-color: skyblue; width: 100px;height:40px;font-size: 15px;">Submit</button>
+      <button  id="doubtSubmit" style="background-color: skyblue; width: 100px;height:40px;font-size: 15px;margin-left:36%;">Submit</button>
+                  <button  id="closeQuestionPaperModel" style="background-color: red; width: 100px;height:40px;font-size: 15px;">Cancel</button>
      
      </div>
          
   </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer" >
-             <button  id="closeQuestionPaperModel" style="background-color: red; width: 100px;height:40px;font-size: 15px;margin-left:80%;">Cancel</button>
+     <!-- Modal footer -->
+     <!--   <div class="modal-footer" >
       
-      </div>
+      </div> -->
 
     </div>
 </div>

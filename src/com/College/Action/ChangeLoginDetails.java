@@ -15,7 +15,7 @@ import com.college.updateLoginDetails.ChangeMobileNumber;
 import com.college.updateLoginDetails.ChangeSecurityPin;
 import com.college.updateLoginDetails.ChangeSecurityQuestionAnswer;
 import com.college.admin.dao.AdminLoginValidation;
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 import com.college.teacher.dao.ChangePassword;
 
 /**

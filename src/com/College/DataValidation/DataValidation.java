@@ -1,4 +1,4 @@
-package com.college.dataValidation;
+package com.college.DataValidation;
 
 import javax.servlet.http.Part;
 

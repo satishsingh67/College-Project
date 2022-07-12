@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.college.DataValidation.DataValidation;
 import com.college.AboutUs.AboutUsFeedbackUpload;
-import com.college.dataValidation.DataValidation;
 
 /**
  * Servlet implementation class AboutUsFeedback

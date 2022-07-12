@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.college.admin.dao.AdminLoginValidation;
-import com.college.dataValidation.DataValidation;
+import com.college.DataValidation.DataValidation;
 import com.college.mentor.dao.MentorLoginValidation;
 import com.college.model.Admin;
 import com.college.model.Mentor;

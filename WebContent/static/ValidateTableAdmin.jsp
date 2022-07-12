@@ -391,7 +391,7 @@ td {
         
         </div>
         
-        <div style="width:65%;margin-top:-180px;">
+        <div style="width:65%;margin-top:-150px;">
         
                 <label><p "font-size:15px; text-transform: none;" id="studentName" ></p></label>
        
@@ -578,6 +578,7 @@ td {
 			      url:"/College_Final_Year_Project/fetch?action=newStudentRegistration",
 			      success: function (data, textStatus, jqXHR) {
 			    	  var JsonData= jQuery.parseJSON(data);
+			    	  var JsonData="";
 			    	  $('#Table').empty();
 			    	 if(JsonData.length==0){
 				     $("#Table").html('<tr class="no-records"><td colspan="14" style="text-align:center;text-color:black">Sorry,No record found.</td></tr>');
